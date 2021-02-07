@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -89,6 +97,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\BDD_ConsultorioDermatologico.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BDD_ConsultorioDermatologico.Context.cs</LastGenOutput>
+      <DependentUpon>BDD_ConsultorioDermatologico.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\BDD_ConsultorioDermatologico.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDD_ConsultorioDermatologico.edmx</DependentUpon>
+      <LastGenOutput>BDD_ConsultorioDermatologico.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -96,10 +114,84 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AntecedenteGinecoObstetricoCLS.cs" />
+    <Compile Include="Models\AntecedenteReprodMasculinoCLS.cs" />
+    <Compile Include="Models\BDD_ConsultorioDermatologico.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDD_ConsultorioDermatologico.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BDD_ConsultorioDermatologico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BDD_ConsultorioDermatologico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDD_ConsultorioDermatologico.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactoEmergenciaCLS.cs" />
+    <Compile Include="Models\EvolucionCLS.cs" />
+    <Compile Include="Models\FotoCLS.cs" />
+    <Compile Include="Models\FotoMapaCorporalCLS.cs" />
+    <Compile Include="Models\HistoriaClinicaCLS.cs" />
+    <Compile Include="Models\IdentidadGeneroCLS.cs" />
+    <Compile Include="Models\OrientacionSexualCLS.cs" />
+    <Compile Include="Models\PacienteCLS.cs" />
+    <Compile Include="Models\RepresentanteCLS.cs" />
+    <Compile Include="Models\SeguroMedicoCLS.cs" />
+    <Compile Include="Models\tblAntecedenteGinecoObstetrico.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAntecedenteReprodMasculino.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblContactoEmergencia.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEvolucion.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblFotoMapaCorporal.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblFotos.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblHistoriaClinica.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblIdentidadGenero.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrientacionSexual.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPaciente.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblRepresentante.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSeguroMedico.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUsuario.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarioCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="Models\BDD_ConsultorioDermatologico.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDD_ConsultorioDermatologico.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BDD_ConsultorioDermatologico.edmx.diagram">
+      <DependentUpon>BDD_ConsultorioDermatologico.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -111,7 +203,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Default\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
