@@ -1,0 +1,34 @@
+﻿@using ConsultorioDermatologico.Models
+@model List<UsuarioCLS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista Usuarios</h2>
+
+
+<table class="table table-bordered table-hover" >
+    <thead>
+        <tr>
+            <td>Nombres</td>
+            <td>Apellidos</td>
+            <td>Rol usuario</td>
+            <td>Alias</td>
+            <td>Correo</td>
+        </tr>        
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.nombreUsuario</td>
+                <td>@item.apellidoUsuario</td>
+                <td>@item.rolUsuario</td>
+                <td>@item.aliasUsuario</td>
+                <td>@item.correoUsuario</td>
+            </tr>            
+        }
+
+    </tbody>
+</table>

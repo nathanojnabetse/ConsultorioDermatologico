@@ -1,0 +1,101 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <style>
+        .card-propio {
+            margin-top: 10px 200px;
+            flex: 1 150px;
+            padding: 2px 0px 2px 0px;
+        }
+    </style>
+
+</head>
+<body>
+
+
+
+    <div class="container body-content">
+
+
+        <div class="row d-flex flex-wrap">
+            <div class=" col-sm-4 d-flex flex-column justify-content-between">
+                <div class="card  card-propio ">
+                    <div class="card-body ">
+                        <h5 class="card-title">Registrar un nuevo paciente</h5>
+                        <div style="text-align: center; padding: 40px 10px;">                            
+                            <i class="fa fa-ambulance fa-4x" aria-hidden="true"></i>                            
+                        </div>
+                        <p class="card-text" style="text-align:justify">Añadir la información personal de un nuevo paciente y abrir una nueva historia clínica</p>                        
+                    </div>
+                    <div>
+                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"> <i class="fa fa-user-plus" aria-hidden="true"></i> Añadir paciente nuevo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 d-flex flex-column justify-content-between">
+                <div class="card  card-propio ">
+                    <div class="card-body ">
+                        <h5 class="card-title">Gestión de historias clínicas</h5>
+                        <div style="text-align: center; padding: 40px 10px;">                            
+                            <i class="fa fa-medkit fa-4x" aria-hidden="true"></i>
+                        </div>
+                        <p class="card-text" style="text-align:justify">Muestra una lista de los pacientes registrados en el sistema</p>
+                        <p class="card-text" style="text-align:justify">Seleccione un paciente para editar, borrar datos, o aumentar una hoja de evolución a la historia clínica</p>
+                    </div>
+                    <div>
+                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"><i class="fa fa-search" aria-hidden="true"></i> Ver pacientes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 d-flex flex-column justify-content-between">
+                <div class="card  card-propio ">
+                    <div class="card-body ">
+                        <h5 class="card-title">Certificados y documentos</h5>
+                        <div style="text-align: center; padding: 40px 10px;">                            
+                            <i class="fa fa-file fa-4x" aria-hidden="true"></i>                            
+                        </div>
+                        <p class="card-text" style="text-align:justify">Genere un documento en pdf con:</p>
+                        <p class="card-text" style="text-align:justify">Historia clínica</p>
+                        <p class="card-text" style="text-align:justify">Autorización y consentimiento informado del paciente</p>
+                        <p class="card-text" style="text-align:justify">Certificado de reposo</p>
+                        <p class="card-text" style="text-align:justify">Certificado de asistencia</p>
+                    </div>
+                    <div>
+                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
