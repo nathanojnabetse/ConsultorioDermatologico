@@ -1,0 +1,28 @@
+﻿@using ConsultorioDermatologico.Models
+@model List<UsuarioCLS>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>@Html.LabelFor(p => Model[0].nombreUsuario)</td>
+            <td>@Html.LabelFor(p => Model[0].rolUsuario)</td>
+            <td>@Html.LabelFor(p => Model[0].aliasUsuario)</td>
+            <td>@Html.LabelFor(p => Model[0].contraseñaUsuario)</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.nombreUsuario</td>
+                <td>@item.rolUsuario</td>
+                <td>@item.aliasUsuario</td>
+                <td>@item.correoUsuario</td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+

@@ -164,6 +164,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -343,6 +344,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\Medico.cshtml" />
+    <Content Include="Views\Usuario\_TablaUsuarios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
