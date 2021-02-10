@@ -21,12 +21,12 @@ namespace ConsultorioDermatologico.Models
         [Display(Name ="Nombre Usuario")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string nombreUsuario{get; set;}
-        
-        //[Required]
-        //[Display(Name = "Apellidos")]
-        //[StringLength(50, ErrorMessage = "Longitud máxima 50")]
-        //public string apellidoUsuario{get; set;}
-        
+
+        [Required]
+        [Display(Name = "Apellidos")]
+        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
+        public string apellidoUsuario { get; set; }
+
         [Required]
         [Display(Name = "Rol")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]

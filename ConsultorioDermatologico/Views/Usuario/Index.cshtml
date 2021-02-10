@@ -3,25 +3,26 @@
 
 @{
     ViewBag.Title = "Index";
+
+    //creamos una lista tipo SelectListItem
+    List<SelectListItem> lst = new List<SelectListItem>();
+
+    //De la siguiente manera llenamos manualmente,
+    //Siendo el campo Text lo que ve el usuario y
+    //el campo Value lo que en realidad vale nuestro valor
+    lst.Add(new SelectListItem() { Text = "MEDICO", Value = "MEDICO" });
+    lst.Add(new SelectListItem() { Text = "ADMINSITRADOR", Value = "ADMINISTRADOR" });
+
+    //Agregamos la lista a nuestro SelectList
+    SelectList listaRol = new SelectList(lst, "Value", "Text");
 }
 
 <h2>Lista Usuarios</h2>
 
-
-@*@using (Ajax.BeginForm("Filtro", "", new AjaxOptions
-    {
-        HttpMethod = "POST",
-        UpdateTargetId = "divListaUsuarios",
-        InsertionMode = InsertionMode.Replace
-    }, new { @id = "frmFiltro" }))
-    {
-        @Html.Label("Buscar")
-        @Html.TextBox("nombreUsuarioFltr", null, new { @class = "form-control" })
-        <div id="divListaUsuarios">
-            @Html.Partial("_TablaUsuarios", Model)
-        </div>
-    }*@
-
+<!-- Button trigger modal -->
+<button onclick="Agregar()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Agregar
+</button>
 
 @using (Ajax.BeginForm("Filtro", "", new AjaxOptions
 {
@@ -30,12 +31,69 @@
     InsertionMode = InsertionMode.Replace
 }, new { @id = "frmFiltro" }))
 {
-    @Html.Label("Búsqueda")
+    @Html.Label("Búsqueda por nombre: ")
     @Html.TextBox("nombreUsuario", null, new { @class = "form-control" })
-<div id="divListaUsuarios">
-    @Html.Partial("_TablaUsuarios", Model)
-</div>
+    <div id="divListaUsuarios">
+        @Html.Partial("_TablaUsuarios", Model)
+    </div>
 }
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("Guardar", "Usuario", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                UpdateTargetId = "error"
+            }))
+            {
+                @Html.Hidden("titulo")
+                <div class="modal-body">
+                    <div>
+                        @Html.Label("Nombres")
+                        @Html.TextBox("nombreUsuario", null, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Apellidos")
+                        @Html.TextBox("apellidoUsuario", null, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Rol Usuario")
+                        @Html.DropDownList("rolUsuario", listaRol, null, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Alias")
+                        @Html.TextBox("aliasUsuario", null, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Contraseña")
+                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control", @placeholder = "*******", @required = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Correo electrónico")
+                        @Html.TextBox("correoUsuario", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </div>
+             }
+             <div id="error"></div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -43,6 +101,21 @@
     var filtro = document.getElementById("nombreUsuario");
     filtro.onkeyup = function () {
         $("#frmFiltro").trigger("submit");
+    }
+
+    function Agregar() {
+        document.getElementById("titulo").value = 1;
+    }
+
+    function Guardar(resultado) {
+        if (resultado == 1) {
+            $("#frmFiltro").trigger("submit");
+            document.getElementById("btnClose").click();
+            alert("Se guardo correctamente");
+        }
+        else {
+            alert("ocurrio un error")
+        }
     }
 </script>
 

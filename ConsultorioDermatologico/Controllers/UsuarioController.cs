@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ConsultorioDermatologico.Models;
@@ -59,6 +61,29 @@ namespace ConsultorioDermatologico.Controllers
                 }
                 return PartialView("_TablaUsuarios", listaUsuario);
             }
+        }
+
+        public int Guardar(UsuarioCLS usuarioCLS,int titulo)
+        {
+            int rpta = 0; //nnumero de registros afectados
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                tblUsuario tblUsuario = new tblUsuario();
+                tblUsuario.nombresUsuario = usuarioCLS.nombreUsuario;
+                tblUsuario.apellidosUsuario = usuarioCLS.apellidoUsuario;
+                tblUsuario.rolUsuario = usuarioCLS.rolUsuario;
+                tblUsuario.aliasUsuario = usuarioCLS.aliasUsuario;
+                //cifrado de clave
+                SHA256Managed sha = new SHA256Managed();
+                byte[] byteContra = Encoding.Default.GetBytes(usuarioCLS.contraseñaUsuario);
+                byte[] byteContraCifrado = sha.ComputeHash(byteContra);
+                string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
+                tblUsuario.contraseñaUsuario = cadenaContraCifrada;
+                tblUsuario.correoUsuario = usuarioCLS.correoUsuario;
+                bd.tblUsuario.Add(tblUsuario);
+                rpta = bd.SaveChanges();
+            }
+                return rpta;
         }
     }
 }
