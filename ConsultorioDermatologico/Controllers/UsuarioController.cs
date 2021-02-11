@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Transactions;
 using ConsultorioDermatologico.Models;
 
 namespace ConsultorioDermatologico.Controllers
@@ -20,6 +21,7 @@ namespace ConsultorioDermatologico.Controllers
                 listaUsuario = (from usuario in bd.tblUsuario
                                                  select new UsuarioCLS
                                                  {
+                                                     idUsuario = usuario.idUsuario,
                                                      nombreUsuario = usuario.nombresUsuario + " " + usuario.apellidosUsuario,
                                                      rolUsuario = usuario.rolUsuario,
                                                      aliasUsuario = usuario.aliasUsuario,
@@ -40,6 +42,7 @@ namespace ConsultorioDermatologico.Controllers
                     listaUsuario = (from usuario in bd.tblUsuario
                                     select new UsuarioCLS
                                     {
+                                        idUsuario = usuario.idUsuario,
                                         nombreUsuario = usuario.nombresUsuario + " " + usuario.apellidosUsuario,
                                         rolUsuario = usuario.rolUsuario,
                                         aliasUsuario = usuario.aliasUsuario,
@@ -53,6 +56,7 @@ namespace ConsultorioDermatologico.Controllers
                                     || usuario.apellidosUsuario.Contains(nombreUsuario))
                                     select new UsuarioCLS
                                     {
+                                        idUsuario = usuario.idUsuario,
                                         nombreUsuario = usuario.nombresUsuario +" "+ usuario.apellidosUsuario,                                        
                                         rolUsuario = usuario.rolUsuario,
                                         aliasUsuario = usuario.aliasUsuario,
@@ -63,27 +67,100 @@ namespace ConsultorioDermatologico.Controllers
             }
         }
 
-        public int Guardar(UsuarioCLS usuarioCLS,int titulo)
+        public string Guardar(UsuarioCLS usuarioCLS,int titulo)
         {
-            int rpta = 0; //nnumero de registros afectados
-            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            string rpta ="" ; //numero de registros afectados
+            try
             {
-                tblUsuario tblUsuario = new tblUsuario();
-                tblUsuario.nombresUsuario = usuarioCLS.nombreUsuario;
-                tblUsuario.apellidosUsuario = usuarioCLS.apellidoUsuario;
-                tblUsuario.rolUsuario = usuarioCLS.rolUsuario;
-                tblUsuario.aliasUsuario = usuarioCLS.aliasUsuario;
-                //cifrado de clave
-                SHA256Managed sha = new SHA256Managed();
-                byte[] byteContra = Encoding.Default.GetBytes(usuarioCLS.contraseñaUsuario);
-                byte[] byteContraCifrado = sha.ComputeHash(byteContra);
-                string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
-                tblUsuario.contraseñaUsuario = cadenaContraCifrada;
-                tblUsuario.correoUsuario = usuarioCLS.correoUsuario;
-                bd.tblUsuario.Add(tblUsuario);
-                rpta = bd.SaveChanges();
+                if (!ModelState.IsValid)
+                {
+                    var query = (from state in ModelState.Values//valores
+                                 from error in state.Errors//mensajes
+                                 select error.ErrorMessage).ToList();
+                    rpta += "<ul class='list-group'>";
+                    foreach (var item in query)
+                    {
+                        rpta += "<li class='list-group-item'>" + item + "</li>";
+                    }
+                    rpta += "</ul>";
+                }
+                else
+                {
+                    using (var bd = new BDD_ConsultorioDermatologicoEntities())
+                    {
+                        using (var transaccion = new TransactionScope())
+                        {
+                            if (titulo == -1)//Agregar un nuevo Usuario
+                            {
+                                tblUsuario tblUsuario = new tblUsuario();
+                                tblUsuario.nombresUsuario = usuarioCLS.nombreUsuario;
+                                tblUsuario.apellidosUsuario = usuarioCLS.apellidoUsuario;
+                                tblUsuario.rolUsuario = usuarioCLS.rolUsuario;
+                                tblUsuario.aliasUsuario = usuarioCLS.aliasUsuario;
+                                //cifrado de clave
+                                SHA256Managed sha = new SHA256Managed();
+                                byte[] byteContra = Encoding.Default.GetBytes(usuarioCLS.contraseñaUsuario);
+                                byte[] byteContraCifrado = sha.ComputeHash(byteContra);
+                                string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
+                                tblUsuario.contraseñaUsuario = cadenaContraCifrada;
+                                tblUsuario.correoUsuario = usuarioCLS.correoUsuario;
+                                bd.tblUsuario.Add(tblUsuario);
+                                rpta = bd.SaveChanges().ToString();
+                                transaccion.Complete();
+                            }
+                            //else //editar con el id >-1
+                            //{
+                            ////obtener todo el registro mediante id y despues editar
+                            //tblUsuario usuario = bd.tblUsuario.Where(p => p.idUsuario == titulo).First();
+                            //usuario.nombresUsuario = usuarioCLS.nombreUsuario;
+                            //usuario.apellidosUsuario = usuarioCLS.nombreUsuario;
+                            //usuario.rolUsuario = usuarioCLS
+                            //}
+                        }
+                    }
+                }
+               
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                rpta = "";
+            }
+            
                 return rpta;
+        }
+
+        public int Eliminar(int idUsuario)
+        {
+            int rpta = 0;
+            try
+            {
+                using (var bd = new BDD_ConsultorioDermatologicoEntities())
+                {
+                    tblUsuario usuario = (from user in bd.tblUsuario
+                                          where user.idUsuario == idUsuario
+                                          select user).First();
+                    if(usuario!=null)
+                    {
+                        bd.tblUsuario.Remove(usuario);
+                        rpta = bd.SaveChanges();
+                    }
+                    else
+                    {
+                        rpta = 0;
+                    }
+                    
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                rpta = 0;
+            }
+
+
+            return rpta;
         }
     }
 }

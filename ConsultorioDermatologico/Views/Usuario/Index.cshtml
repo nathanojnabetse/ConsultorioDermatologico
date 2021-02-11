@@ -11,7 +11,7 @@
     //Siendo el campo Text lo que ve el usuario y
     //el campo Value lo que en realidad vale nuestro valor
     lst.Add(new SelectListItem() { Text = "MEDICO", Value = "MEDICO" });
-    lst.Add(new SelectListItem() { Text = "ADMINSITRADOR", Value = "ADMINISTRADOR" });
+    lst.Add(new SelectListItem() { Text = "ADMINISTRADOR", Value = "ADMINISTRADOR" });
 
     //Agregamos la lista a nuestro SelectList
     SelectList listaRol = new SelectList(lst, "Value", "Text");
@@ -19,8 +19,8 @@
 
 <h2>Lista Usuarios</h2>
 
-<!-- Button trigger modal -->
-<button onclick="Agregar()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<!-- Button trigger del modal de agregar -->
+<button onclick="Agregar()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">
     Agregar
 </button>
 
@@ -38,11 +38,8 @@
     </div>
 }
 
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal para agregar usuarios -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -62,38 +59,59 @@
                 <div class="modal-body">
                     <div>
                         @Html.Label("Nombres")
-                        @Html.TextBox("nombreUsuario", null, new { @class = "form-control" })
+                        @Html.TextBox("nombreUsuario", null, new { @class = "form-control limpieza" })
+
                     </div>
                     <div>
                         @Html.Label("Apellidos")
-                        @Html.TextBox("apellidoUsuario", null, new { @class = "form-control" })
+                        @Html.TextBox("apellidoUsuario", null, new { @class = "form-control limpieza" })
                     </div>
                     <div>
                         @Html.Label("Rol Usuario")
                         @Html.DropDownList("rolUsuario", listaRol, null, new { @class = "form-control" })
                     </div>
-                    <div>
+                    <div id="divBloquear">
                         @Html.Label("Alias")
-                        @Html.TextBox("aliasUsuario", null, new { @class = "form-control" })
+                        @Html.TextBox("aliasUsuario", null, new { @class = "form-control limpieza" })
                     </div>
                     <div>
                         @Html.Label("Contraseña")
-                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control", @placeholder = "*******", @required = "true" })
+                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control limpieza", @placeholder = "*******", @required = "true" })
                     </div>
                     <div>
                         @Html.Label("Correo electrónico")
-                        @Html.TextBox("correoUsuario", null, new { @class = "form-control" })
+                        @Html.TextBox("correoUsuario", null, new { @class = "form-control limpieza" })
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 </div>
-             }
-             <div id="error"></div>
+            }
+            <div id="error"></div>
         </div>
     </div>
 </div>
+
+<!-- Modal de confirmacion-->
+<div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Desea realmente eliminar este registro?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div style="padding:1em">
+                <button type="button" id="btnCerrarConfirmacion" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="EliminarRegistro()" class="btn btn-info">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -104,11 +122,12 @@
     }
 
     function Agregar() {
-        document.getElementById("titulo").value = 1;
-    }
+        Limpiar();
+        document.getElementById("titulo").value = -1; 
 
+    }
     function Guardar(resultado) {
-        if (resultado == 1) {
+        if (resultado == "1") {
             $("#frmFiltro").trigger("submit");
             document.getElementById("btnClose").click();
             alert("Se guardo correctamente");
@@ -116,6 +135,33 @@
         else {
             alert("ocurrio un error")
         }
+    }
+
+    function Eliminar(idUsuario) {
+        document.getElementById("titulo").value = idUsuario;
+
+    }
+    function EliminarRegistro() {
+        var idUsuario = document.getElementById("titulo").value;
+        $.get("Eliminar/?idUsuario=" + idUsuario, function (data) {
+            if (data == 1) {
+                alert("Se ejecuto correctamente")
+                document.getElementById("btnCerrarConfirmacion").click();
+                $("#frmFiltro").trigger("submit");
+            } else {
+                alert("Ocurrio un error");
+            }
+        })
+    }
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("limpieza");
+        var control;
+        for (var i = 0; i < controles.length; i++) {
+            control = controles[i];
+            control.value = "";
+        }
+        document.getElementById("error").innerHTML = "";
     }
 </script>
 
