@@ -70,7 +70,8 @@ namespace ConsultorioDermatologico.Controllers
         public string Guardar(UsuarioCLS usuarioCLS,int titulo)
         {
             string rpta ="" ; //numero de registros afectados
-            int cantidad = 0;//control de no repeticion de nombre de usuario (Alias)
+            int aliasExistentes = 0;//control de # repeticion de nombre de usuario (Alias)
+            int correoExistente = 0;//Control para el # de repeticiones del correo de usuario
             try
             {
                 if (!ModelState.IsValid)
@@ -93,11 +94,15 @@ namespace ConsultorioDermatologico.Controllers
                         {
                             if (titulo == -1)//Agregar un nuevo Usuario
                             {
-                                cantidad = bd.tblUsuario.Where(p => p.aliasUsuario == usuarioCLS.aliasUsuario).Count();
-                                if (cantidad >= 1)
+                                aliasExistentes = bd.tblUsuario.Where(p => p.aliasUsuario == usuarioCLS.aliasUsuario).Count();
+                                correoExistente = bd.tblUsuario.Where(p => p.correoUsuario == usuarioCLS.correoUsuario).Count();
+                                if (aliasExistentes >= 1)
                                 {
-                                    rpta = "-1";
-                                }
+                                    rpta = "-1";//usuario con alias repetido
+                                }else if(correoExistente >= 1)
+                                {
+                                    rpta = "-2";//correo en uso
+                                }                                
                                 else
                                 {
                                     tblUsuario tblUsuario = new tblUsuario();
