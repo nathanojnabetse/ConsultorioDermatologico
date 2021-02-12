@@ -76,7 +76,7 @@
                     </div>
                     <div>
                         @Html.Label("Contraseña")
-                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control limpieza", @placeholder = "*******", @required = "true" })
+                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control limpieza", @placeholder = "*******"})
                     </div>
                     <div>
                         @Html.Label("Correo electrónico")
@@ -133,7 +133,13 @@
             alert("Se guardo correctamente");
         }
         else {
-            alert("ocurrio un error")
+            if (resultado == "-1") {
+                alert("El nombre de usuario yaa existe en la base de datos");
+                document.getElementById("error").innerHTML = "";
+            }
+            else {
+                alert("Ocurrio un error");
+            }
         }
     }
 
@@ -143,7 +149,8 @@
     }
     function EliminarRegistro() {
         var idUsuario = document.getElementById("titulo").value;
-        $.get("Eliminar/?idUsuario=" + idUsuario, function (data) {
+        //$.get("Eliminar/?idUsuario=" + idUsuario, function (data) {
+        $.get('@Url.Action("Eliminar","Usuario")' + idUsuario, function (data) {
             if (data == 1) {
                 alert("Se ejecuto correctamente")
                 document.getElementById("btnCerrarConfirmacion").click();

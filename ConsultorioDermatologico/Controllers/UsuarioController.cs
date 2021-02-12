@@ -70,6 +70,7 @@ namespace ConsultorioDermatologico.Controllers
         public string Guardar(UsuarioCLS usuarioCLS,int titulo)
         {
             string rpta ="" ; //numero de registros afectados
+            int cantidad = 0;//control de no repeticion de nombre de usuario (Alias)
             try
             {
                 if (!ModelState.IsValid)
@@ -92,30 +93,35 @@ namespace ConsultorioDermatologico.Controllers
                         {
                             if (titulo == -1)//Agregar un nuevo Usuario
                             {
-                                tblUsuario tblUsuario = new tblUsuario();
-                                tblUsuario.nombresUsuario = usuarioCLS.nombreUsuario;
-                                tblUsuario.apellidosUsuario = usuarioCLS.apellidoUsuario;
-                                tblUsuario.rolUsuario = usuarioCLS.rolUsuario;
-                                tblUsuario.aliasUsuario = usuarioCLS.aliasUsuario;
-                                //cifrado de clave
-                                SHA256Managed sha = new SHA256Managed();
-                                byte[] byteContra = Encoding.Default.GetBytes(usuarioCLS.contraseñaUsuario);
-                                byte[] byteContraCifrado = sha.ComputeHash(byteContra);
-                                string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
-                                tblUsuario.contraseñaUsuario = cadenaContraCifrada;
-                                tblUsuario.correoUsuario = usuarioCLS.correoUsuario;
-                                bd.tblUsuario.Add(tblUsuario);
-                                rpta = bd.SaveChanges().ToString();
-                                transaccion.Complete();
+                                cantidad = bd.tblUsuario.Where(p => p.aliasUsuario == usuarioCLS.aliasUsuario).Count();
+                                if (cantidad >= 1)
+                                {
+                                    rpta = "-1";
+                                }
+                                else
+                                {
+                                    tblUsuario tblUsuario = new tblUsuario();
+                                    tblUsuario.nombresUsuario = usuarioCLS.nombreUsuario;
+                                    tblUsuario.apellidosUsuario = usuarioCLS.apellidoUsuario;
+                                    tblUsuario.rolUsuario = usuarioCLS.rolUsuario;
+                                    tblUsuario.aliasUsuario = usuarioCLS.aliasUsuario;
+                                    //cifrado de clave
+                                    SHA256Managed sha = new SHA256Managed();
+                                    byte[] byteContra = Encoding.Default.GetBytes(usuarioCLS.contraseñaUsuario);
+                                    byte[] byteContraCifrado = sha.ComputeHash(byteContra);
+                                    string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
+                                    tblUsuario.contraseñaUsuario = cadenaContraCifrada;
+                                    tblUsuario.correoUsuario = usuarioCLS.correoUsuario;
+                                    bd.tblUsuario.Add(tblUsuario);
+                                    rpta = bd.SaveChanges().ToString();
+                                    transaccion.Complete();
+                                }
+                                
                             }
-                            //else //editar con el id >-1
-                            //{
-                            ////obtener todo el registro mediante id y despues editar
-                            //tblUsuario usuario = bd.tblUsuario.Where(p => p.idUsuario == titulo).First();
-                            //usuario.nombresUsuario = usuarioCLS.nombreUsuario;
-                            //usuario.apellidosUsuario = usuarioCLS.nombreUsuario;
-                            //usuario.rolUsuario = usuarioCLS
-                            //}
+                            else
+                            {
+                                rpta = "";
+                            }                            
                         }
                     }
                 }
