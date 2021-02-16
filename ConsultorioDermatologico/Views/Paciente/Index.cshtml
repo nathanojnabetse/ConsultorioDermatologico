@@ -1,0 +1,37 @@
+﻿@using ConsultorioDermatologico.Models
+@model List<PacienteCLS>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Index</h2>
+
+@using (Ajax.BeginForm("Filtro", "", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divListaUsuarios",
+    InsertionMode = InsertionMode.Replace
+}, new { @id = "frmFiltro" }))
+{
+
+    @Html.Label("Búsqueda por nombre o número de cedula: ")
+    @Html.TextBox("busqueda", null, new { @class = "form-control" })
+
+    <div id="divListaUsuarios">
+        @Html.Partial("_TablaPacientes", Model)
+    </div>
+}
+
+
+<script>
+
+
+    var filtro = document.getElementById("busqueda");
+    filtro.onkeyup = function () {
+        $("#frmFiltro").trigger("submit");
+    }
+</script>
+
+
