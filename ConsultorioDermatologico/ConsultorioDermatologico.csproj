@@ -349,6 +349,9 @@
     <Content Include="Views\Usuario\_TablaUsuarios.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Paciente\_TablaPacientes.cshtml" />
+    <Content Include="Views\Paciente\Agregar.cshtml" />
+    <Content Include="Views\Paciente\_DatosPersonales.cshtml" />
+    <Content Include="Views\Paciente\_AntecedentesClinicos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -82,14 +82,14 @@ namespace ConsultorioDermatologico.Models
         [StringLength(10, ErrorMessage = "Longitud máxima 10")]
         public string telefonoResidencial { get; set; }
         [Required]
-        [Display(Name = "Teléfono celular")]
+        [Display(Name = "Correo Electrónico")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         [EmailAddress(ErrorMessage = "Ingrese un email valido")]
         public string correoElectronico { get; set; }
         [Required]
-        [Display(Name = "Dirección")]
+        [Display(Name = "Religión")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
-        public string religion { get; set; }
+        public string religion { get; set; }        
         [Required]
         [Display(Name = "Contacto de emergencia")]        
         public int idContactoEmergencia { get; set; }

@@ -1,0 +1,295 @@
+﻿@using ConsultorioDermatologico.Models
+@model Tuple<PacienteCLS,HistoriaClinicaCLS,RepresentanteCLS,ContactoEmergenciaCLS>
+
+@{
+    ViewBag.Title = "Agregar";
+
+    List<SelectListItem> listaIdentidadGenero = (List<SelectListItem>)ViewBag.listaIdentidadGenero;
+    List<SelectListItem> listaOrientacionSexual = (List<SelectListItem>)ViewBag.listaOrientacionSexual;
+
+    //se crean listas  predeterminadas para discapacidad, estado civil, lateralidad, nivel de educación y religión
+    #region Listas predeterminadas
+    List<SelectListItem> lst = new List<SelectListItem>();
+
+    List<SelectListItem> lstDiscapacidad = new List<SelectListItem>();
+    lstDiscapacidad.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
+    lstDiscapacidad.Add(new SelectListItem() { Text = "Auditiva", Value = "Auditiva" });
+    lstDiscapacidad.Add(new SelectListItem() { Text = "Física", Value = "Física" });
+    lstDiscapacidad.Add(new SelectListItem() { Text = "Intelectual", Value = "Intelectual" });
+    lstDiscapacidad.Add(new SelectListItem() { Text = "Lenguaje", Value = "Lenguaje" });
+    lstDiscapacidad.Add(new SelectListItem() { Text = "Psicosocial", Value = "Psicosocial" });
+    lstDiscapacidad.Add(new SelectListItem() { Text = "Visual", Value = "Visual" });
+    SelectList listaDiscapacidad = new SelectList(lstDiscapacidad, "Value", "Text");
+
+    List<SelectListItem> lstEstadoCivil = new List<SelectListItem>();
+    lstEstadoCivil.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
+    lstEstadoCivil.Add(new SelectListItem() { Text = "Soltero", Value = "Soltero" });
+    lstEstadoCivil.Add(new SelectListItem() { Text = "Casado", Value = "Casado" });
+    lstEstadoCivil.Add(new SelectListItem() { Text = "Divorciado", Value = "Divorciado" });
+    lstEstadoCivil.Add(new SelectListItem() { Text = "Unión Libre", Value = "Unión Libre" });
+    lstEstadoCivil.Add(new SelectListItem() { Text = "Viudo", Value = "Viudo" });
+    SelectList listaEstadoCivil = new SelectList(lstEstadoCivil, "Value", "Text");
+
+    List<SelectListItem> lstLateralidad = new List<SelectListItem>();
+    lstLateralidad.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
+    lstLateralidad.Add(new SelectListItem() { Text = "Diestro", Value = "Diestro" });
+    lstLateralidad.Add(new SelectListItem() { Text = "Zurdo", Value = "Zurdo" });
+    lstLateralidad.Add(new SelectListItem() { Text = "Ambidiestro", Value = "Ambidiestro" });
+    SelectList listaLateralidad = new SelectList(lstLateralidad, "Value", "Text");
+
+    List<SelectListItem> lstNivelEducacion = new List<SelectListItem>();
+    lstNivelEducacion.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
+    lstNivelEducacion.Add(new SelectListItem() { Text = "Ninguno", Value = "Ninguno" });
+    lstNivelEducacion.Add(new SelectListItem() { Text = "Primaria", Value = "Primaria" });
+    lstNivelEducacion.Add(new SelectListItem() { Text = "Secundaria", Value = "Secundaria" });
+    lstNivelEducacion.Add(new SelectListItem() { Text = "Tercer Nivel", Value = "Tercer Nivel" });
+    lstNivelEducacion.Add(new SelectListItem() { Text = "Cuarto Nivel", Value = "Cuarto Nivel" });
+    lstNivelEducacion.Add(new SelectListItem() { Text = "Otro", Value = "Otro" });
+    SelectList listaNivelEducacion = new SelectList(lstNivelEducacion, "Value", "Text");
+
+    List<SelectListItem> lstReligion = new List<SelectListItem>();
+    lstReligion.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
+    lstReligion.Add(new SelectListItem() { Text = "Católica", Value = "Católica" });
+    lstReligion.Add(new SelectListItem() { Text = "Evangélica", Value = "Evangélica" });
+    lstReligion.Add(new SelectListItem() { Text = "Testigo de Jehová", Value = "Secundaria" });
+    lstReligion.Add(new SelectListItem() { Text = "Mormona", Value = "Mormona" });
+    lstReligion.Add(new SelectListItem() { Text = "Musulmán", Value = "Musulmán" });
+    lstReligion.Add(new SelectListItem() { Text = "Otro", Value = "Otro" });
+    SelectList listaReligion = new SelectList(lstReligion, "Value", "Text");
+
+    List<SelectListItem> lstTipoSangre = new List<SelectListItem>();
+    lstTipoSangre.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "O+", Value = "O+" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "O-", Value = "O-" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "A+", Value = "A+" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "A-", Value = "A-" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "B+", Value = "B+" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "B-", Value = "B-" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "AB+", Value = "AB+" });
+    lstTipoSangre.Add(new SelectListItem() { Text = "AB-", Value = "AB-" });
+    SelectList listaTipoSangre= new SelectList(lstTipoSangre, "Value", "Text");
+    #endregion
+
+}
+
+    <h2>Agregar nuevo paciente</h2>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-6" style="padding:1em">
+            <h4>Datos personales del paciente</h4>
+            <div class="border" style="padding:1em">
+
+                @*Formulario para los datos personales del paciente*@
+                @using (Html.BeginForm("Agregar", "Paciente", FormMethod.Post))
+                {
+                    <div>
+                        @Html.LabelFor(p => p.Item1.nombres)
+                        @Html.TextBoxFor(p => p.Item1.nombres, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("nombres", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.apellidos)
+                        @Html.TextBoxFor(p => p.Item1.apellidos, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("apellidos", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.cedula)
+                        @Html.TextBoxFor(p => p.Item1.cedula, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("cedula", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.fechaNacimiento)
+                        @Html.EditorFor(p => p.Item1.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+
+                        @Html.ValidationMessage("fechaNacimiento", new { @class = "text-danger" })
+                    </div>
+                    <div style="padding-top:1em">
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="representante" />
+                        <label for="representante">Menor 18 años</label>
+                    </div>
+
+                    <div id='collapsediv1' class='collapse border'>
+                        @*<div>
+                REPRESENTANTE EL TOGGLE
+                @Html.LabelFor(p => p.Item1.idRepresentante)
+                @Html.TextBoxFor(p => p.Item1.nombres, new { @class = "form-control" })
+                </div>*@
+                        <div style="padding:1em">
+                            <h6 class="text-muted">Datos del representante legal</h6>
+                            <div>
+                                @Html.LabelFor(p => p.Item3.nombreRepresentante)
+                                @Html.TextBoxFor(p => p.Item3.nombreRepresentante, new { @class = "form-control  col-md-12" })
+                                @Html.ValidationMessage("nombreRepresentante", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.Item3.apellidoRepresentante)
+                                @Html.TextBoxFor(p => p.Item3.apellidoRepresentante, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("apellidoRepresentante", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.Item3.telefonoRepresentante)
+                                @Html.TextBoxFor(p => p.Item3.telefonoRepresentante, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("telefonoRepresentante", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.Item3.correoRepresentante)
+                                @Html.TextBoxFor(p => p.Item3.correoRepresentante, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("correoRepresentante", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.idIdentidadGenero)
+                        @Html.DropDownList("idIdentidadGenero", listaIdentidadGenero, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("idIdentidadGenero", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.idOrientacionSexual)
+                        @Html.DropDownList("idOrientacionSexual", listaOrientacionSexual, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("idOrientacionSexual", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.ciudadNacimiento)
+                        @Html.TextBoxFor(p => p.Item1.ciudadNacimiento, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("ciudadNacimiento", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.ciudadResidencia)
+                        @Html.TextBoxFor(p => p.Item1.ciudadResidencia, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("ciudadResidencia", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.ocupacion)
+                        @Html.TextBoxFor(p => p.Item1.ocupacion, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("ocupacion", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.profesion)
+                        @Html.TextBoxFor(p => p.Item1.profesion, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("profesion", new { @class = "text-danger" })
+                    </div>
+                    <div style="padding-top:1em">
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2' id="discapacidad" />
+                        <label for="discapacidad">Discapacidad</label>
+                    </div>
+                    <div id='collapsediv2' class='collapse border'>
+                        <div style="padding:1em">
+                            <div>
+                                @Html.LabelFor(p => p.Item1.tipoDiscapacidad)
+                                @Html.DropDownList("tipoDiscapacidad", listaDiscapacidad, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("tipoDiscapacidad", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.Item1.porcentajeDiscapacidad)
+                                @Html.TextBoxFor(p => p.Item1.porcentajeDiscapacidad, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("porcentajeDiscapacidad", new { @class = "text-danger" })
+                            </div>
+                        </div>                        
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.estadoCivil)
+                        @Html.DropDownList("estadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("estadoCivil", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.lateralidad)
+                        @Html.DropDownList("lateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("lateralidad", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.nivelEducacion)
+                        @Html.DropDownList("nivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("nivelEducacion", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.direccion)
+                        @Html.TextBoxFor(p => p.Item1.direccion, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("direccion", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.telefonoPersonal)
+                        @Html.TextBoxFor(p => p.Item1.telefonoPersonal, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("telefonoPersonal", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.telefonoResidencial)
+                        @Html.TextBoxFor(p => p.Item1.telefonoResidencial, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("telefonoResidencial", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.correoElectronico)
+                        @Html.TextBoxFor(p => p.Item1.correoElectronico, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("correoElectronico", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Item1.religion)
+                        @Html.DropDownList("religion", listaReligion, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("religion", new { @class = "text-danger" })
+                    </div>
+
+                    @*<div>
+            @Html.LabelFor(p => p.Item1.idContactoEmergencia)
+            @Html.TextBoxFor(p => p.Item1.nombres, new { @class = "form-control" })
+            </div>*@
+                    <div style="padding-top:1em">
+                        <div class="border" style="padding:1em">
+                            <h6 class="text-muted">Datos contacto de Emergencia</h6>
+                            <div>
+
+                                @Html.LabelFor(p => p.Item4.nombreContactoEmergencia)
+                                @Html.TextBoxFor(p => p.Item4.nombreContactoEmergencia, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("nombreContactoEmergencia", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.Item4.apellidoContactoEmergencia)
+                                @Html.TextBoxFor(p => p.Item4.apellidoContactoEmergencia, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("apellidoContactoEmergencia", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.Item4.telefonoContactoEmergencia)
+                                @Html.TextBoxFor(p => p.Item4.telefonoContactoEmergencia, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("telefonoContactoEmergencia", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.Item4.correoContactoEmergencia)
+                                @Html.TextBoxFor(p => p.Item4.correoContactoEmergencia, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("correoContactoEmergencia", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                }
+
+
+
+            </div>
+
+           
+
+        </div>
+
+
+        <div class="col-sm-6">
+            <h4>Antecedentes Clínicos</h4>
+            @*Formulario para la abrir la historia clínica del paciente (Antecedentes)*@
+            @using (Html.BeginForm("Agregar", "HistoriaClinica", FormMethod.Post))
+            {
+                @Html.LabelFor(p => p.Item2.alcohol)
+                @Html.TextBoxFor(p => p.Item2.alcohol)
+            }
+
+        </div>
+
+    </div>
+</div>
+
+@*
+   
+
+   *@

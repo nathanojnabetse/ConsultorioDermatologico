@@ -43,7 +43,7 @@
                         <p class="card-text" style="text-align:justify">Añadir la información personal de un nuevo paciente y abrir una nueva historia clínica</p>                        
                     </div>
                     <div>
-                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"> <i class="fa fa-user-plus" aria-hidden="true"></i> Añadir paciente nuevo</a>
+                        <a href="@Url.Action("Agregar","Paciente")" class="btn btn-primary" style="width: 100%"><i class="fa fa-user-plus" aria-hidden="true"></i> Añadir paciente</a>
                     </div>
                 </div>
             </div>
@@ -57,8 +57,8 @@
                         <p class="card-text" style="text-align:justify">Muestra una lista de los pacientes registrados en el sistema</p>
                         <p class="card-text" style="text-align:justify">Seleccione un paciente para editar, borrar datos, o aumentar una hoja de evolución a la historia clínica</p>
                     </div>
-                    <div>
-                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"><i class="fa fa-search" aria-hidden="true"></i> Ver pacientes</a>
+                    <div>                        
+                        <a href="@Url.Action("Index","Paciente")" class="btn btn-primary" style="width: 100%"><i class="fa fa-search" aria-hidden="true"></i> Ver pacientes</a>
                     </div>
                 </div>
             </div>
