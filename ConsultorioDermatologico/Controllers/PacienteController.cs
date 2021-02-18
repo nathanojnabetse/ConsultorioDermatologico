@@ -178,10 +178,98 @@ namespace ConsultorioDermatologico.Controllers
                 listaOrientacionSexual.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
                 ViewBag.listaOrientacionSexual = listaOrientacionSexual;
             }
+        }
 
+        private void llenarTipoDiscpacidad()
+        {
+            List<SelectListItem> listaTipoDiscapacidad;
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                listaTipoDiscapacidad = (from tipoDiscapacidad in bd.tblTipoDiscapacidad
+                                          select new SelectListItem
+                                          {
+                                              Text = tipoDiscapacidad.tipo,
+                                              Value = tipoDiscapacidad.idTipoDiscapacidad.ToString()
+                                          }).ToList();
+                listaTipoDiscapacidad.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.listaTipoDiscapacidad = listaTipoDiscapacidad;
+            }
+        }
 
+        private void llenarEstadoCivil()
+        {
+            List<SelectListItem> listaEstadoCivil;
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                listaEstadoCivil = (from estadoCivil in bd.tblEstadoCivil
+                                    select new SelectListItem
+                                         {
+                                             Text = estadoCivil.nombreEstadoCivil,
+                                             Value = estadoCivil.idEstadoCivil.ToString()
+                                         }).ToList();
+                listaEstadoCivil.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.listaEstadoCivil = listaEstadoCivil;
+            }
+        }
 
+        private void llenarLateralidad()
+        {
+            List<SelectListItem> listaLateralidad;
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                listaLateralidad = (from lateralidad in bd.tblLateralidad
+                                    select new SelectListItem
+                                    {
+                                        Text = lateralidad.nombreLateralidad,
+                                        Value = lateralidad.idLateralidad.ToString()
+                                    }).ToList();
+                listaLateralidad.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.listaLateralidad = listaLateralidad;
+            }
+        }
 
+        private void llenarNivelEducacion()
+        {
+            List<SelectListItem> listaNivelEducacion;
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                listaNivelEducacion = (from nivelEducacion in bd.tblReligion
+                                 select new SelectListItem
+                                 {
+                                     Text = nivelEducacion.nombreReligion,
+                                     Value = nivelEducacion.idReligion.ToString()
+                                 }).ToList();
+                listaNivelEducacion.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.listaReligion = listaNivelEducacion;
+            }
+        }
+
+        private void llenarReligion()
+        {
+            List<SelectListItem> listaReligion;
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                listaReligion = (from religion in bd.tblReligion
+                                    select new SelectListItem
+                                    {
+                                        Text = religion.nombreReligion,
+                                        Value = religion.idReligion.ToString()
+                                    }).ToList();
+                listaReligion.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.listaReligion = listaReligion;
+            }
+        }
+
+        private void llenarDropDown()
+        {
+            llenarIdentidadGenero();
+            llenarOrientacionSexual();
+            llenarTipoDiscpacidad();
+            llenarEstadoCivil();
+            llenarLateralidad();
+
+            llenarReligion();
+            
         }
     }
 }

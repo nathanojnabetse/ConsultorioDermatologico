@@ -267,14 +267,18 @@
       <DependentUpon>BDD_ConsultorioDermatologico.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ContactoEmergenciaCLS.cs" />
+    <Compile Include="Models\EstadoCivilCLS.cs" />
     <Compile Include="Models\EvolucionCLS.cs" />
     <Compile Include="Models\FotoCLS.cs" />
     <Compile Include="Models\FotoMapaCorporalCLS.cs" />
     <Compile Include="Models\HistoriaClinicaCLS.cs" />
     <Compile Include="Models\IdentidadGeneroCLS.cs" />
+    <Compile Include="Models\LateralidadCLS.cs" />
+    <Compile Include="Models\NivelEducacionCLS.cs" />
     <Compile Include="Models\OrientacionSexualCLS.cs" />
     <Compile Include="Models\PacienteCLS.cs" />
     <Compile Include="Models\RegistroPacienteCLS.cs" />
+    <Compile Include="Models\ReligionCLS.cs" />
     <Compile Include="Models\SeguroMedicoCLS.cs" />
     <Compile Include="Models\tblAntecedenteGinecoObstetrico.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
@@ -330,6 +334,7 @@
     <Compile Include="Models\tblUsuario.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TipoDiscapacidadCLS.cs" />
     <Compile Include="Models\UsuarioCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
