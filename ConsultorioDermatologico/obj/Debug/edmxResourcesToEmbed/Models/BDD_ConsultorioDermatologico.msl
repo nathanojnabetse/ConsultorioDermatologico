@@ -39,6 +39,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblEstadoCivil">
+      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblEstadoCivil">
+        <MappingFragment StoreEntitySet="tblEstadoCivil">
+          <ScalarProperty Name="nombreEstadoCivil" ColumnName="nombreEstadoCivil" />
+          <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblEvolucion">
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblEvolucion">
         <MappingFragment StoreEntitySet="tblEvolucion">
@@ -91,7 +99,7 @@
           <ScalarProperty Name="antecedentePersonalClinico" ColumnName="antecedentePersonalClinico" />
           <ScalarProperty Name="antecedenteFamiliarQuirurgico" ColumnName="antecedenteFamiliarQuirurgico" />
           <ScalarProperty Name="antecedenteFamiliarClinico" ColumnName="antecedenteFamiliarClinico" />
-          <ScalarProperty Name="tipoSangre" ColumnName="tipoSangre" />
+          <ScalarProperty Name="idTipoSangre" ColumnName="idTipoSangre" />
           <ScalarProperty Name="idSeguroMedico" ColumnName="idSeguroMedico" />
           <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
           <ScalarProperty Name="idHistoriaClinica" ColumnName="idHistoriaClinica" />
@@ -103,6 +111,22 @@
         <MappingFragment StoreEntitySet="tblIdentidadGenero">
           <ScalarProperty Name="nombreIdentidadGenero" ColumnName="nombreIdentidadGenero" />
           <ScalarProperty Name="idIdentidadGenero" ColumnName="idIdentidadGenero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLateralidad">
+      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblLateralidad">
+        <MappingFragment StoreEntitySet="tblLateralidad">
+          <ScalarProperty Name="nombreLateralidad" ColumnName="nombreLateralidad" />
+          <ScalarProperty Name="idLateralidad" ColumnName="idLateralidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblNivelEducacion">
+      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblNivelEducacion">
+        <MappingFragment StoreEntitySet="tblNivelEducacion">
+          <ScalarProperty Name="nombreNivelEducacion" ColumnName="nombreNivelEducacion" />
+          <ScalarProperty Name="idNivelEducacion" ColumnName="idNivelEducacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -119,23 +143,22 @@
         <MappingFragment StoreEntitySet="tblPaciente">
           <ScalarProperty Name="habilitado" ColumnName="habilitado" />
           <ScalarProperty Name="idContactoEmergencia" ColumnName="idContactoEmergencia" />
-          <ScalarProperty Name="religion" ColumnName="religion" />
+          <ScalarProperty Name="idReligion" ColumnName="idReligion" />
           <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
           <ScalarProperty Name="telefonoResidencial" ColumnName="telefonoResidencial" />
           <ScalarProperty Name="telefonoPersonal" ColumnName="telefonoPersonal" />
           <ScalarProperty Name="direccion" ColumnName="direccion" />
-          <ScalarProperty Name="nivelEducacion" ColumnName="nivelEducacion" />
-          <ScalarProperty Name="lateralidad" ColumnName="lateralidad" />
-          <ScalarProperty Name="estadoCivil" ColumnName="estadoCivil" />
+          <ScalarProperty Name="idNivelEducacion" ColumnName="idNivelEducacion" />
+          <ScalarProperty Name="idLateralidad" ColumnName="idLateralidad" />
+          <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
           <ScalarProperty Name="porcentajeDiscapacidad" ColumnName="porcentajeDiscapacidad" />
-          <ScalarProperty Name="tipoDiscapacidad" ColumnName="tipoDiscapacidad" />
+          <ScalarProperty Name="idTipoDiscapacidad" ColumnName="idTipoDiscapacidad" />
           <ScalarProperty Name="profesion" ColumnName="profesion" />
           <ScalarProperty Name="ocupacion" ColumnName="ocupacion" />
           <ScalarProperty Name="ciudadResidencia" ColumnName="ciudadResidencia" />
           <ScalarProperty Name="ciudadNacimiento" ColumnName="ciudadNacimiento" />
           <ScalarProperty Name="idOrientacionSexual" ColumnName="idOrientacionSexual" />
           <ScalarProperty Name="idIdentidadGenero" ColumnName="idIdentidadGenero" />
-          <ScalarProperty Name="idRepresentante" ColumnName="idRepresentante" />
           <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="apellidos" ColumnName="apellidos" />
@@ -144,14 +167,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblRepresentante">
-      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblRepresentante">
-        <MappingFragment StoreEntitySet="tblRepresentante">
-          <ScalarProperty Name="correoRepresentante" ColumnName="correoRepresentante" />
-          <ScalarProperty Name="telefonoRepresentante" ColumnName="telefonoRepresentante" />
-          <ScalarProperty Name="apellidoRepresentante" ColumnName="apellidoRepresentante" />
-          <ScalarProperty Name="nombreRepresentante" ColumnName="nombreRepresentante" />
-          <ScalarProperty Name="idRepresentante" ColumnName="idRepresentante" />
+    <EntitySetMapping Name="tblReligion">
+      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblReligion">
+        <MappingFragment StoreEntitySet="tblReligion">
+          <ScalarProperty Name="nombreReligion" ColumnName="nombreReligion" />
+          <ScalarProperty Name="idReligion" ColumnName="idReligion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -161,6 +181,22 @@
           <ScalarProperty Name="habilitado" ColumnName="habilitado" />
           <ScalarProperty Name="nombreSeguro" ColumnName="nombreSeguro" />
           <ScalarProperty Name="idSeguroMedico" ColumnName="idSeguroMedico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoDiscapacidad">
+      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblTipoDiscapacidad">
+        <MappingFragment StoreEntitySet="tblTipoDiscapacidad">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="idTipoDiscapacidad" ColumnName="idTipoDiscapacidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoSangre">
+      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblTipoSangre">
+        <MappingFragment StoreEntitySet="tblTipoSangre">
+          <ScalarProperty Name="sangre" ColumnName="sangre" />
+          <ScalarProperty Name="idTipoSangre" ColumnName="idTipoSangre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

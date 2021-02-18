@@ -23,7 +23,7 @@ namespace ConsultorioDermatologico.Models
         public int idHistoriaClinica { get; set; }
         public Nullable<int> idPaciente { get; set; }
         public Nullable<int> idSeguroMedico { get; set; }
-        public string tipoSangre { get; set; }
+        public Nullable<int> idTipoSangre { get; set; }
         public string antecedenteFamiliarClinico { get; set; }
         public string antecedenteFamiliarQuirurgico { get; set; }
         public string antecedentePersonalClinico { get; set; }
@@ -45,5 +45,6 @@ namespace ConsultorioDermatologico.Models
         public virtual ICollection<tblEvolucion> tblEvolucion { get; set; }
         public virtual tblPaciente tblPaciente { get; set; }
         public virtual tblSeguroMedico tblSeguroMedico { get; set; }
+        public virtual tblTipoSangre tblTipoSangre { get; set; }
     }
 }

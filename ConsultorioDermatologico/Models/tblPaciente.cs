@@ -25,31 +25,34 @@ namespace ConsultorioDermatologico.Models
         public string apellidos { get; set; }
         public string cedula { get; set; }
         public Nullable<System.DateTime> fechaNacimiento { get; set; }
-        public Nullable<int> idRepresentante { get; set; }
         public Nullable<int> idIdentidadGenero { get; set; }
         public Nullable<int> idOrientacionSexual { get; set; }
         public string ciudadNacimiento { get; set; }
         public string ciudadResidencia { get; set; }
         public string ocupacion { get; set; }
         public string profesion { get; set; }
-        public string tipoDiscapacidad { get; set; }
+        public Nullable<int> idTipoDiscapacidad { get; set; }
         public Nullable<int> porcentajeDiscapacidad { get; set; }
-        public string estadoCivil { get; set; }
-        public string lateralidad { get; set; }
-        public string nivelEducacion { get; set; }
+        public Nullable<int> idEstadoCivil { get; set; }
+        public Nullable<int> idLateralidad { get; set; }
+        public Nullable<int> idNivelEducacion { get; set; }
         public string direccion { get; set; }
         public string telefonoPersonal { get; set; }
         public string telefonoResidencial { get; set; }
         public string correoElectronico { get; set; }
-        public string religion { get; set; }
+        public Nullable<int> idReligion { get; set; }
         public Nullable<int> idContactoEmergencia { get; set; }
         public Nullable<int> habilitado { get; set; }
     
         public virtual tblContactoEmergencia tblContactoEmergencia { get; set; }
+        public virtual tblEstadoCivil tblEstadoCivil { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblHistoriaClinica> tblHistoriaClinica { get; set; }
         public virtual tblIdentidadGenero tblIdentidadGenero { get; set; }
+        public virtual tblLateralidad tblLateralidad { get; set; }
+        public virtual tblNivelEducacion tblNivelEducacion { get; set; }
         public virtual tblOrientacionSexual tblOrientacionSexual { get; set; }
-        public virtual tblRepresentante tblRepresentante { get; set; }
+        public virtual tblReligion tblReligion { get; set; }
+        public virtual tblTipoDiscapacidad tblTipoDiscapacidad { get; set; }
     }
 }

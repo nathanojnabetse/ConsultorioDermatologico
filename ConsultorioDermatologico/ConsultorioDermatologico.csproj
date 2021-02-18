@@ -274,7 +274,7 @@
     <Compile Include="Models\IdentidadGeneroCLS.cs" />
     <Compile Include="Models\OrientacionSexualCLS.cs" />
     <Compile Include="Models\PacienteCLS.cs" />
-    <Compile Include="Models\RepresentanteCLS.cs" />
+    <Compile Include="Models\RegistroPacienteCLS.cs" />
     <Compile Include="Models\SeguroMedicoCLS.cs" />
     <Compile Include="Models\tblAntecedenteGinecoObstetrico.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
@@ -283,6 +283,9 @@
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblContactoEmergencia.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEstadoCivil.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblEvolucion.cs">
@@ -300,16 +303,28 @@
     <Compile Include="Models\tblIdentidadGenero.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblLateralidad.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblNivelEducacion.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblOrientacionSexual.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPaciente.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblRepresentante.cs">
+    <Compile Include="Models\tblReligion.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSeguroMedico.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTipoDiscapacidad.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTipoSangre.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblUsuario.cs">
@@ -350,8 +365,6 @@
     <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Paciente\_TablaPacientes.cshtml" />
     <Content Include="Views\Paciente\Agregar.cshtml" />
-    <Content Include="Views\Paciente\_DatosPersonales.cshtml" />
-    <Content Include="Views\Paciente\_AntecedentesClinicos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

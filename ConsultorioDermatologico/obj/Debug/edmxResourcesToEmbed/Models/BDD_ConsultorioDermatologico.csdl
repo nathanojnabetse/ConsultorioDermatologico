@@ -4,54 +4,79 @@
     <EntitySet Name="tblAntecedenteGinecoObstetrico" EntityType="BDD_ConsultorioDermatologicoModel.tblAntecedenteGinecoObstetrico" />
     <EntitySet Name="tblAntecedenteReprodMasculino" EntityType="BDD_ConsultorioDermatologicoModel.tblAntecedenteReprodMasculino" />
     <EntitySet Name="tblContactoEmergencia" EntityType="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia" />
+    <EntitySet Name="tblEstadoCivil" EntityType="BDD_ConsultorioDermatologicoModel.tblEstadoCivil" />
     <EntitySet Name="tblEvolucion" EntityType="BDD_ConsultorioDermatologicoModel.tblEvolucion" />
     <EntitySet Name="tblFotoMapaCorporal" EntityType="BDD_ConsultorioDermatologicoModel.tblFotoMapaCorporal" />
     <EntitySet Name="tblFotos" EntityType="BDD_ConsultorioDermatologicoModel.tblFotos" />
     <EntitySet Name="tblHistoriaClinica" EntityType="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" />
     <EntitySet Name="tblIdentidadGenero" EntityType="BDD_ConsultorioDermatologicoModel.tblIdentidadGenero" />
+    <EntitySet Name="tblLateralidad" EntityType="BDD_ConsultorioDermatologicoModel.tblLateralidad" />
+    <EntitySet Name="tblNivelEducacion" EntityType="BDD_ConsultorioDermatologicoModel.tblNivelEducacion" />
     <EntitySet Name="tblOrientacionSexual" EntityType="BDD_ConsultorioDermatologicoModel.tblOrientacionSexual" />
     <EntitySet Name="tblPaciente" EntityType="BDD_ConsultorioDermatologicoModel.tblPaciente" />
-    <EntitySet Name="tblRepresentante" EntityType="BDD_ConsultorioDermatologicoModel.tblRepresentante" />
+    <EntitySet Name="tblReligion" EntityType="BDD_ConsultorioDermatologicoModel.tblReligion" />
     <EntitySet Name="tblSeguroMedico" EntityType="BDD_ConsultorioDermatologicoModel.tblSeguroMedico" />
+    <EntitySet Name="tblTipoDiscapacidad" EntityType="BDD_ConsultorioDermatologicoModel.tblTipoDiscapacidad" />
+    <EntitySet Name="tblTipoSangre" EntityType="BDD_ConsultorioDermatologicoModel.tblTipoSangre" />
     <EntitySet Name="tblUsuario" EntityType="BDD_ConsultorioDermatologicoModel.tblUsuario" />
-    <AssociationSet Name="FK__tblHistor__idAnt__4E88ABD4" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__4E88ABD4">
+    <AssociationSet Name="FK__tblHistor__idAnt__5CD6CB2B" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B">
       <End Role="tblAntecedenteGinecoObstetrico" EntitySet="tblAntecedenteGinecoObstetrico" />
       <End Role="tblHistoriaClinica" EntitySet="tblHistoriaClinica" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblHistor__idAnt__4F7CD00D" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__4F7CD00D">
+    <AssociationSet Name="FK__tblHistor__idAnt__5DCAEF64" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5DCAEF64">
       <End Role="tblAntecedenteReprodMasculino" EntitySet="tblAntecedenteReprodMasculino" />
       <End Role="tblHistoriaClinica" EntitySet="tblHistoriaClinica" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblPacien__idCon__49C3F6B7" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__49C3F6B7">
+    <AssociationSet Name="FK__tblPacien__idCon__571DF1D5" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__571DF1D5">
       <End Role="tblContactoEmergencia" EntitySet="tblContactoEmergencia" />
       <End Role="tblPaciente" EntitySet="tblPaciente" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblEvoluc__idHis__52593CB8" Association="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__52593CB8">
+    <AssociationSet Name="FK__tblPacien__idEst__534D60F1" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idEst__534D60F1">
+      <End Role="tblEstadoCivil" EntitySet="tblEstadoCivil" />
+      <End Role="tblPaciente" EntitySet="tblPaciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblEvoluc__idHis__60A75C0F" Association="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__60A75C0F">
       <End Role="tblHistoriaClinica" EntitySet="tblHistoriaClinica" />
       <End Role="tblEvolucion" EntitySet="tblEvolucion" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblFotos__idEvol__5535A963" Association="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__5535A963">
+    <AssociationSet Name="FK__tblFotos__idEvol__6383C8BA" Association="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__6383C8BA">
       <End Role="tblEvolucion" EntitySet="tblEvolucion" />
       <End Role="tblFotos" EntitySet="tblFotos" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblHistor__idPac__4CA06362" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idPac__4CA06362">
+    <AssociationSet Name="FK__tblHistor__idPac__59FA5E80" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idPac__59FA5E80">
       <End Role="tblPaciente" EntitySet="tblPaciente" />
       <End Role="tblHistoriaClinica" EntitySet="tblHistoriaClinica" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblHistor__idSeg__4D94879B" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__4D94879B">
+    <AssociationSet Name="FK__tblHistor__idSeg__5AEE82B9" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__5AEE82B9">
       <End Role="tblSeguroMedico" EntitySet="tblSeguroMedico" />
       <End Role="tblHistoriaClinica" EntitySet="tblHistoriaClinica" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblPacien__idIde__47DBAE45" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idIde__47DBAE45">
+    <AssociationSet Name="FK__tblHistor__idTip__5BE2A6F2" Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idTip__5BE2A6F2">
+      <End Role="tblTipoSangre" EntitySet="tblTipoSangre" />
+      <End Role="tblHistoriaClinica" EntitySet="tblHistoriaClinica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblPacien__idIde__5070F446" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idIde__5070F446">
       <End Role="tblIdentidadGenero" EntitySet="tblIdentidadGenero" />
       <End Role="tblPaciente" EntitySet="tblPaciente" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblPacien__idOri__48CFD27E" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idOri__48CFD27E">
+    <AssociationSet Name="FK__tblPacien__idLat__5441852A" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idLat__5441852A">
+      <End Role="tblLateralidad" EntitySet="tblLateralidad" />
+      <End Role="tblPaciente" EntitySet="tblPaciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblPacien__idNiv__5535A963" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idNiv__5535A963">
+      <End Role="tblNivelEducacion" EntitySet="tblNivelEducacion" />
+      <End Role="tblPaciente" EntitySet="tblPaciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblPacien__idOri__5165187F" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idOri__5165187F">
       <End Role="tblOrientacionSexual" EntitySet="tblOrientacionSexual" />
       <End Role="tblPaciente" EntitySet="tblPaciente" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblPacien__idRep__46E78A0C" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRep__46E78A0C">
-      <End Role="tblRepresentante" EntitySet="tblRepresentante" />
+    <AssociationSet Name="FK__tblPacien__idRel__5629CD9C" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRel__5629CD9C">
+      <End Role="tblReligion" EntitySet="tblReligion" />
+      <End Role="tblPaciente" EntitySet="tblPaciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblPacien__idTip__52593CB8" Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idTip__52593CB8">
+      <End Role="tblTipoDiscapacidad" EntitySet="tblTipoDiscapacidad" />
       <End Role="tblPaciente" EntitySet="tblPaciente" />
     </AssociationSet>
   </EntityContainer>
@@ -63,7 +88,7 @@
     <Property Name="menarquia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ciclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="fechaUltimaMenstruacion" Type="DateTime" Precision="3" />
-    <Property Name="gestas" Type="DateTime" Precision="3" />
+    <Property Name="gestas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="partos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="cesarea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="abortos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -71,7 +96,7 @@
     <Property Name="hijosMuertos" Type="Int32" />
     <Property Name="vidaSexualActiva" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="metodoPlanificacionFamiliar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__4E88ABD4" FromRole="tblAntecedenteGinecoObstetrico" ToRole="tblHistoriaClinica" />
+    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B" FromRole="tblAntecedenteGinecoObstetrico" ToRole="tblHistoriaClinica" />
   </EntityType>
   <EntityType Name="tblAntecedenteReprodMasculino">
     <Key>
@@ -80,7 +105,7 @@
     <Property Name="idAntecedenteReprodMasculino" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ets" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="parejaSexual" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__4F7CD00D" FromRole="tblAntecedenteReprodMasculino" ToRole="tblHistoriaClinica" />
+    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5DCAEF64" FromRole="tblAntecedenteReprodMasculino" ToRole="tblHistoriaClinica" />
   </EntityType>
   <EntityType Name="tblContactoEmergencia">
     <Key>
@@ -91,7 +116,15 @@
     <Property Name="apellidoContactoEmergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="telefonoContactoEmergencia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="correoContactoEmergencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__49C3F6B7" FromRole="tblContactoEmergencia" ToRole="tblPaciente" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__571DF1D5" FromRole="tblContactoEmergencia" ToRole="tblPaciente" />
+  </EntityType>
+  <EntityType Name="tblEstadoCivil">
+    <Key>
+      <PropertyRef Name="idEstadoCivil" />
+    </Key>
+    <Property Name="idEstadoCivil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEstadoCivil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idEst__534D60F1" FromRole="tblEstadoCivil" ToRole="tblPaciente" />
   </EntityType>
   <EntityType Name="tblEvolucion">
     <Key>
@@ -107,8 +140,8 @@
     <Property Name="recomendaciones" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
     <Property Name="fechaVisita" Type="DateTime" Precision="3" />
     <Property Name="habilitado" Type="Int32" />
-    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__52593CB8" FromRole="tblEvolucion" ToRole="tblHistoriaClinica" />
-    <NavigationProperty Name="tblFotos" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__5535A963" FromRole="tblEvolucion" ToRole="tblFotos" />
+    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__60A75C0F" FromRole="tblEvolucion" ToRole="tblHistoriaClinica" />
+    <NavigationProperty Name="tblFotos" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__6383C8BA" FromRole="tblEvolucion" ToRole="tblFotos" />
   </EntityType>
   <EntityType Name="tblFotoMapaCorporal">
     <Key>
@@ -126,16 +159,16 @@
     <Property Name="idEvolucion" Type="Int32" />
     <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="nombreFoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblEvolucion" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__5535A963" FromRole="tblFotos" ToRole="tblEvolucion" />
+    <NavigationProperty Name="tblEvolucion" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__6383C8BA" FromRole="tblFotos" ToRole="tblEvolucion" />
   </EntityType>
   <EntityType Name="tblHistoriaClinica">
     <Key>
       <PropertyRef Name="idHistoriaClinica" />
     </Key>
-    <Property Name="idHistoriaClinica" Type="Int32" Nullable="false" />
+    <Property Name="idHistoriaClinica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idPaciente" Type="Int32" />
     <Property Name="idSeguroMedico" Type="Int32" />
-    <Property Name="tipoSangre" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="idTipoSangre" Type="Int32" />
     <Property Name="antecedenteFamiliarClinico" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
     <Property Name="antecedenteFamiliarQuirurgico" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
     <Property Name="antecedentePersonalClinico" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
@@ -150,11 +183,12 @@
     <Property Name="actividadFisica" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="medicacionHabitual" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="habilitado" Type="Int32" />
-    <NavigationProperty Name="tblAntecedenteGinecoObstetrico" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__4E88ABD4" FromRole="tblHistoriaClinica" ToRole="tblAntecedenteGinecoObstetrico" />
-    <NavigationProperty Name="tblAntecedenteReprodMasculino" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__4F7CD00D" FromRole="tblHistoriaClinica" ToRole="tblAntecedenteReprodMasculino" />
-    <NavigationProperty Name="tblEvolucion" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__52593CB8" FromRole="tblHistoriaClinica" ToRole="tblEvolucion" />
-    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idPac__4CA06362" FromRole="tblHistoriaClinica" ToRole="tblPaciente" />
-    <NavigationProperty Name="tblSeguroMedico" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__4D94879B" FromRole="tblHistoriaClinica" ToRole="tblSeguroMedico" />
+    <NavigationProperty Name="tblAntecedenteGinecoObstetrico" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B" FromRole="tblHistoriaClinica" ToRole="tblAntecedenteGinecoObstetrico" />
+    <NavigationProperty Name="tblAntecedenteReprodMasculino" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5DCAEF64" FromRole="tblHistoriaClinica" ToRole="tblAntecedenteReprodMasculino" />
+    <NavigationProperty Name="tblEvolucion" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__60A75C0F" FromRole="tblHistoriaClinica" ToRole="tblEvolucion" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idPac__59FA5E80" FromRole="tblHistoriaClinica" ToRole="tblPaciente" />
+    <NavigationProperty Name="tblSeguroMedico" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__5AEE82B9" FromRole="tblHistoriaClinica" ToRole="tblSeguroMedico" />
+    <NavigationProperty Name="tblTipoSangre" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idTip__5BE2A6F2" FromRole="tblHistoriaClinica" ToRole="tblTipoSangre" />
   </EntityType>
   <EntityType Name="tblIdentidadGenero">
     <Key>
@@ -162,7 +196,23 @@
     </Key>
     <Property Name="idIdentidadGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombreIdentidadGenero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idIde__47DBAE45" FromRole="tblIdentidadGenero" ToRole="tblPaciente" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idIde__5070F446" FromRole="tblIdentidadGenero" ToRole="tblPaciente" />
+  </EntityType>
+  <EntityType Name="tblLateralidad">
+    <Key>
+      <PropertyRef Name="idLateralidad" />
+    </Key>
+    <Property Name="idLateralidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreLateralidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idLat__5441852A" FromRole="tblLateralidad" ToRole="tblPaciente" />
+  </EntityType>
+  <EntityType Name="tblNivelEducacion">
+    <Key>
+      <PropertyRef Name="idNivelEducacion" />
+    </Key>
+    <Property Name="idNivelEducacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreNivelEducacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idNiv__5535A963" FromRole="tblNivelEducacion" ToRole="tblPaciente" />
   </EntityType>
   <EntityType Name="tblOrientacionSexual">
     <Key>
@@ -170,7 +220,7 @@
     </Key>
     <Property Name="idOrientacionSexual" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombreOrientacionSexual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idOri__48CFD27E" FromRole="tblOrientacionSexual" ToRole="tblPaciente" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idOri__5165187F" FromRole="tblOrientacionSexual" ToRole="tblPaciente" />
   </EntityType>
   <EntityType Name="tblPaciente">
     <Key>
@@ -181,41 +231,41 @@
     <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="fechaNacimiento" Type="DateTime" Precision="3" />
-    <Property Name="idRepresentante" Type="Int32" />
     <Property Name="idIdentidadGenero" Type="Int32" />
     <Property Name="idOrientacionSexual" Type="Int32" />
     <Property Name="ciudadNacimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ciudadResidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ocupacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="profesion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="tipoDiscapacidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idTipoDiscapacidad" Type="Int32" />
     <Property Name="porcentajeDiscapacidad" Type="Int32" />
-    <Property Name="estadoCivil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lateralidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="nivelEducacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idEstadoCivil" Type="Int32" />
+    <Property Name="idLateralidad" Type="Int32" />
+    <Property Name="idNivelEducacion" Type="Int32" />
     <Property Name="direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="telefonoPersonal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="telefonoResidencial" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="correoElectronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idReligion" Type="Int32" />
     <Property Name="idContactoEmergencia" Type="Int32" />
     <Property Name="habilitado" Type="Int32" />
-    <NavigationProperty Name="tblContactoEmergencia" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__49C3F6B7" FromRole="tblPaciente" ToRole="tblContactoEmergencia" />
-    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idPac__4CA06362" FromRole="tblPaciente" ToRole="tblHistoriaClinica" />
-    <NavigationProperty Name="tblIdentidadGenero" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idIde__47DBAE45" FromRole="tblPaciente" ToRole="tblIdentidadGenero" />
-    <NavigationProperty Name="tblOrientacionSexual" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idOri__48CFD27E" FromRole="tblPaciente" ToRole="tblOrientacionSexual" />
-    <NavigationProperty Name="tblRepresentante" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRep__46E78A0C" FromRole="tblPaciente" ToRole="tblRepresentante" />
+    <NavigationProperty Name="tblContactoEmergencia" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__571DF1D5" FromRole="tblPaciente" ToRole="tblContactoEmergencia" />
+    <NavigationProperty Name="tblEstadoCivil" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idEst__534D60F1" FromRole="tblPaciente" ToRole="tblEstadoCivil" />
+    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idPac__59FA5E80" FromRole="tblPaciente" ToRole="tblHistoriaClinica" />
+    <NavigationProperty Name="tblIdentidadGenero" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idIde__5070F446" FromRole="tblPaciente" ToRole="tblIdentidadGenero" />
+    <NavigationProperty Name="tblLateralidad" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idLat__5441852A" FromRole="tblPaciente" ToRole="tblLateralidad" />
+    <NavigationProperty Name="tblNivelEducacion" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idNiv__5535A963" FromRole="tblPaciente" ToRole="tblNivelEducacion" />
+    <NavigationProperty Name="tblOrientacionSexual" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idOri__5165187F" FromRole="tblPaciente" ToRole="tblOrientacionSexual" />
+    <NavigationProperty Name="tblReligion" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRel__5629CD9C" FromRole="tblPaciente" ToRole="tblReligion" />
+    <NavigationProperty Name="tblTipoDiscapacidad" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idTip__52593CB8" FromRole="tblPaciente" ToRole="tblTipoDiscapacidad" />
   </EntityType>
-  <EntityType Name="tblRepresentante">
+  <EntityType Name="tblReligion">
     <Key>
-      <PropertyRef Name="idRepresentante" />
+      <PropertyRef Name="idReligion" />
     </Key>
-    <Property Name="idRepresentante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombreRepresentante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="apellidoRepresentante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="telefonoRepresentante" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="correoRepresentante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRep__46E78A0C" FromRole="tblRepresentante" ToRole="tblPaciente" />
+    <Property Name="idReligion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreReligion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRel__5629CD9C" FromRole="tblReligion" ToRole="tblPaciente" />
   </EntityType>
   <EntityType Name="tblSeguroMedico">
     <Key>
@@ -224,7 +274,23 @@
     <Property Name="idSeguroMedico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombreSeguro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="habilitado" Type="Int32" />
-    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__4D94879B" FromRole="tblSeguroMedico" ToRole="tblHistoriaClinica" />
+    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__5AEE82B9" FromRole="tblSeguroMedico" ToRole="tblHistoriaClinica" />
+  </EntityType>
+  <EntityType Name="tblTipoDiscapacidad">
+    <Key>
+      <PropertyRef Name="idTipoDiscapacidad" />
+    </Key>
+    <Property Name="idTipoDiscapacidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idTip__52593CB8" FromRole="tblTipoDiscapacidad" ToRole="tblPaciente" />
+  </EntityType>
+  <EntityType Name="tblTipoSangre">
+    <Key>
+      <PropertyRef Name="idTipoSangre" />
+    </Key>
+    <Property Name="idTipoSangre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sangre" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idTip__5BE2A6F2" FromRole="tblTipoSangre" ToRole="tblHistoriaClinica" />
   </EntityType>
   <EntityType Name="tblUsuario">
     <Key>
@@ -238,7 +304,7 @@
     <Property Name="contraseñaUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="correoUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
-  <Association Name="FK__tblHistor__idAnt__4E88ABD4">
+  <Association Name="FK__tblHistor__idAnt__5CD6CB2B">
     <End Type="BDD_ConsultorioDermatologicoModel.tblAntecedenteGinecoObstetrico" Role="tblAntecedenteGinecoObstetrico" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Role="tblHistoriaClinica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -250,7 +316,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblHistor__idAnt__4F7CD00D">
+  <Association Name="FK__tblHistor__idAnt__5DCAEF64">
     <End Type="BDD_ConsultorioDermatologicoModel.tblAntecedenteReprodMasculino" Role="tblAntecedenteReprodMasculino" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Role="tblHistoriaClinica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -262,7 +328,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblPacien__idCon__49C3F6B7">
+  <Association Name="FK__tblPacien__idCon__571DF1D5">
     <End Type="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia" Role="tblContactoEmergencia" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -274,7 +340,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblEvoluc__idHis__52593CB8">
+  <Association Name="FK__tblPacien__idEst__534D60F1">
+    <End Type="BDD_ConsultorioDermatologicoModel.tblEstadoCivil" Role="tblEstadoCivil" Multiplicity="0..1" />
+    <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEstadoCivil">
+        <PropertyRef Name="idEstadoCivil" />
+      </Principal>
+      <Dependent Role="tblPaciente">
+        <PropertyRef Name="idEstadoCivil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblEvoluc__idHis__60A75C0F">
     <End Type="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Role="tblHistoriaClinica" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblEvolucion" Role="tblEvolucion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -286,7 +364,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblFotos__idEvol__5535A963">
+  <Association Name="FK__tblFotos__idEvol__6383C8BA">
     <End Type="BDD_ConsultorioDermatologicoModel.tblEvolucion" Role="tblEvolucion" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblFotos" Role="tblFotos" Multiplicity="*" />
     <ReferentialConstraint>
@@ -298,7 +376,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblHistor__idPac__4CA06362">
+  <Association Name="FK__tblHistor__idPac__59FA5E80">
     <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Role="tblHistoriaClinica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -310,7 +388,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblHistor__idSeg__4D94879B">
+  <Association Name="FK__tblHistor__idSeg__5AEE82B9">
     <End Type="BDD_ConsultorioDermatologicoModel.tblSeguroMedico" Role="tblSeguroMedico" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Role="tblHistoriaClinica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -322,7 +400,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblPacien__idIde__47DBAE45">
+  <Association Name="FK__tblHistor__idTip__5BE2A6F2">
+    <End Type="BDD_ConsultorioDermatologicoModel.tblTipoSangre" Role="tblTipoSangre" Multiplicity="0..1" />
+    <End Type="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Role="tblHistoriaClinica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTipoSangre">
+        <PropertyRef Name="idTipoSangre" />
+      </Principal>
+      <Dependent Role="tblHistoriaClinica">
+        <PropertyRef Name="idTipoSangre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblPacien__idIde__5070F446">
     <End Type="BDD_ConsultorioDermatologicoModel.tblIdentidadGenero" Role="tblIdentidadGenero" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -334,7 +424,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblPacien__idOri__48CFD27E">
+  <Association Name="FK__tblPacien__idLat__5441852A">
+    <End Type="BDD_ConsultorioDermatologicoModel.tblLateralidad" Role="tblLateralidad" Multiplicity="0..1" />
+    <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLateralidad">
+        <PropertyRef Name="idLateralidad" />
+      </Principal>
+      <Dependent Role="tblPaciente">
+        <PropertyRef Name="idLateralidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblPacien__idNiv__5535A963">
+    <End Type="BDD_ConsultorioDermatologicoModel.tblNivelEducacion" Role="tblNivelEducacion" Multiplicity="0..1" />
+    <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNivelEducacion">
+        <PropertyRef Name="idNivelEducacion" />
+      </Principal>
+      <Dependent Role="tblPaciente">
+        <PropertyRef Name="idNivelEducacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblPacien__idOri__5165187F">
     <End Type="BDD_ConsultorioDermatologicoModel.tblOrientacionSexual" Role="tblOrientacionSexual" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -346,15 +460,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblPacien__idRep__46E78A0C">
-    <End Type="BDD_ConsultorioDermatologicoModel.tblRepresentante" Role="tblRepresentante" Multiplicity="0..1" />
+  <Association Name="FK__tblPacien__idRel__5629CD9C">
+    <End Type="BDD_ConsultorioDermatologicoModel.tblReligion" Role="tblReligion" Multiplicity="0..1" />
     <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tblRepresentante">
-        <PropertyRef Name="idRepresentante" />
+      <Principal Role="tblReligion">
+        <PropertyRef Name="idReligion" />
       </Principal>
       <Dependent Role="tblPaciente">
-        <PropertyRef Name="idRepresentante" />
+        <PropertyRef Name="idReligion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblPacien__idTip__52593CB8">
+    <End Type="BDD_ConsultorioDermatologicoModel.tblTipoDiscapacidad" Role="tblTipoDiscapacidad" Multiplicity="0..1" />
+    <End Type="BDD_ConsultorioDermatologicoModel.tblPaciente" Role="tblPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTipoDiscapacidad">
+        <PropertyRef Name="idTipoDiscapacidad" />
+      </Principal>
+      <Dependent Role="tblPaciente">
+        <PropertyRef Name="idTipoDiscapacidad" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

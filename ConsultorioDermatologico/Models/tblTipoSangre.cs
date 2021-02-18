@@ -12,26 +12,16 @@ namespace ConsultorioDermatologico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblAntecedenteGinecoObstetrico
+    public partial class tblTipoSangre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblAntecedenteGinecoObstetrico()
+        public tblTipoSangre()
         {
             this.tblHistoriaClinica = new HashSet<tblHistoriaClinica>();
         }
     
-        public int idAntecedenteGinecoObstetrico { get; set; }
-        public string menarquia { get; set; }
-        public string ciclo { get; set; }
-        public Nullable<System.DateTime> fechaUltimaMenstruacion { get; set; }
-        public string gestas { get; set; }
-        public string partos { get; set; }
-        public string cesarea { get; set; }
-        public string abortos { get; set; }
-        public Nullable<int> hijosVivos { get; set; }
-        public Nullable<int> hijosMuertos { get; set; }
-        public string vidaSexualActiva { get; set; }
-        public string metodoPlanificacionFamiliar { get; set; }
+        public int idTipoSangre { get; set; }
+        public string sangre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblHistoriaClinica> tblHistoriaClinica { get; set; }

@@ -28,15 +28,20 @@ namespace ConsultorioDermatologico.Models
         public virtual DbSet<tblAntecedenteGinecoObstetrico> tblAntecedenteGinecoObstetrico { get; set; }
         public virtual DbSet<tblAntecedenteReprodMasculino> tblAntecedenteReprodMasculino { get; set; }
         public virtual DbSet<tblContactoEmergencia> tblContactoEmergencia { get; set; }
+        public virtual DbSet<tblEstadoCivil> tblEstadoCivil { get; set; }
         public virtual DbSet<tblEvolucion> tblEvolucion { get; set; }
         public virtual DbSet<tblFotoMapaCorporal> tblFotoMapaCorporal { get; set; }
         public virtual DbSet<tblFotos> tblFotos { get; set; }
         public virtual DbSet<tblHistoriaClinica> tblHistoriaClinica { get; set; }
         public virtual DbSet<tblIdentidadGenero> tblIdentidadGenero { get; set; }
+        public virtual DbSet<tblLateralidad> tblLateralidad { get; set; }
+        public virtual DbSet<tblNivelEducacion> tblNivelEducacion { get; set; }
         public virtual DbSet<tblOrientacionSexual> tblOrientacionSexual { get; set; }
         public virtual DbSet<tblPaciente> tblPaciente { get; set; }
-        public virtual DbSet<tblRepresentante> tblRepresentante { get; set; }
+        public virtual DbSet<tblReligion> tblReligion { get; set; }
         public virtual DbSet<tblSeguroMedico> tblSeguroMedico { get; set; }
+        public virtual DbSet<tblTipoDiscapacidad> tblTipoDiscapacidad { get; set; }
+        public virtual DbSet<tblTipoSangre> tblTipoSangre { get; set; }
         public virtual DbSet<tblUsuario> tblUsuario { get; set; }
     }
 }

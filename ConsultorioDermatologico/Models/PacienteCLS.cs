@@ -27,7 +27,7 @@ namespace ConsultorioDermatologico.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fechaNacimiento { get; set; }        
         [Display(Name = "Representante")]        
-        public int idRepresentante { get; set; }
+        public int? idRepresentante { get; set; }
         [Required]
         [Display(Name = "Identidad género")]
         public int idIdentidadGenero { get; set; }

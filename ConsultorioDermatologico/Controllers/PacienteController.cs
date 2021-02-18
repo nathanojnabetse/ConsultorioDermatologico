@@ -76,7 +76,7 @@ namespace ConsultorioDermatologico.Controllers
         {
             llenarIdentidadGenero();
             llenarOrientacionSexual();
-
+            
 
             return View();
 
@@ -84,81 +84,64 @@ namespace ConsultorioDermatologico.Controllers
 
         //Hacer la insercion de datos por  medio del metodo post (Html.BEgin form) Agregar.csHtml
         [HttpPost]
-        public ActionResult Agregar(RepresentanteCLS representanteCLS, ContactoEmergenciaCLS contactoEmergenciaCLS, PacienteCLS pacienteCLS)
+        public ActionResult Agregar(RegistroPacienteCLS registroPacienteCLS)
         {
-
-            var tuple = new Tuple<PacienteCLS, HistoriaClinicaCLS, RepresentanteCLS, ContactoEmergenciaCLS>(new PacienteCLS(), null, new RepresentanteCLS(), new ContactoEmergenciaCLS());
-
-
             if (!ModelState.IsValid)
             {
-                return View(tuple);
+                llenarIdentidadGenero();
+                llenarOrientacionSexual();
+                return View(registroPacienteCLS);
             }
             else
             {
-                using (var bd = new BDD_ConsultorioDermatologicoEntities())
-                {
-                    int? idRepresentante = null;
-                    int? idContactoEmergencia = null;
+                //using (var bd = new BDD_ConsultorioDermatologicoEntities())
+                //{
+                //    
+                //    int? idContactoEmergencia = null;
 
-                    if (representanteCLS != null)
-                    {
-                        tblRepresentante tblRepresentante = new tblRepresentante();
-                        tblRepresentante.nombreRepresentante = representanteCLS.nombreRepresentante;
-                        tblRepresentante.apellidoRepresentante = representanteCLS.apellidoRepresentante;
-                        tblRepresentante.telefonoRepresentante = representanteCLS.correoRepresentante;
-                        tblRepresentante.correoRepresentante = representanteCLS.correoRepresentante;
+                //    if (contactoEmergenciaCLS != null)
+                //    {
+                //        tblContactoEmergencia tblContactoEmergencia = new tblContactoEmergencia();
+                //        tblContactoEmergencia.nombreContactoEmergencia = contactoEmergenciaCLS.nombreContactoEmergencia;
+                //        tblContactoEmergencia.apellidoContactoEmergencia = contactoEmergenciaCLS.apellidoContactoEmergencia;
+                //        tblContactoEmergencia.telefonoContactoEmergencia = contactoEmergenciaCLS.telefonoContactoEmergencia;
+                //        tblContactoEmergencia.correoContactoEmergencia = contactoEmergenciaCLS.correoContactoEmergencia;
 
-                        bd.tblRepresentante.Add(tblRepresentante);
+                //        bd.tblContactoEmergencia.Add(tblContactoEmergencia);
 
-                        idRepresentante = tblRepresentante.idRepresentante;
+                //        idContactoEmergencia = tblContactoEmergencia.idContactoEmergencia;
+                //    }
 
-                    }
+                //    tblPaciente tblPaciente = new tblPaciente();
+                //    tblPaciente.nombres = pacienteCLS.nombres;
+                //    tblPaciente.apellidos = pacienteCLS.apellidos;
+                //    tblPaciente.cedula = pacienteCLS.cedula;
+                //    tblPaciente.fechaNacimiento = pacienteCLS.fechaNacimiento;
+                //    tblPaciente.idOrientacionSexual = pacienteCLS.idOrientacionSexual;
+                //    tblPaciente.idIdentidadGenero = pacienteCLS.idIdentidadGenero;
+                //    tblPaciente.ciudadNacimiento = pacienteCLS.ciudadNacimiento;
+                //    tblPaciente.ciudadResidencia = pacienteCLS.ciudadResidencia;
+                //    tblPaciente.ocupacion = pacienteCLS.ocupacion;
+                //    tblPaciente.profesion = pacienteCLS.profesion;
+                //    tblPaciente.tipoDiscapacidad = pacienteCLS.tipoDiscapacidad;
+                //    tblPaciente.porcentajeDiscapacidad = pacienteCLS.porcentajeDiscapacidad;
+                //    tblPaciente.estadoCivil = pacienteCLS.estadoCivil;
+                //    tblPaciente.lateralidad = pacienteCLS.lateralidad;
+                //    tblPaciente.nivelEducacion = pacienteCLS.nivelEducacion;
+                //    tblPaciente.direccion = pacienteCLS.direccion;
+                //    tblPaciente.telefonoPersonal = pacienteCLS.telefonoPersonal;
+                //    tblPaciente.telefonoResidencial = pacienteCLS.telefonoResidencial;
+                //    tblPaciente.correoElectronico = pacienteCLS.correoElectronico;
+                //    tblPaciente.religion = pacienteCLS.religion;
+                //    if (idContactoEmergencia != null) { tblPaciente.idContactoEmergencia = idContactoEmergencia; }
+                //    tblPaciente.habilitado = 1;
 
-                    if (contactoEmergenciaCLS != null)
-                    {
-                        tblContactoEmergencia tblContactoEmergencia = new tblContactoEmergencia();
-                        tblContactoEmergencia.nombreContactoEmergencia = contactoEmergenciaCLS.nombreContactoEmergencia;
-                        tblContactoEmergencia.apellidoContactoEmergencia = contactoEmergenciaCLS.apellidoContactoEmergencia;
-                        tblContactoEmergencia.telefonoContactoEmergencia = contactoEmergenciaCLS.telefonoContactoEmergencia;
-                        tblContactoEmergencia.correoContactoEmergencia = contactoEmergenciaCLS.correoContactoEmergencia;
+                //    bd.tblPaciente.Add(tblPaciente);
 
-                        bd.tblContactoEmergencia.Add(tblContactoEmergencia);
-
-                        idContactoEmergencia = tblContactoEmergencia.idContactoEmergencia;
-                    }
-
-                    tblPaciente tblPaciente = new tblPaciente();
-                    tblPaciente.nombres = pacienteCLS.nombres;
-                    tblPaciente.apellidos = pacienteCLS.apellidos;
-                    tblPaciente.cedula = pacienteCLS.cedula;
-                    tblPaciente.fechaNacimiento = pacienteCLS.fechaNacimiento;
-                    if (idRepresentante != null) { tblPaciente.idRepresentante = idRepresentante; }
-                    tblPaciente.idOrientacionSexual = pacienteCLS.idOrientacionSexual;
-                    tblPaciente.idIdentidadGenero = pacienteCLS.idIdentidadGenero;
-                    tblPaciente.ciudadNacimiento = pacienteCLS.ciudadNacimiento;
-                    tblPaciente.ciudadResidencia = pacienteCLS.ciudadResidencia;
-                    tblPaciente.ocupacion = pacienteCLS.ocupacion;
-                    tblPaciente.profesion = pacienteCLS.profesion;
-                    tblPaciente.tipoDiscapacidad = pacienteCLS.tipoDiscapacidad;
-                    tblPaciente.porcentajeDiscapacidad = pacienteCLS.porcentajeDiscapacidad;
-                    tblPaciente.estadoCivil = pacienteCLS.estadoCivil;
-                    tblPaciente.lateralidad = pacienteCLS.lateralidad;
-                    tblPaciente.nivelEducacion = pacienteCLS.nivelEducacion;
-                    tblPaciente.direccion = pacienteCLS.direccion;
-                    tblPaciente.telefonoPersonal = pacienteCLS.telefonoPersonal;
-                    tblPaciente.telefonoResidencial = pacienteCLS.telefonoResidencial;
-                    tblPaciente.correoElectronico = pacienteCLS.correoElectronico;
-                    tblPaciente.religion = pacienteCLS.religion;
-                    if (idContactoEmergencia != null) { tblPaciente.idContactoEmergencia = idContactoEmergencia; }
-                    tblPaciente.habilitado = 1;
-
-                    bd.tblPaciente.Add(tblPaciente);
-
-                    bd.SaveChanges();
+                //    bd.SaveChanges();
 
 
-                }
+                //}
                 return RedirectToAction("Index");
             }
         }

@@ -12,19 +12,16 @@ namespace ConsultorioDermatologico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblRepresentante
+    public partial class tblTipoDiscapacidad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblRepresentante()
+        public tblTipoDiscapacidad()
         {
             this.tblPaciente = new HashSet<tblPaciente>();
         }
     
-        public int idRepresentante { get; set; }
-        public string nombreRepresentante { get; set; }
-        public string apellidoRepresentante { get; set; }
-        public string telefonoRepresentante { get; set; }
-        public string correoRepresentante { get; set; }
+        public int idTipoDiscapacidad { get; set; }
+        public string tipo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPaciente> tblPaciente { get; set; }
