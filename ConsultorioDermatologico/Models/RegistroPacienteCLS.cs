@@ -10,7 +10,9 @@ namespace ConsultorioDermatologico.Models
         public PacienteCLS paciente { get; set; }
         public HistoriaClinicaCLS historiaClinica { get; set; }        
         public ContactoEmergenciaCLS contactoEmergencia{ get;set;}
+        public AntecedenteGinecoObstetricoCLS antecedenteGinecoObstetrico { get; set; }
+        public AntecedenteReprodMasculinoCLS antecedenteReprodMasculino { get; set; }
 
-        public bool chkMayorEdad { get; set; }
+
     }
 }

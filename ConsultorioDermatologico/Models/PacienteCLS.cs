@@ -9,7 +9,7 @@ namespace ConsultorioDermatologico.Models
     public class PacienteCLS
     {
         public int idPaciente { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Nombres")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string nombres { get; set; }

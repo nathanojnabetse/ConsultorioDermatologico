@@ -6,87 +6,24 @@
 
     List<SelectListItem> listaIdentidadGenero = (List<SelectListItem>)ViewBag.listaIdentidadGenero;
     List<SelectListItem> listaOrientacionSexual = (List<SelectListItem>)ViewBag.listaOrientacionSexual;
-
-    //se crean listas  predeterminadas para discapacidad, estado civil, lateralidad, nivel de educación y religión
-    #region Listas predeterminadas
-    List<SelectListItem> lst = new List<SelectListItem>();
-
-    List<SelectListItem> lstDiscapacidad = new List<SelectListItem>();
-    lstDiscapacidad.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
-    lstDiscapacidad.Add(new SelectListItem() { Text = "Ninguna", Value = "Ninguna" });
-    lstDiscapacidad.Add(new SelectListItem() { Text = "Auditiva", Value = "Auditiva" });
-    lstDiscapacidad.Add(new SelectListItem() { Text = "Física", Value = "Física" });
-    lstDiscapacidad.Add(new SelectListItem() { Text = "Intelectual", Value = "Intelectual" });
-    lstDiscapacidad.Add(new SelectListItem() { Text = "Lenguaje", Value = "Lenguaje" });
-    lstDiscapacidad.Add(new SelectListItem() { Text = "Psicosocial", Value = "Psicosocial" });
-    lstDiscapacidad.Add(new SelectListItem() { Text = "Visual", Value = "Visual" });
-    SelectList listaDiscapacidad = new SelectList(lstDiscapacidad, "Value", "Text");
-
-    List<SelectListItem> lstEstadoCivil = new List<SelectListItem>();
-    lstEstadoCivil.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
-    lstEstadoCivil.Add(new SelectListItem() { Text = "Soltero", Value = "Soltero" });
-    lstEstadoCivil.Add(new SelectListItem() { Text = "Casado", Value = "Casado" });
-    lstEstadoCivil.Add(new SelectListItem() { Text = "Divorciado", Value = "Divorciado" });
-    lstEstadoCivil.Add(new SelectListItem() { Text = "Unión Libre", Value = "Unión Libre" });
-    lstEstadoCivil.Add(new SelectListItem() { Text = "Viudo", Value = "Viudo" });
-    SelectList listaEstadoCivil = new SelectList(lstEstadoCivil, "Value", "Text");
-
-    List<SelectListItem> lstLateralidad = new List<SelectListItem>();
-    lstLateralidad.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
-    lstLateralidad.Add(new SelectListItem() { Text = "Diestro", Value = "Diestro" });
-    lstLateralidad.Add(new SelectListItem() { Text = "Zurdo", Value = "Zurdo" });
-    lstLateralidad.Add(new SelectListItem() { Text = "Ambidiestro", Value = "Ambidiestro" });
-    SelectList listaLateralidad = new SelectList(lstLateralidad, "Value", "Text");
-
-    List<SelectListItem> lstNivelEducacion = new List<SelectListItem>();
-    lstNivelEducacion.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
-    lstNivelEducacion.Add(new SelectListItem() { Text = "Ninguno", Value = "Ninguno" });
-    lstNivelEducacion.Add(new SelectListItem() { Text = "Primaria", Value = "Primaria" });
-    lstNivelEducacion.Add(new SelectListItem() { Text = "Secundaria", Value = "Secundaria" });
-    lstNivelEducacion.Add(new SelectListItem() { Text = "Tercer Nivel", Value = "Tercer Nivel" });
-    lstNivelEducacion.Add(new SelectListItem() { Text = "Cuarto Nivel", Value = "Cuarto Nivel" });
-    lstNivelEducacion.Add(new SelectListItem() { Text = "Otro", Value = "Otro" });
-    SelectList listaNivelEducacion = new SelectList(lstNivelEducacion, "Value", "Text");
-
-    List<SelectListItem> lstReligion = new List<SelectListItem>();
-    lstReligion.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
-    lstReligion.Add(new SelectListItem() { Text = "Católica", Value = "Católica" });
-    lstReligion.Add(new SelectListItem() { Text = "Evangélica", Value = "Evangélica" });
-    lstReligion.Add(new SelectListItem() { Text = "Testigo de Jehová", Value = "Secundaria" });
-    lstReligion.Add(new SelectListItem() { Text = "Mormona", Value = "Mormona" });
-    lstReligion.Add(new SelectListItem() { Text = "Musulmán", Value = "Musulmán" });
-    lstReligion.Add(new SelectListItem() { Text = "Otro", Value = "Otro" });
-    SelectList listaReligion = new SelectList(lstReligion, "Value", "Text");
-
-    List<SelectListItem> lstTipoSangre = new List<SelectListItem>();
-    lstTipoSangre.Add(new SelectListItem() { Text = "-- Seleccione --", Value = "" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "O+", Value = "O+" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "O-", Value = "O-" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "A+", Value = "A+" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "A-", Value = "A-" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "B+", Value = "B+" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "B-", Value = "B-" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "AB+", Value = "AB+" });
-    lstTipoSangre.Add(new SelectListItem() { Text = "AB-", Value = "AB-" });
-    SelectList listaTipoSangre = new SelectList(lstTipoSangre, "Value", "Text");
-    #endregion
-
-
-
+    List<SelectListItem> listaTipoDiscapacidad = (List<SelectListItem>)ViewBag.listaTipoDiscapacidad;
+    List<SelectListItem> listaEstadoCivil = (List<SelectListItem>)ViewBag.listaEstadoCivil;
+    List<SelectListItem> listaLateralidad = (List<SelectListItem>)ViewBag.listaLateralidad;
+    List<SelectListItem> listaNivelEducacion = (List<SelectListItem>)ViewBag.listaNivelEducacion;
+    List<SelectListItem> listaReligion = (List<SelectListItem>)ViewBag.listaReligion;
 }
 
 <h2>Agregar nuevo paciente</h2>
 
 <div class="container">
     <div class="row">
-
         <div class="col-sm-6" style="padding:1em">
-            <hcontactoEmergencia>Datos personales del paciente</hcontactoEmergencia>
+            <h4>Datos personales</h4>
             <div class="border" style="padding:1em">
-
                 @*Formulario para los datos personales del paciente*@
                 @using (Html.BeginForm("Agregar", "Paciente", FormMethod.Post))
                 {
+                    #region Formulario datos del paciente
                     <div>
                         @Html.LabelFor(p => p.paciente.nombres)
                         @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12", @id = "aaa" })
@@ -99,15 +36,14 @@
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.cedula)
-                        @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12" })
+                        @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
                         @Html.ValidationMessage("paciente.cedula", new { @class = "text-danger" })
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.fechaNacimiento)
                         @Html.EditorFor(p => p.paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-
                         @Html.ValidationMessage("paciente.fechaNacimiento", new { @class = "text-danger" })
-                    </div>                   
+                    </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.idIdentidadGenero)
                         @Html.DropDownList("paciente.idIdentidadGenero", listaIdentidadGenero, null, new { @class = "form-control col-md-12" })
@@ -140,28 +76,28 @@
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.tipoDiscapacidad)
-                        @Html.DropDownList("tipoDiscapacidad", listaDiscapacidad, null, new { @class = "form-control col-md-12" })
+                        @Html.DropDownList("paciente.tipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12" })
                         @Html.ValidationMessage("paciente.tipoDiscapacidad", new { @class = "text-danger" })
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
-                        @Html.TextBoxFor(p => p.paciente.porcentajeDiscapacidad, new { @class = "form-control col-md-12" })
-                        @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger" , @Value = "0" })
+                        @Html.TextBoxFor(p => p.paciente.porcentajeDiscapacidad, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100" })
+                        @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.estadoCivil)
-                        @Html.DropDownList("estadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12" })
-                        @Html.ValidationMessage("estadoCivil", new { @class = "text-danger" })
+                        @Html.DropDownList("paciente.estadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("paciente.estadoCivil", new { @class = "text-danger" })
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.lateralidad)
-                        @Html.DropDownList("lateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" })
-                        @Html.ValidationMessage("lateralidad", new { @class = "text-danger" })
+                        @Html.DropDownList("paciente.lateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("paciente.lateralidad", new { @class = "text-danger" })
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.nivelEducacion)
-                        @Html.DropDownList("nivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" })
-                        @Html.ValidationMessage("nivelEducacion", new { @class = "text-danger" })
+                        @Html.DropDownList("paciente.nivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("paciente.nivelEducacion", new { @class = "text-danger" })
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.direccion)
@@ -170,12 +106,12 @@
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.telefonoPersonal)
-                        @Html.TextBoxFor(p => p.paciente.telefonoPersonal, new { @class = "form-control col-md-12" })
+                        @Html.TextBoxFor(p => p.paciente.telefonoPersonal, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
                         @Html.ValidationMessage("paciente.telefonoPersonal", new { @class = "text-danger" })
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.telefonoResidencial)
-                        @Html.TextBoxFor(p => p.paciente.telefonoResidencial, new { @class = "form-control col-md-12" })
+                        @Html.TextBoxFor(p => p.paciente.telefonoResidencial, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
                         @Html.ValidationMessage("paciente.telefonoResidencial", new { @class = "text-danger" })
                     </div>
                     <div>
@@ -185,14 +121,9 @@
                     </div>
                     <div>
                         @Html.LabelFor(p => p.paciente.religion)
-                        @Html.DropDownList("religion", listaReligion, null, new { @class = "form-control col-md-12" })
-                        @Html.ValidationMessage("religion", new { @class = "text-danger" })
+                        @Html.DropDownList("paciente.religion", listaReligion, null, new { @class = "form-control col-md-12" })
+                        @Html.ValidationMessage("paciente.religion", new { @class = "text-danger" })
                     </div>
-
-                    @*<div>
-            @Html.LabelFor(p => p.paciente.idContactoEmergencia)
-            @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control" })
-            </div>*@
                     <div style="padding-top:1em">
                         <div class="border" style="padding:1em">
                             <h6 class="text-muted">Datos contacto de Emergencia</h6>
@@ -220,6 +151,48 @@
                         </div>
                     </div>
 
+                    <div>
+                        <input type="submit" class="btn btn-primary" value="Guardar" />
+                    </div>
+                    #endregion
+                }
+            </div>
+        </div>
+
+        <div class="col-sm-6" style="padding:1em">
+            <h4>Antecedentes Clínicos</h4>
+            <div class="border" style="padding:1em">
+                @*Formulario para los datos personales del paciente*@
+                @using (Html.BeginForm("Agregar", "HistoriaClinica", FormMethod.Post))
+                {
+
+                    @*Div checkbox para los gineco obstetricos*@
+                    <div style="padding-top:1em">
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO"  onchange="antecedentesGO()"/>
+                        <label for="representante">Antecedentes Gineco-Obstetricos</label>
+                    </div>
+
+                    <div id='collapsediv1' class='collapse border'>
+                        @*<div>
+                REPRESENTANTE EL TOGGLE
+                @Html.LabelFor(p => p.Item1.idRepresentante)
+                @Html.TextBoxFor(p => p.Item1.nombres, new { @class = "form-control" })
+                </div>*@
+                        <div style="padding:1em">
+                            <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
+                            
+                        </div>
+
+
+                    </div>
+
+
+                    <div style="padding-top:1em">
+                        <div class="border" style="padding:1em">
+                            <h6 class="text-muted">Datos contacto de Emergencia</h6>
+
+                        </div>
+                    </div>
 
                     <div>
                         <input type="submit" class="btn btn-primary" value="Guardar" />
@@ -235,17 +208,35 @@
         </div>
 
 
-        <div class="col-sm-6">
-            <hcontactoEmergencia>Antecedentes Clínicos</hcontactoEmergencia>
-            @*Formulario para la abrir la historia clínica del paciente (Antecedentes)*@
-            @using (Html.BeginForm("Agregar", "HistoriaClinica", FormMethod.Post))
-            {
-                @Html.LabelFor(p => p.historiaClinica.alcohol)
-                @Html.TextBoxFor(p => p.historiaClinica.alcohol)
-            }
-
-        </div>
-
     </div>
 </div>
 
+<footer>
+    <button id="scrollToTopBtn"class="btn btn-light" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
+</footer>
+
+<script>
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn")
+    var rootElement = document.documentElement
+
+    function scrollToTop() {
+        // Scroll to top logic
+        rootElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+    scrollToTopBtn.addEventListener("click", scrollToTop)
+
+
+    function antecedentesGO() {
+        if ($('#chkAntecedentesGO').is(':checked')) {           
+            alert("ACTIVAO");
+            $('#aaa').prop("required", true); 
+        }
+        else {            
+            alert("NONONONO ACTIVAO");
+            $('#aaa').removeAttr('required')
+        }
+    }
+</script>

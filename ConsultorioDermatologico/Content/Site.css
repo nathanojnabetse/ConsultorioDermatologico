@@ -16,3 +16,20 @@ textarea {
     max-width: 280px;
 }
 
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px
+}
+
+/*#scrollToTopBtn {
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 48px;
+    width: 48px
+}*/

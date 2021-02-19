@@ -74,9 +74,7 @@ namespace ConsultorioDermatologico.Controllers
         //Genera la vista html
         public ActionResult Agregar()
         {
-            llenarIdentidadGenero();
-            llenarOrientacionSexual();
-            
+            llenarDropDown();
 
             return View();
 
@@ -88,8 +86,8 @@ namespace ConsultorioDermatologico.Controllers
         {
             if (!ModelState.IsValid)
             {
-                llenarIdentidadGenero();
-                llenarOrientacionSexual();
+                llenarDropDown();
+
                 return View(registroPacienteCLS);
             }
             else
@@ -147,7 +145,7 @@ namespace ConsultorioDermatologico.Controllers
         }
 
 
-
+        #region Datos de los dropdown 
         private void llenarIdentidadGenero()
         {
             List<SelectListItem> listaIdentidadGenero;
@@ -186,11 +184,11 @@ namespace ConsultorioDermatologico.Controllers
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
                 listaTipoDiscapacidad = (from tipoDiscapacidad in bd.tblTipoDiscapacidad
-                                          select new SelectListItem
-                                          {
-                                              Text = tipoDiscapacidad.tipo,
-                                              Value = tipoDiscapacidad.idTipoDiscapacidad.ToString()
-                                          }).ToList();
+                                         select new SelectListItem
+                                         {
+                                             Text = tipoDiscapacidad.tipo,
+                                             Value = tipoDiscapacidad.idTipoDiscapacidad.ToString()
+                                         }).ToList();
                 listaTipoDiscapacidad.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
                 ViewBag.listaTipoDiscapacidad = listaTipoDiscapacidad;
             }
@@ -203,10 +201,10 @@ namespace ConsultorioDermatologico.Controllers
             {
                 listaEstadoCivil = (from estadoCivil in bd.tblEstadoCivil
                                     select new SelectListItem
-                                         {
-                                             Text = estadoCivil.nombreEstadoCivil,
-                                             Value = estadoCivil.idEstadoCivil.ToString()
-                                         }).ToList();
+                                    {
+                                        Text = estadoCivil.nombreEstadoCivil,
+                                        Value = estadoCivil.idEstadoCivil.ToString()
+                                    }).ToList();
                 listaEstadoCivil.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
                 ViewBag.listaEstadoCivil = listaEstadoCivil;
             }
@@ -233,14 +231,14 @@ namespace ConsultorioDermatologico.Controllers
             List<SelectListItem> listaNivelEducacion;
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-                listaNivelEducacion = (from nivelEducacion in bd.tblReligion
-                                 select new SelectListItem
-                                 {
-                                     Text = nivelEducacion.nombreReligion,
-                                     Value = nivelEducacion.idReligion.ToString()
-                                 }).ToList();
+                listaNivelEducacion = (from nivelEducacion in bd.tblNivelEducacion
+                                       select new SelectListItem
+                                       {
+                                           Text = nivelEducacion.nombreNivelEducacion,
+                                           Value = nivelEducacion.idNivelEducacion.ToString()
+                                       }).ToList();
                 listaNivelEducacion.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
-                ViewBag.listaReligion = listaNivelEducacion;
+                ViewBag.listaNivelEducacion = listaNivelEducacion;
             }
         }
 
@@ -250,11 +248,11 @@ namespace ConsultorioDermatologico.Controllers
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
                 listaReligion = (from religion in bd.tblReligion
-                                    select new SelectListItem
-                                    {
-                                        Text = religion.nombreReligion,
-                                        Value = religion.idReligion.ToString()
-                                    }).ToList();
+                                 select new SelectListItem
+                                 {
+                                     Text = religion.nombreReligion,
+                                     Value = religion.idReligion.ToString()
+                                 }).ToList();
                 listaReligion.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
                 ViewBag.listaReligion = listaReligion;
             }
@@ -267,9 +265,11 @@ namespace ConsultorioDermatologico.Controllers
             llenarTipoDiscpacidad();
             llenarEstadoCivil();
             llenarLateralidad();
-
+            llenarNivelEducacion();
             llenarReligion();
-            
+
         }
+
+        #endregion
     }
 }

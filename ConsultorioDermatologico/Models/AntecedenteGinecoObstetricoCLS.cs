@@ -13,48 +13,48 @@ namespace ConsultorioDermatologico.Models
         /// El tag [Display] es usado para mostrar un nombre en la vista       
         /// </summary>   
         public int idAntecedenteGinecoObstetrico { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Menarquia")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string menarquia { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Ciclo")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string ciclo { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Última menstruación")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fechaUltimaMenstruacion { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Gestas")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string gestas { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Partos")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string partos { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Cesárea")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string cesarea { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Abortos")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string abortos { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Hijos Vivos")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public int hijosVivos { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Hijos Muertos")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public int hijosMuertos { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Vida sexual activa")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string vidaSexualActiva { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Planificación familiar")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string metodoPlanificacionFamiliar { get; set; }
