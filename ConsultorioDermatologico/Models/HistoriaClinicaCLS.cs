@@ -54,19 +54,25 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Antecedente reproductivo masculino")]
         public int idAntecedenteReprodMasculino { get; set; }
         [Required]
-        [Display(Name = "Uso de tabaco")]
+        [StringLength(100, ErrorMessage = "Longitud Máxima 100")]
+        [Display(Name = "Uso de tabaco")]        
         public string tabaco { get; set; }
         [Required]
+        [StringLength(100, ErrorMessage = "Longitud Máxima 100")]
         [Display(Name = "Uso de alcohol")]
         public string alcohol { get; set; }
         [Required]
+        [StringLength(100, ErrorMessage = "Longitud Máxima 100")]
         [Display(Name = "Uso de otras drogas")]
         public string otrasDrogas { get; set; }
         [Required]
+        [StringLength(100, ErrorMessage = "Longitud Máxima 100")]
         [Display(Name = "Actividad física")]
         public string actividadFisica { get; set; }
         [Required]
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Medicación habitual")]
+        [StringLength(1000, ErrorMessage = "Longitud Máxima 1000")]
         public string medicacionHabitual { get; set; }
         public int habilitado { get; set; }
     }

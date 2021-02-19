@@ -28,8 +28,8 @@ namespace ConsultorioDermatologico.Models
         public string partos { get; set; }
         public string cesarea { get; set; }
         public string abortos { get; set; }
-        public Nullable<int> hijosVivos { get; set; }
-        public Nullable<int> hijosMuertos { get; set; }
+        public string hijosVivos { get; set; }
+        public string hijosMuertos { get; set; }
         public string vidaSexualActiva { get; set; }
         public string metodoPlanificacionFamiliar { get; set; }
     

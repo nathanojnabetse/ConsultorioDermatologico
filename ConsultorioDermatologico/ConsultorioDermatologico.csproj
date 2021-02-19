@@ -243,7 +243,6 @@
   <ItemGroup>
     <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HistoriaClinicaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -336,6 +335,7 @@
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoDiscapacidadCLS.cs" />
+    <Compile Include="Models\TipoSangreCLS.cs" />
     <Compile Include="Models\UsuarioCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

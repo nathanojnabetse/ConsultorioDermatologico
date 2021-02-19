@@ -5,44 +5,38 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7dd53b2f0a7445798d7d9bafd6f4bc21" Name="Diagram1" ZoomLevel="61">
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblAntecedenteGinecoObstetrico" Width="2.25" PointX="10" PointY="7.625" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblAntecedenteReprodMasculino" Width="1.875" PointX="11.25" PointY="5.125" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia" Width="2" PointX="5.5" PointY="4" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblEstadoCivil" Width="2" PointX="0.5" PointY="7.375" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblEvolucion" Width="1.5" PointX="8.125" PointY="7.75" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblFotoMapaCorporal" Width="1.5" PointX="12.375" PointY="9.5" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblFotos" Width="1.5" PointX="6.125" PointY="9" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Width="2.625" PointX="8.125" PointY="1.125" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblIdentidadGenero" Width="2" PointX="0.5" PointY="1.125" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblLateralidad" Width="2" PointX="0.5" PointY="9.375" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblNivelEducacion" Width="1.875" PointX="4" PointY="9.375" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblOrientacionSexual" Width="2" PointX="0.5" PointY="3.125" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblPaciente" Width="2" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblReligion" Width="2" PointX="5.5" PointY="6.5" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblSeguroMedico" Width="1.875" PointX="11.25" PointY="1.125" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblTipoDiscapacidad" Width="2" PointX="0.5" PointY="5.375" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblTipoSangre" Width="1.875" PointX="11.25" PointY="3.25" />
-        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblUsuario" Width="1.875" PointX="5.625" PointY="1.125" />
-        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B" ></AssociationConnector>
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblAntecedenteGinecoObstetrico" Width="1.5" PointX="3" PointY="10" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblAntecedenteReprodMasculino" Width="1.5" PointX="3" PointY="14.25" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblEstadoCivil" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblEvolucion" Width="1.5" PointX="7.5" PointY="3.125" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblFotoMapaCorporal" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblFotos" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" Width="1.5" PointX="5.25" PointY="2" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblIdentidadGenero" Width="1.5" PointX="0.75" PointY="21.25" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblLateralidad" Width="1.5" PointX="0.75" PointY="16.5" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblNivelEducacion" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblOrientacionSexual" Width="1.5" PointX="0.75" PointY="18.875" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblPaciente" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblReligion" Width="1.5" PointX="0.75" PointY="14.125" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblSeguroMedico" Width="1.5" PointX="3" PointY="19.25" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblTipoDiscapacidad" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblTipoSangre" Width="1.5" PointX="3" PointY="16.875" />
+        <EntityTypeShape EntityType="BDD_ConsultorioDermatologicoModel.tblUsuario" Width="1.5" PointX="7.75" PointY="7.75" />
+        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5DCAEF64" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__571DF1D5" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idEst__534D60F1" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__60A75C0F" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__6383C8BA" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idPac__59FA5E80" />
-        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__5AEE82B9" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idSeg__5AEE82B9" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idTip__5BE2A6F2" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idIde__5070F446" />
-        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idLat__5441852A" ManuallyRouted="true" >
-          <ConnectorPoint PointX="2.5" PointY="10.172841796875002" />
-          <ConnectorPoint PointX="3.6562468888599153" PointY="10.172841796875002" />
-          <ConnectorPoint PointX="3.6562468888599153" PointY="8.2974251302083335" />
-        </AssociationConnector>
+        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idLat__5441852A" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idNiv__5535A963" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idOri__5165187F" />
-        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRel__5629CD9C" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idRel__5629CD9C" />
         <AssociationConnector Association="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idTip__52593CB8" />
       </Diagram>
     </edmx:Diagrams>

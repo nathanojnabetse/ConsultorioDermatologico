@@ -45,11 +45,11 @@ namespace ConsultorioDermatologico.Models
         //[Required]
         [Display(Name = "Hijos Vivos")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
-        public int hijosVivos { get; set; }
+        public string hijosVivos { get; set; }
         //[Required]
         [Display(Name = "Hijos Muertos")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
-        public int hijosMuertos { get; set; }
+        public string hijosMuertos { get; set; }
         //[Required]
         [Display(Name = "Vida sexual activa")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]

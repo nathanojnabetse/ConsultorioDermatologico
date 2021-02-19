@@ -12,8 +12,8 @@
     <Property Name="partos" Type="varchar" MaxLength="100" />
     <Property Name="cesarea" Type="varchar" MaxLength="100" />
     <Property Name="abortos" Type="varchar" MaxLength="100" />
-    <Property Name="hijosVivos" Type="int" />
-    <Property Name="hijosMuertos" Type="int" />
+    <Property Name="hijosVivos" Type="varchar" MaxLength="100" />
+    <Property Name="hijosMuertos" Type="varchar" MaxLength="100" />
     <Property Name="vidaSexualActiva" Type="varchar" MaxLength="100" />
     <Property Name="metodoPlanificacionFamiliar" Type="varchar" MaxLength="1000" />
   </EntityType>

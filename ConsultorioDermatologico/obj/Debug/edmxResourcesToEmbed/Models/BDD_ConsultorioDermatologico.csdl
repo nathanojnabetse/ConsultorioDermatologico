@@ -92,8 +92,8 @@
     <Property Name="partos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="cesarea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="abortos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hijosVivos" Type="Int32" />
-    <Property Name="hijosMuertos" Type="Int32" />
+    <Property Name="hijosVivos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hijosMuertos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="vidaSexualActiva" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="metodoPlanificacionFamiliar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B" FromRole="tblAntecedenteGinecoObstetrico" ToRole="tblHistoriaClinica" />

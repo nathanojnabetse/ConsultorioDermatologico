@@ -258,15 +258,49 @@ namespace ConsultorioDermatologico.Controllers
             }
         }
 
+        public void llenarSeguros()
+        {
+            List<SelectListItem> listaSeguros;
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                listaSeguros = (from seguros in bd.tblSeguroMedico
+                                select new SelectListItem
+                                {
+                                    Text = seguros.nombreSeguro,
+                                    Value = seguros.idSeguroMedico.ToString()
+                                }).ToList();
+                listaSeguros.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.listaSeguros = listaSeguros;
+            }
+        }
+
+        public void llenarSangre()
+        {
+            List<SelectListItem> listaSangre;
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                listaSangre = (from sangre in bd.tblTipoSangre
+                               select new SelectListItem
+                               {
+                                   Text = sangre.sangre,
+                                   Value = sangre.idTipoSangre.ToString()
+                               }).ToList();
+                listaSangre.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.listaSangre = listaSangre;
+            }
+        }
+
         private void llenarDropDown()
         {
-            llenarIdentidadGenero();
             llenarOrientacionSexual();
+            llenarIdentidadGenero();            
             llenarTipoDiscpacidad();
-            llenarEstadoCivil();
-            llenarLateralidad();
             llenarNivelEducacion();
+            llenarEstadoCivil();
+            llenarLateralidad();            
             llenarReligion();
+            llenarSeguros();
+            llenarSangre();
 
         }
 
