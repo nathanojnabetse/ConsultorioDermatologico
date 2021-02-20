@@ -26,8 +26,6 @@ namespace ConsultorioDermatologico.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fechaNacimiento { get; set; }        
-        [Display(Name = "Representante")]        
-        public int? idRepresentante { get; set; }
         [Required]
         [Display(Name = "Identidad género")]
         public int idIdentidadGenero { get; set; }
@@ -51,24 +49,20 @@ namespace ConsultorioDermatologico.Models
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string profesion { get; set; }
         [Required]
-        [Display(Name = "Tipo discapacidad")]
-        [StringLength(50, ErrorMessage = "Longitud máxima 50")]        
-        public string tipoDiscapacidad { get; set; }
+        [Display(Name = "Tipo discapacidad")]      
+        public int idTipoDiscapacidad { get; set; }
         [Required]
         [Display(Name = "% Discapacidad")]
         public int porcentajeDiscapacidad { get; set; }
         [Required]
         [Display(Name = "Estado civil")]
-        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
-        public string estadoCivil { get; set; }
+        public int idEstadoCivil { get; set; }
         [Required]
         [Display(Name = "Lateralidad")]
-        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
-        public string lateralidad { get; set; }
+        public int idLateralidad { get; set; }
         [Required]
         [Display(Name = "Nivel educación")]
-        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
-        public string nivelEducacion { get; set; }
+        public int idNivelEducacion { get; set; }
         [Required]
         [Display(Name = "Dirección")]
         [StringLength(500, ErrorMessage = "Longitud máxima 500")]
@@ -88,8 +82,7 @@ namespace ConsultorioDermatologico.Models
         public string correoElectronico { get; set; }
         [Required]
         [Display(Name = "Religión")]
-        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
-        public string religion { get; set; }        
+        public int idReligion { get; set; }        
         [Required]
         [Display(Name = "Contacto de emergencia")]        
         public int idContactoEmergencia { get; set; }

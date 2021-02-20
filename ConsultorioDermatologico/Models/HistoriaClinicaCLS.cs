@@ -16,37 +16,36 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Seguro Paciente")]       
         public int idSeguroMedico { get; set; }
         [Required]
-        [Display(Name = "Tipo de sangre")]
-        [StringLength(10, ErrorMessage = "Longitud Mmaxima 10")]
-        public string tipoSangre { get; set; }
+        [Display(Name = "Tipo de sangre")]        
+        public int idTipoSangre { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(2000, ErrorMessage = "Longitud Mmaxima 2000")]
+        [StringLength(2000, ErrorMessage = "Longitud Máxima 2000")]
         [Display(Name = "Antecedente familiar clínico")]
         public string antecedenteFamiliarClinico { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(2000, ErrorMessage = "Longitud Mmaxima 2000")]
+        [StringLength(2000, ErrorMessage = "Longitud Máxima 2000")]
         [Display(Name = "Antecedente familiar quirúrgico")]
         public string antecedenteFamiliarQuirurgico { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(2000, ErrorMessage = "Longitud Mmaxima 2000")]
+        [StringLength(2000, ErrorMessage = "Longitud Máxima 2000")]
         [Display(Name = "Antecedente personal clínico")]
         public string antecedentePersonalClinico { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(2000, ErrorMessage = "Longitud Mmaxima 2000")]
+        [StringLength(2000, ErrorMessage = "Longitud Máxima 2000")]
         [Display(Name = "Antecedente personal quirúrgico")]
         public string antecedentePersonalQuirurgico { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(2000, ErrorMessage = "Longitud Mmaxima 2000")]
+        [StringLength(2000, ErrorMessage = "Longitud Máxima 2000")]
         [Display(Name = "Antecedente personal alergico")]
         public string antecedentePersonalAlergico { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(2000, ErrorMessage = "Longitud Mmaxima 2000")]
+        [StringLength(2000, ErrorMessage = "Longitud Máxima 2000")]
         [Display(Name = "Antecedente personal de vacunas")]
         public string antecedentePersonalVacunas { get; set; }        
         [Display(Name = "Antecedente gineco obstétrico")]

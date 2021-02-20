@@ -28,7 +28,7 @@
 
                 <div>
                     @Html.LabelFor(p => p.paciente.nombres)
-                    @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12" })
+                    @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12"})
                     @Html.ValidationMessage("paciente.nombres", new { @class = "text-danger" })
                 </div>
                 <div>
@@ -77,29 +77,29 @@
                     @Html.ValidationMessage("paciente.profesion", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @Html.LabelFor(p => p.paciente.tipoDiscapacidad)
-                    @Html.DropDownList("paciente.tipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.tipoDiscapacidad", new { @class = "text-danger" })
+                    @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
+                    @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12" })
+                    @Html.ValidationMessage("paciente.idTipoDiscapacidad", new { @class = "text-danger" })
                 </div>
                 <div>
                     @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)                    
-                    @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100" } })
+                    @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @Value = "0" } })
                     @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
                 </div>
                 <div>
-                    @Html.LabelFor(p => p.paciente.estadoCivil)
-                    @Html.DropDownList("paciente.estadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.estadoCivil", new { @class = "text-danger" })
+                    @Html.LabelFor(p => p.paciente.idEstadoCivil)
+                    @Html.DropDownList("paciente.idEstadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12" })
+                    @Html.ValidationMessage("paciente.idEstadoCivil", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @Html.LabelFor(p => p.paciente.lateralidad)
-                    @Html.DropDownList("paciente.lateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.lateralidad", new { @class = "text-danger" })
+                    @Html.LabelFor(p => p.paciente.idLateralidad)
+                    @Html.DropDownList("paciente.idLateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" })
+                    @Html.ValidationMessage("paciente.idLateralidad", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @Html.LabelFor(p => p.paciente.nivelEducacion)
-                    @Html.DropDownList("paciente.nivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.nivelEducacion", new { @class = "text-danger" })
+                    @Html.LabelFor(p => p.paciente.idNivelEducacion)
+                    @Html.DropDownList("paciente.idNivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" })
+                    @Html.ValidationMessage("paciente.idNivelEducacion", new { @class = "text-danger" })
                 </div>
                 <div>
                     @Html.LabelFor(p => p.paciente.direccion)
@@ -122,9 +122,9 @@
                     @Html.ValidationMessage("paciente.correoElectronico", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @Html.LabelFor(p => p.paciente.religion)
-                    @Html.DropDownList("paciente.religion", listaReligion, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.religion", new { @class = "text-danger" })
+                    @Html.LabelFor(p => p.paciente.idReligion)
+                    @Html.DropDownList("paciente.idReligion", listaReligion, null, new { @class = "form-control col-md-12" })
+                    @Html.ValidationMessage("paciente.idReligion", new { @class = "text-danger" })
                 </div>
                 <div style="padding-top:1em">
                     <div class="border" style="padding:1em">
@@ -142,7 +142,7 @@
                         </div>
                         <div>
                             @Html.LabelFor(p => p.contactoEmergencia.telefonoContactoEmergencia)
-                            @Html.TextBoxFor(p => p.contactoEmergencia.telefonoContactoEmergencia, new { @class = "form-control col-md-12" })
+                            @Html.TextBoxFor(p => p.contactoEmergencia.telefonoContactoEmergencia, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
                             @Html.ValidationMessage("contactoEmergencia.telefonoContactoEmergencia", new { @class = "text-danger" })
                         </div>
                         <div>
@@ -164,9 +164,9 @@
                     @Html.ValidationMessage("historiaClinica.idSeguroMedico", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @Html.LabelFor(p => p.historiaClinica.tipoSangre)
-                    @Html.DropDownList("historiaClinica.tipoSangre", listaSangre, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.tipoSangre", new { @class = "text-danger" })
+                    @Html.LabelFor(p => p.historiaClinica.idTipoSangre)
+                    @Html.DropDownList("historiaClinica.idTipoSangre", listaSangre, null, new { @class = "form-control col-md-12" })
+                    @Html.ValidationMessage("historiaClinica.idTipoSangre", new { @class = "text-danger" })
                 </div>
                 <div>
                     @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarClinico)
@@ -198,7 +198,7 @@
                     @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                     @Html.ValidationMessage("historiaClinica.antecedentePersonalVacunas", new { @class = "text-danger" })
                 </div>
-                @*Div checkbox para los gineco obstetricos*@
+                Div checkbox para los gineco obstetricos
                 <div style="padding-top:1em">
                     <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()" />
                     <label>Antecedentes gineco-obstetricos</label>
@@ -263,7 +263,7 @@
                         </div>
                     </div>
                 </div>
-                @*Div checkbox para los reproductivos masculinos*@
+                Div checkbox para los reproductivos masculinos
                 <div style="padding-top:1em">
                     <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2' id="chkAntecedentesRM" onchange="antecedentesRM()" />
                     <label>Antecedentes reproductivos masculinos</label>
@@ -351,8 +351,10 @@
                 $('#ago11').prop("required", true);
             }
             else {
+                alert("se descativo")
+
                 //Desactivo el checkbox
-                $('#ago11').removeAttr('required')
+                $('#ago1').removeAttr('required')
                 $('#ago2').removeAttr('required')
                 $('#ago3').removeAttr('required')
                 $('#ago4').removeAttr('required')

@@ -25,7 +25,7 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Última menstruación")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime fechaUltimaMenstruacion { get; set; }
+        public DateTime? fechaUltimaMenstruacion { get; set; }
         //[Required]
         [Display(Name = "Gestas")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
