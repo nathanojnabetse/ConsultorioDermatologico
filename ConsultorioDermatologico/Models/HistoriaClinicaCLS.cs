@@ -49,9 +49,9 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Antecedente personal de vacunas")]
         public string antecedentePersonalVacunas { get; set; }        
         [Display(Name = "Antecedente gineco obstétrico")]
-        public int idAntecedenteGinecoObstetrico { get; set; }
+        public int? idAntecedenteGinecoObstetrico { get; set; }
         [Display(Name = "Antecedente reproductivo masculino")]
-        public int idAntecedenteReprodMasculino { get; set; }
+        public int? idAntecedenteReprodMasculino { get; set; }
         [Required]
         [StringLength(100, ErrorMessage = "Longitud Máxima 100")]
         [Display(Name = "Uso de tabaco")]        

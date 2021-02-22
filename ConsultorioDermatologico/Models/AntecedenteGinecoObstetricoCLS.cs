@@ -12,7 +12,7 @@ namespace ConsultorioDermatologico.Models
         /// Propiedades de los antecedentes gineco obstetricos de un paciente femenino
         /// El tag [Display] es usado para mostrar un nombre en la vista       
         /// </summary>   
-        public int idAntecedenteGinecoObstetrico { get; set; }
+        public int? idAntecedenteGinecoObstetrico { get; set; }
         //[Required]
         [Display(Name = "Menarquia")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]

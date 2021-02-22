@@ -8,7 +8,7 @@ namespace ConsultorioDermatologico.Models
 {
     public class AntecedenteReprodMasculinoCLS
     {
-        public int idAntecedenteReprodMasculino { get; set; }
+        public int? idAntecedenteReprodMasculino { get; set; }
         //[Required]
         [Display(Name = "E.T.S.")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
