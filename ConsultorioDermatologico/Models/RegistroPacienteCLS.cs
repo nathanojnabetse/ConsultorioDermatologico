@@ -13,6 +13,7 @@ namespace ConsultorioDermatologico.Models
         public AntecedenteGinecoObstetricoCLS antecedenteGinecoObstetrico { get; set; }
         public AntecedenteReprodMasculinoCLS antecedenteReprodMasculino { get; set; }
 
-
+        //Propiedad adicional En caso de encontrar una cedula repetida
+        public string mensajeError { get; set; }
     }
 }

@@ -24,11 +24,16 @@
 
         <div class="col-sm-6" style="padding:1em">
             <h4>Datos personales</h4>
+            <div>
+                @if (Model != null && Model.mensajeError != null)
+                {
+                    @Html.Label(Model.mensajeError, new { @class = "text-danger" })
+                }
+            </div>
             <div class="border" style="padding:1em">
-
                 <div>
                     @Html.LabelFor(p => p.paciente.nombres)
-                    @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12"})
+                    @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12" })
                     @Html.ValidationMessage("paciente.nombres", new { @class = "text-danger" })
                 </div>
                 <div>
@@ -82,7 +87,7 @@
                     @Html.ValidationMessage("paciente.idTipoDiscapacidad", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)                    
+                    @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
                     @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @Value = "0" } })
                     @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
                 </div>
@@ -198,7 +203,6 @@
                     @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                     @Html.ValidationMessage("historiaClinica.antecedentePersonalVacunas", new { @class = "text-danger" })
                 </div>
-                Div checkbox para los gineco obstetricos
                 <div style="padding-top:1em">
                     <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()" />
                     <label>Antecedentes gineco-obstetricos</label>
@@ -208,7 +212,7 @@
                         <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
                         <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.menarquia)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.menarquia, new { @class = "form-control col-md-12", @id="ago1" })
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.menarquia, new { @class = "form-control col-md-12", @id = "ago1" })
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.menarquia", new { @class = "text-danger" })
                         </div>
                         <div>
@@ -263,7 +267,6 @@
                         </div>
                     </div>
                 </div>
-                Div checkbox para los reproductivos masculinos
                 <div style="padding-top:1em">
                     <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2' id="chkAntecedentesRM" onchange="antecedentesRM()" />
                     <label>Antecedentes reproductivos masculinos</label>
@@ -309,12 +312,27 @@
                     @Html.ValidationMessage("historiaClinica.medicacionHabitual", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="row" style="padding:1em">
+                <div class="col-sm-6">
+                    <div class="row justify-content-center">
+                        <input type="submit" class="btn btn-primary " value="Guardar" />
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="row justify-content-center">
+                        @Html.ActionLink("Regresar", "Index", "Paciente", null, new { @class = "btn-danger btn" })
+                    </div>
+                </div>
+            </div>
+
         </div>
+        
+
 
     </div>
-    <div class="row justify-content-center">
-        <input type="submit" class="btn btn-primary " value="Guardar" />
-    </div>
+    
 </div>
 }
     <footer>
@@ -351,8 +369,6 @@
                 $('#ago11').prop("required", true);
             }
             else {
-                alert("se descativo")
-
                 //Desactivo el checkbox
                 $('#ago1').removeAttr('required')
                 $('#ago2').removeAttr('required')
