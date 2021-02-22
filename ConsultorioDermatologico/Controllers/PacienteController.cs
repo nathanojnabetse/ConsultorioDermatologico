@@ -225,8 +225,7 @@ namespace ConsultorioDermatologico.Controllers
         }
 
         
-
-        //Accion para retornar los datos de la bbd y ser miostrados los que ya estan guardados en la vista
+        //Acción para ontener los datos de la bbd y ser mostrados en la vista
         public ActionResult Editar(int idPaciente)
         {
             llenarDropDown();
@@ -271,9 +270,8 @@ namespace ConsultorioDermatologico.Controllers
                 contactoEmergenciaCLS.apellidoContactoEmergencia = tblContactoEmergencia.apellidoContactoEmergencia;
                 contactoEmergenciaCLS.telefonoContactoEmergencia = tblContactoEmergencia.telefonoContactoEmergencia;
                 contactoEmergenciaCLS.correoContactoEmergencia = tblContactoEmergencia.correoContactoEmergencia;
-
+                
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica.Equals(pacienteCLS.idPaciente)).First();
-
 
                 historiaClinicaCLS.idSeguroMedico = (int)tblHistoriaClinica.idSeguroMedico;
                 historiaClinicaCLS.idTipoSangre = (int)tblHistoriaClinica.idTipoSangre;
@@ -321,13 +319,103 @@ namespace ConsultorioDermatologico.Controllers
                 registroPacienteCLS.historiaClinica = historiaClinicaCLS;
                 registroPacienteCLS.antecedenteReprodMasculino = antecedenteReprodMasculinoCLS;
                 registroPacienteCLS.antecedenteGinecoObstetrico = antecedenteGinecoObstetricoCLS;
-
-
-
             }
             return View(registroPacienteCLS);
         }
 
+        [HttpPost]
+        public ActionResult Editar(RegistroPacienteCLS registroPacienteCLS)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                llenarDropDown();
+                //retorno de la vista en caso de errores al llenar un campo
+                return View(registroPacienteCLS);
+            }
+            else
+            {
+                using (var bd = new BDD_ConsultorioDermatologicoEntities())
+                {
+                    //Creación de un paciente
+                    tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.cedula.Equals(registroPacienteCLS.paciente.cedula)).First();
+                    
+                    tblPaciente.nombres = registroPacienteCLS.paciente.nombres;
+                    tblPaciente.apellidos = registroPacienteCLS.paciente.apellidos;
+                    //tblPaciente.cedula = registroPacienteCLS.paciente.cedula;
+                    tblPaciente.fechaNacimiento = registroPacienteCLS.paciente.fechaNacimiento;
+                    tblPaciente.idOrientacionSexual = registroPacienteCLS.paciente.idOrientacionSexual;
+                    tblPaciente.idIdentidadGenero = registroPacienteCLS.paciente.idIdentidadGenero;
+                    tblPaciente.ciudadNacimiento = registroPacienteCLS.paciente.ciudadNacimiento;
+                    tblPaciente.ciudadResidencia = registroPacienteCLS.paciente.ciudadResidencia;
+                    tblPaciente.ocupacion = registroPacienteCLS.paciente.ocupacion;
+                    tblPaciente.profesion = registroPacienteCLS.paciente.profesion;
+                    tblPaciente.idTipoDiscapacidad = registroPacienteCLS.paciente.idTipoDiscapacidad;
+                    tblPaciente.porcentajeDiscapacidad = registroPacienteCLS.paciente.porcentajeDiscapacidad;
+                    tblPaciente.idEstadoCivil = registroPacienteCLS.paciente.idEstadoCivil;
+                    tblPaciente.idLateralidad = registroPacienteCLS.paciente.idLateralidad;
+                    tblPaciente.idNivelEducacion = registroPacienteCLS.paciente.idNivelEducacion;
+                    tblPaciente.direccion = registroPacienteCLS.paciente.direccion;
+                    tblPaciente.telefonoPersonal = registroPacienteCLS.paciente.telefonoPersonal;
+                    tblPaciente.telefonoResidencial = registroPacienteCLS.paciente.telefonoResidencial;
+                    tblPaciente.correoElectronico = registroPacienteCLS.paciente.correoElectronico;
+                    tblPaciente.idReligion = registroPacienteCLS.paciente.idReligion;                   
+
+                    tblContactoEmergencia tblContactoEmergencia = bd.tblContactoEmergencia.Where(p => p.idContactoEmergencia.Equals((int)tblPaciente.idContactoEmergencia)).First();
+                    //tblContactoEmergencia tblContactoEmergencia = bd.tblContactoEmergencia.Where(p => p.idContactoEmergencia.Equals((int)idContactoEmergencia)).First();
+                    tblContactoEmergencia.nombreContactoEmergencia = registroPacienteCLS.contactoEmergencia.nombreContactoEmergencia;
+                    tblContactoEmergencia.apellidoContactoEmergencia = registroPacienteCLS.contactoEmergencia.apellidoContactoEmergencia;
+                    tblContactoEmergencia.telefonoContactoEmergencia = registroPacienteCLS.contactoEmergencia.telefonoContactoEmergencia;
+                    tblContactoEmergencia.correoContactoEmergencia = registroPacienteCLS.contactoEmergencia.correoContactoEmergencia;
+
+                    //Creación y guardado de la historia clinica
+                    //tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica.Equals(pacienteCLS.idPaciente)).First();
+                    tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica.Equals(tblPaciente.idPaciente)).First();
+                    //tblHistoriaClinica.idPaciente = idPaciente;
+                    tblHistoriaClinica.idSeguroMedico = registroPacienteCLS.historiaClinica.idSeguroMedico;
+                    tblHistoriaClinica.idTipoSangre = registroPacienteCLS.historiaClinica.idTipoSangre;
+                    tblHistoriaClinica.antecedenteFamiliarClinico = registroPacienteCLS.historiaClinica.antecedenteFamiliarClinico;
+                    tblHistoriaClinica.antecedenteFamiliarQuirurgico = registroPacienteCLS.historiaClinica.antecedenteFamiliarQuirurgico;
+                    tblHistoriaClinica.antecedentePersonalClinico = registroPacienteCLS.historiaClinica.antecedentePersonalClinico;
+                    tblHistoriaClinica.antecedentePersonalQuirurgico = registroPacienteCLS.historiaClinica.antecedentePersonalQuirurgico;
+                    tblHistoriaClinica.antecedentePersonalAlergico = registroPacienteCLS.historiaClinica.antecedentePersonalAlergico;
+                    tblHistoriaClinica.antecedentePersonalVacunas = registroPacienteCLS.historiaClinica.antecedentePersonalVacunas;                   
+                    if (tblHistoriaClinica.idAntecedenteGinecoObstetrico != null)
+                    {
+                        //Creación de antecedentes gineco obstetricos de ser necesario
+                        tblAntecedenteGinecoObstetrico tblAntecedenteGinecoObstetrico = bd.tblAntecedenteGinecoObstetrico.Where(p => p.idAntecedenteGinecoObstetrico.Equals((int)tblHistoriaClinica.idAntecedenteGinecoObstetrico)).First();
+                        tblAntecedenteGinecoObstetrico.menarquia = registroPacienteCLS.antecedenteGinecoObstetrico.menarquia;
+                        tblAntecedenteGinecoObstetrico.ciclo = registroPacienteCLS.antecedenteGinecoObstetrico.ciclo;
+                        tblAntecedenteGinecoObstetrico.fechaUltimaMenstruacion = registroPacienteCLS.antecedenteGinecoObstetrico.fechaUltimaMenstruacion;
+                        tblAntecedenteGinecoObstetrico.gestas = registroPacienteCLS.antecedenteGinecoObstetrico.gestas;
+                        tblAntecedenteGinecoObstetrico.partos = registroPacienteCLS.antecedenteGinecoObstetrico.partos;
+                        tblAntecedenteGinecoObstetrico.cesarea = registroPacienteCLS.antecedenteGinecoObstetrico.cesarea;
+                        tblAntecedenteGinecoObstetrico.abortos = registroPacienteCLS.antecedenteGinecoObstetrico.abortos;
+                        tblAntecedenteGinecoObstetrico.hijosMuertos = registroPacienteCLS.antecedenteGinecoObstetrico.hijosMuertos;
+                        tblAntecedenteGinecoObstetrico.hijosVivos = registroPacienteCLS.antecedenteGinecoObstetrico.hijosVivos;
+                        tblAntecedenteGinecoObstetrico.vidaSexualActiva = registroPacienteCLS.antecedenteGinecoObstetrico.vidaSexualActiva;
+                        tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar = registroPacienteCLS.antecedenteGinecoObstetrico.metodoPlanificacionFamiliar;                        
+                    }                   
+                    if (tblHistoriaClinica.idAntecedenteReprodMasculino != null)
+                    {
+                        tblAntecedenteReprodMasculino tblAntecedenteReprodMasculino = bd.tblAntecedenteReprodMasculino.Where(p => p.idAntecedenteReprodMasculino.Equals((int)tblHistoriaClinica.idAntecedenteReprodMasculino)).First();
+                        tblAntecedenteReprodMasculino.ets = registroPacienteCLS.antecedenteReprodMasculino.ets;
+                        tblAntecedenteReprodMasculino.parejaSexual = registroPacienteCLS.antecedenteReprodMasculino.parejaSexual;
+                    }
+                    tblHistoriaClinica.tabaco = registroPacienteCLS.historiaClinica.tabaco;
+                    tblHistoriaClinica.alcohol = registroPacienteCLS.historiaClinica.alcohol;
+                    tblHistoriaClinica.otrasDrogas = registroPacienteCLS.historiaClinica.otrasDrogas;
+                    tblHistoriaClinica.actividadFisica = registroPacienteCLS.historiaClinica.actividadFisica;
+                    tblHistoriaClinica.medicacionHabitual = registroPacienteCLS.historiaClinica.medicacionHabitual;
+                    tblHistoriaClinica.habilitado = 1;
+                                       
+                    bd.SaveChanges();//Guardar los cambios realizados en la bdd 
+
+
+                }
+                return RedirectToAction("Index");
+            }
+        }
 
         #region Datos de los dropdown 
         private void llenarIdentidadGenero()

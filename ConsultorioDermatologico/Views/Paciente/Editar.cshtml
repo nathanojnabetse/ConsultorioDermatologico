@@ -15,7 +15,7 @@
     List<SelectListItem> listaSangre = (List<SelectListItem>)ViewBag.listaSangre;
 }
 
-<h2>Agregar nuevo paciente</h2>
+<h2 style="padding-top:1em">Editar paciente @Model.paciente.nombres @Model.paciente.apellidos</h2>
 @using (Html.BeginForm("Editar", "Paciente", FormMethod.Post))
 {
 <div class="container">
@@ -43,7 +43,7 @@
                 </div>
                 <div>
                     @Html.LabelFor(p => p.paciente.cedula)
-                    @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
+                    @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999", @readOnly = true })
                     @Html.ValidationMessage("paciente.cedula", new { @class = "text-danger" })
                 </div>
                 <div>
