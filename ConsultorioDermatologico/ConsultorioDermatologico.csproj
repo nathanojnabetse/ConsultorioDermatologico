@@ -243,6 +243,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HistoriaClinicaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -372,6 +373,7 @@
     <Content Include="Views\Paciente\_TablaPacientes.cshtml" />
     <Content Include="Views\Paciente\Agregar.cshtml" />
     <Content Include="Views\Paciente\Editar.cshtml" />
+    <Content Include="Views\HistoriaClinica\InformacionPaciente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -382,7 +384,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
-    <Folder Include="Views\HistoriaClinica\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

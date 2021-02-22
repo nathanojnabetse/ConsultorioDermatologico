@@ -17,7 +17,7 @@
                 <td>@item.cedula</td>
                 <td>@item.nombres</td>
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Paciente", new { idPaciente = @item.idPaciente }, new { @class = "fa fa-edit btn btn-primary" })
+                    @Html.ActionLink(" ", "InformacionPaciente", "HistoriaClinica", new { idPaciente = @item.idPaciente }, new { @class = "fa fa-edit btn btn-primary" })
                     @*<button type="button" onclick=" mostrarPopup(@item.idPaciente)" class=" fa fa-trash btn btn-danger" data-toggle="modal" data-target="#exampleModal"></button>*@
                 </td>
             </tr>
