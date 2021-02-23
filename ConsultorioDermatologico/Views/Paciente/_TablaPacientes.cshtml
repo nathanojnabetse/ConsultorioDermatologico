@@ -3,10 +3,10 @@
 
 <table class="table table-hover table-bordered">
     <thead>
-        <tr>
+        <tr class="tdCentrar font-weight-bold">
             <td>@Html.LabelFor(p => Model[0].cedula)</td>
             <td>@Html.LabelFor(p => Model[0].nombres)</td>
-            <td>Acciones</td>
+            <td>Ver paciente</td>
         </tr>
     </thead>
 
@@ -16,9 +16,10 @@
             <tr>
                 <td>@item.cedula</td>
                 <td>@item.nombres</td>
-                <td>
-                    @Html.ActionLink(" ", "InformacionPaciente", "HistoriaClinica", new { idPaciente = @item.idPaciente }, new { @class = "fa fa-edit btn btn-primary" })
-                    @*<button type="button" onclick=" mostrarPopup(@item.idPaciente)" class=" fa fa-trash btn btn-danger" data-toggle="modal" data-target="#exampleModal"></button>*@
+                <td >
+                    <div class="row justify-content-center">
+                        @Html.ActionLink(" ", "InformacionPaciente", "HistoriaClinica", new { idPaciente = @item.idPaciente }, new { @class = "fa fa-info btn btn-success" })
+                    </div>                                       
                 </td>
             </tr>
         }

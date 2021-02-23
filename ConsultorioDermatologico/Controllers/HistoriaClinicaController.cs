@@ -15,6 +15,7 @@ namespace ConsultorioDermatologico.Controllers
             return View();
         }
 
+        //retorna la info del paciente
         public ActionResult InformacionPaciente(int idPaciente)
         {
             llenarDropDown();

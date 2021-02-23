@@ -15,9 +15,11 @@
     InsertionMode = InsertionMode.Replace
 }, new { @id = "frmFiltro" }))
 {
-
-    @Html.Label("Búsqueda por nombre o número de cedula: ")
-    @Html.TextBox("busqueda", null, new { @class = "form-control" })
+    <div class="row" style="padding:1em">
+        @Html.Label("Búsqueda por nombre o número de cedula: ")
+        @Html.TextBox("busqueda", null, new { @class = "form-control" })
+    </div>
+    
 
     <div id="divListaUsuarios">
         @Html.Partial("_TablaPacientes", Model)

@@ -372,7 +372,7 @@ namespace ConsultorioDermatologico.Controllers
                     tblContactoEmergencia.correoContactoEmergencia = registroPacienteCLS.contactoEmergencia.correoContactoEmergencia;
 
                     //Creación y guardado de la historia clinica
-                    tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica==tblPaciente.idPaciente).First();
+                    tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente==tblPaciente.idPaciente).First();
                     //tblHistoriaClinica.idPaciente = idPaciente;
                     tblHistoriaClinica.idSeguroMedico = registroPacienteCLS.historiaClinica.idSeguroMedico;
                     tblHistoriaClinica.idTipoSangre = registroPacienteCLS.historiaClinica.idTipoSangre;
@@ -415,6 +415,20 @@ namespace ConsultorioDermatologico.Controllers
 
 
                 }
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult Desactivar(int idPaciente)
+        {
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente.Equals(idPaciente)).First();
+                tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == tblPaciente.idPaciente).First();
+                tblPaciente.habilitado = 0;
+                tblHistoriaClinica.habilitado = 0;
+
+                bd.SaveChanges();
                 return RedirectToAction("Index");
             }
         }
