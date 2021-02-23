@@ -1,0 +1,35 @@
+﻿@using ConsultorioDermatologico.Models;
+@model List<EvolucionCLS>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+    <h2 style="padding-top:1em">Visitas del paciente @ViewBag.nombrePaciente</h2>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr class="tdCentrar font-weight-bold">
+            <td>@Html.LabelFor(p => Model[0].fechaVisita)</td>
+            <td>@Html.LabelFor(p => Model[0].motivoConsulta)</td>
+            <td>Ver evolución</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.fechaVisita.ToString("yyyy-MM-dd")</td>
+                <td>@item.motivoConsulta</td>
+                <td>
+                    <div class="row justify-content-center">
+                        @Html.ActionLink(" ", "EvolucionPaciente", "HistoriaClinica", new { idPaciente = @item.idEvolucion }, new { @class = "fa fa-info btn btn-success" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

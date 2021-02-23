@@ -45,7 +45,7 @@
     @*Evolucion*@
     <div class="col-sm-4">
         <div class="row justify-content-center">
-            @Html.ActionLink("Evolución", "Index", "Evolucion", null, new { @class = "btn-primary btn" })
+            @Html.ActionLink("Evolución", "Index", "Evolucion", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-primary btn" })
         </div>
     </div>
 

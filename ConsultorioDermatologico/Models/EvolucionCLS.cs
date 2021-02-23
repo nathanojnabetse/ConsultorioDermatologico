@@ -36,7 +36,10 @@ namespace ConsultorioDermatologico.Models
         [StringLength(5000, ErrorMessage = "Longitud Máxima 5000")]
         [Display(Name = "Recomendaciones")]
         public string recomendaciones { get; set; }
+        [Display(Name = "Fecha de visitas")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fechaVisita { get; set; }
-        public int a { get; set; }
+        public int habilitado { get; set; }
     }
 }
