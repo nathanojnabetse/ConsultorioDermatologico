@@ -17,7 +17,7 @@
 
 <h2 style="padding-top:1em">Paciente @Model.paciente.nombres @Model.paciente.apellidos</h2>
 
-<div class="row border" style="padding:1em">
+<div class="row border espacio">
     @*Regresar *@
     <div class="col-sm-2">
         <div class="row justify-content-center">
@@ -57,7 +57,7 @@
         <div class="row">
             @*Formulario para los datos personales del paciente*@
 
-            <div class="col-sm-6" style="padding:1em">
+            <div class="col-sm-6  espacio">
                 <h4>Datos personales</h4>
                 <div>
                     @if (Model != null && Model.mensajeError != null)
@@ -65,7 +65,7 @@
                         @Html.Label(Model.mensajeError, new { @class = "text-danger" })
                     }
                 </div>
-                <div class="border" style="padding:1em">
+                <div class="border espacio">
                     <div>
                         @Html.LabelFor(p => p.paciente.nombres)
                         @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12", @readOnly = true })
@@ -167,7 +167,7 @@
                         @Html.ValidationMessage("paciente.idReligion", new { @class = "text-danger" })
                     </div>
                     <div style="padding-top:1em">
-                        <div class="border" style="padding:1em">
+                        <div class="border espacio">
                             <h6 class="text-muted">Datos contacto de Emergencia</h6>
                             <div>
 
@@ -195,9 +195,9 @@
                 </div>
             </div>
 
-            <div class="col-sm-6" style="padding:1em">
+            <div class="col-sm-6  espacio">
                 <h4>Antecedentes Clínicos</h4>
-                <div class="border" style="padding:1em">
+                <div class="border espacio">
                     <div>
                         @Html.LabelFor(p => p.historiaClinica.idSeguroMedico)
                         @Html.DropDownList("historiaClinica.idSeguroMedico", listaSeguros, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
@@ -246,7 +246,7 @@
                     {
                         <div style="padding-top:1em; padding-bottom:1em;">
                             <div id='collapsediv1' class='border'>
-                                <div style="padding:1em">
+                                <div class="espacio">
                                     <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
                                     <div>
                                         @Html.LabelFor(p => p.antecedenteGinecoObstetrico.menarquia)
@@ -312,7 +312,7 @@
                     {
                         <div style="padding-top:1em; padding-bottom:1em;">
                             <div id='collapsediv2' class='border'>
-                                <div style="padding:1em">
+                                <div class="espacio">
                                     <h6 class="text-muted">Antecedentes reproductivos masculinos</h6>
                                     <div>
                                         @Html.LabelFor(p => p.antecedenteReprodMasculino.ets)

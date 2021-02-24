@@ -22,7 +22,7 @@
     <div class="row">
         @*Formulario para los datos personales del paciente*@
 
-        <div class="col-sm-6" style="padding:1em">
+        <div class="col-sm-6 espacio">
             <h4>Datos personales</h4>
             <div>
                 @if (Model != null && Model.mensajeError != null)
@@ -30,7 +30,7 @@
                     @Html.Label(Model.mensajeError, new { @class = "text-danger" })
                 }
             </div>
-            <div class="border" style="padding:1em">
+            <div class="border espacio">
                 <div>
                     @Html.LabelFor(p => p.paciente.nombres)
                     @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12" })
@@ -132,7 +132,7 @@
                     @Html.ValidationMessage("paciente.idReligion", new { @class = "text-danger" })
                 </div>
                 <div style="padding-top:1em">
-                    <div class="border" style="padding:1em">
+                    <div class="border  espacio">
                         <h6 class="text-muted">Datos contacto de Emergencia</h6>
                         <div>
 
@@ -160,9 +160,9 @@
             </div>
         </div>
 
-        <div class="col-sm-6" style="padding:1em">
+        <div class="col-sm-6  espacio">
             <h4>Antecedentes Clínicos</h4>
-            <div class="border" style="padding:1em">
+            <div class="border  espacio">
                 <div>
                     @Html.LabelFor(p => p.historiaClinica.idSeguroMedico)
                     @Html.DropDownList("historiaClinica.idSeguroMedico", listaSeguros, null, new { @class = "form-control col-md-12" })
@@ -208,7 +208,7 @@
                     <label>Antecedentes gineco-obstetricos</label>
                 </div>
                 <div id='collapsediv1' class='collapse border'>
-                    <div style="padding:1em">
+                    <div class="espacio">
                         <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
                         <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.menarquia)
@@ -272,7 +272,7 @@
                     <label>Antecedentes reproductivos masculinos</label>
                 </div>
                 <div id='collapsediv2' class='collapse border'>
-                    <div style="padding:1em">
+                    <div class="espacio">
                         <h6 class="text-muted">Antecedentes reproductivos masculinos</h6>
                         <div>
                             @Html.LabelFor(p => p.antecedenteReprodMasculino.ets)
@@ -313,7 +313,7 @@
                 </div>
             </div>
 
-            <div class="row" style="padding:1em">
+            <div class="row espacio" >
                 <div class="col-sm-6">
                     <div class="row justify-content-center">
                         <input type="submit" class="btn btn-primary " value="Guardar" />

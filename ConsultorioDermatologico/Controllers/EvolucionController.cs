@@ -16,20 +16,11 @@ namespace ConsultorioDermatologico.Controllers
            
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-                //List<SelectListItem> listaIdentidadGenero;
-                //using (var bd = new BDD_ConsultorioDermatologicoEntities())
-                //{
-                //    listaIdentidadGenero = (from identidadGenero in bd.tblIdentidadGenero
-                //                            select new SelectListItem
-                //                            {
-                //                                Text = identidadGenero.nombreIdentidadGenero,
-                //                                Value = identidadGenero.idIdentidadGenero.ToString()
-                //                            }).ToList();
-                //    listaIdentidadGenero.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
-                //    ViewBag.listaIdentidadGenero = listaIdentidadGenero;
-                //}
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente.Equals(idPaciente)).First();
                 ViewBag.nombrePaciente = tblPaciente.nombres+ " " +tblPaciente.apellidos;
+                ViewBag.idPaCiente = tblPaciente.idPaciente;
+                tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == tblPaciente.idPaciente).First();
+                ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
 
                 listaEvoluciones = (from evolucion in bd.tblEvolucion
                                     join historiaClinica in bd.tblHistoriaClinica
@@ -45,6 +36,22 @@ namespace ConsultorioDermatologico.Controllers
                                     }).ToList();
             }
                 return View(listaEvoluciones);
+        }
+
+        public ActionResult Agregar(int idHistoriaClinica)
+        {
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == idHistoriaClinica).First();
+                ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
+
+                tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente== tblHistoriaClinica.idPaciente).First();
+                ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
+
+                ViewBag.fechaActual = System.DateTime.Now.ToString("yyyy-MM-dd");
+            }
+
+                return View();
         }
     }
 }

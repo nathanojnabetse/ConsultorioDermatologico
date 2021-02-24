@@ -22,9 +22,14 @@ footer {
     justify-content: flex-end;
     padding: 16px
 }
+
 .tdCentrar {
     text-align: center;
     vertical-align: middle;
+}
+
+.espacio {
+    padding:1em;
 }
 /*#scrollToTopBtn {
     background-color: black;
