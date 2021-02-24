@@ -57,6 +57,7 @@
           <ScalarProperty Name="examenFisico" ColumnName="examenFisico" />
           <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
           <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="nombreMapa" ColumnName="nombreMapa" />
           <ScalarProperty Name="mapaCorporal" ColumnName="mapaCorporal" />
           <ScalarProperty Name="idHistoriaClinica" ColumnName="idHistoriaClinica" />
           <ScalarProperty Name="idEvolucion" ColumnName="idEvolucion" />

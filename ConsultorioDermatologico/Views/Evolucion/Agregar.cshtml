@@ -6,220 +6,328 @@
 }
 
 <h2 style="padding-top:1em">Agregar evolución</h2>
+<div id="error" class="text-danger"></div>
 
-<div class="container">
-    <div class="row">
+@using (Ajax.BeginForm("Guardar", "Evolucion", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "Guardar",
+    UpdateTargetId = "error"
+}, new { enctype = "multipart/form-data" }))
+{
+    @Html.Hidden("idHistoriaClinica", new { @Value = ViewBag.idHistoriaClinica })
+    <div class="container">
+        <div class="row">
 
-        <div class="col-sm-4 col-12 espacio">
-            <div class="border espacio">
-                MAPA CUERPO HUMANO
-                <canvas id="pizarra"></canvas>
+            <div class="col-sm-4 col-12 espacio">
+                <div class="border espacio">
+                    MAPA CUERPO HUMANO
+                    <canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>
+                    @Html.Hidden("mapaCorporal")
+                </div>
             </div>
-        </div>
 
-        <div class="col-sm-8">
-            <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @ViewBag.fechaActual</h6>
-                 
+            <div class="col-sm-8">
+                <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @ViewBag.fechaActual</h6>
 
-            <div class="row">
-                <div class="espacio col-md-6">
-                    <div class="border espacio">
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.motivoConsulta)
-                            @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12" ,@style="height: 8em;"} })
-                            @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
+
+                <div class="row">
+                    <div class="espacio col-md-6">
+                        <div class="border espacio">
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.motivoConsulta)
+                                @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.diagnostico)
+                                @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
+                            </div>
                         </div>
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.diagnostico)
-                            @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                            @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="espacio col-md-6">
+                        <div class="border espacio">
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.prescripcion)
+                                @Html.EditorFor(p => p.evolucion.prescripcion, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.prescripcion", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.recomendaciones)
+                                @Html.EditorFor(p => p.evolucion.recomendaciones, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.recomendaciones", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="espacio col-md-6">
-                    <div class="border espacio">
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.prescripcion)
-                            @Html.EditorFor(p => p.evolucion.prescripcion, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                            @Html.ValidationMessage("evolucion.prescripcion", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.recomendaciones)
-                            @Html.EditorFor(p => p.evolucion.recomendaciones, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                            @Html.ValidationMessage("evolucion.recomendaciones", new { @class = "text-danger" })
-                        </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 espacio">
+                <div class="border espacio">
+                    <div>
+                        @Html.LabelFor(p => p.evolucion.examenFisico)
+                        @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                        @Html.ValidationMessage("evolucion.examenFisico", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 espacio">
+                <div class="border espacio" style="height:12em; overflow-y: scroll;">
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
+                        <span>1.-</span>
+                        @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
+                        <span>2.-</span>
+                        @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
+                        <span>3.-</span>
+                        @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
+                        <span>4.-</span>
+                        @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
+                        <span>5.-</span>
+                        @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" />
+                        <span>6.-</span>
+                        @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-sm-4 espacio">
-            <div class="border espacio">
-                <div>
-                    @Html.LabelFor(p => p.evolucion.examenFisico)
-                    @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                    @Html.ValidationMessage("evolucion.examenFisico", new { @class = "text-danger" })
-                </div>
-            </div>
+        <div>
+            @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-primary btn" })
+            <button type="submit" class="btn btn-primary" onclick="UploadPic()">Guardar</button>
         </div>
-        <div class="col-sm-8 espacio">
-            <div class="border espacio"  style="height:12em; overflow-y: scroll;">
-                <div>
-                    <img class="img-responsive col-sm-6" id="imgFoto1" style="display:block" />
-                    @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
-                </div>
-                <div>
-                    <img class="img-responsive col-sm-6" id="imgFoto2" style="display:block" />
-                    @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
-                </div>
-                <div>
-                    <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
-                    @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3"})
-                </div>               
-                <div>
-                    <img class="img-responsive col-sm-4" id="imgFoto4" style="display:block" />
-                    @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
-                </div>
-                <div>
-                    <img class="img-responsive col-sm-4" id="imgFoto5" style="display:block" />
-                    @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
-                </div>
-                <div>
-                    <img class="img-responsive col-sm-4" id="imgFoto6" style="display:block" />
-                    @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
-                </div>
-            </div>
-        </div>
+
     </div>
+}
 
-
-
-</div>
-
+@Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idHistoriaClinica = ViewBag.idHistoriaClinica }))
 
 <script>
-  //======================================================================
-  // VARIABLES
-  //======================================================================
-  let miCanvas = document.querySelector('#pizarra');
-  let lineas = [];
-  let correccionX = 0;
-  let correccionY = 0;
-  let pintarLinea = false;
-  // Marca el nuevo punto
-  let nuevaPosicionX = 0;
-  let nuevaPosicionY = 0;
+    //======================================================================
+    // VARIABLES
+    //======================================================================
+    let miCanvas = document.querySelector('#pizarra');
+    let lineas = [];
+    let correccionX = 0;
+    let correccionY = 0;
+    let pintarLinea = false;
+    // Marca el nuevo punto
+    let nuevaPosicionX = 0;
+    let nuevaPosicionY = 0;
 
-  let posicion = miCanvas.getBoundingClientRect()
-  correccionX = posicion.x;
-  correccionY = posicion.y;
+    let posicion = miCanvas.getBoundingClientRect()
+    correccionX = posicion.x;
+    correccionY = posicion.y;
 
-//miCanvas.width = 300;
-//miCanvas.height = 300;
+    //miCanvas.width = 300;
+    //miCanvas.height = 300;
 
-  var heightRatio = 1;
-  miCanvas.height = miCanvas.width * heightRatio;
+    var heightRatio = 1;
+    miCanvas.height = miCanvas.width * heightRatio;
 
-  //======================================================================
-  // FUNCIONES
-  //======================================================================
+    //======================================================================
+    // FUNCIONES
+    //======================================================================
 
-  /**
-   * Funcion que empieza a dibujar la linea
-   */
-  function empezarDibujo () {
-      pintarLinea = true;
-      lineas.push([]);
-  };
+    /**
+     * Funcion que empieza a dibujar la linea
+     */
+    function empezarDibujo() {
+        pintarLinea = true;
+        lineas.push([]);
+    };
 
-  /**
-   * Funcion que guarda la posicion de la nueva línea
-   */
-  function guardarLinea() {
-      lineas[lineas.length - 1].push({
-          x: nuevaPosicionX,
-          y: nuevaPosicionY
-      });
-  }
+    /**
+     * Funcion que guarda la posicion de la nueva línea
+     */
+    function guardarLinea() {
+        lineas[lineas.length - 1].push({
+            x: nuevaPosicionX,
+            y: nuevaPosicionY
+        });
+    }
 
-  /**
-   * Funcion dibuja la linea
-   */
-  function dibujarLinea (event) {
-      event.preventDefault();
-      if (pintarLinea) {
-          let ctx = miCanvas.getContext('2d')
-          // Estilos de linea
-          ctx.lineJoin = ctx.lineCap = 'round';
-          ctx.lineWidth = 1;
-          // Color de la linea
-          ctx.strokeStyle = '#f00';
-          // Marca el nuevo punto
-          if (event.changedTouches == undefined) {
-              // Versión ratón
-              nuevaPosicionX = event.layerX;
-              nuevaPosicionY = event.layerY;
-          } else {
-              // Versión touch, pantalla tactil
-              nuevaPosicionX = event.changedTouches[0].pageX - correccionX;
-              nuevaPosicionY = event.changedTouches[0].pageY - correccionY;
-          }
-          // Guarda la linea
-          guardarLinea();
-          // Redibuja todas las lineas guardadas
-          ctx.beginPath();
-          lineas.forEach(function (segmento) {
-              ctx.moveTo(segmento[0].x, segmento[0].y);
-              segmento.forEach(function (punto, index) {
-                  ctx.lineTo(punto.x, punto.y);
-              });
-          });
-          ctx.stroke();
-      }
-  }
+    /**
+     * Funcion dibuja la linea
+     */
+    function dibujarLinea(event) {
+        event.preventDefault();
+        if (pintarLinea) {
+            let ctx = miCanvas.getContext('2d')
+            // Estilos de linea
+            ctx.lineJoin = ctx.lineCap = 'round';
+            ctx.lineWidth = 1;
+            // Color de la linea
+            ctx.strokeStyle = '#f00';
+            // Marca el nuevo punto
+            if (event.changedTouches == undefined) {
+                // Versión ratón
+                nuevaPosicionX = event.layerX;
+                nuevaPosicionY = event.layerY;
+            } else {
+                // Versión touch, pantalla tactil
+                nuevaPosicionX = event.changedTouches[0].pageX - correccionX;
+                nuevaPosicionY = event.changedTouches[0].pageY - correccionY;
+            }
+            // Guarda la linea
+            guardarLinea();
+            // Redibuja todas las lineas guardadas
+            ctx.beginPath();
+            lineas.forEach(function (segmento) {
+                ctx.moveTo(segmento[0].x, segmento[0].y);
+                segmento.forEach(function (punto, index) {
+                    ctx.lineTo(punto.x, punto.y);
+                });
+            });
+            ctx.stroke();
+        }
+    }
 
-  /**
-   * Funcion que deja de dibujar la linea
-   */
-  function pararDibujar () {
-      pintarLinea = false;
-      guardarLinea();
-  }
+    /**
+     * Funcion que deja de dibujar la linea
+     */
+    function pararDibujar() {
+        pintarLinea = false;
+        guardarLinea();
+    }
 
-  //======================================================================
-  // EVENTOS
-  //======================================================================
+    //======================================================================
+    // EVENTOS
+    //======================================================================
 
-  // Eventos raton
-  miCanvas.addEventListener('mousedown', empezarDibujo, false);
-  miCanvas.addEventListener('mousemove', dibujarLinea, false);
-  miCanvas.addEventListener('mouseup', pararDibujar, false);
+    // Eventos raton
+    miCanvas.addEventListener('mousedown', empezarDibujo, false);
+    miCanvas.addEventListener('mousemove', dibujarLinea, false);
+    miCanvas.addEventListener('mouseup', pararDibujar, false);
 
-  // Eventos pantallas táctiles
-  miCanvas.addEventListener('touchstart', empezarDibujo, false);
-  miCanvas.addEventListener('touchmove', dibujarLinea, false);
+    // Eventos pantallas táctiles
+    miCanvas.addEventListener('touchstart', empezarDibujo, false);
+    miCanvas.addEventListener('touchmove', dibujarLinea, false);
 
-  //*****resize
- /* $("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-    $(window).on("resize", function(){         				$("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-    });*/
+    //*****resize
+    /* $("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
+       $(window).on("resize", function(){         				$("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
+       });*/
 
+    /////VIsualizacipon de imagenes al agregar
 
-
-    var imgFoto = document.getElementById("imgFoto1");
-    var fupFoto = document.getElementById("fupFoto1");
-    fupFoto.onchange = function () {
-        var files = fupFoto.files[0];
+    var imgFoto1 = document.getElementById("imgFoto1");
+    var fupFoto1 = document.getElementById("fupFoto1");
+    fupFoto1.onchange = function () {
+        var files = fupFoto1.files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
-            imgFoto.src = reader.result;
+            imgFoto1.src = reader.result;
             document.getElementById("nombreFoto").value = files.name;
         }
         reader.readAsDataURL(files);
+    }
+    var imgFoto2 = document.getElementById("imgFoto2");
+    var fupFoto2 = document.getElementById("fupFoto2");
+    fupFoto2.onchange = function () {
+        var files = fupFoto2.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            imgFoto2.src = reader.result;
+            document.getElementById("nombreFoto").value = files.name;
+        }
+        reader.readAsDataURL(files);
+    }
+    var imgFoto3 = document.getElementById("imgFoto3");
+    var fupFoto3 = document.getElementById("fupFoto3");
+    fupFoto3.onchange = function () {
+        var files = fupFoto3.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            imgFoto3.src = reader.result;
+            document.getElementById("nombreFoto").value = files.name;
+        }
+        reader.readAsDataURL(files);
+    }
+    var imgFoto4 = document.getElementById("imgFoto4");
+    var fupFoto4 = document.getElementById("fupFoto4");
+    fupFoto4.onchange = function () {
+        var files = fupFoto4.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            imgFoto4.src = reader.result;
+            document.getElementById("nombreFoto").value = files.name;
+        }
+        reader.readAsDataURL(files);
+    }
+    var imgFoto5 = document.getElementById("imgFoto5");
+    var fupFoto5 = document.getElementById("fupFoto5");
+    fupFoto5.onchange = function () {
+        var files = fupFoto5.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            imgFoto5.src = reader.result;
+            document.getElementById("nombreFoto").value = files.name;
+        }
+        reader.readAsDataURL(files);
+    }
+    var imgFoto6 = document.getElementById("imgFoto6");
+    var fupFoto6 = document.getElementById("fupFoto6");
+    fupFoto6.onchange = function () {
+        var files = fupFoto6.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            imgFoto6.src = reader.result;
+            document.getElementById("nombreFoto").value = files.name;
+        }
+        reader.readAsDataURL(files);
+    }
+
+
+
+    function Guardar(rpta) {
+        if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6" ) {
+            alert("Se ejecuto correctame")
+            //var url = $("#RedirectTo").val();
+            //location.href = url;
+        } else {
+            alert("Ocurrió un error CCCCC")
+        }
+    }
+
+
+    function UploadPic() {
+
+        // Generate the image data
+        var Pic = document.getElementById("pizarra").toDataURL("image/png");
+        Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
+        document.getElementById("mapaCorporal").value = Pic;
+        //// Sending the image data to Server
+        //$.ajax({
+        //    type: 'POST',
+        //    url: 'Save_Picture.aspx/UploadPic',
+        //    data: '{ "imageData" : "' + Pic + '" }',
+        //    contentType: 'application/json; charset=utf-8',
+        //    dataType: 'json',
+        //    success: function (msg) {
+        //        alert("Done, Picture Uploaded.");
+        //    }
+        //});
     }
 
 </script>

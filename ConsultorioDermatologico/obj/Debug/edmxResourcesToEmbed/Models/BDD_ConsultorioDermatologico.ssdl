@@ -49,6 +49,7 @@
     <Property Name="idEvolucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idHistoriaClinica" Type="int" />
     <Property Name="mapaCorporal" Type="varbinary(max)" />
+    <Property Name="nombreMapa" Type="varchar" MaxLength="100" />
     <Property Name="diagnostico" Type="varchar" MaxLength="5000" />
     <Property Name="motivoConsulta" Type="varchar" MaxLength="5000" />
     <Property Name="examenFisico" Type="varchar" MaxLength="5000" />
