@@ -379,6 +379,7 @@
     <Content Include="Views\HistoriaClinica\InformacionPaciente.cshtml" />
     <Content Include="Views\Evolucion\Index.cshtml" />
     <Content Include="Views\Evolucion\Agregar.cshtml" />
+    <Content Include="Views\Evolucion\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -82,31 +82,37 @@
                         <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
                         <span>1.-</span>
                         @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
+                        @Html.Hidden("foto1NombreFoto")
                     </div>
                     <div class="espacio">
                         <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
                         <span>2.-</span>
                         @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
+                        @Html.Hidden("foto2NombreFoto")
                     </div>
                     <div class="espacio">
                         <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
                         <span>3.-</span>
                         @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
+                        @Html.Hidden("foto3NombreFoto")
                     </div>
                     <div class="espacio">
                         <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
                         <span>4.-</span>
                         @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
+                        @Html.Hidden("foto4NombreFoto")
                     </div>
                     <div class="espacio">
                         <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
                         <span>5.-</span>
                         @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
+                        @Html.Hidden("foto5NombreFoto")
                     </div>
                     <div class="espacio">
                         <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" />
                         <span>6.-</span>
                         @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
+                        @Html.Hidden("foto6NombreFoto")
                     </div>
                 </div>
             </div>
@@ -238,7 +244,7 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             imgFoto1.src = reader.result;
-            document.getElementById("nombreFoto").value = files.name;
+            document.getElementById("foto1NombreFoto").value = files.name;
         }
         reader.readAsDataURL(files);
     }
@@ -249,7 +255,7 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             imgFoto2.src = reader.result;
-            document.getElementById("nombreFoto").value = files.name;
+            document.getElementById("foto2NombreFoto").value = files.name;
         }
         reader.readAsDataURL(files);
     }
@@ -260,7 +266,7 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             imgFoto3.src = reader.result;
-            document.getElementById("nombreFoto").value = files.name;
+            document.getElementById("foto3NombreFoto").value = files.name;
         }
         reader.readAsDataURL(files);
     }
@@ -271,7 +277,7 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             imgFoto4.src = reader.result;
-            document.getElementById("nombreFoto").value = files.name;
+            document.getElementById("foto4NombreFoto").value = files.name;
         }
         reader.readAsDataURL(files);
     }
@@ -282,7 +288,7 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             imgFoto5.src = reader.result;
-            document.getElementById("nombreFoto").value = files.name;
+            document.getElementById("foto5NombreFoto").value = files.name;
         }
         reader.readAsDataURL(files);
     }
@@ -293,7 +299,7 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             imgFoto6.src = reader.result;
-            document.getElementById("nombreFoto").value = files.name;
+            document.getElementById("foto6NombreFoto").value = files.name;
         }
         reader.readAsDataURL(files);
     }
@@ -315,6 +321,8 @@
 
         // Generate the image data
         var Pic = document.getElementById("pizarra").toDataURL("image/png");
+        
+        location.href = Pic;
         Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
         document.getElementById("mapaCorporal").value = Pic;
         //// Sending the image data to Server

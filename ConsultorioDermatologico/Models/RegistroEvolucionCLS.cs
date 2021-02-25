@@ -8,6 +8,7 @@ namespace ConsultorioDermatologico.Models
     public class RegistroEvolucionCLS
     {
         public EvolucionCLS evolucion { get; set; }
+
         public FotoCLS foto1 { get; set; }
         public FotoCLS foto2 { get; set; }
         public FotoCLS foto3 { get; set; }

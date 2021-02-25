@@ -11,5 +11,6 @@ namespace ConsultorioDermatologico.Models
         public int idEvolucion { get; set; }
         public string foto { get; set; } //string para recuperar
         public string nombreFoto { get; set; }
+        public string extension { get; set; }
     }
 }
