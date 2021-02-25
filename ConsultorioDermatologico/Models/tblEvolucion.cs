@@ -22,7 +22,7 @@ namespace ConsultorioDermatologico.Models
     
         public int idEvolucion { get; set; }
         public Nullable<int> idHistoriaClinica { get; set; }
-        public byte[] mapaCorporal { get; set; }
+        public string mapaCorporal { get; set; }
         public string nombreMapa { get; set; }
         public string diagnostico { get; set; }
         public string motivoConsulta { get; set; }

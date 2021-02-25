@@ -132,7 +132,7 @@
     </Key>
     <Property Name="idEvolucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idHistoriaClinica" Type="Int32" />
-    <Property Name="mapaCorporal" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="mapaCorporal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="nombreMapa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="diagnostico" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
     <Property Name="motivoConsulta" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />

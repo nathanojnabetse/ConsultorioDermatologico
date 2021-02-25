@@ -5,9 +5,8 @@
     ViewBag.Title = "Editar";
 }
 
-<h2>Editar Evolucion</h2>
 
-<h2 style="padding-top:1em">Agregar evolución</h2>
+<h2 style="padding-top:1em">Editar Evolucion</h2>
 <div id="error" class="text-danger"></div>
 
 @using (Ajax.BeginForm("Guardar", "Evolucion", null, new AjaxOptions///EDITAR cambiar estas cosas
@@ -25,12 +24,7 @@
                 <div class="border espacio">
                     MAPA CUERPO HUMANO
                     @*<canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>*@
-                    <div class="espacio">
-                        <img class="img-responsive col-sm-12" id="imgFotomp" style="display:block" src="data:image/jpg;base64, @Model.evolucion.mapaCorporal" />
-                        <span>3.-</span>
-                        @Html.TextBox("fotomp", "", new { type = "file", id = "fupFotomp" })
-                    </div>
-
+                        <img class="img-responsive col-sm-12" id="imgFotomp" style="display:block; background: url(../../Resources/mapaCorporal.png);" src="data:image/jpg;base64, @Model.evolucion.mapaCorporal" />
                 </div>
             </div>
 

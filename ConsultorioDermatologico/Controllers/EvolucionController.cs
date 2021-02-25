@@ -86,16 +86,16 @@ namespace ConsultorioDermatologico.Controllers
                 }
                 else
                 {
-                    //Imagen del canvas 
-                    var streamMapa = new MemoryStream(); //creacion de un stream a partir del string
-                    var writer = new StreamWriter(streamMapa);
-                    writer.Write(mapaCorporal);
-                    writer.Flush();
-                    streamMapa.Position = 0;
-                    //paso al array de bytes del stream obtenido
-                    byte[] fotoMapaCorporalBD = null;
-                    BinaryReader lector = new BinaryReader(streamMapa);
-                    fotoMapaCorporalBD = lector.ReadBytes((int)streamMapa.Length);
+                    ////Imagen del canvas 
+                    //var streamMapa = new MemoryStream(); //creacion de un stream a partir del string
+                    //var writer = new StreamWriter(streamMapa);
+                    //writer.Write(mapaCorporal);
+                    //writer.Flush();
+                    //streamMapa.Position = 0;
+                    ////paso al array de bytes del stream obtenido
+                    //byte[] fotoMapaCorporalBD = null;
+                    //BinaryReader lector = new BinaryReader(streamMapa);
+                    //fotoMapaCorporalBD = lector.ReadBytes((int)streamMapa.Length);
 
                     using (var bd = new BDD_ConsultorioDermatologicoEntities())
                     {
@@ -111,7 +111,9 @@ namespace ConsultorioDermatologico.Controllers
                         //if tiitulo o edicion ver despues si se añade o no
                         tblEvolucion tblEvolucion = new tblEvolucion();
                         tblEvolucion.idHistoriaClinica = idHistoriaClinica;
-                        tblEvolucion.mapaCorporal = fotoMapaCorporalBD;
+
+                        tblEvolucion.mapaCorporal = mapaCorporal;
+
                         tblEvolucion.nombreMapa = "MapaCorporal" + idHistoriaClinica + ".png";
                         tblEvolucion.diagnostico = registroEvolucionCLS.evolucion.diagnostico;
                         tblEvolucion.motivoConsulta = registroEvolucionCLS.evolucion.motivoConsulta;
@@ -241,7 +243,7 @@ namespace ConsultorioDermatologico.Controllers
                 evolucionCLS.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
                 evolucionCLS.nombreMapa = tblEvolucion.nombreMapa;
                 evolucionCLS.extension = Path.GetExtension(tblEvolucion.nombreMapa);
-                evolucionCLS.mapaCorporal = Convert.ToBase64String(tblEvolucion.mapaCorporal);
+                evolucionCLS.mapaCorporal = tblEvolucion.mapaCorporal;
 
                 evolucionCLS.diagnostico = tblEvolucion.diagnostico;
                 evolucionCLS.motivoConsulta = tblEvolucion.motivoConsulta;

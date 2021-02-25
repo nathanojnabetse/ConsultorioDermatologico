@@ -53,7 +53,7 @@
           </Key>
           <Property Name="idEvolucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idHistoriaClinica" Type="int" />
-          <Property Name="mapaCorporal" Type="varbinary(max)" />
+          <Property Name="mapaCorporal" Type="varchar(max)" />
           <Property Name="nombreMapa" Type="varchar" MaxLength="100" />
           <Property Name="diagnostico" Type="varchar" MaxLength="5000" />
           <Property Name="motivoConsulta" Type="varchar" MaxLength="5000" />
@@ -596,7 +596,7 @@
           </Key>
           <Property Name="idEvolucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idHistoriaClinica" Type="Int32" />
-          <Property Name="mapaCorporal" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="mapaCorporal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="nombreMapa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="diagnostico" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="motivoConsulta" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
