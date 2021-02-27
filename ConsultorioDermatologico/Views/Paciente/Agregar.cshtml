@@ -21,7 +21,6 @@
 <div class="container">
     <div class="row">
         @*Formulario para los datos personales del paciente*@
-
         <div class="col-sm-6 espacio">
             <h4>Datos personales</h4>
             <div>
@@ -326,75 +325,69 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        
-
-
-    </div>
-    
+    </div>    
 </div>
 }
     <footer>
         <button id="scrollToTopBtn" class="btn btn-secondary" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
     </footer>
 
-    <script>
-        var scrollToTopBtn = document.getElementById("scrollToTopBtn")
-        var rootElement = document.documentElement
+<script>
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn")
+    var rootElement = document.documentElement
 
-        function scrollToTop() {
-            // Scroll to top logic
-            rootElement.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            })
+    function scrollToTop() {
+        // Scroll to top logic
+        rootElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+    scrollToTopBtn.addEventListener("click", scrollToTop)
+
+    function antecedentesGO() {
+        if ($('#chkAntecedentesGO').is(':checked')) {
+            //Activo el checkbox
+            $('#ago1').prop("required", true);
+            $('#ago2').prop("required", true);
+            $('#ago3').prop("required", true);
+            $('#ago4').prop("required", true);
+            $('#ago5').prop("required", true);
+            $('#ago6').prop("required", true);
+            $('#ago7').prop("required", true);
+            $('#ago8').prop("required", true);
+            $('#ago9').prop("required", true);
+            $('#ago10').prop("required", true);
+            $('#ago11').prop("required", true);
         }
-        scrollToTopBtn.addEventListener("click", scrollToTop)
-
-
-        function antecedentesGO() {
-            if ($('#chkAntecedentesGO').is(':checked')) {
-               //Activo el checkbox
-                $('#ago1').prop("required", true);
-                $('#ago2').prop("required", true);
-                $('#ago3').prop("required", true);
-                $('#ago4').prop("required", true);
-                $('#ago5').prop("required", true);
-                $('#ago6').prop("required", true);
-                $('#ago7').prop("required", true);
-                $('#ago8').prop("required", true);
-                $('#ago9').prop("required", true);
-                $('#ago10').prop("required", true);
-                $('#ago11').prop("required", true);
-            }
-            else {
-                //Desactivo el checkbox
-                $('#ago1').removeAttr('required')
-                $('#ago2').removeAttr('required')
-                $('#ago3').removeAttr('required')
-                $('#ago4').removeAttr('required')
-                $('#ago5').removeAttr('required')
-                $('#ago6').removeAttr('required')
-                $('#ago7').removeAttr('required')
-                $('#ago8').removeAttr('required')
-                $('#ago9').removeAttr('required')
-                $('#ago10').removeAttr('required')
-                $('#ago11').removeAttr('required')
-            }
+        else {
+            //Desactivo el checkbox
+            $('#ago1').removeAttr('required')
+            $('#ago2').removeAttr('required')
+            $('#ago3').removeAttr('required')
+            $('#ago4').removeAttr('required')
+            $('#ago5').removeAttr('required')
+            $('#ago6').removeAttr('required')
+            $('#ago7').removeAttr('required')
+            $('#ago8').removeAttr('required')
+            $('#ago9').removeAttr('required')
+            $('#ago10').removeAttr('required')
+            $('#ago11').removeAttr('required')
         }
+    }
 
-        function antecedentesRM() {
-            if ($('#chkAntecedentesRM').is(':checked')) {
-                //Activo el checkbox
-                $('#arm1').prop("required", true);
-                $('#arm2').prop("required", true);
-            }
-            else {
-                ///Desactivo el checkbox
-                $('#aaa').removeAttr('required')
-                $('#arm1').removeAttr('required')
-                $('#arm2').removeAttr('required')
-            }
+    function antecedentesRM() {
+        if ($('#chkAntecedentesRM').is(':checked')) {
+            //Activo el checkbox
+            $('#arm1').prop("required", true);
+            $('#arm2').prop("required", true);
         }
-    </script>
+        else {
+            ///Desactivo el checkbox
+            $('#aaa').removeAttr('required')
+            $('#arm1').removeAttr('required')
+            $('#arm2').removeAttr('required')
+        }
+    }
+</script>

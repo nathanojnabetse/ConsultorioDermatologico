@@ -20,16 +20,12 @@
         @Html.TextBox("busqueda", null, new { @class = "form-control" })
     </div>
     
-
     <div id="divListaUsuarios">
         @Html.Partial("_TablaPacientes", Model)
     </div>
 }
 
-
 <script>
-
-
     var filtro = document.getElementById("busqueda");
     filtro.onkeyup = function () {
         $("#frmFiltro").trigger("submit");

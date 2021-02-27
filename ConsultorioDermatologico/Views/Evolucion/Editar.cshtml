@@ -52,8 +52,6 @@
 
             <div class="col-sm-8">
                 <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @Model.evolucion.fechaVisita.ToString("yyyy-MM-dd")</h6>
-
-
                 <div class="row">
                     <div class="espacio col-md-6">
                         <div class="border espacio">
@@ -113,10 +111,6 @@
                             <span class="sr-only">Siguiente</span>
                         </a>
                     </div>
-
-
-
-                    @*///////////////////////////////////////////////////////////////////////*@
                     <div id="carouselControls" class="carousel slide" data-ride="carousel">
 
                         <div class="carousel-inner">
@@ -230,14 +224,7 @@
                             }
 
                         </div>
-
-
-
                     </div>
-
-
-                    @*///////////////////////////////////////////////////////////////////////*@
-
                 </div>
             </div>
         </div>
@@ -417,8 +404,6 @@
         reader.readAsDataURL(files);
     }
 
-
-
     function GuardarE(rpta) {
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6") {
             alert("Se ejecuto correctame")
@@ -428,7 +413,6 @@
             alert("Ocurrió un error")
         }
     }
-
 
     function UploadPic() {
         var x = document.getElementById("divCanvas");
@@ -444,9 +428,7 @@
         }
     }
 
-
-    ///ACTIVAS O DESACIVAR CANVAS PAA EDICION
-
+    ///ACTIVAS O DESACIVAR CANVAS PArA EDICION
     function EditarCanvas() {
         var x = document.getElementById("divCanvas");
         var y = document.getElementById("divImgMapa");
@@ -465,6 +447,4 @@
             y.disabled = false;
         }
     }
-
-
 </script>

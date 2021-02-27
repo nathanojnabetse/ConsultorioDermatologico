@@ -51,8 +51,8 @@
 
 </div>
 
-@using (Html.BeginForm("Editar", "Paciente", FormMethod.Post))
-{
+@*@using (Html.BeginForm("Editar", "Paciente", FormMethod.Post))
+{*@
     <div class="container">
         <div class="row">
             @*Formulario para los datos personales del paciente*@
@@ -238,10 +238,6 @@
                         @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
                         @Html.ValidationMessage("historiaClinica.antecedentePersonalVacunas", new { @class = "text-danger" })
                     </div>
-                    @*<div style="padding-top:1em">
-                            <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()" />
-                            <label>Antecedentes gineco-obstetricos</label>
-                        </div>*@
                     @if (Model.historiaClinica.idAntecedenteGinecoObstetrico != null)
                     {
                         <div style="padding-top:1em; padding-bottom:1em;">
@@ -306,7 +302,6 @@
                                 </div>
                             </div>
                         </div>
-
                     }
                     @if (Model.historiaClinica.idAntecedenteReprodMasculino != null)
                     {
@@ -327,7 +322,6 @@
                                 </div>
                             </div>
                         </div>
-
                     }
                     <div>
                         @Html.LabelFor(p => p.historiaClinica.tabaco)
@@ -355,17 +349,10 @@
                         @Html.ValidationMessage("historiaClinica.medicacionHabitual", new { @class = "text-danger" })
                     </div>
                 </div>
-
-
-
             </div>
-
-
-
-
         </div>
     </div>
-}
+@*}*@
 <footer>
     <button id="scrollToTopBtn" class="btn btn-secondary" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
 </footer>
@@ -382,52 +369,6 @@
         })
     }
     scrollToTopBtn.addEventListener("click", scrollToTop)
-
-
-    function antecedentesGO() {
-        if ($('#chkAntecedentesGO').is(':checked')) {
-            //Activo el checkbox
-            $('#ago1').prop("required", true);
-            $('#ago2').prop("required", true);
-            $('#ago3').prop("required", true);
-            $('#ago4').prop("required", true);
-            $('#ago5').prop("required", true);
-            $('#ago6').prop("required", true);
-            $('#ago7').prop("required", true);
-            $('#ago8').prop("required", true);
-            $('#ago9').prop("required", true);
-            $('#ago10').prop("required", true);
-            $('#ago11').prop("required", true);
-        }
-        else {
-            //Desactivo el checkbox
-            $('#ago1').removeAttr('required')
-            $('#ago2').removeAttr('required')
-            $('#ago3').removeAttr('required')
-            $('#ago4').removeAttr('required')
-            $('#ago5').removeAttr('required')
-            $('#ago6').removeAttr('required')
-            $('#ago7').removeAttr('required')
-            $('#ago8').removeAttr('required')
-            $('#ago9').removeAttr('required')
-            $('#ago10').removeAttr('required')
-            $('#ago11').removeAttr('required')
-        }
-    }
-
-    function antecedentesRM() {
-        if ($('#chkAntecedentesRM').is(':checked')) {
-            //Activo el checkbox
-            $('#arm1').prop("required", true);
-            $('#arm2').prop("required", true);
-        }
-        else {
-            ///Desactivo el checkbox
-            $('#aaa').removeAttr('required')
-            $('#arm1').removeAttr('required')
-            $('#arm2').removeAttr('required')
-        }
-    }
 
     function desactivar() {
         if (confirm("¿Está seguro de querer borrar este paciente y toda su información relacionada  [Datos,Historia clínica y Evolución]?") == 1) {

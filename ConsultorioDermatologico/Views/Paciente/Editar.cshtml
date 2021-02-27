@@ -21,7 +21,6 @@
 <div class="container">
     <div class="row">
         @*Formulario para los datos personales del paciente*@
-
         <div class="col-sm-6 espacio" >
             <h4>Datos personales</h4>
             <div>
@@ -203,10 +202,7 @@
                     @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                     @Html.ValidationMessage("historiaClinica.antecedentePersonalVacunas", new { @class = "text-danger" })
                 </div>
-                @*<div style="padding-top:1em">
-            <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()" />
-            <label>Antecedentes gineco-obstetricos</label>
-        </div>*@
+
                 @if (Model.historiaClinica.idAntecedenteGinecoObstetrico != null)
                 {
                     <div style="padding-top:1em; padding-bottom:1em;">
@@ -273,6 +269,7 @@
                     </div>
 
                 }
+
                 @if (Model.historiaClinica.idAntecedenteReprodMasculino != null)
                 {
                     <div style="padding-top:1em; padding-bottom:1em;">
@@ -292,7 +289,6 @@
                             </div>
                         </div>
                     </div>
-
                 }
 
                 @if (Model.historiaClinica.idAntecedenteReprodMasculino == null && Model.historiaClinica.idAntecedenteGinecoObstetrico == null)
@@ -422,13 +418,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        
-
-
-    </div>
-    
+    </div>    
 </div>
 }
     <footer>
@@ -447,7 +438,6 @@
             })
         }
         scrollToTopBtn.addEventListener("click", scrollToTop)
-
 
         function antecedentesGO() {
             if ($('#chkAntecedentesGO').is(':checked')) {
