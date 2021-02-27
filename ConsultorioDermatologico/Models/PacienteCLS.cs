@@ -25,7 +25,7 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Fecha Nacimiento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime fechaNacimiento { get; set; }        
+        public DateTime fechaNacimiento { get; set; }
         [Required]
         [Display(Name = "Identidad género")]
         public int idIdentidadGenero { get; set; }
@@ -49,7 +49,7 @@ namespace ConsultorioDermatologico.Models
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string profesion { get; set; }
         [Required]
-        [Display(Name = "Tipo discapacidad")]      
+        [Display(Name = "Tipo discapacidad")]
         public int idTipoDiscapacidad { get; set; }
         [Required]
         [Display(Name = "% Discapacidad")]
@@ -82,10 +82,13 @@ namespace ConsultorioDermatologico.Models
         public string correoElectronico { get; set; }
         [Required]
         [Display(Name = "Religión")]
-        public int idReligion { get; set; }        
+        public int idReligion { get; set; }
         [Required]
-        [Display(Name = "Contacto de emergencia")]        
+        [Display(Name = "Contacto de emergencia")]
         public int idContactoEmergencia { get; set; }
         public int habilitado { get; set; }
+
+        //Propiedades adicionales, usadas para que el admin pueda visualizar los pacientes e historias desactivadas por un médico
+        public int idHistoriaClinica { get; set; }
     }
 }

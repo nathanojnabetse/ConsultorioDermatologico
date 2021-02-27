@@ -43,5 +43,10 @@ namespace ConsultorioDermatologico.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fechaVisita { get; set; }
         public int habilitado { get; set; }
+        
+        //Propiedades adicionales, usadas para que el admin pueda visualizar las evoluciones desactivadas por un médico
+        public int idPaciente { get; set; }
+        public string nombresPaciente { get; set; }
+        public string cedula { get; set; }
     }
 }

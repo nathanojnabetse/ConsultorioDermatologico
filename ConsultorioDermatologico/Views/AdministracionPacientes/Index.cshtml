@@ -1,0 +1,72 @@
+﻿@using ConsultorioDermatologico.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pacientes desactivados</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr  class="tdCentrar">
+            <td>id Paciente</td>
+            <td>Cédula</td>
+            <td>Paciente</td>
+            <td>id historia clínica</td>            
+            <td>Operaciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.listaPacientesDesactivados)
+        {
+            <tr>
+                <td>@item.idPaciente</td>
+                <td>@item.cedula</td>
+                <td>@item.nombres</td>
+                <td>@item.idHistoriaClinica</td>
+                <td  class="tdCentrar">
+                    <button onclick="Eliminar(@item.idPaciente)" type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                    <button onclick="Reestablecer(@item.idPaciente)" type="button" class="btn btn-success fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+
+<h2>Visitas eliminadas</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="tdCentrar">
+            <td>id Paciente</td>
+            <td>Cédula</td>
+            <td>Paciente</td>
+            <td>id historia clínica</td>
+            <td>id evolución</td>
+            <td>Fecha Visita</td>
+            <td>Motivo consulta</td>
+            <td>Operaciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.listaEvolucionesDesactivadas)
+        {
+            <tr>
+                <td>@item.idPaciente</td>
+                <td>@item.cedula</td>
+                <td>@item.nombresPaciente</td>
+                <td>@item.idHistoriaClinica</td>
+                <td>@item.idEvolucion</td>
+                <td>@item.motivoConsulta</td>
+                <td>@item.fechaVisita.ToString("yyyy-MM-dd")</td>
+                <td  class="tdCentrar">
+                    <button onclick="Eliminar(@item.idEvolucion)" type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                    <button onclick="Reestablecer(@item.idEvolucion)" type="button" class="btn btn-success fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
