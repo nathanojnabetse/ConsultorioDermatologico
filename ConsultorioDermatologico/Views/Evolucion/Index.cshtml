@@ -27,8 +27,8 @@
                 <td>@item.motivoConsulta</td>
                 <td>
                     <div class="row justify-content-center">
-                        @Html.ActionLink(" EDITAR", "Editar", "Evolucion", new { idEvolucion = @item.idEvolucion }, new { @class = "fa fa-info btn btn-success" })
-                        @Html.ActionLink(" ", "EvolucionPaciente", "HistoriaClinica", new { idPaciente = @item.idEvolucion }, new { @class = "fa fa-info btn btn-success" })
+                       
+                        @Html.ActionLink(" ", "EvolucionPaciente", "HistoriaClinica", new { idEvolucion = @item.idEvolucion }, new { @class = "fa fa-info btn btn-success" })
                     </div>
                 </td>
             </tr>

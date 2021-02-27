@@ -127,7 +127,7 @@
     </div>
 }
 
-@Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idHistoriaClinica = ViewBag.idHistoriaClinica }))
+@Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idEvolucion = ViewBag.idEvolucion }))
 
 <script>
     //======================================================================
@@ -231,11 +231,6 @@
     miCanvas.addEventListener('touchstart', empezarDibujo, false);
     miCanvas.addEventListener('touchmove', dibujarLinea, false);
 
-    //*****resize
-    /* $("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-       $(window).on("resize", function(){         				$("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-       });*/
-
     /////VIsualizacipon de imagenes al agregar
 
     var imgFoto1 = document.getElementById("imgFoto1");
@@ -305,18 +300,16 @@
         reader.readAsDataURL(files);
     }
 
-
-
     function Guardar(rpta) {
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6") {
             alert("Se ejecuto correctame")
-            //var url = $("#RedirectTo").val();
-            //location.href = url;
+
+            var url = $("#RedirectTo").val();
+            location.href = url;
         } else {
             alert("Ocurrió un error CCCCC")
         }
     }
-
 
     function UploadPic() {
 
@@ -326,17 +319,6 @@
         location.href = Pic;
         Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
         document.getElementById("mapaCorporal").value = Pic;
-        //// Sending the image data to Server
-        //$.ajax({
-        //    type: 'POST',
-        //    url: 'Save_Picture.aspx/UploadPic',
-        //    data: '{ "imageData" : "' + Pic + '" }',
-        //    contentType: 'application/json; charset=utf-8',
-        //    dataType: 'json',
-        //    success: function (msg) {
-        //        alert("Done, Picture Uploaded.");
-        //    }
-        //});
     }
 
 </script>

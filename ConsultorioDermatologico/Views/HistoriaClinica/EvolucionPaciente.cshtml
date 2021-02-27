@@ -1,7 +1,169 @@
-﻿
+﻿@using ConsultorioDermatologico.Models
+@model RegistroEvolucionCLS
+
 @{
     ViewBag.Title = "EvolucionPaciente";
 }
 
-<h2>EvolucionPaciente</h2>
+<h2 style="padding-top:1em">Información Evolución</h2>
+<div id="error" class="text-danger"></div>
 
+<input type="hidden" id="idHistoriaClinica" name="idHistoriaClinica" value=@ViewBag.idHistoriaClinica>
+<input type="hidden" id="idEvolucion" name="idEvolucion" value=@ViewBag.idEvolucion>
+
+<div class="row ">
+    <div class="col-sm-6 centrar">
+        @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-primary btn" })
+        @Html.ActionLink(" EDITAR", "Editar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "fa fa-info btn btn-success" })
+    </div>
+    @*Borrar desactivar*@
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Borrar", "Desactivar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-danger", @onclick = "desactivar();" })
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-12 espacio">
+
+            <div class="border espacio">
+                <div id="divImgMapa">
+                    <img class="col-sm-12 imagenFondo" id="imgFotomp" src="data:image/jpg;base64, @Model.evolucion.mapaCorporal" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @Model.evolucion.fechaVisita.ToString("yyyy-MM-dd")</h6>
+
+
+            <div class="row">
+                <div class="espacio col-md-6">
+                    <div class="border espacio">
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.motivoConsulta)
+                            @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.motivoConsulta, @readOnly = true } })
+                            @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.diagnostico)
+                            @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.diagnostico, @readOnly = true } })
+                            @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="espacio col-md-6">
+                    <div class="border espacio">
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.prescripcion)
+                            @Html.EditorFor(p => p.evolucion.prescripcion, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.prescripcion, @readOnly = true } })
+                            @Html.ValidationMessage("evolucion.prescripcion", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.recomendaciones)
+                            @Html.EditorFor(p => p.evolucion.recomendaciones, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.recomendaciones, @readOnly = true } })
+                            @Html.ValidationMessage("evolucion.recomendaciones", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 espacio">
+            <div class="border espacio " style="height:auto;">
+                <div>
+                    @Html.LabelFor(p => p.evolucion.examenFisico)
+                    @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.examenFisico, @readOnly = true } })
+                    @Html.ValidationMessage("evolucion.examenFisico", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 espacio">
+            <div class="border espacio" style="height:auto; overflow-y: scroll; min-height: 10em;">
+
+                <div class="centrar">
+                    <a href="#carouselControls" role="button" data-slide="prev">
+                        <span class="fa fa-chevron-circle-left" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+
+                    <a href="#carouselControls" role="button" data-slide="next">
+                        <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </div>
+
+
+
+                @*///////////////////////////////////////////////////////////////////////*@
+                <div id="carouselControls" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+
+                        @if (@Model.foto1 != null)
+                        {<div class="espacio carousel-item active">
+                                <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" src="data:image/@Model.foto1.extension;base64, @Model.foto1.foto" />
+                            </div>
+                        }
+
+                        @if (@Model.foto2 != null)
+                        {
+                            <div class="espacio carousel-item">
+                                <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" src="data:image/@Model.foto2.extension;base64, @Model.foto2.foto" />
+                            </div>
+                        }
+
+                        @if (@Model.foto3 != null)
+                        {
+                            <div class="espacio carousel-item">
+                                <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" src="data:image/@Model.foto3.extension;base64, @Model.foto3.foto" />
+                            </div>
+                        }
+
+                        @if (@Model.foto4 != null)
+                        {
+                            <div class="espacio carousel-item">
+                                <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" src="data:image/@Model.foto4.extension;base64, @Model.foto4.foto" />
+                            </div>
+                        }
+
+                        @if (@Model.foto5 != null)
+                        {
+                            <div class="espacio carousel-item">
+                                <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" src="data:image/@Model.foto5.extension;base64, @Model.foto5.foto" />
+                            </div>
+                        }
+
+                        @if (@Model.foto6 != null)
+                        {
+                            <div class="espacio carousel-item">
+                                <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" src="data:image/@Model.foto6.extension;base64, @Model.foto6.foto" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                @*///////////////////////////////////////////////////////////////////////*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function desactivar() {
+        if (confirm("¿Está seguro de querer borrar este registro de visita y toda su información relacionada  [Datos de evolución]?") == 1) {
+            //pone si
+            alert("Se elimino correctamente")
+        }
+        else {
+            //pone no
+            event.preventDefault();
+        }
+    }
+</script>

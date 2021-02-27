@@ -53,6 +53,10 @@ namespace ConsultorioDermatologico.Controllers
                 ViewBag.idPaciente = tblPaciente.idPaciente;
 
                 ViewBag.fechaActual = System.DateTime.Now.ToString("yyyy-MM-dd");
+
+                tblEvolucion tblEvolucion = bd.tblEvolucion.ToList().Last();
+                ViewBag.idEvolucion = tblEvolucion.idEvolucion + 1;
+                
             }
 
                 return View();
@@ -198,6 +202,7 @@ namespace ConsultorioDermatologico.Controllers
                             mensaje = "";
                         }
 
+                        ViewBag.idEvolucion = tblEvolucion.idEvolucion;
                     }
 
 
@@ -503,5 +508,21 @@ namespace ConsultorioDermatologico.Controllers
 
             return mensaje;
         }
+
+        public ActionResult Desactivar(int idEvolucion)
+        {
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion).First();
+
+                tblEvolucion.habilitado = 0;
+
+                bd.SaveChanges();
+                tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica == tblEvolucion.idHistoriaClinica).First();
+                
+                return RedirectToAction("Index",new { idPaciente = tblHistoriaClinica.idPaciente });
+            }
+        }
+
     }
 }

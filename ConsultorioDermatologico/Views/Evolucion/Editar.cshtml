@@ -6,7 +6,7 @@
 }
 
 
-<h2 style="padding-top:1em">Editar Evolucion</h2>
+<h2 style="padding-top:1em">Editar evolución</h2>
 <div id="error" class="text-danger"></div>
 
 @using (Ajax.BeginForm("GuardarEdicion", "Evolucion", null, new AjaxOptions///EDITAR cambiar estas cosas
@@ -19,7 +19,7 @@
     @Html.AntiForgeryToken()
     <input type="hidden" id="idHistoriaClinica" name="idHistoriaClinica" value=@ViewBag.idHistoriaClinica>
     <input type="hidden" id="idEvolucion" name="idEvolucion" value=@ViewBag.idEvolucion >
-    @*@Html.Hidden("idHistoriaClinica", new { @Value = ViewBag.idHistoriaClinica })*@
+
     <div class="container">
         <div class="row">
 
@@ -238,24 +238,13 @@
 
                     @*///////////////////////////////////////////////////////////////////////*@
 
-
-
-
-
-
-
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
-
 }
 
-@Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idHistoriaClinica = ViewBag.idHistoriaClinica }))
+@Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idEvolucion = @ViewBag.idEvolucion }))
 
 <script>
     //======================================================================
@@ -359,11 +348,6 @@
     miCanvas.addEventListener('touchstart', empezarDibujo, false);
     miCanvas.addEventListener('touchmove', dibujarLinea, false);
 
-    //*****resize
-    /* $("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-       $(window).on("resize", function(){         				$("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-       });*/
-
     ///VIsualizacipon de imagenes al agregar
 
     var imgFoto1 = document.getElementById("imgFoto1");
@@ -438,10 +422,10 @@
     function GuardarE(rpta) {
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6") {
             alert("Se ejecuto correctame")
-            //var url = $("#RedirectTo").val();
-            //location.href = url;
+            var url = $("#RedirectTo").val();
+            location.href = url;
         } else {
-            alert("Ocurrió un error CCCCC")
+            alert("Ocurrió un error")
         }
     }
 
@@ -458,23 +442,9 @@
             Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
             document.getElementById("mapaCorporal").value = Pic;
         }
-
-
-        //// Sending the image data to Server
-        //$.ajax({
-        //    type: 'POST',
-        //    url: 'Save_Picture.aspx/UploadPic',
-        //    data: '{ "imageData" : "' + Pic + '" }',
-        //    contentType: 'application/json; charset=utf-8',
-        //    dataType: 'json',
-        //    success: function (msg) {
-        //        alert("Done, Picture Uploaded.");
-        //    }
-        //});
     }
 
-    //var imgFotomp = document.getElementById("imgFotomp");
-    //var fupFotomp = document.getElementById("fupFotomp");
+
     ///ACTIVAS O DESACIVAR CANVAS PAA EDICION
 
     function EditarCanvas() {

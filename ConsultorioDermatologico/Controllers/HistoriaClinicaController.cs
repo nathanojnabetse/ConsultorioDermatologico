@@ -117,12 +117,8 @@ namespace ConsultorioDermatologico.Controllers
         
         public ActionResult EvolucionPaciente(int idEvolucion)
         {
-
-
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-
-
                 EvolucionCLS evolucionCLS = new EvolucionCLS();
 
                 tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();
@@ -133,7 +129,6 @@ namespace ConsultorioDermatologico.Controllers
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == tblHistoriaClinica.idPaciente).First();
                 ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
                 ViewBag.idPaciente = tblPaciente.idPaciente;
-
 
                 evolucionCLS.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
                 evolucionCLS.nombreMapa = tblEvolucion.nombreMapa;
@@ -167,9 +162,6 @@ namespace ConsultorioDermatologico.Controllers
                 listaFotos.Add(null);
                 listaFotos.Add(null);
 
-
-
-
                 RegistroEvolucionCLS registroEvolucionCLS = new RegistroEvolucionCLS();
                 registroEvolucionCLS.evolucion = evolucionCLS;
                 registroEvolucionCLS.foto1 = listaFotos[0];
@@ -179,14 +171,8 @@ namespace ConsultorioDermatologico.Controllers
                 registroEvolucionCLS.foto5 = listaFotos[4];
                 registroEvolucionCLS.foto6 = listaFotos[5];
 
-
-
                 return View(registroEvolucionCLS);
-
             }
-
-
-
         }
 
         #region Datos de los dropdown 
