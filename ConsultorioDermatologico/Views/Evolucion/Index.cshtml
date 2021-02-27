@@ -20,8 +20,7 @@
     </thead>
 
     <tbody>
-
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderByDescending(c => c.fechaVisita))
         {
             <tr>
                 <td>@item.fechaVisita.ToString("yyyy-MM-dd")</td>

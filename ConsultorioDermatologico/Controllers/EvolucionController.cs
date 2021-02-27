@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ConsultorioDermatologico.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ConsultorioDermatologico.Models;
 
 namespace ConsultorioDermatologico.Controllers
 {
@@ -358,7 +358,6 @@ namespace ConsultorioDermatologico.Controllers
                         byte[] fotoBD1 = null;
                         if (foto1 != null)
                         {
-
                             BinaryReader lector1 = new BinaryReader(foto1.InputStream);
                             fotoBD1 = lector1.ReadBytes((int)foto1.ContentLength);
                             
@@ -377,62 +376,112 @@ namespace ConsultorioDermatologico.Controllers
                                 bd.tblFotos.Add(tblFoto1New);
                             }
 
-
                         }
+
                         byte[] fotoBD2 = null;
                         if (foto2 != null)
                         {
                             BinaryReader lector2 = new BinaryReader(foto2.InputStream);
                             fotoBD2 = lector2.ReadBytes((int)foto2.ContentLength);
-                            tblFotos tblFoto2 = new tblFotos();
-                            tblFoto2.idEvolucion = tblEvolucion.idEvolucion;
-                            tblFoto2.foto = fotoBD2;
-                            tblFoto2.nombreFoto = foto2NombreFoto;
-                            //bd.tblFotos.Add(tblFoto2);
+                            if (idFoto2 != null)
+                            {
+                                tblFotos tblFoto2Edit = bd.tblFotos.Where(p => p.idFoto == idFoto2).First();//new tblFotos();///condicional
+                                tblFoto2Edit.foto = fotoBD2;
+                                tblFoto2Edit.nombreFoto = foto2NombreFoto;
+                            }
+                            else
+                            {
+                                tblFotos tblFoto2New = new tblFotos();
+                                tblFoto2New.idEvolucion = tblEvolucion.idEvolucion;
+                                tblFoto2New.foto = fotoBD2;
+                                tblFoto2New.nombreFoto = foto2NombreFoto;
+                                bd.tblFotos.Add(tblFoto2New);
+                            }
+                           
                         }
                         byte[] fotoBD3 = null;
                         if (foto3 != null)
                         {
                             BinaryReader lector3 = new BinaryReader(foto3.InputStream);
                             fotoBD3 = lector3.ReadBytes((int)foto3.ContentLength);
-                            tblFotos tblFoto3 = new tblFotos();
-                            tblFoto3.idEvolucion = tblEvolucion.idEvolucion;
-                            tblFoto3.foto = fotoBD3;
-                            tblFoto3.nombreFoto = foto3NombreFoto;
-                            //bd.tblFotos.Add(tblFoto3);
+                            if (idFoto3 != null)
+                            {
+                                tblFotos tblFoto3Edit = bd.tblFotos.Where(p => p.idFoto == idFoto3).First();//new tblFotos();///condicional
+                                tblFoto3Edit.foto = fotoBD3;
+                                tblFoto3Edit.nombreFoto = foto3NombreFoto;
+                            }
+                            else                            
+                            {
+                                tblFotos tblFoto3New = new tblFotos();
+                                tblFoto3New.idEvolucion = tblEvolucion.idEvolucion;
+                                tblFoto3New.foto = fotoBD3;
+                                tblFoto3New.nombreFoto = foto3NombreFoto;
+                                bd.tblFotos.Add(tblFoto3New);
+                            }
+
                         }
                         byte[] fotoBD4 = null;
                         if (foto4 != null)
                         {
                             BinaryReader lector4 = new BinaryReader(foto4.InputStream);
                             fotoBD4 = lector4.ReadBytes((int)foto4.ContentLength);
-                            tblFotos tblFoto4 = new tblFotos();
-                            tblFoto4.idEvolucion = tblEvolucion.idEvolucion;
-                            tblFoto4.foto = fotoBD4;
-                            tblFoto4.nombreFoto = foto4NombreFoto;
-                            //bd.tblFotos.Add(tblFoto4);
+                            if (idFoto4 != null)
+                            {
+                                tblFotos tblFoto4Edit = bd.tblFotos.Where(p => p.idFoto == idFoto4).First();//new tblFotos();///condicional
+                                tblFoto4Edit.foto = fotoBD4;
+                                tblFoto4Edit.nombreFoto = foto4NombreFoto;
+                            }
+                            else
+                            {
+                                tblFotos tblFoto4New = new tblFotos();
+                                tblFoto4New.idEvolucion = tblEvolucion.idEvolucion;
+                                tblFoto4New.foto = fotoBD4;
+                                tblFoto4New.nombreFoto = foto4NombreFoto;
+                                bd.tblFotos.Add(tblFoto4New);
+                            }
+                           
                         }
                         byte[] fotoBD5 = null;
                         if (foto5 != null)
                         {
                             BinaryReader lector5 = new BinaryReader(foto5.InputStream);
                             fotoBD5 = lector5.ReadBytes((int)foto5.ContentLength);
-                            tblFotos tblFoto5 = new tblFotos();
-                            tblFoto5.idEvolucion = tblEvolucion.idEvolucion;
-                            tblFoto5.foto = fotoBD5;
-                            tblFoto5.nombreFoto = foto5NombreFoto;
-                            //bd.tblFotos.Add(tblFoto5);
+                            if (idFoto5 != null)
+                            {
+                                tblFotos tblFoto5Edit = bd.tblFotos.Where(p => p.idFoto == idFoto5).First();//new tblFotos();///condicional
+                                tblFoto5Edit.foto = fotoBD5;
+                                tblFoto5Edit.nombreFoto = foto5NombreFoto;
+                            }
+                            else
+                            {
+                                tblFotos tblFoto5New = new tblFotos();
+                                tblFoto5New.idEvolucion = tblEvolucion.idEvolucion;
+                                tblFoto5New.foto = fotoBD5;
+                                tblFoto5New.nombreFoto = foto5NombreFoto;
+                                bd.tblFotos.Add(tblFoto5New);
+                            }
+                            
                         }
                         byte[] fotoBD6 = null;
                         if (foto6 != null)
                         {
                             BinaryReader lector6 = new BinaryReader(foto6.InputStream);
-                            fotoBD6 = lector6.ReadBytes((int)foto6.ContentLength);
-                            tblFotos tblFoto6 = new tblFotos();
-                            tblFoto6.idEvolucion = tblEvolucion.idEvolucion;
-                            tblFoto6.foto = fotoBD6;
-                            tblFoto6.nombreFoto = foto6NombreFoto;
-                            //bd.tblFotos.Add(tblFoto6);
+                            fotoBD6 = lector6.ReadBytes((int)foto6.ContentLength); 
+                            if (idFoto6 != null)
+                            {
+                                tblFotos tblFoto6Edit = bd.tblFotos.Where(p => p.idFoto == idFoto6).First();//new tblFotos();///condicional
+                                tblFoto6Edit.foto = fotoBD6;
+                                tblFoto6Edit.nombreFoto = foto6NombreFoto;
+                            }
+                            else
+                            {
+                                tblFotos tblFoto6New = new tblFotos();
+                                tblFoto6New.idEvolucion = tblEvolucion.idEvolucion;
+                                tblFoto6New.foto = fotoBD6;
+                                tblFoto6New.nombreFoto = foto6NombreFoto;
+                                bd.tblFotos.Add(tblFoto6New);
+                            }
+                           
                         }
 
                         mensaje = bd.SaveChanges().ToString();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -111,6 +112,81 @@ namespace ConsultorioDermatologico.Controllers
                 registroPacienteCLS.antecedenteGinecoObstetrico = antecedenteGinecoObstetricoCLS;
             }
             return View(registroPacienteCLS);
+        }
+
+        
+        public ActionResult EvolucionPaciente(int idEvolucion)
+        {
+
+
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+
+
+                EvolucionCLS evolucionCLS = new EvolucionCLS();
+
+                tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();
+                ViewBag.idEvolucion = tblEvolucion.idEvolucion;
+                //viewbags
+                tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica == tblEvolucion.idHistoriaClinica).First();
+                ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
+                tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == tblHistoriaClinica.idPaciente).First();
+                ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
+                ViewBag.idPaciente = tblPaciente.idPaciente;
+
+
+                evolucionCLS.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
+                evolucionCLS.nombreMapa = tblEvolucion.nombreMapa;
+                evolucionCLS.extension = Path.GetExtension(tblEvolucion.nombreMapa);
+                evolucionCLS.mapaCorporal = tblEvolucion.mapaCorporal;
+
+                evolucionCLS.diagnostico = tblEvolucion.diagnostico;
+                evolucionCLS.motivoConsulta = tblEvolucion.motivoConsulta;
+                evolucionCLS.examenFisico = tblEvolucion.examenFisico;
+                evolucionCLS.prescripcion = tblEvolucion.prescripcion;
+                evolucionCLS.recomendaciones = tblEvolucion.recomendaciones;
+                evolucionCLS.fechaVisita = (DateTime)tblEvolucion.fechaVisita;
+
+                List<tblFotos> listaFotosBD = bd.tblFotos.Where(p => p.idEvolucion == idEvolucion).ToList();
+                List<FotoCLS> listaFotos = new List<FotoCLS>();
+
+                foreach (var item in listaFotosBD)
+                {
+                    FotoCLS fotoCLS = new FotoCLS();
+                    fotoCLS.idFoto = item.idFoto;
+                    fotoCLS.nombreFoto = item.nombreFoto;
+                    fotoCLS.extension = Path.GetExtension(item.nombreFoto);
+                    fotoCLS.foto = Convert.ToBase64String(item.foto);
+                    listaFotos.Add(fotoCLS);
+                }
+
+                listaFotos.Add(null);
+                listaFotos.Add(null);
+                listaFotos.Add(null);
+                listaFotos.Add(null);
+                listaFotos.Add(null);
+                listaFotos.Add(null);
+
+
+
+
+                RegistroEvolucionCLS registroEvolucionCLS = new RegistroEvolucionCLS();
+                registroEvolucionCLS.evolucion = evolucionCLS;
+                registroEvolucionCLS.foto1 = listaFotos[0];
+                registroEvolucionCLS.foto2 = listaFotos[1];
+                registroEvolucionCLS.foto3 = listaFotos[2];
+                registroEvolucionCLS.foto4 = listaFotos[3];
+                registroEvolucionCLS.foto5 = listaFotos[4];
+                registroEvolucionCLS.foto6 = listaFotos[5];
+
+
+
+                return View(registroEvolucionCLS);
+
+            }
+
+
+
         }
 
         #region Datos de los dropdown 
