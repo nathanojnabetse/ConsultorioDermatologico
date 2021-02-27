@@ -9,22 +9,44 @@
 <h2 style="padding-top:1em">Editar Evolucion</h2>
 <div id="error" class="text-danger"></div>
 
-@using (Ajax.BeginForm("Guardar", "Evolucion", null, new AjaxOptions///EDITAR cambiar estas cosas
+@using (Ajax.BeginForm("GuardarEdicion", "Evolucion", null, new AjaxOptions///EDITAR cambiar estas cosas
 {
     HttpMethod = "POST",
-    OnSuccess = "Guardar",
+    OnSuccess = "GuardarE",
     UpdateTargetId = "error"
 }, new { enctype = "multipart/form-data" }))
 {
-    @Html.Hidden("idHistoriaClinica", new { @Value = Model.evolucion.idHistoriaClinica})
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="idHistoriaClinica" name="idHistoriaClinica" value=@ViewBag.idHistoriaClinica>
+    <input type="hidden" id="idEvolucion" name="idEvolucion" value=@ViewBag.idEvolucion >
+    @*@Html.Hidden("idHistoriaClinica", new { @Value = ViewBag.idHistoriaClinica })*@
     <div class="container">
         <div class="row">
 
             <div class="col-sm-4 col-12 espacio">
+
+                <div class="row ">
+                    <div class="col-sm-6 centrar">
+                        @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-primary btn" })
+                    </div>
+                    <div class="col-sm-6 centrar">
+                        <button type="submit" class="btn btn-primary" onclick="UploadPic()">Guardar</button>
+                    </div>
+
+                </div>
+
                 <div class="border espacio">
-                    MAPA CUERPO HUMANO
-                    @*<canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>*@
-                        <img class="img-responsive col-sm-12" id="imgFotomp" style="display:block; background: url(../../Resources/mapaCorporal.png);" src="data:image/jpg;base64, @Model.evolucion.mapaCorporal" />
+
+                    <div id="divCanvas" style=" display: none">
+                        <canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>
+                    </div>
+
+                    <div id="divImgMapa">
+                        <img class="col-sm-12 imagenFondo" id="imgFotomp" src="data:image/jpg;base64, @Model.evolucion.mapaCorporal" />
+                    </div>
+                    @Html.Hidden("mapaCorporal")
+                    <button type="button" onclick=" EditarCanvas()" class="btn btn-outline-primary centrar">Editar mapa</button>
+
                 </div>
             </div>
 
@@ -37,12 +59,12 @@
                         <div class="border espacio">
                             <div>
                                 @Html.LabelFor(p => p.evolucion.motivoConsulta)
-                                @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value =Model.evolucion.motivoConsulta} })
+                                @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.motivoConsulta } })
                                 @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
                             </div>
                             <div>
                                 @Html.LabelFor(p => p.evolucion.diagnostico)
-                                @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.diagnostico} })
+                                @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.diagnostico } })
                                 @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -69,7 +91,7 @@
 
         <div class="row">
             <div class="col-sm-4 espacio">
-                <div class="border espacio">
+                <div class="border espacio " style="height:auto;">
                     <div>
                         @Html.LabelFor(p => p.evolucion.examenFisico)
                         @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;", @Value = Model.evolucion.examenFisico } })
@@ -78,103 +100,146 @@
                 </div>
             </div>
             <div class="col-sm-8 espacio">
-                <div class="border espacio" style="height:12em; overflow-y: scroll;">
+                <div class="border espacio" style="height:auto; overflow-y: scroll; min-height: 10em;">
 
-                    @if (@Model.foto1 != null)
-                    {<div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" src="data:image/@Model.foto1.extension;base64, @Model.foto1.foto" />
-                            <span>1.-</span>
-                            @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
-                        </div>}
-                    else
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block"/>
-                            <span>1.-</span>
-                            @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
-                        </div>
-                    }
+                    <div class="centrar">
+                        <a href="#carouselControls" role="button" data-slide="prev">
+                            <span class="fa fa-chevron-circle-left" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
 
-                    @if (@Model.foto2 != null)
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" src="data:image/@Model.foto2.extension;base64, @Model.foto2.foto" />
-                            <span>2.-</span>
-                            @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
+                        <a href="#carouselControls" role="button" data-slide="next">
+                            <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+
+
+
+                    @*///////////////////////////////////////////////////////////////////////*@
+                    <div id="carouselControls" class="carousel slide" data-ride="carousel">
+
+                        <div class="carousel-inner">
+
+                            @if (@Model.foto1 != null)
+                            {<div class="espacio carousel-item active">
+                                    <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" src="data:image/@Model.foto1.extension;base64, @Model.foto1.foto" />
+                                    <span>1.-</span>
+                                    @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
+                                    @Html.Hidden("foto1NombreFoto")
+                                    <input type="hidden" id="idFoto1" name="idFoto1" value=@Model.foto1.idFoto >
+                                </div>}
+                            else
+                            {
+                                <div class="espacio carousel-item active">
+                                    <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
+                                    <span>1.-</span>
+                                    @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
+                                     @Html.Hidden("foto1NombreFoto")
+                                </div>
+                            }
+                            @if (@Model.foto2 != null)
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" src="data:image/@Model.foto2.extension;base64, @Model.foto2.foto" />
+                                    <span>2.-</span>
+                                    @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
+                                    <input type="hidden" id="idFoto2" name="idFoto2" value=@Model.foto2.idFoto >
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
+                                    <span>2.-</span>
+                                    @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
+                                     @Html.Hidden("foto2NombreFoto")
+                                </div>
+                            }
+                            @if (@Model.foto3 != null)
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" src="data:image/@Model.foto3.extension;base64, @Model.foto3.foto" />
+                                    <span>3.-</span>
+                                    @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
+                                    <input type="hidden" id="idFoto3" name="idFoto3" value=@Model.foto3.idFoto >
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
+                                    <span>3.-</span>
+                                    @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
+                                     @Html.Hidden("foto3NombreFoto")
+                                </div>
+                            }
+                            @if (@Model.foto4 != null)
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" src="data:image/@Model.foto4.extension;base64, @Model.foto4.foto" />
+                                    <span>4.-</span>
+                                    @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
+                                    <input type="hidden" id="idFoto4" name="idFoto4" value=@Model.foto4.idFoto >
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
+                                    <span>4.-</span>
+                                    @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
+                                     @Html.Hidden("foto4NombreFoto")
+                                </div>
+                            }
+                            @if (@Model.foto5 != null)
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" src="data:image/@Model.foto5.extension;base64, @Model.foto5.foto" />
+                                    <span>5.-</span>
+                                    @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
+                                    <input type="hidden" id="idFoto5" name="idFoto5" value=@Model.foto5.idFoto >
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
+                                    <span>5.-</span>
+                                    @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
+                                    @Html.Hidden("foto5NombreFoto")                                    
+                                </div>
+                            }
+                            @if (@Model.foto6 != null)
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" src="data:image/@Model.foto6.extension;base64, @Model.foto6.foto" />
+                                    <span>6.-</span>
+                                    @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })         
+                                    <input type="hidden" id="idFoto6" name="idFoto6" value=@Model.foto6.idFoto >
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="espacio carousel-item">
+                                    <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" />
+                                    <span>6.-</span>
+                                    @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
+                                    @Html.Hidden("foto6NombreFoto")
+                                </div>
+                            }
+
                         </div>
-                    }
-                    else
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
-                            <span>2.-</span>
-                            @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
-                        </div>
-                    }
-                    @if (@Model.foto3 != null)
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" src="data:image/@Model.foto3.extension;base64, @Model.foto3.foto" />
-                            <span>3.-</span>
-                            @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block"  />
-                            <span>3.-</span>
-                            @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
-                        </div>
-                    }
-                    @if (@Model.foto4 != null)
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" src="data:image/@Model.foto4.extension;base64, @Model.foto4.foto" />
-                            <span>4.-</span>
-                            @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
-                            <span>4.-</span>
-                            @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
-                        </div>
-                    }
-                    @if (@Model.foto5 != null)
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" src="data:image/@Model.foto5.extension;base64, @Model.foto5.foto" />
-                            <span>5.-</span>
-                            @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
-                            <span>5.-</span>
-                            @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
-                        </div>
-                    }
-                    @if (@Model.foto6 != null)
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" src="data:image/@Model.foto6.extension;base64, @Model.foto6.foto" />
-                            <span>6.-</span>
-                            @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="espacio">
-                            <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block"  />
-                            <span>6.-</span>
-                            @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
-                        </div>
-                    }
+
+
+
+                    </div>
+
+
+                    @*///////////////////////////////////////////////////////////////////////*@
+
+
+
 
 
 
@@ -183,124 +248,123 @@
             </div>
         </div>
 
-        <div>
-            @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-primary btn" })
-            <button type="submit" class="btn btn-primary" onclick="UploadPic()">Guardar</button>
-        </div>
+
 
     </div>
+
+
 }
 
 @Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idHistoriaClinica = ViewBag.idHistoriaClinica }))
 
 <script>
-    ////======================================================================
-    //// VARIABLES
-    ////======================================================================
-    //let miCanvas = document.querySelector('#pizarra');
-    //let lineas = [];
-    //let correccionX = 0;
-    //let correccionY = 0;
-    //let pintarLinea = false;
-    //// Marca el nuevo punto
-    //let nuevaPosicionX = 0;
-    //let nuevaPosicionY = 0;
+    //======================================================================
+    // VARIABLES
+    //======================================================================
+    let miCanvas = document.querySelector('#pizarra');
+    let lineas = [];
+    let correccionX = 0;
+    let correccionY = 0;
+    let pintarLinea = false;
+    // Marca el nuevo punto
+    let nuevaPosicionX = 0;
+    let nuevaPosicionY = 0;
 
-    //let posicion = miCanvas.getBoundingClientRect()
-    //correccionX = posicion.x;
-    //correccionY = posicion.y;
+    let posicion = miCanvas.getBoundingClientRect()
+    correccionX = posicion.x;
+    correccionY = posicion.y;
 
-    ////miCanvas.width = 300;
-    ////miCanvas.height = 300;
+    //miCanvas.width = 300;
+    //miCanvas.height = 300;
 
-    //var heightRatio = 1;
-    //miCanvas.height = miCanvas.width * heightRatio;
+    var heightRatio = 1;
+    miCanvas.height = miCanvas.width * heightRatio;
 
-    ////======================================================================
-    //// FUNCIONES
-    ////======================================================================
+    //======================================================================
+    // FUNCIONES
+    //======================================================================
 
-    ///**
-    // * Funcion que empieza a dibujar la linea
-    // */
-    //function empezarDibujo() {
-    //    pintarLinea = true;
-    //    lineas.push([]);
-    //};
+    /**
+     * Funcion que empieza a dibujar la linea
+     */
+    function empezarDibujo() {
+        pintarLinea = true;
+        lineas.push([]);
+    };
 
-    ///**
-    // * Funcion que guarda la posicion de la nueva línea
-    // */
-    //function guardarLinea() {
-    //    lineas[lineas.length - 1].push({
-    //        x: nuevaPosicionX,
-    //        y: nuevaPosicionY
-    //    });
-    //}
+    /**
+     * Funcion que guarda la posicion de la nueva línea
+     */
+    function guardarLinea() {
+        lineas[lineas.length - 1].push({
+            x: nuevaPosicionX,
+            y: nuevaPosicionY
+        });
+    }
 
-    ///**
-    // * Funcion dibuja la linea
-    // */
-    //function dibujarLinea(event) {
-    //    event.preventDefault();
-    //    if (pintarLinea) {
-    //        let ctx = miCanvas.getContext('2d')
-    //        // Estilos de linea
-    //        ctx.lineJoin = ctx.lineCap = 'round';
-    //        ctx.lineWidth = 1;
-    //        // Color de la linea
-    //        ctx.strokeStyle = '#f00';
-    //        // Marca el nuevo punto
-    //        if (event.changedTouches == undefined) {
-    //            // Versión ratón
-    //            nuevaPosicionX = event.layerX;
-    //            nuevaPosicionY = event.layerY;
-    //        } else {
-    //            // Versión touch, pantalla tactil
-    //            nuevaPosicionX = event.changedTouches[0].pageX - correccionX;
-    //            nuevaPosicionY = event.changedTouches[0].pageY - correccionY;
-    //        }
-    //        // Guarda la linea
-    //        guardarLinea();
-    //        // Redibuja todas las lineas guardadas
-    //        ctx.beginPath();
-    //        lineas.forEach(function (segmento) {
-    //            ctx.moveTo(segmento[0].x, segmento[0].y);
-    //            segmento.forEach(function (punto, index) {
-    //                ctx.lineTo(punto.x, punto.y);
-    //            });
-    //        });
-    //        ctx.stroke();
-    //    }
-    //}
+    /**
+     * Funcion dibuja la linea
+     */
+    function dibujarLinea(event) {
+        event.preventDefault();
+        if (pintarLinea) {
+            let ctx = miCanvas.getContext('2d')
+            // Estilos de linea
+            ctx.lineJoin = ctx.lineCap = 'round';
+            ctx.lineWidth = 1;
+            // Color de la linea
+            ctx.strokeStyle = '#f00';
+            // Marca el nuevo punto
+            if (event.changedTouches == undefined) {
+                // Versión ratón
+                nuevaPosicionX = event.layerX;
+                nuevaPosicionY = event.layerY;
+            } else {
+                // Versión touch, pantalla tactil
+                nuevaPosicionX = event.changedTouches[0].pageX - correccionX;
+                nuevaPosicionY = event.changedTouches[0].pageY - correccionY;
+            }
+            // Guarda la linea
+            guardarLinea();
+            // Redibuja todas las lineas guardadas
+            ctx.beginPath();
+            lineas.forEach(function (segmento) {
+                ctx.moveTo(segmento[0].x, segmento[0].y);
+                segmento.forEach(function (punto, index) {
+                    ctx.lineTo(punto.x, punto.y);
+                });
+            });
+            ctx.stroke();
+        }
+    }
 
-    ///**
-    // * Funcion que deja de dibujar la linea
-    // */
-    //function pararDibujar() {
-    //    pintarLinea = false;
-    //    guardarLinea();
-    //}
+    /**
+     * Funcion que deja de dibujar la linea
+     */
+    function pararDibujar() {
+        pintarLinea = false;
+        guardarLinea();
+    }
 
-    ////======================================================================
-    //// EVENTOS
-    ////======================================================================
+    //======================================================================
+    // EVENTOS
+    //======================================================================
 
-    //// Eventos raton
-    //miCanvas.addEventListener('mousedown', empezarDibujo, false);
-    //miCanvas.addEventListener('mousemove', dibujarLinea, false);
-    //miCanvas.addEventListener('mouseup', pararDibujar, false);
+    // Eventos raton
+    miCanvas.addEventListener('mousedown', empezarDibujo, false);
+    miCanvas.addEventListener('mousemove', dibujarLinea, false);
+    miCanvas.addEventListener('mouseup', pararDibujar, false);
 
-    //// Eventos pantallas táctiles
-    //miCanvas.addEventListener('touchstart', empezarDibujo, false);
-    //miCanvas.addEventListener('touchmove', dibujarLinea, false);
+    // Eventos pantallas táctiles
+    miCanvas.addEventListener('touchstart', empezarDibujo, false);
+    miCanvas.addEventListener('touchmove', dibujarLinea, false);
 
-    ////*****resize
-    ///* $("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-    //   $(window).on("resize", function(){         				$("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
-    //   });*/
+    //*****resize
+    /* $("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
+       $(window).on("resize", function(){         				$("#pizarra").outerHeight($(window).height()-$("#pizarra").offset().top- Math.abs($("#pizarra").outerHeight(true) - $("#pizarra").outerHeight()));
+       });*/
 
-    /////VIsualizacipon de imagenes al agregar
+    ///VIsualizacipon de imagenes al agregar
 
     var imgFoto1 = document.getElementById("imgFoto1");
     var fupFoto1 = document.getElementById("fupFoto1");
@@ -371,7 +435,7 @@
 
 
 
-    function Guardar(rpta) {
+    function GuardarE(rpta) {
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6") {
             alert("Se ejecuto correctame")
             //var url = $("#RedirectTo").val();
@@ -383,11 +447,19 @@
 
 
     function UploadPic() {
+        var x = document.getElementById("divCanvas");
 
         // Generate the image data
-        var Pic = document.getElementById("pizarra").toDataURL("image/png");
-        Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
-        document.getElementById("mapaCorporal").value = Pic;
+        if (x.style.display === "none") {
+            document.getElementById("mapaCorporal").value = null;
+        }
+        else {
+            var Pic = document.getElementById("pizarra").toDataURL("image/png");
+            Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
+            document.getElementById("mapaCorporal").value = Pic;
+        }
+
+
         //// Sending the image data to Server
         //$.ajax({
         //    type: 'POST',
@@ -401,16 +473,28 @@
         //});
     }
 
-    var imgFotomp = document.getElementById("imgFotomp");
-    var fupFotomp = document.getElementById("fupFotomp");
-    fupFotomp.onchange = function () {
-        var files = fupFotomp.files[0];
-        var reader = new FileReader();
-        reader.onloadend = function () {
-            imgFotomp.src = reader.result;
-            document.getElementById("nombreFotomp").value = files.name;
+    //var imgFotomp = document.getElementById("imgFotomp");
+    //var fupFotomp = document.getElementById("fupFotomp");
+    ///ACTIVAS O DESACIVAR CANVAS PAA EDICION
+
+    function EditarCanvas() {
+        var x = document.getElementById("divCanvas");
+        var y = document.getElementById("divImgMapa");
+
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            x.disabled = false;
+            y.style.display = "none";
+            y.disabled = true;
+
         }
-        reader.readAsDataURL(files);
+        else {
+            y.style.display = "block";
+            x.disabled = true;
+            x.style.display = "none";
+            y.disabled = false;
+        }
     }
+
 
 </script>

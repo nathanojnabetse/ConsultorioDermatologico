@@ -15,6 +15,7 @@
     UpdateTargetId = "error"
 }, new { enctype = "multipart/form-data" }))
 {
+    @Html.AntiForgeryToken()
     @Html.Hidden("idHistoriaClinica", new { @Value = ViewBag.idHistoriaClinica })
     <div class="container">
         <div class="row">
@@ -307,7 +308,7 @@
 
 
     function Guardar(rpta) {
-        if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6" ) {
+        if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6") {
             alert("Se ejecuto correctame")
             //var url = $("#RedirectTo").val();
             //location.href = url;
@@ -321,7 +322,7 @@
 
         // Generate the image data
         var Pic = document.getElementById("pizarra").toDataURL("image/png");
-        
+
         location.href = Pic;
         Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
         document.getElementById("mapaCorporal").value = Pic;

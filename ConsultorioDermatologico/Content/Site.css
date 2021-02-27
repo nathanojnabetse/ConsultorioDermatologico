@@ -31,6 +31,27 @@ footer {
 .espacio {
     padding:1em;
 }
+
+.imagenFondo {
+    background: url(../../Resources/mapaCorporal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.centrar {
+    margin: auto;
+    width: 50%;
+    padding: 1em;
+    text-align: center;
+
+}
 /*#scrollToTopBtn {
     background-color: black;
     border: none;
