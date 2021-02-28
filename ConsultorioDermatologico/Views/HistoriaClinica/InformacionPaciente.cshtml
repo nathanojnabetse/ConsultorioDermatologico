@@ -27,7 +27,7 @@
     @*documentos mandar id*@
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Documentos", " ", " ", null, new { @class = "btn-info btn" })
+            @Html.ActionLink("Reporte paciente", "InfoPacientePDF", "Documentos", null, new { @class = "btn-info btn", @onclick="alertaReporte()" })
         </div>
     </div>
     @*editar*@
@@ -39,7 +39,7 @@
     @*Borrar desactivar*@
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Borrar", "Desactivar", "Paciente", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn btn-danger", @onclick = "desactivar();" })
+            @Html.ActionLink("Borrar", "Desactivar", "Paciente", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn btn-danger", @onclick = "desactivar()" })
         </div>
     </div>
     @*Evolucion*@
@@ -377,6 +377,12 @@
             //pone no
             event.preventDefault();
         }
+    }
+
+    function alertaReporte() {
+        if (confirm("Desea Generar un documento con la información de este paciente y toda su información relacionada  [Datos,Historia clínica y Evolución]?") != 1) {
+            event.preventDefault();
+        }        
     }
 </script>
 

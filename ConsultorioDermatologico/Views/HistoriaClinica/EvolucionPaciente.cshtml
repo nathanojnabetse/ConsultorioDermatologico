@@ -16,6 +16,12 @@
         @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-primary btn" })
         @Html.ActionLink(" EDITAR", "Editar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "fa fa-info btn btn-success" })
     </div>
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Prescripción", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @target = "_blank" })
+        </div>
+    </div>
+
     @*Borrar desactivar*@
     <div class="col-sm-2">
         <div class="row justify-content-center">

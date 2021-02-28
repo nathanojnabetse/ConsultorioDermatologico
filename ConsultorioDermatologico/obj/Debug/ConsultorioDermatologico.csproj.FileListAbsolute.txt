@@ -84,3 +84,4 @@ C:\Users\JONA\OneDrive - Escuela Politécnica Nacional\ConsultorioDermatologico\
 C:\Users\JONA\OneDrive - Escuela Politécnica Nacional\ConsultorioDermatologico\ConsultorioDermatologico\bin\System.Web.Optimization.dll
 C:\Users\JONA\OneDrive - Escuela Politécnica Nacional\ConsultorioDermatologico\ConsultorioDermatologico\bin\WebActivatorEx.dll
 C:\Users\JONA\OneDrive - Escuela Politécnica Nacional\ConsultorioDermatologico\ConsultorioDermatologico\bin\WebGrease.dll
+C:\Users\JONA\OneDrive - Escuela Politécnica Nacional\ConsultorioDermatologico\ConsultorioDermatologico\bin\itextsharp.dll

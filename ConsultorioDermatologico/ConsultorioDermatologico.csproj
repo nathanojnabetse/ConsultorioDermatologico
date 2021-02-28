@@ -54,6 +54,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\Downloads\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -132,6 +135,7 @@
       <DependentUpon>BDD_ConsultorioDermatologico.edmx</DependentUpon>
       <LastGenOutput>BDD_ConsultorioDermatologico.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\Galenus.png" />
     <Content Include="Resources\mapaCorporal.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -245,6 +249,7 @@
     <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministracionPacientesController.cs" />
+    <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EvolucionController.cs" />
     <Compile Include="Controllers\HistoriaClinicaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -391,6 +396,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
+    <Folder Include="Views\Documentos\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
