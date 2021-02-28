@@ -124,7 +124,7 @@
     </div>
 }
 
-@Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idEvolucion = ViewBag.idEvolucion }))
+
 
 <script>
     //======================================================================
@@ -297,11 +297,13 @@
         reader.readAsDataURL(files);
     }
 
-    function Guardar(rpta) {
-        if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6") {
+    function Guardar(rpta, ) {
+        rpta = rpta.replace(/[{()}]/g, '');
+        rpta = rpta.split(", ");
+        if (rpta[0] == "1" || rpta[0] == "2" || rpta[0] == "3" || rpta[0] == "4" || rpta[0] == "5" || rpta[0] == "6") {
             alert("Se ejecuto correctame")
 
-            var url = $("#RedirectTo").val();
+            var url = '@Url.Action("EvolucionPaciente", "HistoriaClinica")?idEvolucion=' +rpta[1];
             location.href = url;
         } else {
             alert("Ocurrió un error")

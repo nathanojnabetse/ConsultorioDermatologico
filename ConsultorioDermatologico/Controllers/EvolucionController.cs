@@ -55,16 +55,14 @@ namespace ConsultorioDermatologico.Controllers
                 ViewBag.fechaActual = System.DateTime.Now.ToString("yyyy-MM-dd");
 
                 tblEvolucion tblEvolucion = bd.tblEvolucion.ToList().Last();
-                ViewBag.idEvolucion = tblEvolucion.idEvolucion + 1;
-                
             }
-
                 return View();
         }
 
-        public string Guardar(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica,string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto)
+        public (string,int) Guardar(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica,string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto)
         {
             string mensaje = "";
+            int idEvolucion = 0;
             try
             {
                 ModelState.Remove("foto1");
@@ -112,13 +110,13 @@ namespace ConsultorioDermatologico.Controllers
 
                         ViewBag.fechaActual = System.DateTime.Now.ToString("yyyy-MM-dd");
 
-                        //if tiitulo o edicion ver despues si se añade o no
+                        //if tiitulo o edicion ver despues si se añade o no.idEvolucion + 1;
                         tblEvolucion tblEvolucion = new tblEvolucion();
                         tblEvolucion.idHistoriaClinica = idHistoriaClinica;
 
                         tblEvolucion.mapaCorporal = mapaCorporal;
 
-                        tblEvolucion.nombreMapa = "MapaCorporal" + idHistoriaClinica +"-"+ tblEvolucion.idHistoriaClinica+".png";
+                        tblEvolucion.nombreMapa = "MapaCorporal" + idHistoriaClinica +"-"+ System.DateTime.Now.ToString("yyyy-MM-dd") + ".png";
                         tblEvolucion.diagnostico = registroEvolucionCLS.evolucion.diagnostico;
                         tblEvolucion.motivoConsulta = registroEvolucionCLS.evolucion.motivoConsulta;
                         tblEvolucion.examenFisico = registroEvolucionCLS.evolucion.examenFisico;
@@ -127,7 +125,7 @@ namespace ConsultorioDermatologico.Controllers
                         tblEvolucion.fechaVisita = System.DateTime.Now;
                         tblEvolucion.habilitado = 1;
                         bd.tblEvolucion.Add(tblEvolucion);
-
+                        
                         //recepcion de las foto y trnasformación a un archivo binario para las imagenes añadidas
                         byte[] fotoBD1 = null;
                         if (foto1 != null)
@@ -202,10 +200,8 @@ namespace ConsultorioDermatologico.Controllers
                             mensaje = "";
                         }
 
-                        ViewBag.idEvolucion = tblEvolucion.idEvolucion;
+                        idEvolucion = tblEvolucion.idEvolucion;
                     }
-
-
                 }
             }
             catch(Exception ex)
@@ -214,7 +210,7 @@ namespace ConsultorioDermatologico.Controllers
                 mensaje = "";
             }
            
-            return mensaje;
+            return (mensaje, idEvolucion);
         }
 
         //recuperar informacion a la vista Editar
