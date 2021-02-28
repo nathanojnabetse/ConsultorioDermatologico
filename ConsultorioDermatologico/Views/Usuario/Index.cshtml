@@ -155,7 +155,7 @@
     function EliminarRegistro() {
         var idUsuario = document.getElementById("titulo").value;
         //$.get("Eliminar/?idUsuario=" + idUsuario, function (data) {
-        $.get('@Url.Action("Eliminar","Usuario")' + idUsuario, function (data) {
+        $.get('@Url.Action("Eliminar","Usuario")?idUsuario=' + idUsuario, function (data) {
             if (data == 1) {
                 alert("Se ejecuto correctamente")
                 document.getElementById("btnCerrarConfirmacion").click();
