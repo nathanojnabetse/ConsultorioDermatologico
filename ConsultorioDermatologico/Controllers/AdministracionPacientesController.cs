@@ -54,5 +54,90 @@ namespace ConsultorioDermatologico.Controllers
 
                 return View();
         }
+
+        public ActionResult Filtro(String busqueda)
+        {
+            List<PacienteCLS> listaPacientesDesactivados = new List<PacienteCLS>();
+            List<EvolucionCLS> listaEvolucionesDesactivadas = new List<EvolucionCLS>();
+            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            {
+                if(busqueda == null)
+                {
+                    listaPacientesDesactivados = (from historiaClinica in bd.tblHistoriaClinica
+                                                  join paciente in bd.tblPaciente
+                                                  on historiaClinica.idPaciente equals paciente.idPaciente
+                                                  where historiaClinica.habilitado == 0
+                                                  && paciente.habilitado == 0
+                                                  select new PacienteCLS
+                                                  {
+                                                      idPaciente = paciente.idPaciente,
+                                                      cedula = paciente.cedula,
+                                                      nombres = paciente.nombres + " " + paciente.apellidos,
+                                                      idHistoriaClinica = historiaClinica.idHistoriaClinica
+                                                  }).ToList();
+
+                    listaEvolucionesDesactivadas = (from evolucion in bd.tblEvolucion
+                                                    join historiaClinica in bd.tblHistoriaClinica
+                                                    on evolucion.idHistoriaClinica equals historiaClinica.idHistoriaClinica
+                                                    join paciente in bd.tblPaciente
+                                                    on historiaClinica.idPaciente equals paciente.idPaciente
+                                                    where evolucion.habilitado == 0
+                                                    select new EvolucionCLS
+                                                    {
+                                                        idPaciente = paciente.idPaciente,
+                                                        cedula = paciente.cedula,
+                                                        nombresPaciente = paciente.nombres + " " + paciente.apellidos,
+                                                        idHistoriaClinica = historiaClinica.idHistoriaClinica,
+                                                        idEvolucion = evolucion.idEvolucion,
+                                                        motivoConsulta = evolucion.motivoConsulta,
+                                                        fechaVisita = (DateTime)evolucion.fechaVisita
+                                                    }).ToList();
+                }
+                else
+                {
+                    listaPacientesDesactivados = (from historiaClinica in bd.tblHistoriaClinica
+                                                  join paciente in bd.tblPaciente
+                                                  on historiaClinica.idPaciente equals paciente.idPaciente
+                                                  where historiaClinica.habilitado == 0
+                                                  && paciente.habilitado == 0
+                                                  &&((paciente.cedula.Contains(busqueda)
+                                                  || (paciente.nombres.Contains(busqueda)
+                                                  || paciente.apellidos.Contains(busqueda))))
+                                                  select new PacienteCLS
+                                                  {
+                                                      idPaciente = paciente.idPaciente,
+                                                      cedula = paciente.cedula,
+                                                      nombres = paciente.nombres + " " + paciente.apellidos,
+                                                      idHistoriaClinica = historiaClinica.idHistoriaClinica
+                                                  }).ToList();
+
+                    listaEvolucionesDesactivadas = (from evolucion in bd.tblEvolucion
+                                                    join historiaClinica in bd.tblHistoriaClinica
+                                                    on evolucion.idHistoriaClinica equals historiaClinica.idHistoriaClinica
+                                                    join paciente in bd.tblPaciente
+                                                    on historiaClinica.idPaciente equals paciente.idPaciente
+                                                    where evolucion.habilitado == 0
+                                                    && ((paciente.cedula.Contains(busqueda)
+                                                    || (paciente.nombres.Contains(busqueda)
+                                                    || paciente.apellidos.Contains(busqueda))))
+                                                    select new EvolucionCLS
+                                                    {
+                                                        idPaciente = paciente.idPaciente,
+                                                        cedula = paciente.cedula,
+                                                        nombresPaciente = paciente.nombres + " " + paciente.apellidos,
+                                                        idHistoriaClinica = historiaClinica.idHistoriaClinica,
+                                                        idEvolucion = evolucion.idEvolucion,
+                                                        motivoConsulta = evolucion.motivoConsulta,
+                                                        fechaVisita = (DateTime)evolucion.fechaVisita
+                                                    }).ToList();
+                }
+                
+            }
+
+            ViewBag.listaPacientesDesactivados = listaPacientesDesactivados;
+            ViewBag.listaEvolucionesDesactivadas = listaEvolucionesDesactivadas;
+
+            return PartialView("_TablaDesactivados");
+        }
     }
 }

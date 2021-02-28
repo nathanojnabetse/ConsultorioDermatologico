@@ -383,6 +383,7 @@
     <Content Include="Views\Evolucion\Editar.cshtml" />
     <Content Include="Views\HistoriaClinica\EvolucionPaciente.cshtml" />
     <Content Include="Views\AdministracionPacientes\Index.cshtml" />
+    <Content Include="Views\AdministracionPacientes\_TablaDesactivados.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
