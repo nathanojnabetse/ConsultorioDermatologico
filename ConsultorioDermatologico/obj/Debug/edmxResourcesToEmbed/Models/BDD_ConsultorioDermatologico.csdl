@@ -6,7 +6,6 @@
     <EntitySet Name="tblContactoEmergencia" EntityType="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia" />
     <EntitySet Name="tblEstadoCivil" EntityType="BDD_ConsultorioDermatologicoModel.tblEstadoCivil" />
     <EntitySet Name="tblEvolucion" EntityType="BDD_ConsultorioDermatologicoModel.tblEvolucion" />
-    <EntitySet Name="tblFotoMapaCorporal" EntityType="BDD_ConsultorioDermatologicoModel.tblFotoMapaCorporal" />
     <EntitySet Name="tblFotos" EntityType="BDD_ConsultorioDermatologicoModel.tblFotos" />
     <EntitySet Name="tblHistoriaClinica" EntityType="BDD_ConsultorioDermatologicoModel.tblHistoriaClinica" />
     <EntitySet Name="tblIdentidadGenero" EntityType="BDD_ConsultorioDermatologicoModel.tblIdentidadGenero" />
@@ -143,14 +142,6 @@
     <Property Name="habilitado" Type="Int32" />
     <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__60A75C0F" FromRole="tblEvolucion" ToRole="tblHistoriaClinica" />
     <NavigationProperty Name="tblFotos" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__6383C8BA" FromRole="tblEvolucion" ToRole="tblFotos" />
-  </EntityType>
-  <EntityType Name="tblFotoMapaCorporal">
-    <Key>
-      <PropertyRef Name="idFotoMapaCorporal" />
-    </Key>
-    <Property Name="idFotoMapaCorporal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fotoMapaCorporal" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="nombreFotoMapaCorporal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tblFotos">
     <Key>
@@ -300,10 +291,12 @@
     <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombresUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="apellidosUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cedulaUsuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="rolUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="aliasUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="contraseñaUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="correoUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="codigoMSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__tblHistor__idAnt__5CD6CB2B">
     <End Type="BDD_ConsultorioDermatologicoModel.tblAntecedenteGinecoObstetrico" Role="tblAntecedenteGinecoObstetrico" Multiplicity="0..1" />

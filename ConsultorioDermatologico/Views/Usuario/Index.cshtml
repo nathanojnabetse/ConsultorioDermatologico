@@ -67,8 +67,12 @@
                         @Html.TextBox("apellidoUsuario", null, new { @class = "form-control limpieza" })
                     </div>
                     <div>
+                        @Html.Label("Cédula")                        
+                        @Html.TextBox("cedulaUsuario", null, new { @class = "form-control limpieza", @type = "number", @min = "0", @max = "9999999999"})
+                    </div>
+                    <div>
                         @Html.Label("Rol Usuario")
-                        @Html.DropDownList("rolUsuario", listaRol, null, new { @class = "form-control" })
+                        @Html.DropDownList("rolUsuario", listaRol, null, new { @class = "form-control", @onchange = "Cambio()" })
                     </div>
                     <div id="divBloquear">
                         @Html.Label("Alias")
@@ -81,6 +85,10 @@
                     <div>
                         @Html.Label("Correo electrónico")
                         @Html.TextBox("correoUsuario", null, new { @class = "form-control limpieza" })
+                    </div>
+                     <div id="codigoOcultar">
+                        @Html.Label("Código MSP")
+                        @Html.TextBox("codigoMSP", null, new { @class = "form-control limpieza" })
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -175,5 +183,21 @@
         }
         document.getElementById("error").innerHTML = "";
     }
+
+    
+    var x = document.getElementById("rolUsuario");
+    var y = document.getElementById("codigoOcultar");
+    function Cambio() {
+        
+        if (x.value == "MEDICO") {
+            y.disabled = false;
+            y.style.display = "block";
+        }
+        else {
+            y.disabled = true;
+            y.style.display = "none";
+        }
+    }
+
 </script>
 

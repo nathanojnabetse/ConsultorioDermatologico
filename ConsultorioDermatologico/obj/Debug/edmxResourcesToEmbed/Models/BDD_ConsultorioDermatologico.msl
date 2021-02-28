@@ -64,15 +64,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblFotoMapaCorporal">
-      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblFotoMapaCorporal">
-        <MappingFragment StoreEntitySet="tblFotoMapaCorporal">
-          <ScalarProperty Name="nombreFotoMapaCorporal" ColumnName="nombreFotoMapaCorporal" />
-          <ScalarProperty Name="fotoMapaCorporal" ColumnName="fotoMapaCorporal" />
-          <ScalarProperty Name="idFotoMapaCorporal" ColumnName="idFotoMapaCorporal" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblFotos">
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblFotos">
         <MappingFragment StoreEntitySet="tblFotos">
@@ -204,10 +195,12 @@
     <EntitySetMapping Name="tblUsuario">
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblUsuario">
         <MappingFragment StoreEntitySet="tblUsuario">
+          <ScalarProperty Name="codigoMSP" ColumnName="codigoMSP" />
           <ScalarProperty Name="correoUsuario" ColumnName="correoUsuario" />
           <ScalarProperty Name="contraseñaUsuario" ColumnName="contraseñaUsuario" />
           <ScalarProperty Name="aliasUsuario" ColumnName="aliasUsuario" />
           <ScalarProperty Name="rolUsuario" ColumnName="rolUsuario" />
+          <ScalarProperty Name="cedulaUsuario" ColumnName="cedulaUsuario" />
           <ScalarProperty Name="apellidosUsuario" ColumnName="apellidosUsuario" />
           <ScalarProperty Name="nombresUsuario" ColumnName="nombresUsuario" />
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />

@@ -58,14 +58,6 @@
     <Property Name="fechaVisita" Type="datetime" />
     <Property Name="habilitado" Type="int" />
   </EntityType>
-  <EntityType Name="tblFotoMapaCorporal">
-    <Key>
-      <PropertyRef Name="idFotoMapaCorporal" />
-    </Key>
-    <Property Name="idFotoMapaCorporal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fotoMapaCorporal" Type="varbinary(max)" />
-    <Property Name="nombreFotoMapaCorporal" Type="varchar" MaxLength="100" />
-  </EntityType>
   <EntityType Name="tblFotos">
     <Key>
       <PropertyRef Name="idFoto" />
@@ -190,10 +182,12 @@
     <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombresUsuario" Type="varchar" MaxLength="50" />
     <Property Name="apellidosUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="cedulaUsuario" Type="varchar" MaxLength="10" />
     <Property Name="rolUsuario" Type="varchar" MaxLength="50" />
     <Property Name="aliasUsuario" Type="varchar" MaxLength="50" />
     <Property Name="contraseñaUsuario" Type="varchar" MaxLength="100" />
     <Property Name="correoUsuario" Type="varchar" MaxLength="100" />
+    <Property Name="codigoMSP" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK__tblEvoluc__idHis__60A75C0F">
     <End Role="tblHistoriaClinica" Type="Self.tblHistoriaClinica" Multiplicity="0..1" />
@@ -381,7 +375,6 @@
     <EntitySet Name="tblContactoEmergencia" EntityType="Self.tblContactoEmergencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblEstadoCivil" EntityType="Self.tblEstadoCivil" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblEvolucion" EntityType="Self.tblEvolucion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblFotoMapaCorporal" EntityType="Self.tblFotoMapaCorporal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblFotos" EntityType="Self.tblFotos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblHistoriaClinica" EntityType="Self.tblHistoriaClinica" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblIdentidadGenero" EntityType="Self.tblIdentidadGenero" Schema="dbo" store:Type="Tables" />

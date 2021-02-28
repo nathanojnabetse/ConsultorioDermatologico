@@ -108,6 +108,7 @@ namespace ConsultorioDermatologico.Controllers
                                     tblUsuario tblUsuario = new tblUsuario();
                                     tblUsuario.nombresUsuario = usuarioCLS.nombreUsuario;
                                     tblUsuario.apellidosUsuario = usuarioCLS.apellidoUsuario;
+                                    tblUsuario.cedulaUsuario = usuarioCLS.cedulaUsuario;
                                     tblUsuario.rolUsuario = usuarioCLS.rolUsuario;
                                     tblUsuario.aliasUsuario = usuarioCLS.aliasUsuario;
                                     //cifrado de clave
@@ -117,6 +118,7 @@ namespace ConsultorioDermatologico.Controllers
                                     string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
                                     tblUsuario.contraseñaUsuario = cadenaContraCifrada;
                                     tblUsuario.correoUsuario = usuarioCLS.correoUsuario;
+                                    tblUsuario.codigoMSP = usuarioCLS.codigoMSP;
                                     bd.tblUsuario.Add(tblUsuario);
                                     rpta = bd.SaveChanges().ToString();
                                     transaccion.Complete();
