@@ -300,9 +300,6 @@
     <Compile Include="Models\tblEvolucion.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblFotoMapaCorporal.cs">
-      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblFotos.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>

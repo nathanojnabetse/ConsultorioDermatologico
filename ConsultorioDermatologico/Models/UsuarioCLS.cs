@@ -28,6 +28,11 @@ namespace ConsultorioDermatologico.Models
         public string apellidoUsuario { get; set; }
 
         [Required]
+        [Display(Name = "Cédula")]
+        [StringLength(10, ErrorMessage = "Longitud máxima 10")]
+        public string cedulaUsuario { get; set; }
+
+        [Required]
         [Display(Name = "Rol")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string rolUsuario {get; set;}
@@ -47,6 +52,9 @@ namespace ConsultorioDermatologico.Models
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         [EmailAddress(ErrorMessage = "Ingrese un e-mail válido")]
         public string correoUsuario {get; set;}
-        
+
+        [Display(Name = "Código MSP")]
+        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
+        public string codigoMSP { get; set; }
     }
 }

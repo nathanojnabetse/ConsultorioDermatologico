@@ -30,7 +30,6 @@ namespace ConsultorioDermatologico.Models
         public virtual DbSet<tblContactoEmergencia> tblContactoEmergencia { get; set; }
         public virtual DbSet<tblEstadoCivil> tblEstadoCivil { get; set; }
         public virtual DbSet<tblEvolucion> tblEvolucion { get; set; }
-        public virtual DbSet<tblFotoMapaCorporal> tblFotoMapaCorporal { get; set; }
         public virtual DbSet<tblFotos> tblFotos { get; set; }
         public virtual DbSet<tblHistoriaClinica> tblHistoriaClinica { get; set; }
         public virtual DbSet<tblIdentidadGenero> tblIdentidadGenero { get; set; }

@@ -17,9 +17,11 @@ namespace ConsultorioDermatologico.Models
         public int idUsuario { get; set; }
         public string nombresUsuario { get; set; }
         public string apellidosUsuario { get; set; }
+        public string cedulaUsuario { get; set; }
         public string rolUsuario { get; set; }
         public string aliasUsuario { get; set; }
         public string contraseñaUsuario { get; set; }
         public string correoUsuario { get; set; }
+        public string codigoMSP { get; set; }
     }
 }
