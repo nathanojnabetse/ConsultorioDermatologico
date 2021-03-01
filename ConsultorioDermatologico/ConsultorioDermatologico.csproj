@@ -253,6 +253,7 @@
     <Compile Include="Controllers\EvolucionController.cs" />
     <Compile Include="Controllers\HistoriaClinicaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -387,6 +388,7 @@
     <Content Include="Views\AdministracionPacientes\Index.cshtml" />
     <Content Include="Views\AdministracionPacientes\_TablaDesactivados.cshtml" />
     <Content Include="Views\Documentos\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
