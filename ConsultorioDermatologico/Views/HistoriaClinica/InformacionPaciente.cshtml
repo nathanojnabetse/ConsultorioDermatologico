@@ -27,7 +27,7 @@
     @*documentos mandar id*@
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Reporte paciente", "InfoPacientePDF", "Documentos", null, new { @class = "btn-info btn", @onclick="alertaReporte()" })
+            @Html.ActionLink("Reporte paciente", "InfoPacientePDF", "Documentos", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-info btn", @onclick="alertaReporte()", @target = "_blank" })
         </div>
     </div>
     @*editar*@

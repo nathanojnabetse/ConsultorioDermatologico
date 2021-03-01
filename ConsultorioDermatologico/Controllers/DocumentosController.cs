@@ -18,6 +18,203 @@ namespace ConsultorioDermatologico.Controllers
             return View();
         }
 
+        public FileResult InfoPacientePDF(int idPaciente)
+        {
+            Document doc = new Document();
+            byte[] buffer;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                PdfWriter.GetInstance(doc, ms);//guardar el doc en memoria
+                doc.Open();
+                Image png = Image.GetInstance(new Uri(Server.MapPath("~/Resources/Galenus.png")));
+                png.ScalePercent(24f);
+                doc.Add(png);
+                //IMAGEN
+                Paragraph info1 = new Paragraph("DRA. Silvana Narváez Arboleda" + ",M.D.");
+                Paragraph info2 = new Paragraph("Médico Dermatólogo");
+                Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
+                Paragraph info4 = new Paragraph("TELÉFONO 2263720");
+                Paragraph fechaHoy = new Paragraph("Fecha de emisión: " + DateTime.Now.ToString("yyyy-MM-dd"));
+                info1.Alignment = Element.ALIGN_CENTER;
+                info2.Alignment = Element.ALIGN_CENTER;
+                info3.Alignment = Element.ALIGN_CENTER;
+                info4.Alignment = Element.ALIGN_CENTER;
+                fechaHoy.Alignment = Element.ALIGN_RIGHT;
+                doc.Add(info1);
+                doc.Add(info2);
+                doc.Add(info3);
+                doc.Add(info4);
+                doc.Add(fechaHoy);
+
+                Paragraph espacio = new Paragraph(" ");
+                doc.Add(espacio);
+                doc.Add(espacio);
+
+                using (var bd = new  BDD_ConsultorioDermatologicoEntities())
+                {
+
+                    tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == idPaciente).First();
+                    Paragraph p0 = new Paragraph("- - - DATOS PERSONALES DEL PACIENTE - - -");
+                    p0.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(p0);
+                    doc.Add(espacio);
+                    Paragraph p1 = new Paragraph("Nombre del paciente: "+ tblPaciente.nombres +" "+tblPaciente.apellidos);                    
+                    doc.Add(p1);
+                    Paragraph p2 = new Paragraph("Cédula: " +tblPaciente.cedula);
+                    doc.Add(p2);
+                    Paragraph p3 = new Paragraph("Fecha de nacimiento: " +tblPaciente.fechaNacimiento.Value.ToString("yyyy-MM-dd"));                    
+                    doc.Add(p3);
+                    Paragraph p4 = new Paragraph("Identidad de Género: "+tblPaciente.tblIdentidadGenero.nombreIdentidadGenero);                    
+                    doc.Add(p4);
+                    Paragraph p5 = new Paragraph("Orientación Sexual: "+tblPaciente.tblOrientacionSexual.nombreOrientacionSexual);                    
+                    doc.Add(p5);
+                    Paragraph p6 = new Paragraph("Ciudad de nacimiento: "+tblPaciente.ciudadNacimiento);
+                    doc.Add(p6);
+                    Paragraph p7 = new Paragraph("Ciudad de residencia: "+tblPaciente.ciudadResidencia);
+                    doc.Add(p7);
+                    Paragraph p8 = new Paragraph("Ocupación: " +tblPaciente.ocupacion);
+                    doc.Add(p8);
+                    Paragraph p9 = new Paragraph("Profesión: " +tblPaciente.profesion);
+                    doc.Add(p9);
+                    Paragraph p10 = new Paragraph("Tipo discapacidad: " +tblPaciente.idTipoDiscapacidad);
+                    doc.Add(p10);
+                    Paragraph p11 = new Paragraph("Porcentaje de discapacidad: "+tblPaciente.porcentajeDiscapacidad.ToString());                    
+                    doc.Add(p11);
+                    Paragraph p12 = new Paragraph("Estado civil: "+ tblPaciente.tblEstadoCivil.nombreEstadoCivil);
+                    doc.Add(p12);
+                    Paragraph p13 = new Paragraph("Lateralidad: "+ tblPaciente.tblLateralidad.nombreLateralidad);
+                    doc.Add(p13);
+                    Paragraph p14 = new Paragraph("Nivel de educación: " +tblPaciente.tblNivelEducacion.nombreNivelEducacion);
+                    doc.Add(p14);
+                    Paragraph p15 = new Paragraph("Dirección: " +tblPaciente.direccion);
+                    doc.Add(p15);
+                    Paragraph p16 = new Paragraph("Teléfono personal: " +tblPaciente.telefonoPersonal);
+                    doc.Add(p16);
+                    Paragraph p17 = new Paragraph("Teléfono residencial: "+tblPaciente.telefonoResidencial);
+                    doc.Add(p17);
+                    Paragraph p18 = new Paragraph("Correo electrónico: "+tblPaciente.correoElectronico);
+                    doc.Add(p18);
+                    Paragraph p19 = new Paragraph("Religión: "+tblPaciente.tblReligion.nombreReligion);
+                    doc.Add(p19);
+                    Paragraph p20 = new Paragraph("Nombre contacto de emergencia: " +tblPaciente.tblContactoEmergencia.nombreContactoEmergencia +" "+ tblPaciente.tblContactoEmergencia.apellidoContactoEmergencia);
+                    doc.Add(p20);
+                    Paragraph p21 = new Paragraph("Teléfono contacto de emergencia: "+ tblPaciente.tblContactoEmergencia.telefonoContactoEmergencia);
+                    doc.Add(p21);
+                    Paragraph p22 = new Paragraph("Correo contacto de emergencia: "+ tblPaciente.tblContactoEmergencia.correoContactoEmergencia);
+                    doc.Add(p22);
+                    tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == idPaciente).First();
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    Paragraph p23 = new Paragraph("- - - HISTORIA CLÍNICA DEL PACIENTE - - -");
+                    p23.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(p23);
+                    doc.Add(espacio);
+                    Paragraph p24 = new Paragraph("Id historia clínica: "+tblHistoriaClinica.idHistoriaClinica);
+                    doc.Add(p24);
+                    Paragraph p25 = new Paragraph("Seguro médico: " + tblHistoriaClinica.tblSeguroMedico.nombreSeguro);
+                    doc.Add(p25);
+                    Paragraph p26 = new Paragraph("Tipo de sangre: " + tblHistoriaClinica.tblTipoSangre.sangre);
+                    doc.Add(p26);
+                    Paragraph p27 = new Paragraph("Antecedente familiar clínico: " + tblHistoriaClinica.antecedenteFamiliarClinico);
+                    doc.Add(p27);
+                    Paragraph p28 = new Paragraph("Antecedente familiar quirúrgico: " + tblHistoriaClinica.antecedenteFamiliarQuirurgico);
+                    doc.Add(p28);
+                    Paragraph p29 = new Paragraph("Antecedente personal clínico: " + tblHistoriaClinica.antecedentePersonalClinico);
+                    doc.Add(p29);
+                    Paragraph p30 = new Paragraph("Antecedente personal quirúrgico: " + tblHistoriaClinica.antecedentePersonalQuirurgico);
+                    doc.Add(p30);
+                    Paragraph p31 = new Paragraph("Antecedente personal alérgico: " + tblHistoriaClinica.antecedentePersonalAlergico);
+                    doc.Add(p31);
+                    Paragraph p32 = new Paragraph("Antecedente personal vacunas: " + tblHistoriaClinica.antecedentePersonalVacunas);
+                    doc.Add(p32);
+                    if(tblHistoriaClinica.idAntecedenteGinecoObstetrico != null)
+                    {                        
+                        Paragraph p33 = new Paragraph("Menarquia: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.menarquia);
+                        doc.Add(p33);
+                        Paragraph p34 = new Paragraph("Ciclo: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.ciclo);
+                        doc.Add(p34);
+                        Paragraph p35 = new Paragraph("Fecha última menstruación: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.fechaUltimaMenstruacion.Value.ToString("yyyy-MM-dd"));
+                        doc.Add(p35);
+                        Paragraph p36 = new Paragraph("Gestas: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.gestas);
+                        doc.Add(p36);
+                        Paragraph p37 = new Paragraph("Partos: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.partos);
+                        doc.Add(p37);
+                        Paragraph p38 = new Paragraph("Cesárea: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.cesarea);
+                        doc.Add(p38);
+                        Paragraph p39 = new Paragraph("Abortos: " +tblHistoriaClinica.tblAntecedenteGinecoObstetrico.abortos);
+                        doc.Add(p39);
+                        Paragraph p40 = new Paragraph("Hijos vivos: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.hijosVivos);
+                        doc.Add(p40);
+                        Paragraph p41 = new Paragraph("Hijos muertos: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.hijosMuertos);
+                        doc.Add(p41);
+                        Paragraph p42 = new Paragraph("Vida sexual activa: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.vidaSexualActiva);
+                        doc.Add(p42);
+                        Paragraph p43 = new Paragraph("Método de planificación familiar: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar);
+                        doc.Add(p43);
+                    }
+                    if (tblHistoriaClinica.idAntecedenteReprodMasculino != null)
+                    {
+                        Paragraph p44 = new Paragraph("Enfermedades de transmisión sexual: " + tblHistoriaClinica.tblAntecedenteReprodMasculino.ets);
+                        doc.Add(p44);
+                        Paragraph p45 = new Paragraph("Pareja sexual: " + tblHistoriaClinica.tblAntecedenteReprodMasculino.parejaSexual);
+                        doc.Add(p45);
+                    }                   
+                    
+                    Paragraph p46 = new Paragraph("Uso de tabaco: "+tblHistoriaClinica.tabaco);
+                    doc.Add(p46);
+                    Paragraph p47 = new Paragraph("Uso de alcohol: " + tblHistoriaClinica.alcohol);
+                    doc.Add(p47);
+                    Paragraph p48 = new Paragraph("Uso de otras drogas: " + tblHistoriaClinica.otrasDrogas);
+                    doc.Add(p48);
+                    Paragraph p49 = new Paragraph("Actividad física: " + tblHistoriaClinica.actividadFisica);
+                    doc.Add(p49);
+                    Paragraph p50 = new Paragraph("Medicación habitual: " + tblHistoriaClinica.medicacionHabitual);
+                    doc.Add(p50);
+
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    Paragraph p51 = new Paragraph("- - - HISTORIAL DE VISITAS / EVOLUCIÓN - - -");
+                    p51.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(p51);
+                    doc.Add(espacio);
+                    PdfPTable table = new PdfPTable(3);//tabla de 3 col
+                    float[] values = new float[3] { 70, 150, 150 }; //anchos de col
+                    table.SetWidths(values);//anchos asignados a la tabla
+                                            //creando las Celdas 
+                                            //creando celdas y poniendo color ademas dealinear el contenido al centro
+                    PdfPCell celda1 = new PdfPCell(new Phrase("Fecha"));
+                    celda1.BackgroundColor = new BaseColor(130, 130, 130);
+                    celda1.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                    table.AddCell(celda1);
+
+                    PdfPCell celda2 = new PdfPCell(new Phrase("Motivo de consulta"));
+                    celda2.BackgroundColor = new BaseColor(130, 130, 130);
+                    celda2.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                    table.AddCell(celda2);
+
+                    PdfPCell celda3 = new PdfPCell(new Phrase("Diagnóstico"));
+                    celda3.BackgroundColor = new BaseColor(130, 130, 130);
+                    celda3.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                    table.AddCell(celda3);
+
+                    List<tblEvolucion> listaEvoluciones = bd.tblEvolucion.Where(p => p.idHistoriaClinica == tblHistoriaClinica.idHistoriaClinica && p.habilitado == 1).ToList();
+                    foreach (var item in listaEvoluciones)
+                    {
+                        Paragraph fechaVisita = new Paragraph(item.fechaVisita.Value.ToString());
+                        table.AddCell(fechaVisita);
+                        Paragraph motivoConsulta = new Paragraph(item.motivoConsulta);
+                        table.AddCell(motivoConsulta);
+                        Paragraph diagnostico = new Paragraph(item.diagnostico);
+                        table.AddCell(diagnostico);
+                    }
+                    doc.Add(table);
+                }
+                doc.Close();
+                buffer = ms.ToArray();
+            }
+            return File(buffer, "application/pdf");
+        }
+
         public FileResult prescripcionPDF(int idEvolucion, int idPaciente)
         {
             Document doc = new Document();           
@@ -46,15 +243,14 @@ namespace ConsultorioDermatologico.Controllers
                 doc.Add(info3);
                 doc.Add(info4);
                 doc.Add(fechaHoy);
-
+                
                 Paragraph espacio = new Paragraph(" ");
                 doc.Add(espacio);
 
                 using (var bd = new BDD_ConsultorioDermatologicoEntities())
                 {
                     tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == idPaciente).First();
-                    tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion).First();
-
+                    tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();                                       
                     Paragraph nombresPaciente = new Paragraph("Nombres y apellidos del paciente:    "+tblPaciente.nombres+" "+tblPaciente.apellidos);
                     doc.Add(nombresPaciente);
                     Paragraph cedulaPaciente = new Paragraph("Cédula de identidad:  " + tblPaciente.cedula);
@@ -73,7 +269,8 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(espacio);
                     doc.Add(espacio);
                     doc.Add(espacio);
-                    PdfPTable table = new PdfPTable(2);//tabla de 3 col
+                    
+                    PdfPTable table = new PdfPTable(2);//tabla de 2 col
                     float[] anchoColumna = new float[2] { 50, 50 }; //anchos de col
                     table.SetWidths(anchoColumna);//anchos asignados a la tabla
 
@@ -92,11 +289,11 @@ namespace ConsultorioDermatologico.Controllers
                     table.AddCell(prescripcion);
                     Paragraph recomendaciones = new Paragraph(tblEvolucion.recomendaciones);
                     table.AddCell(recomendaciones);
-                    doc.Add(table);
-                    doc.Close();
-                    buffer = ms.ToArray();
-                }
 
+                    doc.Add(table);
+                }
+                doc.Close();
+                buffer = ms.ToArray();
             }
             return File(buffer, "application/pdf");
         }

@@ -121,7 +121,7 @@ namespace ConsultorioDermatologico.Controllers
             {
                 EvolucionCLS evolucionCLS = new EvolucionCLS();
 
-                tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();
+                tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion).First();
                 ViewBag.idEvolucion = tblEvolucion.idEvolucion;
                 //viewbags
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica == tblEvolucion.idHistoriaClinica).First();
