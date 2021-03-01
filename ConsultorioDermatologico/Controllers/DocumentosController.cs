@@ -14,6 +14,10 @@ namespace ConsultorioDermatologico.Controllers
     [Acceder]
     public class DocumentosController : Controller
     {
+        public string nombreMedico = (string)System.Web.HttpContext.Current.Session["NombreUsuario"];
+        public string cedulaMedico = (string)System.Web.HttpContext.Current.Session["cedula"];
+        public string codigoMSP = (string)System.Web.HttpContext.Current.Session["codigoMSP"];
+        
         // GET: Documentos
         public ActionResult Index(int idEvolucion, int idPaciente)
         {
@@ -34,7 +38,7 @@ namespace ConsultorioDermatologico.Controllers
                 png.ScalePercent(24f);
                 doc.Add(png);
                 //IMAGEN
-                Paragraph info1 = new Paragraph("DRA. Silvana Narváez Arboleda" + ",M.D.");
+                Paragraph info1 = new Paragraph(nombreMedico + ",M.D.");
                 Paragraph info2 = new Paragraph("Médico Dermatólogo");
                 Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
                 Paragraph info4 = new Paragraph("TELÉFONO 2263720");
@@ -232,7 +236,7 @@ namespace ConsultorioDermatologico.Controllers
                 png.ScalePercent(24f);
                 doc.Add(png);
                 //IMAGEN
-                Paragraph info1 = new Paragraph("DRA. Silvana Narváez Arboleda"+",M.D.");
+                Paragraph info1 = new Paragraph(nombreMedico + ",M.D.");
                 Paragraph info2 = new Paragraph("Médico Dermatólogo");
                 Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
                 Paragraph info4 = new Paragraph("TELÉFONO 2263720");
@@ -313,7 +317,7 @@ namespace ConsultorioDermatologico.Controllers
                 png.ScalePercent(24f);
                 doc.Add(png);
                 //IMAGEN
-                Paragraph info1 = new Paragraph("DRA. Silvana Narváez Arboleda" + ",M.D.");
+                Paragraph info1 = new Paragraph(nombreMedico + ",M.D.");
                 Paragraph info2 = new Paragraph("Médico Dermatólogo");
                 Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
                 Paragraph info4 = new Paragraph("TELÉFONO 2263720");
@@ -374,9 +378,9 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(info1);
                     doc.Add(info2);
                     doc.Add(espacio);
-                    Paragraph codigoMSP = new Paragraph("MSP MSP MSP");
-                    doc.Add(codigoMSP);
-                    Paragraph cedulaMD = new Paragraph("CEDULA DOCSESSION");
+                    Paragraph codigomsp = new Paragraph("MSP " + codigoMSP);
+                    doc.Add(codigomsp);
+                    Paragraph cedulaMD = new Paragraph("CI: " + cedulaMedico);
                     doc.Add(cedulaMD);
 
                 }
@@ -399,7 +403,7 @@ namespace ConsultorioDermatologico.Controllers
                 png.ScalePercent(24f);
                 doc.Add(png);
                 //IMAGEN
-                Paragraph info1 = new Paragraph("DRA. Silvana Narváez Arboleda" + ",M.D.");
+                Paragraph info1 = new Paragraph(nombreMedico + ",M.D.");
                 Paragraph info2 = new Paragraph("Médico Dermatólogo");
                 Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
                 Paragraph info4 = new Paragraph("TELÉFONO 2263720");
@@ -465,9 +469,9 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(info1);
                     doc.Add(info2);
                     doc.Add(espacio);
-                    Paragraph codigoMSP = new Paragraph("MSP MSP MSP");
-                    doc.Add(codigoMSP);
-                    Paragraph cedulaMD = new Paragraph("CEDULA DOCSESSION");
+                    Paragraph codigomsp = new Paragraph("MSP "+codigoMSP);
+                    doc.Add(codigomsp);
+                    Paragraph cedulaMD = new Paragraph("CI: "+cedulaMedico);
                     doc.Add(cedulaMD);
 
                 }

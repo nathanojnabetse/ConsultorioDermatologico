@@ -61,6 +61,9 @@ namespace ConsultorioDermatologico.Controllers
                         Session["Usuario"] = tblUsuario;
                         //Variable session para permitir ciertas vistas de acuerdo al rol de usuario
                         Session["Rol"] = tblUsuario.rolUsuario;
+                        Session["NombreUsuario"] = tblUsuario.nombresUsuario + " "+ tblUsuario.apellidosUsuario;
+                        Session["cedula"] = tblUsuario.cedulaUsuario;
+                        Session["codigoMSP"] = tblUsuario.codigoMSP;
                     }
                 }
             }
