@@ -261,11 +261,9 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(edad);
                     doc.Add(espacio);
                     Paragraph fechaconsulta = new Paragraph("Fecha de atención: "+tblEvolucion.fechaVisita.ToString());
-                    doc.Add(fechaconsulta);
-                    doc.Add(espacio);
+                    doc.Add(fechaconsulta);       
                     Paragraph motivoConsulta = new Paragraph("Motivo de consulta:   " + tblEvolucion.motivoConsulta);
                     doc.Add(motivoConsulta);
-                    doc.Add(espacio);
                     Paragraph diagnostico = new Paragraph("Diagnóstico:     " + tblEvolucion.diagnostico);
                     doc.Add(diagnostico);
                     doc.Add(espacio);
@@ -351,7 +349,6 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(fechaconsulta);       
                     Paragraph motivoConsulta = new Paragraph("Motivo de consulta:   " + tblEvolucion.motivoConsulta);
                     doc.Add(motivoConsulta);
-                    doc.Add(espacio);
                     Paragraph diagnostico = new Paragraph("Diagnóstico:     " + tblEvolucion.diagnostico);
                     doc.Add(diagnostico);
                     doc.Add(espacio);
@@ -387,7 +384,7 @@ namespace ConsultorioDermatologico.Controllers
             return File(buffer, "application/pdf");
         }
 
-        public FileResult reposoPDF(int idEvolucion, int idPaciente)
+        public FileResult reposoPDF(int idEvolucion, int idPaciente, int horasDescanso, DateTime fechaDesde,DateTime fechaHasta)
         {
             Document doc = new Document();
             byte[] buffer;
@@ -438,18 +435,22 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(fechaconsulta);
                     Paragraph motivoConsulta = new Paragraph("Motivo de consulta:   " + tblEvolucion.motivoConsulta);
                     doc.Add(motivoConsulta);
-                    doc.Add(espacio);
                     Paragraph diagnostico = new Paragraph("Diagnóstico:     " + tblEvolucion.diagnostico);
                     doc.Add(diagnostico);
                     doc.Add(espacio);
                     doc.Add(espacio);
                     doc.Add(espacio);
 
-                    //Paragraph certifico = new Paragraph("CERTIFICO QUE EL PACIENTE ACUDIÓ EN ESTA FECHA A CONSULTA MEDICA DERMATOLÓGICA ");
-                    //doc.Add(certifico);
-
+                    Paragraph r1 = new Paragraph("Reposo por: "+ horasDescanso+"hora/s, "+(fechaHasta-fechaDesde).TotalDays.ToString()+"día/días");                    
+                    doc.Add(r1);
                     doc.Add(espacio);
+                    Paragraph r2 = new Paragraph("Desde: " + fechaDesde.ToString("yyyy-MM-dd"));
+                    Paragraph r3 = new Paragraph("Hasta: " + fechaHasta.ToString("yyyy-MM-dd"));
+                    doc.Add(r2);
+                    doc.Add(r3);
                     doc.Add(espacio);
+                    Paragraph att = new Paragraph("atentamente;");
+                    doc.Add(att);                    
                     doc.Add(espacio);
                     doc.Add(espacio);
                     doc.Add(espacio);
@@ -472,6 +473,17 @@ namespace ConsultorioDermatologico.Controllers
                 buffer = ms.ToArray();
             }
             return File(buffer, "application/pdf");
+        }
+
+        public string verifica(int? horasDescanso, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            string mensaje = "";
+            if(horasDescanso == null | fechaDesde == null || fechaHasta == null)
+            {
+                mensaje = "Llene todos los campos";               
+            }            
+            
+            return mensaje;                        
         }
     }
 }

@@ -16,10 +16,10 @@
                     <div style="text-align: center; padding: 40px 10px;">
                         <i class="fa fa-user-md fa-4x" aria-hidden="true"></i>
                     </div>
-                    <p class="card-text" style="text-align:justify">Genera un documento con la información del paciente con la prescripción y recomendaciones de la consulta</p>                    
+                    <p class="card-text" style="text-align:justify">Genera un documento con la información del paciente con la prescripción y recomendaciones de la consulta</p>
                 </div>
                 <div>
-                    @Html.ActionLink("Generar documento", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })                    
+                    @Html.ActionLink("Generar documento", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })
                 </div>
             </div>
         </div>
@@ -34,7 +34,10 @@
                     <p class="card-text" style="text-align:justify">Indique las fechas y horas de descanso del paciente</p>
                 </div>
                 <div>
-                    @Html.ActionLink("Generar documento", "reposoPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })                   
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalReposo" style = "width: 100%">
+                        Generar documento
+                    </button>
+                    @*@Html.ActionLink("Generar documento", "reposoPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })*@
                 </div>
             </div>
         </div>
@@ -56,3 +59,66 @@
 
 </div>
 
+<!-- Modal para elegir fechas y hora de reposo -->
+<div class="modal fade" id="modalReposo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                @using (Ajax.BeginForm("verifica", "Documentos", null, new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "reposo",
+                    UpdateTargetId = "error"
+                }))
+                {
+                    <div>
+                        @Html.Label("Horas de descanso")
+                        @Html.TextBox("horasDescanso", null, new { @class = "form-control limpieza", @type = "number", @min = "0", @max = "24", @required = true })
+                    </div>
+                    <div>
+                        @Html.Label("Desde")
+                        <input type="date" id="fechaDesde" name="fechaDesde" class="form-control limpieza" onclose="reposo()" required>
+                    </div>
+                    <div>
+                        @Html.Label("Hasta")
+                        <input type="date" id="fechaHasta" name="fechaHasta" class="form-control limpieza" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>                       
+                    </div>
+                }
+                <div id="error" class="text-danger"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function reposo(rpta) {
+
+        if (rpta == "") {
+            var horasDescanso = document.getElementById("horasDescanso").value;
+            var fechaDesde = document.getElementById("fechaDesde").value;
+            var fechaHasta = document.getElementById("fechaHasta").value;
+            document.getElementById("btnClose").click();
+            let a = document.createElement('a');
+            a.target = '_blank';
+            var url = '@Url.Action("reposoPDF", "Documentos")?idEvolucion=' + @ViewBag.idEvolucion + '&idPaciente=' + @ViewBag.idPaciente + '&horasDescanso=' + horasDescanso + '&fechaDesde=' + fechaDesde + '&fechaHasta=' + fechaHasta;
+            a.href = url;
+            a.click();
+        }
+        else {
+            alert("Llene todos los campos")
+        }
+
+        //eposoPDF?idEvolucion=44&idPaciente=2
+    }
+</script>
