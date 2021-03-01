@@ -5,11 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
     public class EvolucionController : Controller
     {
+        [Acceder]
         // GET: Evolucion
         public ActionResult Index(int idPaciente)
         {

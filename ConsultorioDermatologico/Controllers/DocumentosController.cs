@@ -7,9 +7,11 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using ConsultorioDermatologico.Models;
 using System.IO;
+using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
+    [Acceder]
     public class DocumentosController : Controller
     {
         // GET: Documentos

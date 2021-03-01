@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ConsultorioDermatologico.Models;
+using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
+    [Acceder]
     public class AdministracionPacientesController : Controller
     {
         
