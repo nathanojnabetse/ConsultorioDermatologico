@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using ConsultorioDermatologico.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,7 +15,15 @@
 
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="../Home/Index"> <i class="fa fa-heartbeat" aria-hidden="true"></i></a>
+        @if ((string)Session["Rol"] == "MEDICO")
+        {
+            <a class="navbar-brand" href="@Url.Action("Medico", "Home")"> <i class="fa fa-heartbeat" aria-hidden="true"></i></a>
+        }
+        else
+        {
+            <a class="navbar-brand" href="@Url.Action("Admin", "Home")"> <i class="fa fa-heartbeat" aria-hidden="true"></i></a>
+        }
+
         <button class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarNavDropdown"
@@ -24,11 +33,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Usuarios", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Registro Paciente", "Index", "Paciente", new { area = "" }, new { @class = "navbar-brand" })
+                @if ((string)Session["Rol"] == "MEDICO")
+                {
 
-
+                    @Html.ActionLink("Registro Paciente", "Agregar", "Paciente", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Buscar Paciente", "Index", "Paciente", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("CIE-10", "Index", "Enfermedades", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("Usuarios", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Administración pacientes", "Index", "AdministracionPacientes", new { area = "" }, new { @class = "navbar-brand" })
+                }
                 @Html.ActionLink("Cerrar Sesion", "CerrarSesion", "Login", new { area = "" }, new { @class = "navbar-brand" })
             </ul>
         </div>

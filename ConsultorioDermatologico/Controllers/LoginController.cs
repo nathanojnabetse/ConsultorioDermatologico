@@ -59,13 +59,19 @@ namespace ConsultorioDermatologico.Controllers
                         mensaje = tblUsuario.rolUsuario;
                         //Todo el objeto Usuario para el session
                         Session["Usuario"] = tblUsuario;
+                        //Variable session para permitir ciertas vistas de acuerdo al rol de usuario
+                        Session["Rol"] = tblUsuario.rolUsuario;
                     }
                 }
             }
-
-            
-
                 return mensaje;
+        }
+
+        public ActionResult CerrarSesion()
+        {
+            Session["Usuario"] = null;
+            Session["Rol"] = null;
+            return RedirectToAction("Index");
         }
     }
 }
