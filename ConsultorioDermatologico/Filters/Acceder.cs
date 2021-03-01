@@ -61,12 +61,12 @@ namespace ConsultorioDermatologico.Filters
             //Usuario Index Filtro Guardar Eliminar 
             //Home aDMIN
             if (((string)rol == "ADMINISTRADOR")
-                && ((nombreControlador == "AdministracionPaciente" && accion == "Index")
-                || (nombreControlador == "AdministracionPaciente" && accion == "Filtro")
-                || (nombreControlador == "AdministracionPaciente" && accion == "EliminarPaciente")
-                || (nombreControlador == "AdministracionPaciente" && accion == "ReestablecerPaciente")
-                || (nombreControlador == "AdministracionPaciente" && accion == "EliminarVisita")
-                || (nombreControlador == "AdministracionPaciente" && accion == "ReestablecerVisita")
+                && ((nombreControlador == "AdministracionPacientes" && accion == "Index")
+                || (nombreControlador == "AdministracionPacientes" && accion == "Filtro")
+                || (nombreControlador == "AdministracionPacientes" && accion == "EliminarPaciente")
+                || (nombreControlador == "AdministracionPacientes" && accion == "ReestablecerPaciente")
+                || (nombreControlador == "AdministracionPacientes" && accion == "EliminarVisita")
+                || (nombreControlador == "AdministracionPacientes" && accion == "ReestablecerVisita")
                 || (nombreControlador == "Usuario" && accion == "Index")
                 || (nombreControlador == "Usuario" && accion == "Filtro")
                 || (nombreControlador == "Usuario" && accion == "Guardar")

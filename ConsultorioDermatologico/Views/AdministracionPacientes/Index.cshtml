@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
+<h2>Administración de pacientes e historias clinicas desactivadas</h2>
+@Html.ActionLink("Regresar", "Admin", "Home", null, new { @class = "btn-danger btn" })
 
 @using (Ajax.BeginForm("Filtro", "", new AjaxOptions
 {
@@ -16,7 +18,7 @@
     <div id="divListasDesactivados">
         <div id="divListaPacientesEliminados">
             @Html.Partial("_TablaDesactivados")
-        </div>        
+        </div>
     </div>
 }
 

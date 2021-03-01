@@ -23,6 +23,7 @@
 <button onclick="Agregar()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">
     Agregar
 </button>
+@Html.ActionLink("Regresar", "Admin", "Home", null, new { @class = "btn-danger btn" })
 
 @using (Ajax.BeginForm("Filtro", "", new AjaxOptions
 {
@@ -67,8 +68,8 @@
                         @Html.TextBox("apellidoUsuario", null, new { @class = "form-control limpieza" })
                     </div>
                     <div>
-                        @Html.Label("Cédula")                        
-                        @Html.TextBox("cedulaUsuario", null, new { @class = "form-control limpieza", @type = "number", @min = "0", @max = "9999999999"})
+                        @Html.Label("Cédula")
+                        @Html.TextBox("cedulaUsuario", null, new { @class = "form-control limpieza", @type = "number", @min = "0", @max = "9999999999" })
                     </div>
                     <div>
                         @Html.Label("Rol Usuario")
@@ -80,13 +81,13 @@
                     </div>
                     <div>
                         @Html.Label("Contraseña")
-                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control limpieza", @placeholder = "*******"})
+                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control limpieza", @placeholder = "*******" })
                     </div>
                     <div>
                         @Html.Label("Correo electrónico")
                         @Html.TextBox("correoUsuario", null, new { @class = "form-control limpieza" })
                     </div>
-                     <div id="codigoOcultar">
+                    <div id="codigoOcultar">
                         @Html.Label("Código MSP")
                         @Html.TextBox("codigoMSP", null, new { @class = "form-control limpieza" })
                     </div>
@@ -131,7 +132,7 @@
 
     function Agregar() {
         Limpiar();
-        document.getElementById("titulo").value = -1; 
+        document.getElementById("titulo").value = -1;
 
     }
     function Guardar(resultado) {
@@ -187,11 +188,11 @@
         document.getElementById("error").innerHTML = "";
     }
 
-    
+
     var x = document.getElementById("rolUsuario");
     var y = document.getElementById("codigoOcultar");
     function Cambio() {
-        
+
         if (x.value == "MEDICO") {
             y.disabled = false;
             y.style.display = "block";

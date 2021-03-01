@@ -7,7 +7,9 @@
 }
 
 <h2 style="padding-top:1em">Pacientes registrados</h2>
-
+<div class="row">
+    @Html.ActionLink("Regresar", "Medico", "Home", null, new { @class = "btn-danger btn" })
+</div>
 @using (Ajax.BeginForm("Filtro", "", new AjaxOptions
 {
     HttpMethod = "POST",
@@ -19,7 +21,7 @@
         @Html.Label("Búsqueda por nombre o número de cedula: ")
         @Html.TextBox("busqueda", null, new { @class = "form-control" })
     </div>
-    
+
     <div id="divListaUsuarios">
         @Html.Partial("_TablaPacientes", Model)
     </div>

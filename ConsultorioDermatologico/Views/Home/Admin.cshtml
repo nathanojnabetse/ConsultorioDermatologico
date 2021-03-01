@@ -33,10 +33,10 @@
 
 
         <div class="row d-flex flex-wrap">
-            <div class=" col-sm-4 d-flex flex-column justify-content-between">
+            <div class=" col-sm-6 d-flex flex-column justify-content-between">
                 <div class="card  card-propio ">
                     <div class="card-body ">
-                        <h5 class="card-title">Registrar un nuevo usuario</h5>
+                        <h5 class="card-title">Registro y gestión de usuarios</h5>
                         <div style="text-align: center; padding: 40px 10px;">
                             <i class="fa fa-user-md fa-4x" aria-hidden="true"></i>
                         </div>
@@ -44,25 +44,11 @@
                         <p class="card-text">Añadir o eliminar un nuevo usuario con rol de médico para gestión de pacientes e historias clínicas</p>
                     </div>
                     <div>
-                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"> <i class="fa fa-user-plus" aria-hidden="true"></i> Añadir usuario</a>
+                        <a href="@Url.Action("Index","Usuario")" class="btn btn-primary" style="width: 100%"> <i class="fa fa-user-plus" aria-hidden="true"></i> Añadir usuario</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4 d-flex flex-column justify-content-between">
-                <div class="card  card-propio ">
-                    <div class="card-body ">
-                        <h5 class="card-title">Administración de usuarios</h5>
-                        <div style="text-align: center; padding: 40px 10px;">
-                            <i class="fa fa-users fa-4x" aria-hidden="true"></i>
-                        </div>
-                        <p class="card-text" style="text-align:justify">Muestra una lista de los usuarios registrados con sus roles en el sistema con opciones de edición y eliminación</p>
-                    </div>
-                    <div>
-                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"><i class="fa fa-address-book" aria-hidden="true"></i> Listar usuarios</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 d-flex flex-column justify-content-between">
+            <div class="col-sm-6 d-flex flex-column justify-content-between">
                 <div class="card  card-propio ">
                     <div class="card-body ">
                         <h5 class="card-title">Administración de pacientes</h5>
@@ -72,13 +58,15 @@
                         <p class="card-text" style="text-align:justify">Muestra una lista de los pacientes registrados con opciones de edición y eliminación</p>
                     </div>
                     <div>
-                        <a href="../Usuario/Index" class="btn btn-primary" style="width: 100%"><i class="fa fa-list-ul" aria-hidden="true"></i> Listar pacientes</a>
+                        <a href="@Url.Action("Index","AdministracionPacientes")" class="btn btn-primary" style="width: 100%"><i class="fa fa-list-ul" aria-hidden="true"></i> Listar pacientes</a>
                     </div>
                 </div>
             </div>
         </div>
-
+        @Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login", null, new { @class = "btn-danger btn" })
     </div>
+
+   
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>

@@ -9,7 +9,9 @@
 <h2 style="padding-top:1em">Visitas del paciente @ViewBag.nombrePaciente</h2>
 
 @Html.ActionLink("Agregar", "Agregar", "Evolucion", new { idHistoriaClinica = @ViewBag.idHistoriaClinica}, new { @class = "btn btn-primary" })
-
+<div class="col-sm-6 ">
+    @Html.ActionLink("Regresar", "InformacionPaciente", "HistoriaClinica", new { idPaciente = @ViewBag.idPaCiente }, new { @class = "btn-primary btn" })
+</div>
 <table class="table table-hover table-bordered">
     <thead>
         <tr class="tdCentrar font-weight-bold">
