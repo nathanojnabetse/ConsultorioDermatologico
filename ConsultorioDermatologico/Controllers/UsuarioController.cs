@@ -74,6 +74,7 @@ namespace ConsultorioDermatologico.Controllers
             string rpta ="" ; //numero de registros afectados
             int aliasExistentes = 0;//control de # repeticion de nombre de usuario (Alias)
             int correoExistente = 0;//Control para el # de repeticiones del correo de usuario
+            int cedulaExistente = 0;//Control para el # de repeticiones del correo de usuario
             try
             {
                 if (!ModelState.IsValid)
@@ -98,13 +99,19 @@ namespace ConsultorioDermatologico.Controllers
                             {
                                 aliasExistentes = bd.tblUsuario.Where(p => p.aliasUsuario == usuarioCLS.aliasUsuario).Count();
                                 correoExistente = bd.tblUsuario.Where(p => p.correoUsuario == usuarioCLS.correoUsuario).Count();
+                                cedulaExistente = bd.tblUsuario.Where(p => p.cedulaUsuario == usuarioCLS.cedulaUsuario).Count();
                                 if (aliasExistentes >= 1)
                                 {
                                     rpta = "-1";//usuario con alias repetido
-                                }else if(correoExistente >= 1)
+                                }
+                                else if(correoExistente >= 1)
                                 {
                                     rpta = "-2";//correo en uso
-                                }                                
+                                }
+                                else if (cedulaExistente >= 1)
+                                {
+                                    rpta = "-3";//cedula ya registrada
+                                }
                                 else
                                 {
                                     tblUsuario tblUsuario = new tblUsuario();

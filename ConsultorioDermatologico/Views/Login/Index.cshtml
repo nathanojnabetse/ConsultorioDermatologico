@@ -92,21 +92,63 @@
                 <br>
 
                 <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Entrar</button>
-                <div class="opcioncontra"><a href="">¿Olvidó tu contraseña?</a></div>
-               
+                <div class="opcioncontra"><a id="btnOlvideContra" data-toggle="modal" data-target="#modalContrasena">¿Olvidó su contraseña?</a></div>                
+
                 <div id="divRespuesta"></div>
             }
 
             @*@if (Model != null && Model.mensajeError != null)
-        {
-            @Html.Label(Model.mensajeError, new { @class = "text-danger" })
+                {
+                    @Html.Label(Model.mensajeError, new { @class = "text-danger" })
 
-        }*@
+                }*@
         </div>
     </div>
 
+
+    <!-- Modal para el correo -->
+    <div class="modal fade" id="modalContrasena" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @using (Ajax.BeginForm("RecuperarContra", "Login", null, new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "Recuperar",
+                    UpdateTargetId = "error"
+                }))
+                {
+                    @Html.Hidden("titulo")
+                    <div class="modal-body">
+                        <div>
+                            @Html.Label("Correo")
+                            @Html.TextBox("correo", null, new { @class = "form-control", @type="email"})
+
+                        </div>
+                        <div>
+                            @Html.Label("Cédula")
+                            @Html.TextBox("cedula", null, new { @class = "form-control", @type = "number", @min = "0", @max = "9999999999" })
+                        </div>                      
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Enviar correo</button>
+                    </div>
+                }
+                <div id="error"></div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 
 </body>
 
@@ -125,4 +167,17 @@
                  alert("Usuario o contraseña incorrecta")
          }
     }
+
+    function Recuperar(rpta) {
+        if (rpta == "1") {
+            alert("Se envió la clave al correo");
+            document.getElementById("btnClose").click();
+        }
+        else {
+            alert("Ocurrió un error - Usuario no registrado");
+            document.getElementById("btnClose").click();
+        }
+
+
+    } 
 </script>

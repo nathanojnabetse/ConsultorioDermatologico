@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ConsultorioDermatologico.Models;
+using ConsultorioDermatologico.ClasesAuxiliares;
 
 namespace ConsultorioDermatologico.Controllers
 {
@@ -75,6 +76,43 @@ namespace ConsultorioDermatologico.Controllers
             Session["Usuario"] = null;
             Session["Rol"] = null;
             return RedirectToAction("Index");
+        }
+
+        public string RecuperarContra(string correo, string cedula)
+        {
+            string mensaje = "";
+            using (var bd= new BDD_ConsultorioDermatologicoEntities())
+            {
+                int cantidad = 0;
+                cantidad = bd.tblUsuario.Where(p => p.correoUsuario == correo && p.cedulaUsuario == cedula).Count();
+                if (cantidad == 0)
+                {
+                    mensaje = "No existe un a persona registrada con esa informacion";
+                }
+                else
+                {
+                    tblUsuario tblUsuario = bd.tblUsuario.Where(p => p.correoUsuario == correo && p.cedulaUsuario == cedula).First();
+                    
+                    //Modificar su clave
+                    Random ra = new Random();
+                    int n1 = ra.Next(1000, 9999);
+
+                    string nuevaContra = n1.ToString();
+                    //cifrar clave
+                    SHA256Managed sha = new SHA256Managed();
+                    byte[] byteContra = Encoding.Default.GetBytes(nuevaContra);
+                    byte[] byteContraCifrado = sha.ComputeHash(byteContra);
+                    string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
+
+                    tblUsuario.contraseñaUsuario = cadenaContraCifrada;
+                    mensaje = bd.SaveChanges().ToString();
+
+                    Correo.enviarCorreo(correo, "RECUPERACION DE CLAVE - CONSULTORIO DERMATOLÓGICO", "Su clave ha sido reestablecida, su nueva clave es: "+nuevaContra, Server.MapPath("~/Resources/PersonasCorreo.txt"));
+                }
+
+
+            }
+            return mensaje;
         }
     }
 }

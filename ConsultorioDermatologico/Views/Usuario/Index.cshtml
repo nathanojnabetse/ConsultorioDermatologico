@@ -148,7 +148,10 @@
             else if (resultado == "-2") {
                 alert("El correo de usuario ya existe en la base de datos");
                 document.getElementById("error").innerHTML = "";
-
+            }
+            else if (resultado == "-3") {
+                alert("El númeto de cédula de usuario ya existe en la base de datos");
+                document.getElementById("error").innerHTML = "";
             }
             else {
                 alert("Ocurrio un error");
