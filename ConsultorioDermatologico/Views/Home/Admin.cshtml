@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = null;
+    string nombreAdmin = (string)System.Web.HttpContext.Current.Session["NombreUsuario"];
 }
 
 <!DOCTYPE html>
@@ -26,7 +27,7 @@
 </head>
 <body>
 
-
+    <h2>Bienvenido @nombreAdmin</h2>
 
     <div class="container body-content">
 
