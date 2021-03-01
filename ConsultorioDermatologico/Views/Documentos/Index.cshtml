@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Generar Documentos</h2>
+
+<div class="container body-content">
+
+
+    <div class="row d-flex flex-wrap">
+        <div class=" col-sm-4 d-flex flex-column justify-content-between">
+            <div class="card  card-propio ">
+                <div class="card-body ">
+                    <h5 class="card-title">Prescripción</h5>
+                    <div style="text-align: center; padding: 40px 10px;">
+                        <i class="fa fa-user-md fa-4x" aria-hidden="true"></i>
+                    </div>
+                    <p class="card-text" style="text-align:justify">Genera un documento con la información del paciente con la prescripción y recomendaciones de la consulta</p>                    
+                </div>
+                <div>
+                    @Html.ActionLink("Generar documento", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 d-flex flex-column justify-content-between">
+            <div class="card  card-propio ">
+                <div class="card-body ">
+                    <h5 class="card-title">Certificado de reposo</h5>
+                    <div style="text-align: center; padding: 40px 10px;">
+                        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                    </div>
+                    <p class="card-text" style="text-align:justify">Genera un certificado de reposocon los datos del paciente en esta consulta con la fecha actual</p>
+                    <p class="card-text" style="text-align:justify">Indique las fechas y horas de descanso del paciente</p>
+                </div>
+                <div>
+                    @Html.ActionLink("Generar documento", "reposoPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })                   
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 d-flex flex-column justify-content-between">
+            <div class="card  card-propio ">
+                <div class="card-body ">
+                    <h5 class="card-title">Certificado de asistencia</h5>
+                    <div style="text-align: center; padding: 40px 10px;">
+                        <i class="fa fa-id-card fa-4x" aria-hidden="true"></i>
+                    </div>
+                    <p class="card-text" style="text-align:justify">Genera un certificado de asitencia al consultorio con la fecha actual</p>
+                </div>
+                <div>
+                    @Html.ActionLink("Generar documento", "asistenciaPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

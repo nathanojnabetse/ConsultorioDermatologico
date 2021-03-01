@@ -18,7 +18,8 @@
     </div>
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Prescripción", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @target = "_blank" })
+            @Html.ActionLink("Documentos", "Index", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary" })
+            @*@Html.ActionLink("Prescripción", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @target = "_blank" })*@
         </div>
     </div>
 

@@ -52,6 +52,12 @@ footer {
     text-align: center;
 
 }
+
+.card-propio {
+    margin-top: 10px 200px;
+    flex: 1 150px;
+    padding: 2px 0px 2px 0px;
+}
 /*#scrollToTopBtn {
     background-color: black;
     border: none;

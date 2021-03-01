@@ -13,8 +13,10 @@ namespace ConsultorioDermatologico.Controllers
     public class DocumentosController : Controller
     {
         // GET: Documentos
-        public ActionResult Index()
+        public ActionResult Index(int idEvolucion, int idPaciente)
         {
+            ViewBag.idEvolucion = idEvolucion;
+            ViewBag.idPaciente = idPaciente;
             return View();
         }
 
@@ -34,7 +36,7 @@ namespace ConsultorioDermatologico.Controllers
                 Paragraph info2 = new Paragraph("Médico Dermatólogo");
                 Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
                 Paragraph info4 = new Paragraph("TELÉFONO 2263720");
-                Paragraph fechaHoy = new Paragraph("Fecha de emisión: " + DateTime.Now.ToString("yyyy-MM-dd"));
+                Paragraph fechaHoy = new Paragraph("Fecha de emisión: " + DateTime.Now.ToString("yyy-MM-dd"));
                 info1.Alignment = Element.ALIGN_CENTER;
                 info2.Alignment = Element.ALIGN_CENTER;
                 info3.Alignment = Element.ALIGN_CENTER;
@@ -232,7 +234,7 @@ namespace ConsultorioDermatologico.Controllers
                 Paragraph info2 = new Paragraph("Médico Dermatólogo");
                 Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
                 Paragraph info4 = new Paragraph("TELÉFONO 2263720");
-                Paragraph fechaHoy = new Paragraph("Quito," + DateTime.Now.ToString("yyyy-MM-dd"));
+                Paragraph fechaHoy = new Paragraph("Fecha de emisión: " + DateTime.Now.ToString("yyyy-MM-dd"));
                 info1.Alignment = Element.ALIGN_CENTER;
                 info2.Alignment = Element.ALIGN_CENTER;
                 info3.Alignment = Element.ALIGN_CENTER;
@@ -290,7 +292,181 @@ namespace ConsultorioDermatologico.Controllers
                     Paragraph recomendaciones = new Paragraph(tblEvolucion.recomendaciones);
                     table.AddCell(recomendaciones);
 
-                    doc.Add(table);
+                    doc.Add(table);                 
+                }
+                doc.Close();
+                buffer = ms.ToArray();
+            }
+            return File(buffer, "application/pdf");
+        }
+
+        public FileResult asistenciaPDF(int idEvolucion, int idPaciente)
+        {
+            Document doc = new Document();
+            byte[] buffer;
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                PdfWriter.GetInstance(doc, ms);//guardar el doc en memoria
+                doc.Open();
+                Image png = Image.GetInstance(new Uri(Server.MapPath("~/Resources/Galenus.png")));
+                png.ScalePercent(24f);
+                doc.Add(png);
+                //IMAGEN
+                Paragraph info1 = new Paragraph("DRA. Silvana Narváez Arboleda" + ",M.D.");
+                Paragraph info2 = new Paragraph("Médico Dermatólogo");
+                Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
+                Paragraph info4 = new Paragraph("TELÉFONO 2263720");
+                Paragraph fechaHoy = new Paragraph("Fecha de emisión: " + DateTime.Now.ToString("yyyy-MM-dd"));
+                info1.Alignment = Element.ALIGN_CENTER;
+                info2.Alignment = Element.ALIGN_CENTER;
+                info3.Alignment = Element.ALIGN_CENTER;
+                info4.Alignment = Element.ALIGN_CENTER;
+                fechaHoy.Alignment = Element.ALIGN_RIGHT;
+                doc.Add(info1);
+                doc.Add(info2);
+                doc.Add(info3);
+                doc.Add(info4);
+                doc.Add(fechaHoy);
+
+                Paragraph espacio = new Paragraph(" ");
+                doc.Add(espacio);
+                Paragraph titulo = new Paragraph("CERTIFICADO DE ASISTENCIA");
+                titulo.Alignment = Element.ALIGN_CENTER;
+                doc.Add(titulo);
+                doc.Add(espacio);
+
+                using (var bd = new BDD_ConsultorioDermatologicoEntities())
+                {
+                    tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == idPaciente).First();
+                    tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();
+                    Paragraph nombresPaciente = new Paragraph("Nombres y apellidos del paciente:    " + tblPaciente.nombres + " " + tblPaciente.apellidos);
+                    doc.Add(nombresPaciente);
+                    Paragraph cedulaPaciente = new Paragraph("Cédula de identidad:  " + tblPaciente.cedula);
+                    doc.Add(cedulaPaciente);
+                    Paragraph edad = new Paragraph("Edad:   " + (DateTime.Today.Year - tblPaciente.fechaNacimiento.Value.Year).ToString() + " años");
+                    doc.Add(edad);
+                    doc.Add(espacio);
+                    Paragraph fechaconsulta = new Paragraph("Fecha de atención: " + tblEvolucion.fechaVisita.ToString());
+                    doc.Add(fechaconsulta);       
+                    Paragraph motivoConsulta = new Paragraph("Motivo de consulta:   " + tblEvolucion.motivoConsulta);
+                    doc.Add(motivoConsulta);
+                    doc.Add(espacio);
+                    Paragraph diagnostico = new Paragraph("Diagnóstico:     " + tblEvolucion.diagnostico);
+                    doc.Add(diagnostico);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+
+                    Paragraph certifico = new Paragraph("CERTIFICO QUE EL PACIENTE ACUDIÓ EN ESTA FECHA A CONSULTA MEDICA DERMATOLÓGICA ");
+                    doc.Add(certifico);
+
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+
+                    Paragraph lineaFirma = new Paragraph("__________________________");
+                    doc.Add(lineaFirma);
+                    info1.Alignment = Element.ALIGN_LEFT;
+                    info2.Alignment = Element.ALIGN_LEFT;
+                    doc.Add(info1);
+                    doc.Add(info2);
+                    doc.Add(espacio);
+                    Paragraph codigoMSP = new Paragraph("MSP MSP MSP");
+                    doc.Add(codigoMSP);
+                    Paragraph cedulaMD = new Paragraph("CEDULA DOCSESSION");
+                    doc.Add(cedulaMD);
+
+                }
+                doc.Close();
+                buffer = ms.ToArray();
+            }
+            return File(buffer, "application/pdf");
+        }
+
+        public FileResult reposoPDF(int idEvolucion, int idPaciente)
+        {
+            Document doc = new Document();
+            byte[] buffer;
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                PdfWriter.GetInstance(doc, ms);//guardar el doc en memoria
+                doc.Open();
+                Image png = Image.GetInstance(new Uri(Server.MapPath("~/Resources/Galenus.png")));
+                png.ScalePercent(24f);
+                doc.Add(png);
+                //IMAGEN
+                Paragraph info1 = new Paragraph("DRA. Silvana Narváez Arboleda" + ",M.D.");
+                Paragraph info2 = new Paragraph("Médico Dermatólogo");
+                Paragraph info3 = new Paragraph("PARIS N43 - 212 Y RÍO COCA");
+                Paragraph info4 = new Paragraph("TELÉFONO 2263720");
+                Paragraph fechaHoy = new Paragraph("Fecha de emisión: " + DateTime.Now.ToString("yyyy-MM-dd"));
+                info1.Alignment = Element.ALIGN_CENTER;
+                info2.Alignment = Element.ALIGN_CENTER;
+                info3.Alignment = Element.ALIGN_CENTER;
+                info4.Alignment = Element.ALIGN_CENTER;
+                fechaHoy.Alignment = Element.ALIGN_RIGHT;
+                doc.Add(info1);
+                doc.Add(info2);
+                doc.Add(info3);
+                doc.Add(info4);
+                doc.Add(fechaHoy);
+
+                Paragraph espacio = new Paragraph(" ");
+                doc.Add(espacio);
+                Paragraph titulo = new Paragraph("CERTIFICADO DE REPOSO");
+                titulo.Alignment = Element.ALIGN_CENTER;
+                doc.Add(titulo);
+                doc.Add(espacio);
+
+                using (var bd = new BDD_ConsultorioDermatologicoEntities())
+                {
+                    tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == idPaciente).First();
+                    tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();
+                    Paragraph nombresPaciente = new Paragraph("Nombres y apellidos del paciente:    " + tblPaciente.nombres + " " + tblPaciente.apellidos);
+                    doc.Add(nombresPaciente);
+                    Paragraph cedulaPaciente = new Paragraph("Cédula de identidad:  " + tblPaciente.cedula);
+                    doc.Add(cedulaPaciente);
+                    Paragraph edad = new Paragraph("Edad:   " + (DateTime.Today.Year - tblPaciente.fechaNacimiento.Value.Year).ToString() + " años");
+                    doc.Add(edad);
+                    doc.Add(espacio);
+                    Paragraph fechaconsulta = new Paragraph("Fecha de atención: " + tblEvolucion.fechaVisita.ToString());
+                    doc.Add(fechaconsulta);
+                    Paragraph motivoConsulta = new Paragraph("Motivo de consulta:   " + tblEvolucion.motivoConsulta);
+                    doc.Add(motivoConsulta);
+                    doc.Add(espacio);
+                    Paragraph diagnostico = new Paragraph("Diagnóstico:     " + tblEvolucion.diagnostico);
+                    doc.Add(diagnostico);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+
+                    //Paragraph certifico = new Paragraph("CERTIFICO QUE EL PACIENTE ACUDIÓ EN ESTA FECHA A CONSULTA MEDICA DERMATOLÓGICA ");
+                    //doc.Add(certifico);
+
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+                    doc.Add(espacio);
+
+                    Paragraph lineaFirma = new Paragraph("__________________________");
+                    doc.Add(lineaFirma);
+                    info1.Alignment = Element.ALIGN_LEFT;
+                    info2.Alignment = Element.ALIGN_LEFT;
+                    doc.Add(info1);
+                    doc.Add(info2);
+                    doc.Add(espacio);
+                    Paragraph codigoMSP = new Paragraph("MSP MSP MSP");
+                    doc.Add(codigoMSP);
+                    Paragraph cedulaMD = new Paragraph("CEDULA DOCSESSION");
+                    doc.Add(cedulaMD);
+
                 }
                 doc.Close();
                 buffer = ms.ToArray();
