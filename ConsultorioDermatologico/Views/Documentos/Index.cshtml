@@ -17,48 +17,47 @@
 
     <div class="row d-flex flex-wrap">
         <div class=" col-sm-4 d-flex flex-column justify-content-between">
-            <div class="card  card-propio ">
+            <div class="card bg-light card-propio ">
                 <div class="card-body ">
                     <h5 class="card-title">Prescripción</h5>
                     <div style="text-align: center; padding: 40px 10px;">
-                        <i class="fa fa-user-md fa-4x" aria-hidden="true"></i>
+                        <i class="fa fa-file-text-o fa-4x" aria-hidden="true"></i>
                     </div>
                     <p class="card-text" style="text-align:justify">Genera un documento con la información del paciente con la prescripción y recomendaciones de la consulta</p>
                 </div>
                 <div>
-                    @Html.ActionLink("Generar documento", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })
+                    @Html.ActionLink("Generar documento", "prescripcionPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-outline-primary", @style = "width: 100%", @target = "_blank" })
                 </div>
             </div>
         </div>
         <div class="col-sm-4 d-flex flex-column justify-content-between">
-            <div class="card  card-propio ">
+            <div class="card bg-light card-propio ">
                 <div class="card-body ">
                     <h5 class="card-title">Certificado de reposo</h5>
                     <div style="text-align: center; padding: 40px 10px;">
-                        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                        <i class="fa fa-bed fa-4x" aria-hidden="true"></i>
                     </div>
                     <p class="card-text" style="text-align:justify">Genera un certificado de reposocon los datos del paciente en esta consulta con la fecha actual</p>
                     <p class="card-text" style="text-align:justify">Indique las fechas y horas de descanso del paciente</p>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalReposo" style = "width: 100%">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalReposo" style = "width: 100%">
                         Generar documento
-                    </button>
-                    @*@Html.ActionLink("Generar documento", "reposoPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })*@
+                    </button>                    
                 </div>
             </div>
         </div>
         <div class="col-sm-4 d-flex flex-column justify-content-between">
-            <div class="card  card-propio ">
+            <div class="card bg-light card-propio ">
                 <div class="card-body ">
                     <h5 class="card-title">Certificado de asistencia</h5>
                     <div style="text-align: center; padding: 40px 10px;">
-                        <i class="fa fa-id-card fa-4x" aria-hidden="true"></i>
+                        <i class="fa fa-calendar-check-o fa-4x" aria-hidden="true"></i>
                     </div>
                     <p class="card-text" style="text-align:justify">Genera un certificado de asitencia al consultorio con la fecha actual</p>
                 </div>
                 <div>
-                    @Html.ActionLink("Generar documento", "asistenciaPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary", @style = "width: 100%", @target = "_blank" })
+                    @Html.ActionLink("Generar documento", "asistenciaPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-outline-primary", @style = "width: 100%", @target = "_blank" })
                 </div>
             </div>
         </div>
@@ -71,7 +70,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Fechas y horas de descanso</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -87,7 +86,7 @@
                 {
                     <div>
                         @Html.Label("Horas de descanso")
-                        @Html.TextBox("horasDescanso", null, new { @class = "form-control limpieza", @type = "number", @min = "0", @max = "24", @required = true })
+                        @Html.TextBox("horasDescanso", null, new { @class = "form-control limpieza", @type = "number", @min = "0", @max = "24", @required = true ,@Value="24"})
                     </div>
                     <div>
                         @Html.Label("Desde")

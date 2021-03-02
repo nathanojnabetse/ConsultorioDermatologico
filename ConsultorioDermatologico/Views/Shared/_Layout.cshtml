@@ -14,10 +14,10 @@
 <body>
 
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
         @if ((string)Session["Rol"] == "MEDICO")
         {
-            <a class="navbar-brand" href="@Url.Action("Medico", "Home")"> <i class="fa fa-heartbeat" aria-hidden="true"></i></a>
+            <a class="navbar-brand" href="@Url.Action("Medico", "Home")"> <i class="fa fa-heartbeat fa-2x text-white" aria-hidden="true"></i></a>
         }
         else
         {
@@ -31,28 +31,28 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 @if ((string)Session["Rol"] == "MEDICO")
                 {
-
-                    @Html.ActionLink("Registro Paciente", "Agregar", "Paciente", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("Buscar Paciente", "Index", "Paciente", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("CIE-10", "Index", "Cie10", new { area = "" }, new { @class = "navbar-brand" , @target = "_blank" })
+                    @Html.ActionLink("Registro Paciente", "Agregar", "Paciente", new { area = "" }, new { @class = "navbar-brand text-dark" })
+                    @Html.ActionLink("Buscar Paciente", "Index", "Paciente", new { area = "" }, new { @class = "navbar-brand text-dark" })
+                    @Html.ActionLink("CIE-10", "Index", "Cie10", new { area = "" }, new { @class = "navbar-brand text-dark", @target = "_blank" })
                 }
                 else
                 {
-                    @Html.ActionLink("Usuarios", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("Administración pacientes", "Index", "AdministracionPacientes", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Usuarios", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand text-dark" })
+                    @Html.ActionLink("Administración pacientes", "Index", "AdministracionPacientes", new { area = "" }, new { @class = "navbar-brand text-dark" })
                 }
-                @Html.ActionLink("Cerrar Sesion", "CerrarSesion", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cerrar Sesion", "CerrarSesion", "Login", new { area = "" }, new { @class = "navbar-brand text-dark" })
             </ul>
         </div>
     </nav>
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        @*<hr />*@
         @*<footer>
                 <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             </footer>*@

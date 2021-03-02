@@ -85,3 +85,7 @@ element.style {
     width: 100%;
     margin: 5px;
 }
+
+body {
+    background-image: url("/Resources/gplay.png") !important;
+}

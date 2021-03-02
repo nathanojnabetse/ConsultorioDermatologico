@@ -48,7 +48,10 @@
                         <img class="col-sm-12 imagenFondo" id="imgFotomp" src="data:image/jpg;base64, @Model.evolucion.mapaCorporal" />
                     </div>
                     @Html.Hidden("mapaCorporal")
-                    <button type="button" onclick=" EditarCanvas()" class="btn btn-outline-primary centrar">Editar mapa</button>
+                    <div class="centrar">
+                        <button type="button" onclick=" EditarCanvas()" class="btn btn-outline-primary centrar btn-sm llenar-espacio">Editar mapa</button>
+                    </div>
+
 
                 </div>
             </div>
