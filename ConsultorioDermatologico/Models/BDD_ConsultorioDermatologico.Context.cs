@@ -27,6 +27,7 @@ namespace ConsultorioDermatologico.Models
     
         public virtual DbSet<tblAntecedenteGinecoObstetrico> tblAntecedenteGinecoObstetrico { get; set; }
         public virtual DbSet<tblAntecedenteReprodMasculino> tblAntecedenteReprodMasculino { get; set; }
+        public virtual DbSet<tblCIE10> tblCIE10 { get; set; }
         public virtual DbSet<tblContactoEmergencia> tblContactoEmergencia { get; set; }
         public virtual DbSet<tblEstadoCivil> tblEstadoCivil { get; set; }
         public virtual DbSet<tblEvolucion> tblEvolucion { get; set; }

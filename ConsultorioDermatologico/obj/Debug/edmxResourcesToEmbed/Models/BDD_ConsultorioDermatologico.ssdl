@@ -25,6 +25,14 @@
     <Property Name="ets" Type="varchar" MaxLength="1000" />
     <Property Name="parejaSexual" Type="varchar" MaxLength="1000" />
   </EntityType>
+  <EntityType Name="tblCIE10">
+    <Key>
+      <PropertyRef Name="idCie" />
+    </Key>
+    <Property Name="idCie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="20" />
+    <Property Name="enfermedad" Type="varchar" MaxLength="500" />
+  </EntityType>
   <EntityType Name="tblContactoEmergencia">
     <Key>
       <PropertyRef Name="idContactoEmergencia" />
@@ -372,6 +380,7 @@
   <EntityContainer Name="BDD_ConsultorioDermatologicoModelStoreContainer">
     <EntitySet Name="tblAntecedenteGinecoObstetrico" EntityType="Self.tblAntecedenteGinecoObstetrico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblAntecedenteReprodMasculino" EntityType="Self.tblAntecedenteReprodMasculino" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCIE10" EntityType="Self.tblCIE10" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblContactoEmergencia" EntityType="Self.tblContactoEmergencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblEstadoCivil" EntityType="Self.tblEstadoCivil" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblEvolucion" EntityType="Self.tblEvolucion" Schema="dbo" store:Type="Tables" />

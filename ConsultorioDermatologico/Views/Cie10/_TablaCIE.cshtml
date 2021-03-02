@@ -1,0 +1,172 @@
+﻿@using ConsultorioDermatologico.Models
+@model List<Cie10CLS>
+
+
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>@Html.LabelFor(p => Model[0].codigo)</td>
+            <td>@Html.LabelFor(p => Model[0].enfermedad)</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @*if (item.codigo == "A00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. I</td>
+                        <td>Ciertas enfermedades infecciosas y parasitarias</td>
+                    </tr>
+                }
+                else if (item.codigo == "C00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. II</td>
+                        <td>Neoplasias</td>
+                    </tr>
+                }
+                else if (item.codigo == "D50")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap.III</td>
+                        <td>Enfermedades de la sangre y de los órganos hematopoyéticos y otros trastornos que afectan el mecanismo de la inmunidad</td>
+                    </tr>
+                }
+                else if (item.codigo == "E00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. IV</td>
+                        <td>Enfermedades endocrinas, nutricionales y metabólicas</td>
+                    </tr>
+                }
+                else if (item.codigo == "F00*")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. V</td>
+                        <td>Trastornos mentales y del comportamiento</td>
+                    </tr>
+                }
+                else if (item.codigo == "G00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. VI</td>
+                        <td>Enfermedades del sistema nervioso</td>
+                    </tr>
+                }
+                else if (item.codigo == "H00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. VII</td>
+                        <td>Enfermedades del ojo y sus anexos</td>
+                    </tr>
+                }
+                else if (item.codigo == "H60")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. VIII</td>
+                        <td>Enfermedades del oído y de la apófisis mastoides</td>
+                    </tr>
+                }
+                else if (item.codigo == "I00X")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. IX</td>
+                        <td>Enfermedades del sistema circulatorio</td>
+                    </tr>
+                }
+                else if (item.codigo == "J00X")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. X</td>
+                        <td>Enfermedades del sistema respiratorio</td>
+                    </tr>
+                }
+                else if (item.codigo == "K00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XI</td>
+                        <td>Enfermedades del aparato digestivo</td>
+                    </tr>
+                }
+                else if (item.codigo == "L00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XII</td>
+                        <td>Enfermedades de la piel y el tejido subcutáneo</td>
+                    </tr>
+                }
+                else if (item.codigo == "M00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XIII</td>
+                        <td>Enfermedades del sistema osteomuscular y del tejido conectivo</td>
+                    </tr>
+                }
+                else if (item.codigo == "N00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XIV</td>
+                        <td>Enfermedades del aparato genitourinario</td>
+                    </tr>
+                }
+                else if (item.codigo == "O00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XV</td>
+                        <td>Embarazo, parto y puerperio</td>
+                    </tr>
+                }
+                else if (item.codigo == "P00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XVI</td>
+                        <td>Ciertas afecciones originadas en el periodo perinatal</td>
+                    </tr>
+                }
+                else if (item.codigo == "Q00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XVII</td>
+                        <td>Malformaciones congénitas, deformidades y anomalías cromosómicas</td>
+                    </tr>
+                }
+                else if (item.codigo == "R00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XVIII</td>
+                        <td>Síntomas, signos y hallazgos anormales clínicos y de laboratorio, no clasificados en otra parte</td>
+                    </tr>
+                }
+                else if (item.codigo == "S00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XIX</td>
+                        <td>Traumatismos, envenenamientos y algunas otras consecuencias de causa externa</td>
+                    </tr>
+                }
+                else if (item.codigo == "V01")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap. XX</td>
+                        <td>Causas externas de morbilidad y de mortalidad</td>
+                    </tr>
+                }
+                else if (item.codigo == "Z00")
+                {
+                    <tr class="table-secondary">
+                        <td>Cap.XXI</td>
+                        <td>Factores que influyen en el estado de salud y contacto con los servicios de salud</td>
+                    </tr>
+                }*@
+            <tr>
+                <td>@item.codigo</td>
+                <td>@item.enfermedad</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

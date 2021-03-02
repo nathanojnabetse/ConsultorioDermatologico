@@ -50,6 +50,8 @@ namespace ConsultorioDermatologico.Filters
                 || (nombreControlador == "Documentos" && accion == "asistenciaPDF")
                 || (nombreControlador == "Documentos" && accion == "reposoPDF")
                 || (nombreControlador == "Documentos" && accion == "verifica")
+                || (nombreControlador == "Cie10" && accion == "Index")
+                || (nombreControlador == "Cie10" && accion == "Filtro")
                 || (nombreControlador == "Home" && accion == "Medico")
                 || (nombreControlador == "Login" && accion == "Login")
                 || (nombreControlador == "Login" && accion == "CerrarSesion")))

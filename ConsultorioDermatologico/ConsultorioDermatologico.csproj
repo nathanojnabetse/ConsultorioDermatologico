@@ -251,6 +251,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ClasesAuxiliares\Correo.cs" />
     <Compile Include="Controllers\AdministracionPacientesController.cs" />
+    <Compile Include="Controllers\Cie10Controller.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EvolucionController.cs" />
     <Compile Include="Controllers\HistoriaClinicaController.cs" />
@@ -279,6 +280,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDD_ConsultorioDermatologico.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cie10CLS.cs" />
     <Compile Include="Models\ContactoEmergenciaCLS.cs" />
     <Compile Include="Models\EstadoCivilCLS.cs" />
     <Compile Include="Models\EvolucionCLS.cs" />
@@ -298,6 +300,9 @@
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAntecedenteReprodMasculino.cs">
+      <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCIE10.cs">
       <DependentUpon>BDD_ConsultorioDermatologico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblContactoEmergencia.cs">
@@ -391,6 +396,8 @@
     <Content Include="Views\AdministracionPacientes\_TablaDesactivados.cshtml" />
     <Content Include="Views\Documentos\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Cie10\Index.cshtml" />
+    <Content Include="Views\Cie10\_TablaCIE.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

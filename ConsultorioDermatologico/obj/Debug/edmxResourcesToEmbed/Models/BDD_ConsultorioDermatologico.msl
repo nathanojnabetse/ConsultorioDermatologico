@@ -28,6 +28,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblCIE10">
+      <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblCIE10">
+        <MappingFragment StoreEntitySet="tblCIE10">
+          <ScalarProperty Name="enfermedad" ColumnName="enfermedad" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="idCie" ColumnName="idCie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblContactoEmergencia">
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia">
         <MappingFragment StoreEntitySet="tblContactoEmergencia">
