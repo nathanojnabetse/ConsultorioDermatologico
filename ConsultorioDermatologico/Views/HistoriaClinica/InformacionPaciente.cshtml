@@ -17,35 +17,35 @@
 
 <h2 style="padding-top:1em">Paciente @Model.paciente.nombres @Model.paciente.apellidos</h2>
 
-<div class="row border espacio">
+<div class="row espacio">
     @*Regresar *@
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Regresar", "Index", "Paciente", null, new { @class = "btn-dark btn" })
+            @Html.ActionLink("Regresar", "Index", "Paciente", null, new { @class = "btn-outline-secondary rounded-pill llenar-espacio btn" })
         </div>
     </div>
     @*documentos mandar id*@
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Reporte paciente", "InfoPacientePDF", "Documentos", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-info btn", @onclick="alertaReporte()", @target = "_blank" })
-        </div>
-    </div>
-    @*editar*@
-    <div class="col-sm-2">
-        <div class="row justify-content-center">
-            @Html.ActionLink("Editar", "Editar", "Paciente", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn btn-secondary" })
+            @Html.ActionLink("Reporte", "InfoPacientePDF", "Documentos", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-outline-info btn rounded-pill llenar-espacio", @onclick = "alertaReporte()", @target = "_blank" })
         </div>
     </div>
     @*Borrar desactivar*@
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Borrar", "Desactivar", "Paciente", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn btn-danger", @onclick = "desactivar()" })
+            @Html.ActionLink("Borrar", "Desactivar", "Paciente", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn btn-outline-danger rounded-pill llenar-espacio", @onclick = "desactivar()" })
+        </div>
+    </div>
+    @*editar*@
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Editar", "Editar", "Paciente", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn btn-outline-dark rounded-pill llenar-espacio" })
         </div>
     </div>
     @*Evolucion*@
     <div class="col-sm-4">
         <div class="row justify-content-center">
-            @Html.ActionLink("Evolución", "Index", "Evolucion", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-primary btn" })
+            @Html.ActionLink("Evolución", "Index", "Evolucion", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-primary btn rounded-pill llenar-espacio" })
         </div>
     </div>
 

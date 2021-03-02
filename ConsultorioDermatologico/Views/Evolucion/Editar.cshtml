@@ -18,22 +18,25 @@
 {
     @Html.AntiForgeryToken()
     <input type="hidden" id="idHistoriaClinica" name="idHistoriaClinica" value=@ViewBag.idHistoriaClinica>
-    <input type="hidden" id="idEvolucion" name="idEvolucion" value=@ViewBag.idEvolucion >
+    <input type="hidden" id="idEvolucion" name="idEvolucion" value=@ViewBag.idEvolucion>
+
+    <div class="row espacio">
+        <div class="col-sm-2">
+            <div class="row justify-content-center">
+                @Html.ActionLink("Regresar", "EvolucionPaciente", "HistoriaClinica", new { idEvolucion = ViewBag.idEvolucion }, new { @class = " btn btn-outline-secondary rounded-pill llenar-espacio" })
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary rounded-pill llenar-espacio" onclick="UploadPic()">Guardar</button>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
 
             <div class="col-sm-4 col-12 espacio">
-
-                <div class="row ">
-                    <div class="col-sm-6 centrar">
-                        @Html.ActionLink("Regresar", "EvolucionPaciente", "HistoriaClinica", new { idEvolucion= ViewBag.idEvolucion }, new { @class = "btn-primary btn" })
-                    </div>
-                    <div class="col-sm-6 centrar">
-                        <button type="submit" class="btn btn-primary" onclick="UploadPic()">Guardar</button>
-                    </div>
-
-                </div>
 
                 <div class="border espacio">
 
@@ -121,7 +124,7 @@
                                     <span>1.-</span>
                                     @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
                                     @Html.Hidden("foto1NombreFoto")
-                                    <input type="hidden" id="idFoto1" name="idFoto1" value=@Model.foto1.idFoto >
+                                    <input type="hidden" id="idFoto1" name="idFoto1" value=@Model.foto1.idFoto>
                                 </div>}
                             else
                             {
@@ -129,7 +132,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
                                     <span>1.-</span>
                                     @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
-                                     @Html.Hidden("foto1NombreFoto")
+                                    @Html.Hidden("foto1NombreFoto")
                                 </div>
                             }
                             @if (@Model.foto2 != null)
@@ -138,7 +141,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" src="data:image/@Model.foto2.extension;base64, @Model.foto2.foto" />
                                     <span>2.-</span>
                                     @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
-                                    <input type="hidden" id="idFoto2" name="idFoto2" value=@Model.foto2.idFoto >
+                                    <input type="hidden" id="idFoto2" name="idFoto2" value=@Model.foto2.idFoto>
                                 </div>
                             }
                             else
@@ -147,7 +150,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
                                     <span>2.-</span>
                                     @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
-                                     @Html.Hidden("foto2NombreFoto")
+                                    @Html.Hidden("foto2NombreFoto")
                                 </div>
                             }
                             @if (@Model.foto3 != null)
@@ -156,7 +159,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" src="data:image/@Model.foto3.extension;base64, @Model.foto3.foto" />
                                     <span>3.-</span>
                                     @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
-                                    <input type="hidden" id="idFoto3" name="idFoto3" value=@Model.foto3.idFoto >
+                                    <input type="hidden" id="idFoto3" name="idFoto3" value=@Model.foto3.idFoto>
                                 </div>
                             }
                             else
@@ -165,7 +168,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
                                     <span>3.-</span>
                                     @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
-                                     @Html.Hidden("foto3NombreFoto")
+                                    @Html.Hidden("foto3NombreFoto")
                                 </div>
                             }
                             @if (@Model.foto4 != null)
@@ -174,7 +177,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" src="data:image/@Model.foto4.extension;base64, @Model.foto4.foto" />
                                     <span>4.-</span>
                                     @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
-                                    <input type="hidden" id="idFoto4" name="idFoto4" value=@Model.foto4.idFoto >
+                                    <input type="hidden" id="idFoto4" name="idFoto4" value=@Model.foto4.idFoto>
                                 </div>
                             }
                             else
@@ -183,7 +186,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
                                     <span>4.-</span>
                                     @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
-                                     @Html.Hidden("foto4NombreFoto")
+                                    @Html.Hidden("foto4NombreFoto")
                                 </div>
                             }
                             @if (@Model.foto5 != null)
@@ -192,7 +195,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" src="data:image/@Model.foto5.extension;base64, @Model.foto5.foto" />
                                     <span>5.-</span>
                                     @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
-                                    <input type="hidden" id="idFoto5" name="idFoto5" value=@Model.foto5.idFoto >
+                                    <input type="hidden" id="idFoto5" name="idFoto5" value=@Model.foto5.idFoto>
                                 </div>
                             }
                             else
@@ -201,7 +204,7 @@
                                     <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
                                     <span>5.-</span>
                                     @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
-                                    @Html.Hidden("foto5NombreFoto")                                    
+                                    @Html.Hidden("foto5NombreFoto")
                                 </div>
                             }
                             @if (@Model.foto6 != null)
@@ -209,8 +212,8 @@
                                 <div class="espacio carousel-item">
                                     <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" src="data:image/@Model.foto6.extension;base64, @Model.foto6.foto" />
                                     <span>6.-</span>
-                                    @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })         
-                                    <input type="hidden" id="idFoto6" name="idFoto6" value=@Model.foto6.idFoto >
+                                    @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
+                                    <input type="hidden" id="idFoto6" name="idFoto6" value=@Model.foto6.idFoto>
                                 </div>
                             }
                             else

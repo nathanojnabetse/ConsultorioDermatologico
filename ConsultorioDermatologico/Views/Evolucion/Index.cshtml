@@ -8,10 +8,24 @@
 
 <h2 style="padding-top:1em">Visitas del paciente @ViewBag.nombrePaciente</h2>
 
-@Html.ActionLink("Agregar", "Agregar", "Evolucion", new { idHistoriaClinica = @ViewBag.idHistoriaClinica}, new { @class = "btn btn-primary" })
-<div class="col-sm-6 ">
-    @Html.ActionLink("Regresar", "InformacionPaciente", "HistoriaClinica", new { idPaciente = @ViewBag.idPaCiente }, new { @class = "btn-primary btn" })
+<div class="row espacio">
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Regresar", "InformacionPaciente", "HistoriaClinica", new { idPaciente = @ViewBag.idPaCiente }, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })            
+        </div>
+    </div>
+    <div class="col-sm-6">
+        
+    </div>
+    <div class="col-sm-4">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Agregar", "Agregar", "Evolucion", new { idHistoriaClinica = @ViewBag.idHistoriaClinica }, new { @class = "btn btn-primary rounded-pill llenar-espacio" })
+        </div>
+    </div>
 </div>
+
+
+
 <table class="table table-hover table-bordered">
     <thead>
         <tr class="tdCentrar font-weight-bold">
@@ -29,7 +43,7 @@
                 <td>@item.motivoConsulta</td>
                 <td>
                     <div class="row justify-content-center">
-                       
+
                         @Html.ActionLink(" ", "EvolucionPaciente", "HistoriaClinica", new { idEvolucion = @item.idEvolucion }, new { @class = "fa fa-info btn btn-success" })
                     </div>
                 </td>

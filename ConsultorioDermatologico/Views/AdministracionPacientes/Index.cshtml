@@ -3,9 +3,15 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Administración de pacientes e historias clinicas desactivadas</h2>
-@Html.ActionLink("Regresar", "Admin", "Home", null, new { @class = "btn-danger btn" })
+<h2 style="padding-top:1em">Administración de pacientes e historias clinicas desactivadas</h2>
 
+<div class="row espacio">
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Regresar", "Admin", "Home", null, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
+        </div>
+    </div>
+</div>
 @using (Ajax.BeginForm("Filtro", "", new AjaxOptions
 {
     HttpMethod = "POST",
@@ -13,8 +19,11 @@
     InsertionMode = InsertionMode.Replace
 }, new { @id = "frmFiltro" }))
 {
-    @Html.Label("Búsqueda por nombre o cédula: ")
-    @Html.TextBox("busqueda", null, new { @class = "form-control" })
+
+    <div class="row espacio">
+        @Html.Label("Búsqueda por nombre o cédula: ")
+        @Html.TextBox("busqueda", null, new { @class = "form-control", @style = "margin-left:1em;" })
+    </div>
     <div id="divListasDesactivados">
         <div id="divListaPacientesEliminados">
             @Html.Partial("_TablaDesactivados")

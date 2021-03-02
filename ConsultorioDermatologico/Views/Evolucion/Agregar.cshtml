@@ -17,111 +17,121 @@
 {
     @Html.AntiForgeryToken()
     @Html.Hidden("idHistoriaClinica", new { @Value = ViewBag.idHistoriaClinica })
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
 
-            <div class="col-sm-4 col-12 espacio">
-                <div class="border espacio">
-                    MAPA CUERPO HUMANO
-                    <canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>
-                    @Html.Hidden("mapaCorporal")
-                </div>
+        <div class="col-sm-4 col-12 espacio">
+            <div class="border espacio">
+                MAPA CUERPO HUMANO
+                <canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>
+                @Html.Hidden("mapaCorporal")
             </div>
+        </div>
 
-            <div class="col-sm-8">
-                <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @ViewBag.fechaActual</h6>
-                <div class="row">
-                    <div class="espacio col-md-6">
-                        <div class="border espacio">
-                            <div>
-                                @Html.LabelFor(p => p.evolucion.motivoConsulta)
-                                @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                                @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
-                            </div>
-                            <div>
-                                @Html.LabelFor(p => p.evolucion.diagnostico)
-                                @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                                @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
-                            </div>
+        <div class="col-sm-8">
+            <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @ViewBag.fechaActual</h6>
+            <div class="row">
+                <div class="espacio col-md-6">
+                    <div class="border espacio">
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.motivoConsulta)
+                            @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                            @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
                         </div>
-                    </div>
-
-                    <div class="espacio col-md-6">
-                        <div class="border espacio">
-                            <div>
-                                @Html.LabelFor(p => p.evolucion.prescripcion)
-                                @Html.EditorFor(p => p.evolucion.prescripcion, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                                @Html.ValidationMessage("evolucion.prescripcion", new { @class = "text-danger" })
-                            </div>
-                            <div>
-                                @Html.LabelFor(p => p.evolucion.recomendaciones)
-                                @Html.EditorFor(p => p.evolucion.recomendaciones, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                                @Html.ValidationMessage("evolucion.recomendaciones", new { @class = "text-danger" })
-                            </div>
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.diagnostico)
+                            @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                            @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-4 espacio">
-                <div class="border espacio">
-                    <div>
-                        @Html.LabelFor(p => p.evolucion.examenFisico)
-                        @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                        @Html.ValidationMessage("evolucion.examenFisico", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8 espacio">
-                <div class="border espacio" style="height:12em; overflow-y: scroll;">
-                    <div class="espacio">
-                        <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
-                        <span>1.-</span>
-                        @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
-                        @Html.Hidden("foto1NombreFoto")
-                    </div>
-                    <div class="espacio">
-                        <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
-                        <span>2.-</span>
-                        @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
-                        @Html.Hidden("foto2NombreFoto")
-                    </div>
-                    <div class="espacio">
-                        <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
-                        <span>3.-</span>
-                        @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
-                        @Html.Hidden("foto3NombreFoto")
-                    </div>
-                    <div class="espacio">
-                        <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
-                        <span>4.-</span>
-                        @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
-                        @Html.Hidden("foto4NombreFoto")
-                    </div>
-                    <div class="espacio">
-                        <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
-                        <span>5.-</span>
-                        @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
-                        @Html.Hidden("foto5NombreFoto")
-                    </div>
-                    <div class="espacio">
-                        <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" />
-                        <span>6.-</span>
-                        @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
-                        @Html.Hidden("foto6NombreFoto")
+                <div class="espacio col-md-6">
+                    <div class="border espacio">
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.prescripcion)
+                            @Html.EditorFor(p => p.evolucion.prescripcion, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                            @Html.ValidationMessage("evolucion.prescripcion", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.recomendaciones)
+                            @Html.EditorFor(p => p.evolucion.recomendaciones, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                            @Html.ValidationMessage("evolucion.recomendaciones", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div>
-            @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-primary btn" })
-            <button type="submit" class="btn btn-primary" onclick="UploadPic()">Guardar</button>
-        </div>
-
     </div>
+
+    <div class="row">
+        <div class="col-sm-4 espacio">
+            <div class="border espacio">
+                <div>
+                    @Html.LabelFor(p => p.evolucion.examenFisico)
+                    @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                    @Html.ValidationMessage("evolucion.examenFisico", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 espacio">
+            <div class="border espacio" style="height:12em; overflow-y: scroll;">
+                <div class="espacio">
+                    <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
+                    <span>1.-</span>
+                    @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
+                    @Html.Hidden("foto1NombreFoto")
+                </div>
+                <div class="espacio">
+                    <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
+                    <span>2.-</span>
+                    @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
+                    @Html.Hidden("foto2NombreFoto")
+                </div>
+                <div class="espacio">
+                    <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
+                    <span>3.-</span>
+                    @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
+                    @Html.Hidden("foto3NombreFoto")
+                </div>
+                <div class="espacio">
+                    <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
+                    <span>4.-</span>
+                    @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
+                    @Html.Hidden("foto4NombreFoto")
+                </div>
+                <div class="espacio">
+                    <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
+                    <span>5.-</span>
+                    @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
+                    @Html.Hidden("foto5NombreFoto")
+                </div>
+                <div class="espacio">
+                    <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" />
+                    <span>6.-</span>
+                    @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
+                    @Html.Hidden("foto6NombreFoto")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row espacio">
+        <div class="col-sm-8">
+            
+        </div>
+        <div class="col-sm-2">
+            <div class="row justify-content-center">
+                @Html.ActionLink("Cancelar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary rounded-pill llenar-espacio" onclick="UploadPic()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
 }
 
 

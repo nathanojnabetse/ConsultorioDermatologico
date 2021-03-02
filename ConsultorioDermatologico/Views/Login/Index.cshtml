@@ -81,13 +81,16 @@
                 UpdateTargetId = "divRespuesta"
             }, new { @id = "frmLogin" }))
             {
-                <div class="input-group mb-3">
-                    @Html.TextBox("aliasUsuario", null, new { @class = "form-control col-sm-12", @placeholder = "Usuario", @required = "true" })
-                </div>
+                <div class="centrar">
+                    <div class="input-group mb-3">
+                        @Html.TextBox("aliasUsuario", null, new { @class = "form-control rounded-pill" , @placeholder = "Usuario", @required = "true" })
+                    </div>
 
-                <div class="input-group mb-3">
-                    @Html.Password("contraseñaUsuario", null, new { @class = "form-control col-sm-12", @placeholder = "*******", @required = "true" })
+                    <div class="input-group mb-3">
+                        @Html.Password("contraseñaUsuario", null, new { @class = "form-control rounded-pill", @placeholder = "*******", @required = "true" })
+                    </div>
                 </div>
+                
 
                 <br>
 
@@ -107,7 +110,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Recuperación de contraseña</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

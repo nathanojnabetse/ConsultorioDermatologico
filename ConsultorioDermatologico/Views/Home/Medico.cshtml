@@ -25,16 +25,16 @@
             padding: 2px 0px 2px 0px;
         }
     </style>
-
+    
 </head>
 <body>
 
-    <h2>Bienvenido @nombreMedico</h2>
+    
 
-    <div class="container body-content">
+    <div class="container body-content ">
+        <h2>Bienvenido @nombreMedico</h2>
 
-
-        <div class="row d-flex flex-wrap">
+        <div class="row d-flex flex-wrap espacio">
             <div class=" col-sm-6 d-flex flex-column justify-content-between">
                 <div class="card  card-propio ">
                     <div class="card-body ">
@@ -65,11 +65,20 @@
                 </div>
             </div>
         </div>
-        @Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login", null, new { @class = "btn-danger btn" })
+
     </div>
+
+    <footer>
+        <div class="espacio" style="float: right;">
+            @Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login", null, new { @class = "btn-outline-danger btn rounded-pill" })
+        </div>
+        
+    </footer>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
+
+
 </html>
 
 

@@ -4,12 +4,12 @@
 
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
+        <tr class="tdCentrar font-weight-bold">
             <td>@Html.LabelFor(p => Model[0].nombreUsuario)</td>
             <td>@Html.LabelFor(p => Model[0].rolUsuario)</td>
             <td>@Html.LabelFor(p => Model[0].aliasUsuario)</td>
             <td>@Html.LabelFor(p => Model[0].contraseñaUsuario)</td>
-            <td>Operacionies</td>
+            <td>Operaciones</td>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +20,10 @@
                 <td>@item.rolUsuario</td>
                 <td>@item.aliasUsuario</td>
                 <td>@item.correoUsuario</td>
-                <td>                    
-                    <button onclick="Eliminar(@item.idUsuario)" type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                <td>
+                    <div class="row justify-content-center">
+                        <button onclick="Eliminar(@item.idUsuario)" type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                    </div>
                 </td>
             </tr>
 

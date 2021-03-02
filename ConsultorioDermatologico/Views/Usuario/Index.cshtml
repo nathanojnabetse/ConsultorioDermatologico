@@ -19,11 +19,21 @@
 
 <h2 style="padding-top:1em">Lista Usuarios</h2>
 
-<!-- Button trigger del modal de agregar -->
-<button onclick="Agregar()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">
-    Agregar
-</button>
-@Html.ActionLink("Regresar", "Admin", "Home", null, new { @class = "btn-danger btn" })
+<div class="row espacio">
+    <div class="col-sm-2">
+        <div class="row justify-content-center">            
+            @Html.ActionLink("Regresar", "Admin", "Home", null, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            <!-- Button trigger del modal de agregar -->
+            <button onclick="Agregar()" type="button" class="btn btn-primary rounded-pill llenar-espacio" data-toggle="modal" data-target="#modalAgregar">
+                Agregar
+            </button>
+        </div>
+    </div>
+</div>
 
 @using (Ajax.BeginForm("Filtro", "", new AjaxOptions
 {
@@ -32,8 +42,11 @@
     InsertionMode = InsertionMode.Replace
 }, new { @id = "frmFiltro" }))
 {
-    @Html.Label("Búsqueda por nombre: ")
-    @Html.TextBox("nombreUsuario", null, new { @class = "form-control" })
+    <div class="row espacio">
+        @Html.Label("Búsqueda por nombre: ")
+        @Html.TextBox("nombreUsuario", null, new { @class = "form-control",@style = "margin-left:1em;" })
+    </div>
+    
     <div id="divListaUsuarios">
         @Html.Partial("_TablaUsuarios", Model)
     </div>
@@ -93,11 +106,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    <button id="btnClose" type="button" class="btn btn-outline-secondary rounded-pill" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary rounded-pill">Guardar cambios</button>
                 </div>
             }
-            <div id="error"></div>
+            <div id="error" class="text-danger"></div>
         </div>
     </div>
 </div>
@@ -114,8 +127,8 @@
             </div>
 
             <div class="espacio">
-                <button type="button" id="btnCerrarConfirmacion" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" onclick="EliminarRegistro()" class="btn btn-info">Aceptar</button>
+                <button type="button" id="btnCerrarConfirmacion" class="btn btn-outline-secondary rounded-pill" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="EliminarRegistro()" class="btn btn-primary rounded-pill">Aceptar</button>
             </div>
         </div>
     </div>

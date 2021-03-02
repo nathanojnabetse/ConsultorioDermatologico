@@ -11,24 +11,33 @@
 <input type="hidden" id="idHistoriaClinica" name="idHistoriaClinica" value=@ViewBag.idHistoriaClinica>
 <input type="hidden" id="idEvolucion" name="idEvolucion" value=@ViewBag.idEvolucion>
 
-<div class="row ">
-    <div class="col-sm-6 centrar">
-        @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-primary btn" })
-        @Html.ActionLink(" EDITAR", "Editar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-success" })
+<div class="row espacio">
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-outline-secondary llenar-espacio rounded-pill" })
+        </div>
     </div>
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Documentos", "Index", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary" })            
+            @Html.ActionLink(" Editar", "Editar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-outline-dark llenar-espacio rounded-pill" })
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Borrar", "Desactivar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-outline-danger llenar-espacio rounded-pill", @onclick = "desactivar();" })
+        </div>
+    </div>
+    <div class="col-sm-2">
+        
+    </div>
+    <div class="col-sm-4">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Prescripción y certificados", "Index", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-primary llenar-espacio rounded-pill" })
         </div>
     </div>
 
-    @*Borrar desactivar*@
-    <div class="col-sm-2">
-        <div class="row justify-content-center">
-            @Html.ActionLink("Borrar", "Desactivar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-danger", @onclick = "desactivar();" })
-        </div>
-    </div>
 </div>
+
 
 <div class="container">
     <div class="row">

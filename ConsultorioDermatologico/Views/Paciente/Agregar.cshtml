@@ -312,19 +312,19 @@
                 </div>
             </div>
 
-            <div class="row espacio" >
+            <div class="row espacio">
                 <div class="col-sm-6">
                     <div class="row justify-content-center">
-                        <input type="submit" class="btn btn-primary " value="Guardar" />
+                        @Html.ActionLink("Cancelar", "Medico", "Home", null, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
                     </div>
-
                 </div>
                 <div class="col-sm-6">
                     <div class="row justify-content-center">
-                        @Html.ActionLink("Regresar", "Medico", "Home", null, new { @class = "btn-danger btn" })
+                        <input type="submit" class="btn btn-primary rounded-pill llenar-espacio" value="Guardar" />
                     </div>
                 </div>
             </div>
+
         </div>
     </div>    
 </div>

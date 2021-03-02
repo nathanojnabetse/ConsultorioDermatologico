@@ -1,7 +1,7 @@
 ﻿<h3>Pacientes desactivados</h3>
 <table class="table table-bordered table-hover">
     <thead>
-        <tr class="tdCentrar">
+        <tr class="tdCentrar font-weight-bold">
             <td>id Paciente</td>
             <td>Cédula</td>
             <td>Paciente</td>
@@ -18,8 +18,8 @@
                 <td>@item.nombres</td>
                 <td>@item.idHistoriaClinica</td>
                 <td class="tdCentrar">
-                    <button onclick="EliminarPaciente(@item.idPaciente)" type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
-                    <button onclick="ReestablecerPaciente(@item.idPaciente)" type="button" class="btn btn-success fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                    <button onclick="EliminarPaciente(@item.idPaciente)" type="button" class="btn btn-outline-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                    <button onclick="ReestablecerPaciente(@item.idPaciente)" type="button" class="btn btn-outline-success fa fa-share" data-toggle="modal" data-target="#modalConfirmacion"></button>
                 </td>
             </tr>
 
@@ -31,7 +31,7 @@
 <h3>Visitas eliminadas</h3>
 <table class="table table-bordered table-hover">
     <thead>
-        <tr class="tdCentrar">
+        <tr class="tdCentrar font-weight-bold">
             <td>id Paciente</td>
             <td>Cédula</td>
             <td>Paciente</td>
@@ -54,8 +54,8 @@
                 <td>@item.motivoConsulta</td>
                 <td>@item.fechaVisita.ToString("yyyy-MM-dd")</td>
                 <td class="tdCentrar">
-                    <button onclick="EliminarVisita(@item.idEvolucion)" type="button" class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
-                    <button onclick="ReestablecerVisita(@item.idEvolucion)" type="button" class="btn btn-success fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                    <button onclick="EliminarVisita(@item.idEvolucion)" type="button" class="btn btn-outline-danger fa fa-trash" data-toggle="modal" data-target="#modalConfirmacion"></button>
+                    <button onclick="ReestablecerVisita(@item.idEvolucion)" type="button" class="btn btn-outline-success fa fa fa-share" data-toggle="modal" data-target="#modalConfirmacion"></button>
                 </td>
             </tr>
         }

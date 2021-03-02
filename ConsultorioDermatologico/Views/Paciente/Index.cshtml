@@ -7,9 +7,16 @@
 }
 
 <h2 style="padding-top:1em">Pacientes registrados</h2>
-<div class="row">
-    @Html.ActionLink("Regresar", "Medico", "Home", null, new { @class = "btn-danger btn" })
+
+<div class="row espacio">
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Regresar", "Medico", "Home", null, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
+        </div>
+    </div>
+    
 </div>
+
 @using (Ajax.BeginForm("Filtro", "", new AjaxOptions
 {
     HttpMethod = "POST",
@@ -19,7 +26,7 @@
 {
     <div class="row espacio">
         @Html.Label("Búsqueda por nombre o número de cedula: ")
-        @Html.TextBox("busqueda", null, new { @class = "form-control" })
+        @Html.TextBox("busqueda", null, new { @class = "form-control",@style="margin-left:1em;" })
     </div>
 
     <div id="divListaUsuarios">

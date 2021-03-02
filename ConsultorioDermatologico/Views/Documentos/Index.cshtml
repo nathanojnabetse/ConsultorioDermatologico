@@ -3,9 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Generar Documentos</h2>
-<div class="col-sm-6 ">
-    @Html.ActionLink("Regresar", "EvolucionPaciente", "HistoriaClinica", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn-primary btn" })
+<h2 style="padding-top:1em">Generar Documentos</h2>
+<div class="row espacio">
+    <div class="col-sm-2">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Regresar", "EvolucionPaciente", "HistoriaClinica", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-outline-secondary rounded-pill llenar-espacio " })
+        </div>
+    </div>
 </div>
 
 <div class="container body-content">
