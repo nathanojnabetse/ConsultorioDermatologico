@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #dedede;
+        }
+
+        .page-wrap {
+            min-height: 100vh;
+        }
+    </style>
+
+</head>
+<body>
+
+
+
+    
+
+    <div class="page-wrap d-flex flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <span class="display-1 d-block espacio" ><i class="fa fa-hospital-o" aria-hidden="true"></i> Oops! <i class="fa fa-ambulance" aria-hidden="true"></i></span>
+                    <span class="espacio"> @ViewBag.Title</span>
+                    <div class="espacio mb-4 lead">@ViewBag.Description</div>
+
+                    @if ((string)Session["Rol"] == "MEDICO")
+                    {
+                        <a class="navbar-brand btn btn-link" href="@Url.Action("Medico", "Home")">Volver al inicio</a>
+                    }
+                    else
+                    {
+                        <a class="navbar-brand btn btn-link" href="@Url.Action("Admin", "Home")">Volver al inicio</a>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

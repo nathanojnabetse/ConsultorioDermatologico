@@ -92,16 +92,12 @@
                 <br>
 
                 <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Entrar</button>
-                <div class="opcioncontra"><a id="btnOlvideContra" data-toggle="modal" data-target="#modalContrasena">¿Olvidó su contraseña?</a></div>                
+                <div style="text-align: center;" class="espacio">
+                    <p  class="btn btn-link" id="btnOlvideContra" data-toggle="modal" data-target="#modalContrasena">¿Olvidó su contraseña?</p>
+                </div>                
 
                 <div id="divRespuesta"></div>
             }
-
-            @*@if (Model != null && Model.mensajeError != null)
-                {
-                    @Html.Label(Model.mensajeError, new { @class = "text-danger" })
-
-                }*@
         </div>
     </div>
 
