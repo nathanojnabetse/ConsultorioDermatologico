@@ -90,16 +90,6 @@ namespace ConsultorioDermatologico.Controllers
                 }
                 else
                 {
-                    ////Imagen del canvas 
-                    //var streamMapa = new MemoryStream(); //creacion de un stream a partir del string
-                    //var writer = new StreamWriter(streamMapa);
-                    //writer.Write(mapaCorporal);
-                    //writer.Flush();
-                    //streamMapa.Position = 0;
-                    ////paso al array de bytes del stream obtenido
-                    //byte[] fotoMapaCorporalBD = null;
-                    //BinaryReader lector = new BinaryReader(streamMapa);
-                    //fotoMapaCorporalBD = lector.ReadBytes((int)streamMapa.Length);
 
                     using (var bd = new BDD_ConsultorioDermatologicoEntities())
                     {
@@ -219,15 +209,6 @@ namespace ConsultorioDermatologico.Controllers
         public ActionResult Editar(int idEvolucion)
         {
 
-
-            //tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == idEvolucion).First();
-            //ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
-
-            //tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == tblHistoriaClinica.idPaciente).First();
-          
-            //ViewBag.idPaciente = tblPaciente.idPaciente;
-
-
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
 
@@ -276,8 +257,6 @@ namespace ConsultorioDermatologico.Controllers
                 listaFotos.Add(null);
                 listaFotos.Add(null);
                 
-                
-
 
                 RegistroEvolucionCLS registroEvolucionCLS = new RegistroEvolucionCLS();
                 registroEvolucionCLS.evolucion = evolucionCLS;
@@ -288,14 +267,9 @@ namespace ConsultorioDermatologico.Controllers
                 registroEvolucionCLS.foto5 = listaFotos[4];
                 registroEvolucionCLS.foto6 = listaFotos[5];
 
-
-
                 return View(registroEvolucionCLS);
 
             }
-
-
-                
         }
 
         
@@ -330,34 +304,19 @@ namespace ConsultorioDermatologico.Controllers
                     using (var bd = new BDD_ConsultorioDermatologicoEntities())
                     {
                         tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica == idHistoriaClinica).First();
-                        //ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
-
-                        //tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == tblHistoriaClinica.idPaciente).First();
-                        //ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
-                        //ViewBag.idPaciente = tblPaciente.idPaciente;
-
-                        //ViewBag.fechaActual = System.DateTime.Now.ToString("yyyy-MM-dd");
-
-                        //if tiitulo o edicion ver despues si se añade o no
                         tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion).First();
 
-                        //tblEvolucion.idHistoriaClinica = idHistoriaClinica;
                         if(mapaCorporal != "")
                         {
                             tblEvolucion.mapaCorporal = mapaCorporal;
                         }
 
-                        //tblEvolucion.nombreMapa = "MapaCorporal" + idHistoriaClinica +"-"+ idEvolucion+ ".png";
                         tblEvolucion.diagnostico = registroEvolucionCLS.evolucion.diagnostico;
                         tblEvolucion.motivoConsulta = registroEvolucionCLS.evolucion.motivoConsulta;
                         tblEvolucion.examenFisico = registroEvolucionCLS.evolucion.examenFisico;
                         tblEvolucion.prescripcion = registroEvolucionCLS.evolucion.prescripcion;
                         tblEvolucion.recomendaciones = registroEvolucionCLS.evolucion.recomendaciones;
-                        //tblEvolucion.fechaVisita = System.DateTime.Now;
-                        //tblEvolucion.habilitado = 1;
-                        //bd.tblEvolucion.Add(tblEvolucion);
 
-                        //recepcion de las foto y trnasformación a un archivo binario para las imagenes añadidas
                         byte[] fotoBD1 = null;
                         if (foto1 != null)
                         {
@@ -366,7 +325,7 @@ namespace ConsultorioDermatologico.Controllers
                             
                             if(idFoto1 != null)
                             {
-                                tblFotos tblFoto1Edit = bd.tblFotos.Where(p => p.idFoto == idFoto1).First();//new tblFotos();///condicional
+                                tblFotos tblFoto1Edit = bd.tblFotos.Where(p => p.idFoto == idFoto1).First();
                                 tblFoto1Edit.foto = fotoBD1;
                                 tblFoto1Edit.nombreFoto = foto1NombreFoto;
                             }
@@ -378,7 +337,6 @@ namespace ConsultorioDermatologico.Controllers
                                 tblFoto1New.nombreFoto = foto1NombreFoto;
                                 bd.tblFotos.Add(tblFoto1New);
                             }
-
                         }
 
                         byte[] fotoBD2 = null;
@@ -388,7 +346,7 @@ namespace ConsultorioDermatologico.Controllers
                             fotoBD2 = lector2.ReadBytes((int)foto2.ContentLength);
                             if (idFoto2 != null)
                             {
-                                tblFotos tblFoto2Edit = bd.tblFotos.Where(p => p.idFoto == idFoto2).First();//new tblFotos();///condicional
+                                tblFotos tblFoto2Edit = bd.tblFotos.Where(p => p.idFoto == idFoto2).First();
                                 tblFoto2Edit.foto = fotoBD2;
                                 tblFoto2Edit.nombreFoto = foto2NombreFoto;
                             }
@@ -399,8 +357,7 @@ namespace ConsultorioDermatologico.Controllers
                                 tblFoto2New.foto = fotoBD2;
                                 tblFoto2New.nombreFoto = foto2NombreFoto;
                                 bd.tblFotos.Add(tblFoto2New);
-                            }
-                           
+                            }  
                         }
                         byte[] fotoBD3 = null;
                         if (foto3 != null)
@@ -409,7 +366,7 @@ namespace ConsultorioDermatologico.Controllers
                             fotoBD3 = lector3.ReadBytes((int)foto3.ContentLength);
                             if (idFoto3 != null)
                             {
-                                tblFotos tblFoto3Edit = bd.tblFotos.Where(p => p.idFoto == idFoto3).First();//new tblFotos();///condicional
+                                tblFotos tblFoto3Edit = bd.tblFotos.Where(p => p.idFoto == idFoto3).First();
                                 tblFoto3Edit.foto = fotoBD3;
                                 tblFoto3Edit.nombreFoto = foto3NombreFoto;
                             }
@@ -421,7 +378,6 @@ namespace ConsultorioDermatologico.Controllers
                                 tblFoto3New.nombreFoto = foto3NombreFoto;
                                 bd.tblFotos.Add(tblFoto3New);
                             }
-
                         }
                         byte[] fotoBD4 = null;
                         if (foto4 != null)
@@ -430,7 +386,7 @@ namespace ConsultorioDermatologico.Controllers
                             fotoBD4 = lector4.ReadBytes((int)foto4.ContentLength);
                             if (idFoto4 != null)
                             {
-                                tblFotos tblFoto4Edit = bd.tblFotos.Where(p => p.idFoto == idFoto4).First();//new tblFotos();///condicional
+                                tblFotos tblFoto4Edit = bd.tblFotos.Where(p => p.idFoto == idFoto4).First();
                                 tblFoto4Edit.foto = fotoBD4;
                                 tblFoto4Edit.nombreFoto = foto4NombreFoto;
                             }
@@ -442,7 +398,6 @@ namespace ConsultorioDermatologico.Controllers
                                 tblFoto4New.nombreFoto = foto4NombreFoto;
                                 bd.tblFotos.Add(tblFoto4New);
                             }
-                           
                         }
                         byte[] fotoBD5 = null;
                         if (foto5 != null)
@@ -451,7 +406,7 @@ namespace ConsultorioDermatologico.Controllers
                             fotoBD5 = lector5.ReadBytes((int)foto5.ContentLength);
                             if (idFoto5 != null)
                             {
-                                tblFotos tblFoto5Edit = bd.tblFotos.Where(p => p.idFoto == idFoto5).First();//new tblFotos();///condicional
+                                tblFotos tblFoto5Edit = bd.tblFotos.Where(p => p.idFoto == idFoto5).First();
                                 tblFoto5Edit.foto = fotoBD5;
                                 tblFoto5Edit.nombreFoto = foto5NombreFoto;
                             }
@@ -463,7 +418,6 @@ namespace ConsultorioDermatologico.Controllers
                                 tblFoto5New.nombreFoto = foto5NombreFoto;
                                 bd.tblFotos.Add(tblFoto5New);
                             }
-                            
                         }
                         byte[] fotoBD6 = null;
                         if (foto6 != null)
@@ -472,7 +426,7 @@ namespace ConsultorioDermatologico.Controllers
                             fotoBD6 = lector6.ReadBytes((int)foto6.ContentLength); 
                             if (idFoto6 != null)
                             {
-                                tblFotos tblFoto6Edit = bd.tblFotos.Where(p => p.idFoto == idFoto6).First();//new tblFotos();///condicional
+                                tblFotos tblFoto6Edit = bd.tblFotos.Where(p => p.idFoto == idFoto6).First();
                                 tblFoto6Edit.foto = fotoBD6;
                                 tblFoto6Edit.nombreFoto = foto6NombreFoto;
                             }
@@ -484,7 +438,6 @@ namespace ConsultorioDermatologico.Controllers
                                 tblFoto6New.nombreFoto = foto6NombreFoto;
                                 bd.tblFotos.Add(tblFoto6New);
                             }
-                           
                         }
 
                         mensaje = bd.SaveChanges().ToString();

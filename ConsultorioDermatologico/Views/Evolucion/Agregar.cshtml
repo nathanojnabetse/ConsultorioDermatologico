@@ -307,14 +307,15 @@
         reader.readAsDataURL(files);
     }
 
-    function Guardar(rpta, ) {
+    function Guardar(rpta) {
         rpta = rpta.replace(/[{()}]/g, '');
         rpta = rpta.split(", ");
-        if (rpta[0] == "1" || rpta[0] == "2" || rpta[0] == "3" || rpta[0] == "4" || rpta[0] == "5" || rpta[0] == "6") {
+        if (rpta[0] == "1" || rpta[0] == "2" || rpta[0] == "3" || rpta[0] == "4" || rpta[0] == "5" || rpta[0] == "6" || rpta == "7" || rpta == "8") {
+            document.getElementById("error").value = "";
             alert("Se ejecuto correctame")
-
             var url = '@Url.Action("EvolucionPaciente", "HistoriaClinica")?idEvolucion=' +rpta[1];
             location.href = url;
+            
         } else {
             alert("Ocurrió un error")
         }

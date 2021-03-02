@@ -408,7 +408,10 @@
     }
 
     function GuardarE(rpta) {
-        if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6") {
+        rpta = rpta.replace(/[{()}]/g, '');
+        rpta = rpta.split(", ");
+        if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6" || rpta == "7" || rpta == "8") {
+            document.getElementById("error").value = "";
             alert("Se ejecuto correctame")
             var url = $("#RedirectTo").val();
             location.href = url;
