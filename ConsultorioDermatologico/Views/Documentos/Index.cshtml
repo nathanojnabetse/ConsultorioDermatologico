@@ -70,7 +70,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Fechas y horas de descanso</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Días de descanso</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -83,11 +83,7 @@
                     OnSuccess = "reposo",
                     UpdateTargetId = "error"
                 }))
-                {
-                    <div>
-                        @Html.Label("Horas de descanso")
-                        @Html.TextBox("horasDescanso", null, new { @class = "form-control limpieza", @type = "number", @min = "0", @max = "24", @required = true ,@Value="24"})
-                    </div>
+                {                   
                     <div>
                         @Html.Label("Desde")
                         <input type="date" id="fechaDesde" name="fechaDesde" class="form-control limpieza" onclose="reposo()" required>
@@ -111,18 +107,17 @@
     function reposo(rpta) {
 
         if (rpta == "") {
-            var horasDescanso = document.getElementById("horasDescanso").value;
             var fechaDesde = document.getElementById("fechaDesde").value;
             var fechaHasta = document.getElementById("fechaHasta").value;
             document.getElementById("btnClose").click();
             let a = document.createElement('a');
             a.target = '_blank';
-            var url = '@Url.Action("reposoPDF", "Documentos")?idEvolucion=' + @ViewBag.idEvolucion + '&idPaciente=' + @ViewBag.idPaciente + '&horasDescanso=' + horasDescanso + '&fechaDesde=' + fechaDesde + '&fechaHasta=' + fechaHasta;
+            var url = '@Url.Action("reposoPDF", "Documentos")?idEvolucion=' + @ViewBag.idEvolucion + '&idPaciente=' + @ViewBag.idPaciente + '&fechaDesde=' + fechaDesde + '&fechaHasta=' + fechaHasta;
             a.href = url;
             a.click();
         }
         else {
-            alert("Llene todos los campos")
+            alert("Error en la eleccion de las fechas")
         }
 
         //eposoPDF?idEvolucion=44&idPaciente=2

@@ -390,7 +390,7 @@ namespace ConsultorioDermatologico.Controllers
             return File(buffer, "application/pdf");
         }
 
-        public FileResult reposoPDF(int idEvolucion, int idPaciente, int horasDescanso, DateTime fechaDesde,DateTime fechaHasta)
+        public FileResult reposoPDF(int idEvolucion, int idPaciente, DateTime fechaDesde,DateTime fechaHasta)
         {
             Document doc = new Document();
             byte[] buffer;
@@ -439,15 +439,13 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(espacio);
                     Paragraph fechaconsulta = new Paragraph("Fecha de atención: " + tblEvolucion.fechaVisita.ToString());
                     doc.Add(fechaconsulta);
-                    Paragraph motivoConsulta = new Paragraph("Motivo de consulta:   " + tblEvolucion.motivoConsulta);
-                    doc.Add(motivoConsulta);
                     Paragraph diagnostico = new Paragraph("Diagnóstico:     " + tblEvolucion.diagnostico);
                     doc.Add(diagnostico);
                     doc.Add(espacio);
                     doc.Add(espacio);
                     doc.Add(espacio);
 
-                    Paragraph r1 = new Paragraph("Reposo por: "+ horasDescanso+"hora/s, "+(fechaHasta-fechaDesde).TotalDays.ToString()+"día/días");                    
+                    Paragraph r1 = new Paragraph("Reposo por: "+(fechaHasta-fechaDesde).TotalDays.ToString()+" día/días");                    
                     doc.Add(r1);
                     doc.Add(espacio);
                     Paragraph r2 = new Paragraph("Desde: " + fechaDesde.ToString("yyyy-MM-dd"));
@@ -473,7 +471,6 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(codigomsp);
                     Paragraph cedulaMD = new Paragraph("CI: "+cedulaMedico);
                     doc.Add(cedulaMD);
-
                 }
                 doc.Close();
                 buffer = ms.ToArray();
@@ -481,14 +478,25 @@ namespace ConsultorioDermatologico.Controllers
             return File(buffer, "application/pdf");
         }
 
-        public string verifica(int? horasDescanso, DateTime fechaDesde, DateTime fechaHasta)
+        public string verifica(DateTime fechaDesde, DateTime fechaHasta)
         {
             string mensaje = "";
-            if(horasDescanso == null | fechaDesde == null || fechaHasta == null)
+            if(fechaDesde == null || fechaHasta == null)
             {
                 mensaje = "Llene todos los campos";               
-            }            
-            
+            }        
+            if(fechaDesde > fechaHasta)
+            {
+                mensaje = "Elección incorrecta de fechas";
+            }
+            if (fechaHasta <= DateTime.Today)
+            {
+                mensaje = "La fecha [Hasta] debe ser mayor a la fecha del día de hoy";
+            }
+            if (fechaDesde < DateTime.Today)
+            {
+                mensaje = "La fecha [Desde] debe ser mayor o igual a la fecha del día de hoy";
+            }
             return mensaje;                        
         }
     }
