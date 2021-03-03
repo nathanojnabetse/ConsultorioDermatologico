@@ -429,6 +429,11 @@ namespace ConsultorioDermatologico.Controllers
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == tblPaciente.idPaciente).First();
                 tblPaciente.habilitado = 0;
                 tblHistoriaClinica.habilitado = 0;
+                List<tblEvolucion> listaEvoluciones = bd.tblEvolucion.Where(p => p.idHistoriaClinica == tblHistoriaClinica.idHistoriaClinica).ToList();
+                foreach(var item in listaEvoluciones)
+                {
+                    item.habilitado = 0;
+                }
 
                 bd.SaveChanges();
                 return RedirectToAction("Index");
