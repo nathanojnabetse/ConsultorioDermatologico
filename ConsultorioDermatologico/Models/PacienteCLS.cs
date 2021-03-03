@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para el paciente, contiene los datos personales y de contacto
+    /// </summary>
     public class PacienteCLS
     {
         public int idPaciente { get; set; }
@@ -87,7 +90,6 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Contacto de emergencia")]
         public int idContactoEmergencia { get; set; }
         public int habilitado { get; set; }
-
         //Propiedades adicionales, usadas para que el admin pueda visualizar los pacientes e historias desactivadas por un médico
         public int idHistoriaClinica { get; set; }
     }

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo con la información de las fotografías almacenadas
+    /// </summary>
     public class FotoCLS
     {
         public int idFoto { get; set; }

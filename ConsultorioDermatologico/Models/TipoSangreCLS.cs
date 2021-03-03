@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para el tipo de sangre del paciente registrado.
+    /// </summary>
     public class TipoSangreCLS
     {
         public int idTipoSangre { get; set; }

@@ -6,12 +6,11 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo con la información del contacto de emergencia del paciente
+    /// </summary>
     public class ContactoEmergenciaCLS
     {
-        // <summary>
-        /// Propiedades del contacto de emegencia del paciente
-        /// El tag [Display] es usado para mostrar un nombre en la vista       
-        /// </summary>
         public int idContactoEmergencia { get; set; }
         [Required]
         [Display(Name = "Nombres")]

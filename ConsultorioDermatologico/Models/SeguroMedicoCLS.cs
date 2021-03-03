@@ -6,12 +6,11 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para los seguros médicos diponibles
+    /// </summary>        
     public class SeguroMedicoCLS
-    {
-        /// <summary>
-        /// Propiedades de los seguros médicos diponibles
-        /// El tag [Display] es usado para mostrar un nombre en la vista       
-        /// </summary>        
+    {      
         public int idSeguroMedico { get; set; }
         [Required]
         [Display(Name = "Empresa aseguradora")]                

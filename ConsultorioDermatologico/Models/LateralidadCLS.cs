@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para registrar la lateralidad del paciente
+    /// </summary>
     public class LateralidadCLS
     {
         public int idLateralidad { get; set; }

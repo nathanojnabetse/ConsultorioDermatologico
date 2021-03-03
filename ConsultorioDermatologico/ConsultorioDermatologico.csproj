@@ -287,7 +287,6 @@
     <Compile Include="Models\EstadoCivilCLS.cs" />
     <Compile Include="Models\EvolucionCLS.cs" />
     <Compile Include="Models\FotoCLS.cs" />
-    <Compile Include="Models\FotoMapaCorporalCLS.cs" />
     <Compile Include="Models\HistoriaClinicaCLS.cs" />
     <Compile Include="Models\IdentidadGeneroCLS.cs" />
     <Compile Include="Models\LateralidadCLS.cs" />

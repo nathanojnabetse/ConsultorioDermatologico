@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para la religión del paciente
+    /// </summary>
     public class ReligionCLS
     {
         public int idReligion { get; set; }

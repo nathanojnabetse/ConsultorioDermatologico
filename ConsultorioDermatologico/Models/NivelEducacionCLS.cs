@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para registrar el nivel educativo del paciente
+    /// </summary>
     public class NivelEducacionCLS
     {
         public int idNivelEducacion { get; set; }

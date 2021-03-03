@@ -6,15 +6,11 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para el usuario que puede hacer uso del sistema.
+    /// </summary>
     public class UsuarioCLS
     {
-
-        /// <summary>
-        /// Propiedades de usuario que puede hacer uso del sistema
-        /// Tipos de usuario: ADMINISTRADOR (gestión total del sistema) 
-        ///                   MEDICO (gestión de historias clinicas e información del paciente)
-        /// El tag [Display] es usado para mostrar un nombre en la vista       
-        /// </summary>
         public int idUsuario { get; set; }
         
         [Required]

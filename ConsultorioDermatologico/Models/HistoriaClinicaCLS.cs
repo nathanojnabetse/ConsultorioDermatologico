@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo con los datos clínicos y antecedentes del paciente
+    /// </summary>
     public class HistoriaClinicaCLS
     {
         public int idHistoriaClinica { get; set; }

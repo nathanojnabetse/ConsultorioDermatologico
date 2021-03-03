@@ -6,11 +6,14 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para el registro de la Evolución del tratamiento del paciente
+    /// </summary>
     public class EvolucionCLS
     {
         public int idEvolucion { get; set; }
         public int idHistoriaClinica { get; set; }
-        public string mapaCorporal { get; set; } //recuperar la cadena
+        public string mapaCorporal { get; set; } //recuperar la cadena de la fotografía del mapa corporal marcado
         public string nombreMapa { get; set; }
         public string extension { get; set; }
         [Required]

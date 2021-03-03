@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ConsultorioDermatologico.Models
 {
+    /// <summary>
+    /// Modelo para indicar el estado civil del paciente
+    /// </summary>
     public class EstadoCivilCLS
     {
         public int idEstadoCivil { get; set; }
