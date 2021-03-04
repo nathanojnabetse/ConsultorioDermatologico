@@ -357,6 +357,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div style="padding-top:1em">
                         <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2' id="chkAntecedentesRM" onchange="antecedentesRM()" />
                         <label>Antecedentes reproductivos masculinos</label>
@@ -429,9 +430,8 @@
     <script>
         var scrollToTopBtn = document.getElementById("scrollToTopBtn")
         var rootElement = document.documentElement
-
+        //Botón back to the top
         function scrollToTop() {
-            // Scroll to top logic
             rootElement.scrollTo({
                 top: 0,
                 behavior: "smooth"
@@ -439,6 +439,7 @@
         }
         scrollToTopBtn.addEventListener("click", scrollToTop)
 
+        //Activa y pone como requeridos los campos de antecedentes ginecoobstetricos si se selecciona la casilla
         function antecedentesGO() {
             if ($('#chkAntecedentesGO').is(':checked')) {
                //Activo el checkbox
@@ -470,6 +471,7 @@
             }
         }
 
+        //Activa y pone como requeridos los campos de antecedentes reproductivos masculinos si se selecciona la casilla
         function antecedentesRM() {
             if ($('#chkAntecedentesRM').is(':checked')) {
                 //Activo el checkbox

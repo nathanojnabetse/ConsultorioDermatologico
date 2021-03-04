@@ -336,9 +336,8 @@
 <script>
     var scrollToTopBtn = document.getElementById("scrollToTopBtn")
     var rootElement = document.documentElement
-
-    function scrollToTop() {
-        // Scroll to top logic
+    // Botón back to the top
+    function scrollToTop() {      
         rootElement.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -346,6 +345,7 @@
     }
     scrollToTopBtn.addEventListener("click", scrollToTop)
 
+    //Activa y pone como requeridos los campos de antecedentes ginecoobstetricos si se selecciona la casilla
     function antecedentesGO() {
         if ($('#chkAntecedentesGO').is(':checked')) {
             //Activo el checkbox
@@ -377,6 +377,7 @@
         }
     }
 
+    //Activa y pone como requeridos los campos de antecedentes reproductivos masculinos si se selecciona la casilla
     function antecedentesRM() {
         if ($('#chkAntecedentesRM').is(':checked')) {
             //Activo el checkbox

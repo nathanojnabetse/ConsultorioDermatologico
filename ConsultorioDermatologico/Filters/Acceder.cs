@@ -7,28 +7,26 @@ using ConsultorioDermatologico.Models;
 
 namespace ConsultorioDermatologico.Filters
 {
+    /// <summary>
+    /// Clase que verifica el inicio de sesión y permite acceso a ciertas acciones
+    /// </summary>
     public class Acceder:ActionFilterAttribute
     {
-        //sobreescritura del metodo onActionExecuting antes de llamar una url cargar una pantalla pasa por este metodo
-
+        /// <summary>
+        /// Sobreescritura del metodo onActionExecuting antes de llamar una url cargar una pantalla pasa por este metodo
+        /// </summary>
+        /// <param name="filterContext">Accion ejecutada</param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            //si session usurio es nulo al login
+            //nombre del controlador y acción actual
             string nombreControlador = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
             string accion = filterContext.ActionDescriptor.ActionName;
             
             bool acceso = false;
-            //controladores y acciones permitidas para el medico
-            //Paciente Index Filtro Agregar Editar Desactivar //los llenar dropdown
-            //Home Medico
-            //HistoriaClinica EvolucionPaciente InformacionPaciente  //dropdowns
-            //Evolucion Agregar Editar Index Guardar GuardarEdicion Desactivar
-            //Documentos Index InfoPacientePDF prescripcionPDF asistenciaPDF reposoPDF verifica
-
-
-            //Login Login Index CerrarSesion
+            
             var rol = HttpContext.Current.Session["Rol"];
 
+            //Controladores y acciones permitidas para el médico
             if (((string)rol == "MEDICO")
                 &&((nombreControlador == "Paciente" && accion == "Index")
                 || (nombreControlador == "Paciente" && accion == "Filtro")
@@ -59,9 +57,7 @@ namespace ConsultorioDermatologico.Filters
                 acceso = true;
             }
 
-            //AdministracionPaciente Index Filtro EliminarPaciente ReestablecerPaciente EliminarVisita ReestablecerVisita
-            //Usuario Index Filtro Guardar Eliminar 
-            //Home aDMIN
+            //Controladores y acciones permitidas para el admin
             if (((string)rol == "ADMINISTRADOR")
                 && ((nombreControlador == "AdministracionPacientes" && accion == "Index")
                 || (nombreControlador == "AdministracionPacientes" && accion == "Filtro")
@@ -81,8 +77,8 @@ namespace ConsultorioDermatologico.Filters
                 acceso = true;
             }
 
-            //controladores y acciones permitidas para el admin
             var usuario = HttpContext.Current.Session["Usuario"];
+
             //Si no se ha iniciado sesion o se quiere realizar una acción no correspondiente al rol se redirige al login
             if(usuario == null || acceso == false)
             {

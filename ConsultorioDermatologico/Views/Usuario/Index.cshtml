@@ -3,17 +3,13 @@
 
 @{
     ViewBag.Title = "Index";
-
-    //creamos una lista tipo SelectListItem
+    //Creación de una lista tipo SelectListItem
     List<SelectListItem> lst = new List<SelectListItem>();
-
-    //De la siguiente manera llenamos manualmente,
-    //Siendo el campo Text lo que ve el usuario y
-    //el campo Value lo que en realidad vale nuestro valor
-    lst.Add(new SelectListItem() { Text = "MEDICO", Value = "MEDICO" });
-    lst.Add(new SelectListItem() { Text = "ADMINISTRADOR", Value = "ADMINISTRADOR" });
-
-    //Agregamos la lista a nuestro SelectList
+    //Llenado manual de la lista para la creación de un tipo de usuario
+    //El campo Text es lo que ve el usuario    
+    lst.Add(new SelectListItem() { Text = "MÉDICO", Value = "MEDICO" });
+    lst.Add(new SelectListItem() { Text = "ADMINISTRADOR", Value = "ADMINISTRADOR" })
+    //Agregamos la lista al SelectList
     SelectList listaRol = new SelectList(lst, "Value", "Text");
 }
 
@@ -57,7 +53,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -125,7 +121,6 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
             <div class="espacio">
                 <button type="button" id="btnCerrarConfirmacion" class="btn btn-outline-secondary rounded-pill" data-dismiss="modal">Cancelar</button>
                 <button type="button" onclick="EliminarRegistro()" class="btn btn-primary rounded-pill">Aceptar</button>
@@ -134,20 +129,21 @@
     </div>
 </div>
 
-
-
-
 <script>
+    //Filtro por cada tecla aplastada
     var filtro = document.getElementById("nombreUsuario");
     filtro.onkeyup = function () {
         $("#frmFiltro").trigger("submit");
     }
 
+    //Cambio del valor de título para que el controlador sepa que se va a agregar un nuevo usuario 
     function Agregar() {
         Limpiar();
         document.getElementById("titulo").value = -1;
 
     }
+
+    //OnSuccess de guardar, se recibe la respuesta desde el controlador 
     function Guardar(resultado) {
         if (resultado == "1") {
             $("#frmFiltro").trigger("submit");
@@ -173,13 +169,14 @@
         }
     }
 
+    //Se establece el id del registro a eliminarse
     function Eliminar(idUsuario) {
         document.getElementById("titulo").value = idUsuario;
-
     }
+
+    //Envío de datos al controlados por medio de Jquery y recepción del resultado para mostrar mensajes de exito o de error
     function EliminarRegistro() {
-        var idUsuario = document.getElementById("titulo").value;
-        //$.get("Eliminar/?idUsuario=" + idUsuario, function (data) {
+        var idUsuario = document.getElementById("titulo").value;        
         $.get('@Url.Action("Eliminar","Usuario")?idUsuario=' + idUsuario, function (data) {
             if (data == 1) {
                 alert("Se ejecuto correctamente")
@@ -191,6 +188,7 @@
         })
     }
 
+    // Función para limpiar los campos del modal cada vez que se abre
     function Limpiar() {
         var controles = document.getElementsByClassName("limpieza");
         var control;
@@ -201,7 +199,7 @@
         document.getElementById("error").innerHTML = "";
     }
 
-
+    //Selección de médico o admin (se oculta el campo código MSP)
     var x = document.getElementById("rolUsuario");
     var y = document.getElementById("codigoOcultar");
     function Cambio() {

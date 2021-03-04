@@ -9,19 +9,20 @@ using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
-    [Acceder]
+    [Acceder] //Tag para verificar que exista sesión iniciada la acción sea permitida
     public class HistoriaClinicaController : Controller
     {
-        // GET: HistoriaClinica
-        public ActionResult Index()
-        {
-            return View();
-        }
 
-        //retorna la info del paciente
+
+        /// <summary>
+        /// Accion para obtener y mostrar la información del paciente e historia clinica
+        /// </summary>
+        /// <param name="idPaciente">id único del paciente</param>
+        /// <returns>Vista InformaciónPaciente con los datos personales y de historia clínica</returns>
         public ActionResult InformacionPaciente(int idPaciente)
         {
             llenarDropDown();
+            //Creción de objetos con los datos para visualizacion
             ContactoEmergenciaCLS contactoEmergenciaCLS = new ContactoEmergenciaCLS();
             AntecedenteGinecoObstetricoCLS antecedenteGinecoObstetricoCLS = new AntecedenteGinecoObstetricoCLS();
             AntecedenteReprodMasculinoCLS antecedenteReprodMasculinoCLS = new AntecedenteReprodMasculinoCLS();
@@ -31,7 +32,7 @@ namespace ConsultorioDermatologico.Controllers
 
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-
+                //Busqueda de coincidencias con el id de entrada.
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente.Equals(idPaciente)).First();
 
                 pacienteCLS.idPaciente = tblPaciente.idPaciente;
@@ -116,7 +117,11 @@ namespace ConsultorioDermatologico.Controllers
             return View(registroPacienteCLS);
         }
 
-        
+        /// <summary>
+        /// Accion para obtener y mostrar la información de la visita del paciente
+        /// </summary>
+        /// <param name="idEvolucion">id de la evolución del paciente</param>
+        /// <returns>Vista con la iformación de la hoja de envolución</returns>
         public ActionResult EvolucionPaciente(int idEvolucion)
         {
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
@@ -321,7 +326,8 @@ namespace ConsultorioDermatologico.Controllers
                 ViewBag.listaSangre = listaSangre;
             }
         }
-
+        
+        //Método para llenar todos los dropdown con la info de la bdd
         private void llenarDropDown()
         {
             llenarOrientacionSexual();

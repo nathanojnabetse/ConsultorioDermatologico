@@ -9,10 +9,14 @@ using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
+    [Acceder]//Tag para verificar que exista sesión iniciada la acción sea permitida
     public class EvolucionController : Controller
     {
-        [Acceder]
-        // GET: Evolucion
+        /// <summary>
+        /// GET: Evolucion
+        /// </summary>
+        /// <param name="idPaciente">id del paciente en consulta</param>
+        /// <returns>Vista Index con los datos de evolución de un paciente</returns>
         public ActionResult Index(int idPaciente)
         {
             List<EvolucionCLS> listaEvoluciones = new List<EvolucionCLS>();
@@ -42,7 +46,12 @@ namespace ConsultorioDermatologico.Controllers
                 return View(listaEvoluciones);
         }
 
-        //ACion para retornar la vista con info del paciente
+
+        /// <summary>
+        /// Accion para retornar la vista con información del paciente
+        /// </summary>
+        /// <param name="idHistoriaClinica">id de la historia clínica</param>
+        /// <returns>Vista agregar con los datos del paciente e historia no visibles</returns>
         public ActionResult Agregar(int idHistoriaClinica)
         {
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
@@ -61,12 +70,32 @@ namespace ConsultorioDermatologico.Controllers
                 return View();
         }
 
+        /// <summary>
+        /// Accion que recibe los datos de la evolución
+        /// </summary>
+        /// <param name="registroEvolucionCLS">Modelo con los datos de la Evolución</param>
+        /// <param name="foto1">Archivo enviado desde la vista</param>
+        /// <param name="foto2">Archivo enviado desde la vista</param>
+        /// <param name="foto3">Archivo enviado desde la vista</param>
+        /// <param name="foto4">Archivo enviado desde la vista</param>
+        /// <param name="foto5">Archivo enviado desde la vista</param>
+        /// <param name="foto6">Archivo enviado desde la vista</param>
+        /// <param name="idHistoriaClinica">id de la historia clínica</param>
+        /// <param name="mapaCorporal">string con la información del canvas rayado</param>
+        /// <param name="foto1NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto2NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto3NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto4NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto5NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto6NombreFoto">nombre del archivo seleccionado</param>
+        /// <returns>Retorna el id de evolución recien creada y un mensaje de error o el numero de registros guardados</returns>
         public (string,int) Guardar(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica,string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto)
         {
             string mensaje = "";
             int idEvolucion = 0;
             try
             {
+                //Se quita al propiedad Required de las fotos en el modelo por si no se cargan archivos
                 ModelState.Remove("foto1");
                 ModelState.Remove("foto2");
                 ModelState.Remove("foto3");
@@ -75,9 +104,8 @@ namespace ConsultorioDermatologico.Controllers
                 ModelState.Remove("foto6");
 
                 if (!ModelState.IsValid)
-                {
-                    
-                    //un listado de errores en caso de existir campos incompletos
+                {                    
+                    //Listado de errores en caso de existir campos incompletos
                     var query = (from state in ModelState.Values//valores
                                  from error in state.Errors//mensajes
                                  select error.ErrorMessage).ToList();
@@ -93,6 +121,7 @@ namespace ConsultorioDermatologico.Controllers
 
                     using (var bd = new BDD_ConsultorioDermatologicoEntities())
                     {
+                        //Obtención de datos y creación de viewbahs para la vista
                         tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == idHistoriaClinica).First();
                         ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
 
@@ -102,7 +131,6 @@ namespace ConsultorioDermatologico.Controllers
 
                         ViewBag.fechaActual = System.DateTime.Now.ToString("yyyy-MM-dd");
 
-                        //if tiitulo o edicion ver despues si se añade o no.idEvolucion + 1;
                         tblEvolucion tblEvolucion = new tblEvolucion();
                         tblEvolucion.idHistoriaClinica = idHistoriaClinica;
 
@@ -118,7 +146,7 @@ namespace ConsultorioDermatologico.Controllers
                         tblEvolucion.habilitado = 1;
                         bd.tblEvolucion.Add(tblEvolucion);
                         
-                        //recepcion de las foto y trnasformación a un archivo binario para las imagenes añadidas
+                        //Recepción de las fotos y transformación a un arreglo binario para las imagenes añadidas
                         byte[] fotoBD1 = null;
                         if (foto1 != null)
                         {
@@ -185,14 +213,13 @@ namespace ConsultorioDermatologico.Controllers
                             tblFoto6.nombreFoto = foto6NombreFoto;
                             bd.tblFotos.Add(tblFoto6);
                         }
-
+                        //almacenamiento en la base de datos
                         mensaje = bd.SaveChanges().ToString();
                         if (mensaje == "0")
                         {
                             mensaje = "";
                         }
-
-                        idEvolucion = tblEvolucion.idEvolucion;
+                        idEvolucion = tblEvolucion.idEvolucion; //id de la evolución creada si todo ha sido correcto, para la redirección a la vista de información
                     }
                 }
             }
@@ -200,30 +227,29 @@ namespace ConsultorioDermatologico.Controllers
             {
                 Console.WriteLine(ex.Message);
                 mensaje = "";
-            }
-           
+            }           
             return (mensaje, idEvolucion);
         }
 
-        //recuperar informacion a la vista Editar
+        /// <summary>
+        /// Recuperación de la información de la historia para ser mostrada y editada
+        /// </summary>
+        /// <param name="idEvolucion">id de la hoja de evolución a editarse</param>
+        /// <returns>vista con los datos a editar</returns>
         public ActionResult Editar(int idEvolucion)
         {
-
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-
-                
                 EvolucionCLS evolucionCLS = new EvolucionCLS();
                 
                 tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();
                 ViewBag.idEvolucion = tblEvolucion.idEvolucion;
-               //viewbags
+                //viewbags
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica == tblEvolucion.idHistoriaClinica).First();
                 ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == tblHistoriaClinica.idPaciente).First();
                 ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
                 ViewBag.idPaciente = tblPaciente.idPaciente;
-
 
                 evolucionCLS.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
                 evolucionCLS.nombreMapa = tblEvolucion.nombreMapa;
@@ -257,7 +283,6 @@ namespace ConsultorioDermatologico.Controllers
                 listaFotos.Add(null);
                 listaFotos.Add(null);
                 
-
                 RegistroEvolucionCLS registroEvolucionCLS = new RegistroEvolucionCLS();
                 registroEvolucionCLS.evolucion = evolucionCLS;
                 registroEvolucionCLS.foto1 = listaFotos[0];
@@ -272,7 +297,32 @@ namespace ConsultorioDermatologico.Controllers
             }
         }
 
-        
+        /// <summary>
+        /// Acción para guardar los datos editados
+        /// </summary>
+        /// <param name="registroEvolucionCLS">Objeto con la información editada</param>
+        /// <param name="foto1">Archivo enviado desde la vista</param>
+        /// <param name="foto2">Archivo enviado desde la vista</param>
+        /// <param name="foto3">Archivo enviado desde la vista</param>
+        /// <param name="foto4">Archivo enviado desde la vista</param>
+        /// <param name="foto5">Archivo enviado desde la vista</param>
+        /// <param name="foto6">Archivo enviado desde la vista</param>
+        /// <param name="idHistoriaClinica">id de la historia clínica</param>
+        /// <param name="idEvolucion">id de la evolucion editada</param>
+        /// <param name="mapaCorporal">string con la información del canvas rayado</param>
+        /// <param name="foto1NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto2NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto3NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto4NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto5NombreFoto">nombre del archivo seleccionado</param>
+        /// <param name="foto6NombreFoto">nombre del archivo seleccionado</param>        
+        /// <param name="idFoto1">id de la foto si es que se cambia</param>
+        /// <param name="idFoto2">id de la foto si es que se cambia</param>
+        /// <param name="idFoto3">id de la foto si es que se cambia</param>
+        /// <param name="idFoto4">id de la foto si es que se cambia</param>
+        /// <param name="idFoto5">id de la foto si es que se cambia</param>
+        /// <param name="idFoto6">id de la foto si es que se cambia</param>
+        /// <returns>mensaje de error por campos incompletos o numero de registros afectados</returns>
         public string GuardarEdicion(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica, int idEvolucion, string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto, int? idFoto1, int? idFoto2, int? idFoto3, int? idFoto4, int? idFoto5, int? idFoto6)
         {
             string mensaje = "";
@@ -287,8 +337,7 @@ namespace ConsultorioDermatologico.Controllers
 
                 if (!ModelState.IsValid)
                 {
-
-                    //un listado de errores en caso de existir campos incompletos
+                    //listado de errores en caso de existir campos incompletos
                     var query = (from state in ModelState.Values//valores
                                  from error in state.Errors//mensajes
                                  select error.ErrorMessage).ToList();
@@ -460,6 +509,11 @@ namespace ConsultorioDermatologico.Controllers
             return mensaje;
         }
 
+        /// <summary>
+        /// Acción para desactivar una evolución
+        /// </summary>
+        /// <param name="idEvolucion">id de la evolución a desactivarse</param>
+        /// <returns>Retorna al index de evoluciones del paciente</returns>
         public ActionResult Desactivar(int idEvolucion)
         {
             using (var bd = new BDD_ConsultorioDermatologicoEntities())

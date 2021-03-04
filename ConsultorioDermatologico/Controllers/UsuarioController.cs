@@ -11,13 +11,17 @@ using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
-    [Acceder]    
+    [Acceder] //Tag para verificar que exista sesión iniciada la acción sea permitida
     public class UsuarioController : Controller
     {
-        // GET: Usuario
+        /// <summary>
+        /// GET: Usuario        
+        /// </summary>
+        /// <returns>Vista Index con la lista de usuarios registrados</returns>
         public ActionResult Index()
         {
             List<UsuarioCLS> listaUsuario = new List<UsuarioCLS>();
+
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
                 listaUsuario = (from usuario in bd.tblUsuario
@@ -33,13 +37,18 @@ namespace ConsultorioDermatologico.Controllers
                 return View(listaUsuario);
         }
 
+        /// <summary>
+        /// Filtro de busqueda en base a los parametros de entrada
+        /// </summary>
+        /// <param name="nombreUsuario">Busqueda por nombre</param>
+        /// <returns>vista parcial con la lista de coincidencias de la busqueda</returns>
         public ActionResult Filtro(String nombreUsuario)
         {
             List<UsuarioCLS> listaUsuario = new List<UsuarioCLS>();
 
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-                if (nombreUsuario == null)
+                if (nombreUsuario == null) //Si el criterio de busqueda es nulo devuelve todos los usuarios
                 {
                     listaUsuario = (from usuario in bd.tblUsuario
                                     select new UsuarioCLS
@@ -51,7 +60,7 @@ namespace ConsultorioDermatologico.Controllers
                                         correoUsuario = usuario.correoUsuario
                                     }).ToList();
                 }
-                else
+                else //coincidencias con el criterio de busqueda
                 {
                     listaUsuario = (from usuario in bd.tblUsuario
                                     where (usuario.nombresUsuario.Contains(nombreUsuario)
@@ -65,31 +74,37 @@ namespace ConsultorioDermatologico.Controllers
                                         correoUsuario = usuario.correoUsuario
                                     }).ToList();
                 }
-                return PartialView("_TablaUsuarios", listaUsuario);
+                return PartialView("_TablaUsuarios", listaUsuario);//Vista parcial con resultados de busqueda
             }
         }
 
+        /// <summary>
+        /// Método para guardar un nuevo usuario
+        /// </summary>
+        /// <param name="usuarioCLS">Objeto con los datos del modelo de UsuarioCLS</param>
+        /// <param name="titulo">Parámetro para el control de guardado</param>
+        /// <returns>Mensajes o códigos de error o cantidad de registros guardados</returns>
         public string Guardar(UsuarioCLS usuarioCLS,int titulo)
         {
-            string rpta ="" ; //numero de registros afectados
-            int aliasExistentes = 0;//control de # repeticion de nombre de usuario (Alias)
+            string rpta ="" ; //Número de registros afectados
+            int aliasExistentes = 0;//Control de # repeticion de nombre de usuario (Alias)
             int correoExistente = 0;//Control para el # de repeticiones del correo de usuario
-            int cedulaExistente = 0;//Control para el # de repeticiones del correo de usuario
+            int cedulaExistente = 0;//Control para el # de repeticiones de cedula
             try
             {
-                if (!ModelState.IsValid)
+                if (!ModelState.IsValid)//Verificación de campos vacios en el modelo
                 {
-                    var query = (from state in ModelState.Values//valores
-                                 from error in state.Errors//mensajes
+                    var query = (from state in ModelState.Values//Valores
+                                 from error in state.Errors//Mensajes
                                  select error.ErrorMessage).ToList();
-                    rpta += "<ul class='list-group'>";
+                    rpta += "<ul class='list-group'>"; //Lista con errores
                     foreach (var item in query)
                     {
                         rpta += "<li class='list-group-item'>" + item + "</li>";
                     }
                     rpta += "</ul>";
                 }
-                else
+                else //Modelo valido
                 {
                     using (var bd = new BDD_ConsultorioDermatologicoEntities())
                     {
@@ -97,30 +112,32 @@ namespace ConsultorioDermatologico.Controllers
                         {
                             if (titulo == -1)//Agregar un nuevo Usuario
                             {
+                                //Comprobación de elementos ya registrados con los datos de entrada.
                                 aliasExistentes = bd.tblUsuario.Where(p => p.aliasUsuario == usuarioCLS.aliasUsuario).Count();
                                 correoExistente = bd.tblUsuario.Where(p => p.correoUsuario == usuarioCLS.correoUsuario).Count();
                                 cedulaExistente = bd.tblUsuario.Where(p => p.cedulaUsuario == usuarioCLS.cedulaUsuario).Count();
                                 if (aliasExistentes >= 1)
                                 {
-                                    rpta = "-1";//usuario con alias repetido
+                                    rpta = "-1";//Usuario con alias repetido
                                 }
                                 else if(correoExistente >= 1)
                                 {
-                                    rpta = "-2";//correo en uso
+                                    rpta = "-2";//Correo en uso
                                 }
                                 else if (cedulaExistente >= 1)
                                 {
-                                    rpta = "-3";//cedula ya registrada
+                                    rpta = "-3";//Cédula ya registrada
                                 }
                                 else
                                 {
+                                    //Creación de un nuevo usuario
                                     tblUsuario tblUsuario = new tblUsuario();
                                     tblUsuario.nombresUsuario = usuarioCLS.nombreUsuario;
                                     tblUsuario.apellidosUsuario = usuarioCLS.apellidoUsuario;
                                     tblUsuario.cedulaUsuario = usuarioCLS.cedulaUsuario;
                                     tblUsuario.rolUsuario = usuarioCLS.rolUsuario;
                                     tblUsuario.aliasUsuario = usuarioCLS.aliasUsuario;
-                                    //cifrado de clave
+                                    //Cifrado de clave
                                     SHA256Managed sha = new SHA256Managed();
                                     byte[] byteContra = Encoding.Default.GetBytes(usuarioCLS.contraseñaUsuario);
                                     byte[] byteContraCifrado = sha.ComputeHash(byteContra);
@@ -128,11 +145,11 @@ namespace ConsultorioDermatologico.Controllers
                                     tblUsuario.contraseñaUsuario = cadenaContraCifrada;
                                     tblUsuario.correoUsuario = usuarioCLS.correoUsuario;
                                     tblUsuario.codigoMSP = usuarioCLS.codigoMSP;
+                                    //Almacenamiento en la base de datos
                                     bd.tblUsuario.Add(tblUsuario);
                                     rpta = bd.SaveChanges().ToString();
                                     transaccion.Complete();
-                                }
-                                
+                                }                                
                             }
                             else
                             {
@@ -140,18 +157,21 @@ namespace ConsultorioDermatologico.Controllers
                             }                            
                         }
                     }
-                }
-               
+                }               
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 rpta = "";
-            }
-            
+            }            
                 return rpta;
         }
 
+        /// <summary>
+        /// Eliminación de un usuario de la base de datos
+        /// </summary>
+        /// <param name="idUsuario">Id del usuario a eliminarse</param>
+        /// <returns>Cantidad de registros afectados</returns>
         public int Eliminar(int idUsuario)
         {
             int rpta = 0;
@@ -159,20 +179,19 @@ namespace ConsultorioDermatologico.Controllers
             {
                 using (var bd = new BDD_ConsultorioDermatologicoEntities())
                 {
+                    //Busqueda del usuario que coindida con el id de entrada
                     tblUsuario usuario = (from user in bd.tblUsuario
                                           where user.idUsuario == idUsuario
                                           select user).First();
-                    if(usuario!=null)
+                    if(usuario!=null) //si el usuario existe se elimina
                     {
                         bd.tblUsuario.Remove(usuario);
                         rpta = bd.SaveChanges();
                     }
-                    else
+                    else//Error
                     {
                         rpta = 0;
                     }
-                    
-
                 }
             }
             catch (Exception ex)
@@ -180,8 +199,6 @@ namespace ConsultorioDermatologico.Controllers
                 Console.WriteLine(ex.Message);
                 rpta = 0;
             }
-
-
             return rpta;
         }
     }

@@ -9,7 +9,10 @@ namespace ConsultorioDermatologico.Controllers
 {
     public class Cie10Controller : Controller
     {
-        // GET: Cie10
+        /// <summary>
+        /// Muesta la vista con la lista completa de enfermedades
+        /// </summary>
+        /// <returns>Vista Index con la lista completa de enfermedades</returns>
         public ActionResult Index()
         {
             List<Cie10CLS> listaEnfermedades = new List<Cie10CLS>();
@@ -23,10 +26,14 @@ namespace ConsultorioDermatologico.Controllers
                                         enfermedad =cie10.enfermedad
                                     }).ToList();
             }
-
             return View(listaEnfermedades);
         }
 
+        /// <summary>
+        /// Filtro de busqueda en base al string de entrada
+        /// </summary>
+        /// <param name="busqueda"></param>
+        /// <returns>Vista parcial con los resultados de conicidencia</returns>
         public ActionResult Filtro(String busqueda)
         {
             List<Cie10CLS> listaEnfermedades = new List<Cie10CLS>();

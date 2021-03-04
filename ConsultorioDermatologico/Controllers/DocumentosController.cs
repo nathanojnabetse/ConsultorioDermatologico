@@ -11,14 +11,21 @@ using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
-    [Acceder]
+    [Acceder] //Tag para verificar que exista sesión iniciada la acción sea permitida
     public class DocumentosController : Controller
     {
+        //Obtención de los datos de session para firmas y nombres en certificados
         public string nombreMedico = (string)System.Web.HttpContext.Current.Session["NombreUsuario"];
         public string cedulaMedico = (string)System.Web.HttpContext.Current.Session["cedula"];
         public string codigoMSP = (string)System.Web.HttpContext.Current.Session["codigoMSP"];
-        
-        // GET: Documentos
+
+        /// <summary>
+        /// GET: Documentos
+        /// Vista con las opciones de documentos posibles a generar
+        /// </summary>
+        /// <param name="idEvolucion">id de Evolución actual</param>
+        /// <param name="idPaciente">id del paciente en la visita</param>
+        /// <returns>vista Index</returns>
         public ActionResult Index(int idEvolucion, int idPaciente)
         {
             ViewBag.idEvolucion = idEvolucion;
@@ -26,6 +33,11 @@ namespace ConsultorioDermatologico.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Creación del documento con toda la información de la historia clínica del paciente
+        /// </summary>
+        /// <param name="idEvolucion">id de Evolución actual</param>
+        /// <returns>Archivo PDF con la información del paciente</returns>
         public FileResult InfoPacientePDF(int idPaciente)
         {
             Document doc = new Document();
@@ -223,6 +235,12 @@ namespace ConsultorioDermatologico.Controllers
             return File(buffer, "application/pdf");
         }
 
+        /// <summary>
+        /// Creación de la prescripción recetada en la visita actual
+        /// </summary>
+        /// <param name="idEvolucion">id de Evolución actual</param>
+        /// <param name="idPaciente">id del paciente en la visita</param>
+        /// <returns>Archivo PDF con la prescripción de la visita</returns>
         public FileResult prescripcionPDF(int idEvolucion, int idPaciente)
         {
             Document doc = new Document();           
@@ -303,7 +321,12 @@ namespace ConsultorioDermatologico.Controllers
             }
             return File(buffer, "application/pdf");
         }
-
+        /// <summary>
+        /// Creación de un certificado de asistencia al consultorio
+        /// </summary>
+        /// <param name="idEvolucion">id de Evolución actual</param>
+        /// <param name="idPaciente">id del paciente en la visita</param>
+        /// <returns>Archivo PDF con el certificado de asistencia</returns>
         public FileResult asistenciaPDF(int idEvolucion, int idPaciente)
         {
             Document doc = new Document();
@@ -390,6 +413,14 @@ namespace ConsultorioDermatologico.Controllers
             return File(buffer, "application/pdf");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idEvolucion">id de Evolución actual</param>
+        /// <param name="idPaciente">id del paciente en la visita</param>
+        /// <param name="fechaDesde">Fecha inicial de reposo</param>
+        /// <param name="fechaHasta">Fecha final de reposo</param>
+        /// <returns>Archivo PDF con el certificado de reposo</returns>
         public FileResult reposoPDF(int idEvolucion, int idPaciente, DateTime fechaDesde,DateTime fechaHasta)
         {
             Document doc = new Document();
@@ -478,6 +509,12 @@ namespace ConsultorioDermatologico.Controllers
             return File(buffer, "application/pdf");
         }
 
+        /// <summary>
+        /// Se reciben las fechas desde la vista y se comprueba que no existan inconsistencias
+        /// </summary>
+        /// <param name="fechaDesde">Fecha inicial de reposo</param>
+        /// <param name="fechaHasta">Fecha final de reposo</param>
+        /// <returns>mensaje de error si existiese alguno</returns>
         public string verifica(DateTime fechaDesde, DateTime fechaHasta)
         {
             string mensaje = "";

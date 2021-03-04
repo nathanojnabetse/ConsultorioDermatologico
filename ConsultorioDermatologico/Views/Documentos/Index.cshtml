@@ -104,14 +104,15 @@
 </div>
 
 <script>
+    //función que recibe una respuesta desde la acción verifica del controlador indicando si la fecha es valida o no
     function reposo(rpta) {
-
         if (rpta == "") {
             var fechaDesde = document.getElementById("fechaDesde").value;
             var fechaHasta = document.getElementById("fechaHasta").value;
             document.getElementById("btnClose").click();
             let a = document.createElement('a');
             a.target = '_blank';
+            //envío de datos al controlador para la creación del pdf
             var url = '@Url.Action("reposoPDF", "Documentos")?idEvolucion=' + @ViewBag.idEvolucion + '&idPaciente=' + @ViewBag.idPaciente + '&fechaDesde=' + fechaDesde + '&fechaHasta=' + fechaHasta;
             a.href = url;
             a.click();
@@ -119,7 +120,5 @@
         else {
             alert("Error en la eleccion de las fechas")
         }
-
-        //eposoPDF?idEvolucion=44&idPaciente=2
     }
 </script>

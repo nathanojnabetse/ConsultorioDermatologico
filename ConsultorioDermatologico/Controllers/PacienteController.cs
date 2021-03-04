@@ -8,15 +8,16 @@ using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
-    [Acceder]
+    [Acceder] //Tag para verificar que exista sesión iniciada la acción sea permitida
     public class PacienteController : Controller
     {
-        // GET: Paciente
+        /// <summary>
+        /// GET: Paciente
+        /// </summary>
+        /// <returns>Vista Index con la lista de pacientes registrados</returns>
         public ActionResult Index()
         {
-
             List<PacienteCLS> listaPacientes = new List<PacienteCLS>();
-
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
                 listaPacientes = (from paciente in bd.tblPaciente
@@ -32,16 +33,19 @@ namespace ConsultorioDermatologico.Controllers
             return View(listaPacientes);
         }
 
+        /// <summary>
+        /// Filtro en base a los criterios de búsqueda
+        /// </summary>
+        /// <param name="busqueda">Criterio de bpusqueda escrito, cédula o nombre</param>
+        /// <returns>Lista con coincidencias de busqueda en la vista parcial</returns>
         public ActionResult Filtro(string busqueda)
         {
             List<PacienteCLS> listaPacientes = new List<PacienteCLS>();
 
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-
-                if (busqueda == null)
+                if (busqueda == null) //Si la busqueda es nula devuelve todos los registros
                 {
-
                     listaPacientes = (from paciente in bd.tblPaciente
                                       where paciente.habilitado == 1
                                       select new PacienteCLS
@@ -52,9 +56,8 @@ namespace ConsultorioDermatologico.Controllers
                                       }
                                       ).ToList();
                 }
-                else
+                else //coincidencias de búsqueda
                 {
-
                     listaPacientes = (from paciente in bd.tblPaciente
                                       where paciente.habilitado == 1
                                       && (paciente.nombres.Contains(busqueda)
@@ -67,22 +70,27 @@ namespace ConsultorioDermatologico.Controllers
                                           nombres = paciente.nombres + " " + paciente.apellidos,
                                       }
                                       ).ToList();
-
                 }
                 return PartialView("_TablaPacientes", listaPacientes);
             }
         }
 
-        //Genera la vista html
+        /// <summary>
+        /// Generación de la vista con datos en los dropdown
+        /// </summary>
+        /// <returns>Vista Agregar</returns>
         public ActionResult Agregar()
         {
             llenarDropDown();
 
             return View();
-
         }
 
-        //Hacer la insercion de datos por  medio del metodo post (Html.BEgin form) Agregar.csHtml
+        /// <summary>
+        ///  Inserción de datos por medio de POST
+        /// </summary>
+        /// <param name="registroPacienteCLS">Objeto del tipo pacienteCLS</param>
+        /// <returns>Si el modelo es invalido, los datos ingresados; si se ha realizado una correcta inserción, el id del usuario creado a la vista HistoriaClinica/InformacionPaciente</returns>        
         [HttpPost]
         public ActionResult Agregar(RegistroPacienteCLS registroPacienteCLS)
         {
@@ -91,9 +99,8 @@ namespace ConsultorioDermatologico.Controllers
 
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-                nRegistrosEncontrados = bd.tblPaciente.Where(p => p.cedula.Equals(cedula)).Count();
+                nRegistrosEncontrados = bd.tblPaciente.Where(p => p.cedula.Equals(cedula)).Count();//Verificación de que no exista cédula repetida
             }
-
 
             if (!ModelState.IsValid || nRegistrosEncontrados >= 1)
             {
@@ -108,9 +115,7 @@ namespace ConsultorioDermatologico.Controllers
             else
             {                   
                 using (var bd = new BDD_ConsultorioDermatologicoEntities())
-                {
-                        
-
+                {                       
                     int? idContactoEmergencia = null;
                     //Creación de un contacto de emergencia para añadirse al paciente
                     tblContactoEmergencia tblContactoEmergencia = new tblContactoEmergencia();
@@ -122,7 +127,6 @@ namespace ConsultorioDermatologico.Controllers
                     bd.tblContactoEmergencia.Add(tblContactoEmergencia);//Guardado del Contacto de emergencia
                     int? idPaciente = null;//Obtencion del id del Contacto de Emergencia para paciente
                     idContactoEmergencia = tblContactoEmergencia.idContactoEmergencia;
-
                         
                     //Creación de un paciente
                     tblPaciente tblPaciente = new tblPaciente();
@@ -157,7 +161,6 @@ namespace ConsultorioDermatologico.Controllers
                     if (!(registroPacienteCLS.antecedenteReprodMasculino.parejaSexual == null
                         && registroPacienteCLS.antecedenteReprodMasculino.ets == null))
                     {
-
                         //Creación de antecedentes reproductivo masculino de ser necesario
                         tblAntecedenteReprodMasculino tblAntecedenteReprodMasculino = new tblAntecedenteReprodMasculino();
                         tblAntecedenteReprodMasculino.ets = registroPacienteCLS.antecedenteReprodMasculino.ets;
@@ -166,6 +169,7 @@ namespace ConsultorioDermatologico.Controllers
                         bd.tblAntecedenteReprodMasculino.Add(tblAntecedenteReprodMasculino); //Guardado del antecedente en la bdd
                         idAntecedenteReprodMasculino = tblAntecedenteReprodMasculino.idAntecedenteReprodMasculino; //id para la historia clinica
                     }
+
                     if (!(registroPacienteCLS.antecedenteGinecoObstetrico.menarquia == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.ciclo == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.fechaUltimaMenstruacion == null
@@ -178,7 +182,6 @@ namespace ConsultorioDermatologico.Controllers
                         && registroPacienteCLS.antecedenteGinecoObstetrico.vidaSexualActiva == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.metodoPlanificacionFamiliar == null))
                     {
-
                         //Creación de antecedentes gineco obstetricos de ser necesario
                         tblAntecedenteGinecoObstetrico tblAntecedenteGinecoObstetrico = new tblAntecedenteGinecoObstetrico();
                         tblAntecedenteGinecoObstetrico.menarquia = registroPacienteCLS.antecedenteGinecoObstetrico.menarquia;
@@ -222,18 +225,19 @@ namespace ConsultorioDermatologico.Controllers
                     bd.SaveChanges();//Guardar los cambios realizados en la bdd 
 
                     return RedirectToAction("InformacionPaciente", "HistoriaClinica", new { idPaciente = tblHistoriaClinica.idPaciente });
-                }
-                //return RedirectToAction("InformacionPaciente", new { idPaciente = idPaciente });
-                
-                //return RedirectToAction("Index");
+                }                
             }
         }
 
-        
-        //Acción para ontener los datos de la bbd y ser mostrados en la vista
+        /// <summary>
+        /// Acción para obtener los datos de la bbd y ser mostrados en la vista para ser editados
+        /// </summary>
+        /// <param name="idPaciente">id del paciente a editarse</param>
+        /// <returns></returns>      
         public ActionResult Editar(int idPaciente)
         {
             llenarDropDown();
+            //Creación de objetos con información a editarse
             ContactoEmergenciaCLS contactoEmergenciaCLS = new ContactoEmergenciaCLS();
             AntecedenteGinecoObstetricoCLS antecedenteGinecoObstetricoCLS = new AntecedenteGinecoObstetricoCLS();
             AntecedenteReprodMasculinoCLS antecedenteReprodMasculinoCLS = new AntecedenteReprodMasculinoCLS();
@@ -243,9 +247,9 @@ namespace ConsultorioDermatologico.Controllers
 
             using (var bd = new BDD_ConsultorioDermatologicoEntities()) 
             {
-
+                //Búsqueda del paciente en base al id
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente.Equals(idPaciente)).First();
-
+                //Obtención de los datos desde la bdd
                 pacienteCLS.idPaciente = tblPaciente.idPaciente;
                 pacienteCLS.nombres = tblPaciente.nombres;
                 pacienteCLS.apellidos = tblPaciente.apellidos;
@@ -310,6 +314,7 @@ namespace ConsultorioDermatologico.Controllers
                     antecedenteGinecoObstetricoCLS.vidaSexualActiva = tblAntecedenteGinecoObstetrico.vidaSexualActiva;
                     antecedenteGinecoObstetricoCLS.metodoPlanificacionFamiliar = tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar;
                 }
+                
                 if (historiaClinicaCLS.idAntecedenteReprodMasculino != null)
                 {
                     tblAntecedenteReprodMasculino tblAntecedenteReprodMasculino = bd.tblAntecedenteReprodMasculino.Where(p => p.idAntecedenteReprodMasculino.Equals((int)historiaClinicaCLS.idAntecedenteReprodMasculino)).First();
@@ -325,9 +330,14 @@ namespace ConsultorioDermatologico.Controllers
                 registroPacienteCLS.antecedenteReprodMasculino = antecedenteReprodMasculinoCLS;
                 registroPacienteCLS.antecedenteGinecoObstetrico = antecedenteGinecoObstetricoCLS;
             }
-            return View(registroPacienteCLS);
+            return View(registroPacienteCLS);//Objeto con la info del paciente
         }
 
+        /// <summary>
+        /// Acción para guardar los cambios realizados en la pantalla de edición
+        /// </summary>
+        /// <param name="registroPacienteCLS">Objeto del tipo RegistroPacienteCLS con datos modificados</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Editar(RegistroPacienteCLS registroPacienteCLS)
         {
@@ -414,13 +424,16 @@ namespace ConsultorioDermatologico.Controllers
                     tblHistoriaClinica.habilitado = 1;
                                        
                     bd.SaveChanges();//Guardar los cambios realizados en la bdd 
-
-
                 }
                 return RedirectToAction("Index");
             }
         }
 
+        /// <summary>
+        /// Cambia el estado habilitado a 0 de un paciente y su información relacionada
+        /// </summary>
+        /// <param name="idPaciente">id del paciente a ser desactivado</param>
+        /// <returns>Vista Index</returns>
         public ActionResult Desactivar(int idPaciente)
         {
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
@@ -440,6 +453,9 @@ namespace ConsultorioDermatologico.Controllers
             }
         }
 
+        /// <summary>
+        /// Dropdpwns con información de la base de datos
+        /// </summary>
         #region Datos de los dropdown 
         private void llenarIdentidadGenero()
         {
@@ -585,6 +601,9 @@ namespace ConsultorioDermatologico.Controllers
             }
         }
 
+        /// <summary>
+        /// Llamado a todas las funciones que llenan de datos los dropdowns
+        /// </summary>
         private void llenarDropDown()
         {
             llenarOrientacionSexual();
@@ -596,7 +615,6 @@ namespace ConsultorioDermatologico.Controllers
             llenarReligion();
             llenarSeguros();
             llenarSangre();
-
         }
 
         #endregion

@@ -32,14 +32,16 @@
 }
 
 <script>
+    //filtro de busqueda cuando algo se escribe
     var filtro = document.getElementById("busqueda");
     filtro.onkeyup = function () {
         $("#frmFiltro").trigger("submit");
     }
 
+    //pregunta si se desea eliminar un registro
     function EliminarPaciente(idPaciente) {
         if (confirm("¿Está seguro de querer borrar DEFINITIVAMENTE este paciente y toda su información relacionada [Datos,Historia clínica y Evolución]?") == 1) {
-            $.get('@Url.Action("EliminarPaciente", "AdministracionPacientes")?idPaciente=' + idPaciente, function (data) {
+            $.get('@Url.Action("EliminarPaciente", "AdministracionPacientes")?idPaciente=' + idPaciente, function (data) { //envio de datos al controlador y recepcion de la respuesta mandada por el controlador
             if (data >= 1) {
                 alert("Se elimino correctamente")
                 $("#frmFiltro").trigger("submit");
@@ -54,9 +56,10 @@
         }
     }
 
+    //Pregunta si se desea reestablecer un registro
     function ReestablecerPaciente(idPaciente) {
         if (confirm("¿Está seguro de querer reestablecer este paciente y toda su información relacionada  [Datos,Historia clínica y Evolución]?") == 1) {
-            $.get('@Url.Action("ReestablecerPaciente", "AdministracionPacientes")?idPaciente=' + idPaciente, function (data) {
+            $.get('@Url.Action("ReestablecerPaciente", "AdministracionPacientes")?idPaciente=' + idPaciente, function (data) { //envio de datos al controlador y recepcion de la respuesta mandada por el controlador
             if (data >= 1) {
                 alert("Se restableció el paciente correctamente")
                 $("#frmFiltro").trigger("submit");
@@ -71,9 +74,10 @@
         }
     }
 
+    // Pregunta si se desea eliminar una visita
     function EliminarVisita(idEvolucion) {
         if (confirm("¿Está seguro de querer borrar DEFINITIVAMENTE este registro de visita y toda su información relacionada  [Datos de evolución]?") == 1) {
-            $.get('@Url.Action("EliminarVisita", "AdministracionPacientes")?idEvolucion=' + idEvolucion, function (data) {
+            $.get('@Url.Action("EliminarVisita", "AdministracionPacientes")?idEvolucion=' + idEvolucion, function (data) { //envio de datos al controlador y recepcion de la respuesta mandada por el controlador
             if (data >= 1) {
                 alert("Se elimino correctamente")
                 $("#frmFiltro").trigger("submit");
@@ -87,9 +91,10 @@
             event.preventDefault();
         }
     }
+    //Pregunta si se desea reestablecer una visita
     function ReestablecerVisita(idEvolucion) {
         if (confirm("¿Está seguro de querer reestablecer este registro de visita y toda su información relacionada  [Datos de evolución]?") == 1) {
-            $.get('@Url.Action("ReestablecerVisita", "AdministracionPacientes")?idEvolucion=' + idEvolucion, function (data) {
+            $.get('@Url.Action("ReestablecerVisita", "AdministracionPacientes")?idEvolucion=' + idEvolucion, function (data) {//envio de datos al controlador y recepcion de la respuesta mandada por el controlador
             if (data >= 1) {
                 alert("Se restableció la visita correctamente")
                 $("#frmFiltro").trigger("submit");

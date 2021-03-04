@@ -5,7 +5,6 @@
     ViewBag.Title = "Editar";
 }
 
-
 <h2 style="padding-top:1em">Editar evolución</h2>
 <div id="error" class="text-danger"></div>
 
@@ -240,9 +239,9 @@
 @Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idEvolucion = @ViewBag.idEvolucion }))
 
 <script>
-    //======================================================================
-    // VARIABLES
-    //======================================================================
+
+    ///DIBUJO EN EL CANVAS ***************************
+    // Variables  
     let miCanvas = document.querySelector('#pizarra');
     let lineas = [];
     let correccionX = 0;
@@ -255,28 +254,17 @@
     let posicion = miCanvas.getBoundingClientRect()
     correccionX = posicion.x;
     correccionY = posicion.y;
-
     //miCanvas.width = 300;
     //miCanvas.height = 300;
-
-    var heightRatio = 1;
+    var heightRatio = 1; //Hacer el canvas cuadrado
     miCanvas.height = miCanvas.width * heightRatio;
-
-    //======================================================================
-    // FUNCIONES
-    //======================================================================
-
-    /**
-     * Funcion que empieza a dibujar la linea
-     */
+    // Función para dibujar líneas
     function empezarDibujo() {
         pintarLinea = true;
         lineas.push([]);
     };
 
-    /**
-     * Funcion que guarda la posicion de la nueva línea
-     */
+    //Funcion que guarda la posicion de la nueva línea
     function guardarLinea() {
         lineas[lineas.length - 1].push({
             x: nuevaPosicionX,
@@ -284,9 +272,7 @@
         });
     }
 
-    /**
-     * Funcion dibuja la linea
-     */
+    //Funcion dibuja la linea
     function dibujarLinea(event) {
         event.preventDefault();
         if (pintarLinea) {
@@ -320,129 +306,123 @@
         }
     }
 
-    /**
-     * Funcion que deja de dibujar la linea
-     */
+    //Funcion que deja de dibujar la linea
     function pararDibujar() {
         pintarLinea = false;
         guardarLinea();
     }
 
-    //======================================================================
-    // EVENTOS
-    //======================================================================
-
-    // Eventos raton
+    //Eventos raton (movimiento)
     miCanvas.addEventListener('mousedown', empezarDibujo, false);
     miCanvas.addEventListener('mousemove', dibujarLinea, false);
     miCanvas.addEventListener('mouseup', pararDibujar, false);
 
-    // Eventos pantallas táctiles
+    //Eventos pantallas táctiles
     miCanvas.addEventListener('touchstart', empezarDibujo, false);
     miCanvas.addEventListener('touchmove', dibujarLinea, false);
 
-    ///VIsualizacipon de imagenes al agregar
-
-    var imgFoto1 = document.getElementById("imgFoto1");
-    var fupFoto1 = document.getElementById("fupFoto1");
-    fupFoto1.onchange = function () {
+    // Visualización de imagenes al agregar
+    var imgFoto1 = document.getElementById("imgFoto1");//imagen que se muestra
+    var fupFoto1 = document.getElementById("fupFoto1");//archivo seleccionado
+    fupFoto1.onchange = function () { //al elegir la foto seleccionada
         var files = fupFoto1.files[0];
-        var reader = new FileReader();
+        var reader = new FileReader();//lectura del archivo
         reader.onloadend = function () {
-            imgFoto1.src = reader.result;
-            document.getElementById("foto1NombreFoto").value = files.name;
+            imgFoto1.src = reader.result; //carga la imagen
+            document.getElementById("foto1NombreFoto").value = files.name; //nombre a guardar
         }
         reader.readAsDataURL(files);
     }
-    var imgFoto2 = document.getElementById("imgFoto2");
-    var fupFoto2 = document.getElementById("fupFoto2");
-    fupFoto2.onchange = function () {
+    var imgFoto2 = document.getElementById("imgFoto2");//imagen que se muestra
+    var fupFoto2 = document.getElementById("fupFoto2");//archivo seleccionado
+    fupFoto2.onchange = function () {//al elegir la foto seleccionada
         var files = fupFoto2.files[0];
-        var reader = new FileReader();
+        var reader = new FileReader();//lectura del archivo
         reader.onloadend = function () {
-            imgFoto2.src = reader.result;
-            document.getElementById("foto2NombreFoto").value = files.name;
+            imgFoto2.src = reader.result;//carga la imagen
+            document.getElementById("foto2NombreFoto").value = files.name; //nombre a guardar
         }
         reader.readAsDataURL(files);
     }
-    var imgFoto3 = document.getElementById("imgFoto3");
-    var fupFoto3 = document.getElementById("fupFoto3");
-    fupFoto3.onchange = function () {
+    var imgFoto3 = document.getElementById("imgFoto3");//imagen que se muestra
+    var fupFoto3 = document.getElementById("fupFoto3");//archivo seleccionado
+    fupFoto3.onchange = function () {//al elegir la foto seleccionada
         var files = fupFoto3.files[0];
-        var reader = new FileReader();
+        var reader = new FileReader();//lectura del archivo
         reader.onloadend = function () {
-            imgFoto3.src = reader.result;
-            document.getElementById("foto3NombreFoto").value = files.name;
+            imgFoto3.src = reader.result;//carga la imagen
+            document.getElementById("foto3NombreFoto").value = files.name; //nombre a guardar
         }
         reader.readAsDataURL(files);
     }
-    var imgFoto4 = document.getElementById("imgFoto4");
-    var fupFoto4 = document.getElementById("fupFoto4");
-    fupFoto4.onchange = function () {
+    var imgFoto4 = document.getElementById("imgFoto4");//imagen que se muestra
+    var fupFoto4 = document.getElementById("fupFoto4");//archivo seleccionado
+    fupFoto4.onchange = function () {//al elegir la foto seleccionada
         var files = fupFoto4.files[0];
-        var reader = new FileReader();
+        var reader = new FileReader();//lectura del archivo
         reader.onloadend = function () {
-            imgFoto4.src = reader.result;
-            document.getElementById("foto4NombreFoto").value = files.name;
+            imgFoto4.src = reader.result;//carga la imagen
+            document.getElementById("foto4NombreFoto").value = files.name; //nombre a guardar
         }
         reader.readAsDataURL(files);
     }
-    var imgFoto5 = document.getElementById("imgFoto5");
-    var fupFoto5 = document.getElementById("fupFoto5");
-    fupFoto5.onchange = function () {
+    var imgFoto5 = document.getElementById("imgFoto5");//imagen que se muestra
+    var fupFoto5 = document.getElementById("fupFoto5");//archivo seleccionado
+    fupFoto5.onchange = function () {//al elegir la foto seleccionada
         var files = fupFoto5.files[0];
-        var reader = new FileReader();
+        var reader = new FileReader();//lectura del archivo
         reader.onloadend = function () {
-            imgFoto5.src = reader.result;
-            document.getElementById("foto5NombreFoto").value = files.name;
+            imgFoto5.src = reader.result;//carga la imagen
+            document.getElementById("foto5NombreFoto").value = files.name; //nombre a guardar
         }
         reader.readAsDataURL(files);
     }
-    var imgFoto6 = document.getElementById("imgFoto6");
-    var fupFoto6 = document.getElementById("fupFoto6");
-    fupFoto6.onchange = function () {
+    var imgFoto6 = document.getElementById("imgFoto6");//imagen que se muestra
+    var fupFoto6 = document.getElementById("fupFoto6");//archivo seleccionado
+    fupFoto6.onchange = function () {//al elegir la foto seleccionada
         var files = fupFoto6.files[0];
-        var reader = new FileReader();
+        var reader = new FileReader();//lectura del archivo
         reader.onloadend = function () {
-            imgFoto6.src = reader.result;
-            document.getElementById("foto6NombreFoto").value = files.name;
+            imgFoto6.src = reader.result;//carga la imagen
+            document.getElementById("foto6NombreFoto").value = files.name; //nombre a guardar
         }
         reader.readAsDataURL(files);
     }
 
+    //Recibe un respuesta desde la acción GuardarEdicion del controlador Evolucion (la respuesta es el número de registros afectados)
     function GuardarE(rpta) {
-        rpta = rpta.replace(/[{()}]/g, '');
+        rpta = rpta.replace(/[{()}]/g, '');//Se eliminan caracteres innecesarios en la rpta
         rpta = rpta.split(", ");
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6" || rpta == "7" || rpta == "8") {
             document.getElementById("error").value = "";
             alert("Se ejecuto correctame")
-            var url = $("#RedirectTo").val();
-            location.href = url;
+            var url = $("#RedirectTo").val(); 
+            location.href = url; //redirección hacia la vista de información de la Evolución
         } else {
-            alert("Ocurrió un error")
+            alert("Ocurrió un error") //se recibió una respuesta vacía
         }
     }
 
+    //Guardar las líneas realizadas en el canvas
     function UploadPic() {
         var x = document.getElementById("divCanvas");
-
-        // Generate the image data
+        // Generar los datos de la imagen
         if (x.style.display === "none") {
-            document.getElementById("mapaCorporal").value = null;
+            document.getElementById("mapaCorporal").value = null; //si no se ha editado el canvas
         }
         else {
-            var Pic = document.getElementById("pizarra").toDataURL("image/png");
-            Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")
-            document.getElementById("mapaCorporal").value = Pic;
+            var Pic = document.getElementById("pizarra").toDataURL("image/png"); //se obtiene un url con una cadena correspondiene a la imagen en base64
+            Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "") //eliminación de datos innecesarios en la cadena de la imagen generada en el canvas
+            document.getElementById("mapaCorporal").value = Pic; //asignación a un elemento para ser pasado al controlador
         }
     }
 
-    ///ACTIVAS O DESACIVAR CANVAS PArA EDICION
+    //Activar o desactivar el canvas para edición
     function EditarCanvas() {
         var x = document.getElementById("divCanvas");
         var y = document.getElementById("divImgMapa");
 
-        if (x.style.display === "none") {
+        if (x.style.display === "none") {//se activa la edición del canvas
             x.style.display = "block";
             x.disabled = false;
             y.style.display = "none";

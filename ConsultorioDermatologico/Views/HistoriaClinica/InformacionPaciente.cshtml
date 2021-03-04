@@ -358,9 +358,8 @@
 <script>
     var scrollToTopBtn = document.getElementById("scrollToTopBtn")
     var rootElement = document.documentElement
-
+    //Botón back to top
     function scrollToTop() {
-        // Scroll to top logic
         rootElement.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -368,6 +367,7 @@
     }
     scrollToTopBtn.addEventListener("click", scrollToTop)
 
+    //Pregunta si se desea proseguir con el "borrado" de un paciente
     function desactivar() {
         if (confirm("¿Está seguro de querer borrar este paciente y toda su información relacionada  [Datos,Historia clínica y Evolución]?") == 1) {
             //pone si
@@ -379,6 +379,7 @@
         }
     }
 
+    //Pregunta si se desea relmente un documento con la info del paciente
     function alertaReporte() {
         if (confirm("Desea Generar un documento con la información de este paciente y toda su información relacionada  [Datos,Historia clínica y Evolución]?") != 1) {
             event.preventDefault();

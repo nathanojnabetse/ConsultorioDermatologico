@@ -8,11 +8,13 @@ using ConsultorioDermatologico.Filters;
 
 namespace ConsultorioDermatologico.Controllers
 {
-    [Acceder]
+    [Acceder] //Tag para verificar que exista sesión iniciada la acción sea permitida
     public class AdministracionPacientesController : Controller
     {
-        
-        // GET: AdministracionPacientes
+        /// <summary>
+        /// // GET: AdministracionPacientes
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             List<PacienteCLS> listaPacientesDesactivados = new List<PacienteCLS>();
@@ -56,7 +58,12 @@ namespace ConsultorioDermatologico.Controllers
 
                 return View();
         }
-
+        
+        /// <summary>
+        /// Filtro en base a nombre apellido o cedula
+        /// </summary>
+        /// <param name="busqueda">string de búsqueda</param>
+        /// <returns>Vista con coincidencias en base al criterio de busqueda</returns>
         public ActionResult Filtro(String busqueda)
         {
             List<PacienteCLS> listaPacientesDesactivados = new List<PacienteCLS>();
@@ -142,6 +149,11 @@ namespace ConsultorioDermatologico.Controllers
             return PartialView("_TablaDesactivados");
         }
 
+        /// <summary>
+        /// Eliminación total de un paciente
+        /// </summary>
+        /// <param name="idPaciente">id del paciente a eleiminar</param>
+        /// <returns>cantidad de registros afectado</returns>
         public int EliminarPaciente(int? idPaciente)
         {
             int rpta = 0;
@@ -182,6 +194,12 @@ namespace ConsultorioDermatologico.Controllers
             }
             return rpta;
         }
+
+        /// <summary>
+        /// Restablecimiento de pacientes
+        /// </summary>
+        /// <param name="idPaciente">id del paciente a reestablecer</param>
+        /// <returns>cantidad de registros afectados</returns>
         public int ReestablecerPaciente(int? idPaciente)
         {
             int rpta = 0;
@@ -217,6 +235,11 @@ namespace ConsultorioDermatologico.Controllers
             return rpta;
         }
 
+        /// <summary>
+        /// Elimina un registro de visita
+        /// </summary>
+        /// <param name="idEvolucion">id de la Evolución a eliminar</param>
+        /// <returns>cantidad de registros afectados</returns>
         public int EliminarVisita(int? idEvolucion)
         {
             int rpta = 0;
@@ -250,6 +273,11 @@ namespace ConsultorioDermatologico.Controllers
             return rpta;
         }
 
+        /// <summary>
+        /// Reestablece una visita
+        /// </summary>
+        /// <param name="idEvolucion">id de la visita a reestablecer</param>
+        /// <returns>canidad de registros afectados</returns>
         public int ReestablecerVisita(int? idEvolucion)
         {
             int rpta = 0;

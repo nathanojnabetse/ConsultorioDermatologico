@@ -12,21 +12,31 @@ namespace ConsultorioDermatologico.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        /// <summary>
+        /// Presentación de la vista de login
+        /// </summary>
+        /// <returns>vista login</returns>
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// verificación de identidad 
+        /// </summary>
+        /// <param name="usuarioCLS">credenciales de atenticación</param>
+        /// <returns>mensaje de error o exito</returns>
         public string Login(UsuarioCLS usuarioCLS)
         {
             string mensaje = "";
+            //se remueven los ´parámetros de usuario no empleados en la autenticación
             ModelState.Remove("apellidoUsuario");
             ModelState.Remove("cedulaUsuario");
             ModelState.Remove("nombreUsuario");
             ModelState.Remove("rolUsuario");
             ModelState.Remove("correoUsuario");
 
+            //verificación de los datos llenos
             if (!ModelState.IsValid)
             {
                 var query = (from state in ModelState.Values//valores
@@ -52,9 +62,8 @@ namespace ConsultorioDermatologico.Controllers
                 using (var bd = new BDD_ConsultorioDermatologicoEntities())
                 {
                     int numeroVeces = bd.tblUsuario.Where(p => p.aliasUsuario == aliasUsuario && p.contraseñaUsuario == cadenaContraCifrada).Count();
-                    //mensaje = numeroVeces.ToString();
 
-                    if(numeroVeces == 1)
+                    if(numeroVeces == 1)//existe un usuario con esos datos
                     {
                         tblUsuario tblUsuario = bd.tblUsuario.Where(p => p.aliasUsuario == aliasUsuario && p.contraseñaUsuario == cadenaContraCifrada).First();
                         mensaje = tblUsuario.rolUsuario;
@@ -71,6 +80,10 @@ namespace ConsultorioDermatologico.Controllers
                 return mensaje;
         }
 
+        /// <summary>
+        /// Cerrar sesión, las variables de sessión se setean en null
+        /// </summary>
+        /// <returns>Vista de login</returns>
         public ActionResult CerrarSesion()
         {
             Session["Usuario"] = null;
@@ -78,6 +91,12 @@ namespace ConsultorioDermatologico.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Recuperación de contraseña con correo y cédula
+        /// </summary>
+        /// <param name="correo">correo al que se va a enviar la nueva contraseña</param>
+        /// <param name="cedula">cedula del usuario</param>
+        /// <returns>cantidad de registros afectados</returns>
         public string RecuperarContra(string correo, string cedula)
         {
             string mensaje = "";
@@ -93,7 +112,7 @@ namespace ConsultorioDermatologico.Controllers
                 {
                     tblUsuario tblUsuario = bd.tblUsuario.Where(p => p.correoUsuario == correo && p.cedulaUsuario == cedula).First();
                     
-                    //Modificar su clave
+                    //Modificar su clave con un numero aleatorio de 4 cifras
                     Random ra = new Random();
                     int n1 = ra.Next(1000, 9999);
 
@@ -104,9 +123,10 @@ namespace ConsultorioDermatologico.Controllers
                     byte[] byteContraCifrado = sha.ComputeHash(byteContra);
                     string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
 
-                    tblUsuario.contraseñaUsuario = cadenaContraCifrada;
+                    tblUsuario.contraseñaUsuario = cadenaContraCifrada; //guardado de la nueva contraseña
                     mensaje = bd.SaveChanges().ToString();
 
+                    //Envio del correo
                     Correo.enviarCorreo(correo, "RECUPERACION DE CLAVE - CONSULTORIO DERMATOLÓGICO", "Su clave ha sido reestablecida, su nueva clave es: "+nuevaContra, Server.MapPath("~/Resources/PersonasCorreo.txt"));
                 }
 

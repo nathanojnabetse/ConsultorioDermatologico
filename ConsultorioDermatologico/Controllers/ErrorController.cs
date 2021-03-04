@@ -9,6 +9,11 @@ namespace ConsultorioDermatologico.Controllers
     public class ErrorController : Controller
     {
         // GET: Error
+        /// <summary>
+        /// Página de error
+        /// </summary>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public ActionResult Index(int error = 0)
         {
             switch (error)
