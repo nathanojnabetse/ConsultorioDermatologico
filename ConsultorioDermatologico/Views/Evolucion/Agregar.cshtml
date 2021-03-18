@@ -11,8 +11,8 @@
 @using (Ajax.BeginForm("Guardar", "Evolucion", null, new AjaxOptions
 {
     HttpMethod = "POST",
-    OnSuccess = "Guardar",
-    UpdateTargetId = "error"
+    OnSuccess = "Guardar"//,
+    //UpdateTargetId = "error"
 }, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="col-sm-8 espacio">
-            <div class="border espacio" style="height:12em; overflow-y: scroll;">
+            <div class="border espacio">
                 <div class="espacio">
                     <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
                     <span>1.-</span>
@@ -299,6 +299,7 @@
             location.href = url; //redirección hacia la vista de información de la Evolución
             
         } else {
+            $('#error').html(rpta[0]);
             alert("Ocurrió un error")  //se recibió una respuesta vacía
         }
     }

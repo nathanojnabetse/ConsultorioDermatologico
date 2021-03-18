@@ -22,9 +22,7 @@ namespace ConsultorioDermatologico.Models
     
         public int idContactoEmergencia { get; set; }
         public string nombreContactoEmergencia { get; set; }
-        public string apellidoContactoEmergencia { get; set; }
         public string telefonoContactoEmergencia { get; set; }
-        public string correoContactoEmergencia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPaciente> tblPaciente { get; set; }

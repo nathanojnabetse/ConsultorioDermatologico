@@ -42,9 +42,7 @@
     <EntitySetMapping Name="tblContactoEmergencia">
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia">
         <MappingFragment StoreEntitySet="tblContactoEmergencia">
-          <ScalarProperty Name="correoContactoEmergencia" ColumnName="correoContactoEmergencia" />
           <ScalarProperty Name="telefonoContactoEmergencia" ColumnName="telefonoContactoEmergencia" />
-          <ScalarProperty Name="apellidoContactoEmergencia" ColumnName="apellidoContactoEmergencia" />
           <ScalarProperty Name="nombreContactoEmergencia" ColumnName="nombreContactoEmergencia" />
           <ScalarProperty Name="idContactoEmergencia" ColumnName="idContactoEmergencia" />
         </MappingFragment>

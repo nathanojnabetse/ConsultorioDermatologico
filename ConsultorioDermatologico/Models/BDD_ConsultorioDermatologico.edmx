@@ -45,10 +45,8 @@
             <PropertyRef Name="idContactoEmergencia" />
           </Key>
           <Property Name="idContactoEmergencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombreContactoEmergencia" Type="varchar" MaxLength="50" />
-          <Property Name="apellidoContactoEmergencia" Type="varchar" MaxLength="50" />
+          <Property Name="nombreContactoEmergencia" Type="varchar" MaxLength="100" />
           <Property Name="telefonoContactoEmergencia" Type="varchar" MaxLength="10" />
-          <Property Name="correoContactoEmergencia" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblEstadoCivil">
           <Key>
@@ -590,10 +588,8 @@
             <PropertyRef Name="idContactoEmergencia" />
           </Key>
           <Property Name="idContactoEmergencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreContactoEmergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="apellidoContactoEmergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombreContactoEmergencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="telefonoContactoEmergencia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="correoContactoEmergencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblPaciente" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblPacien__idCon__571DF1D5" FromRole="tblContactoEmergencia" ToRole="tblPaciente" />
         </EntityType>
         <EntityType Name="tblEstadoCivil">
@@ -1004,9 +1000,7 @@
           <EntitySetMapping Name="tblContactoEmergencia">
             <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblContactoEmergencia">
               <MappingFragment StoreEntitySet="tblContactoEmergencia">
-                <ScalarProperty Name="correoContactoEmergencia" ColumnName="correoContactoEmergencia" />
                 <ScalarProperty Name="telefonoContactoEmergencia" ColumnName="telefonoContactoEmergencia" />
-                <ScalarProperty Name="apellidoContactoEmergencia" ColumnName="apellidoContactoEmergencia" />
                 <ScalarProperty Name="nombreContactoEmergencia" ColumnName="nombreContactoEmergencia" />
                 <ScalarProperty Name="idContactoEmergencia" ColumnName="idContactoEmergencia" />
               </MappingFragment>

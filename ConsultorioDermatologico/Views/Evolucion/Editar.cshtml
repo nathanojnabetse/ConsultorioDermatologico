@@ -11,8 +11,7 @@
 @using (Ajax.BeginForm("GuardarEdicion", "Evolucion", null, new AjaxOptions///EDITAR cambiar estas cosas
 {
     HttpMethod = "POST",
-    OnSuccess = "GuardarE",
-    UpdateTargetId = "error"
+    OnSuccess = "GuardarE"
 }, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -254,10 +253,10 @@
     let posicion = miCanvas.getBoundingClientRect()
     correccionX = posicion.x;
     correccionY = posicion.y;
-    //miCanvas.width = 300;
-    //miCanvas.height = 300;
-    var heightRatio = 1; //Hacer el canvas cuadrado
-    miCanvas.height = miCanvas.width * heightRatio;
+    miCanvas.width = 300;
+    miCanvas.height = 300;
+    //var heightRatio = 1; //Hacer el canvas cuadrado
+    //miCanvas.height = miCanvas.width * heightRatio;
     // Función para dibujar líneas
     function empezarDibujo() {
         pintarLinea = true;
@@ -394,11 +393,12 @@
         rpta = rpta.replace(/[{()}]/g, '');//Se eliminan caracteres innecesarios en la rpta
         rpta = rpta.split(", ");
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6" || rpta == "7" || rpta == "8") {
-            document.getElementById("error").value = "";
+           
             alert("Se ejecuto correctame")
             var url = $("#RedirectTo").val(); 
             location.href = url; //redirección hacia la vista de información de la Evolución
         } else {
+            $('#error').html(rpta);
             alert("Ocurrió un error") //se recibió una respuesta vacía
         }
     }

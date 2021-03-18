@@ -13,21 +13,21 @@ namespace ConsultorioDermatologico.Models
     {
         public int idContactoEmergencia { get; set; }
         [Required]
-        [Display(Name = "Nombres")]
-        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
+        [Display(Name = "Nombres y apellidos")]
+        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string nombreContactoEmergencia { get; set; }
-        [Required]
-        [Display(Name = "Apellidos")]
-        [StringLength(50, ErrorMessage = "Longitud máxima 50")]
-        public string apellidoContactoEmergencia { get; set; }
+        //[Required]
+        //[Display(Name = "Apellidos")]
+        //[StringLength(50, ErrorMessage = "Longitud máxima 50")]
+        //public string apellidoContactoEmergencia { get; set; }
         [Required]
         [Display(Name = "Teléfono")]
         [StringLength(10, ErrorMessage = "Longitud máxima 10")]
         public string telefonoContactoEmergencia { get; set; }
-        [Required]
-        [Display(Name = "Correo")]
-        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
-        [EmailAddress(ErrorMessage = "Ingrese un e-mail válido")]
-        public string correoContactoEmergencia { get; set; }
+        //[Required]
+        //[Display(Name = "Correo")]
+        //[StringLength(100, ErrorMessage = "Longitud máxima 100")]
+        //[EmailAddress(ErrorMessage = "Ingrese un e-mail válido")]
+        //public string correoContactoEmergencia { get; set; }
     }
 }

@@ -116,12 +116,10 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(p18);
                     Paragraph p19 = new Paragraph("Religión: "+tblPaciente.tblReligion.nombreReligion);
                     doc.Add(p19);
-                    Paragraph p20 = new Paragraph("Nombre contacto de emergencia: " +tblPaciente.tblContactoEmergencia.nombreContactoEmergencia +" "+ tblPaciente.tblContactoEmergencia.apellidoContactoEmergencia);
+                    Paragraph p20 = new Paragraph("Nombre contacto de emergencia: " +tblPaciente.tblContactoEmergencia.nombreContactoEmergencia);
                     doc.Add(p20);
                     Paragraph p21 = new Paragraph("Teléfono contacto de emergencia: "+ tblPaciente.tblContactoEmergencia.telefonoContactoEmergencia);
                     doc.Add(p21);
-                    Paragraph p22 = new Paragraph("Correo contacto de emergencia: "+ tblPaciente.tblContactoEmergencia.correoContactoEmergencia);
-                    doc.Add(p22);
                     tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == idPaciente).First();
                     doc.Add(espacio);
                     doc.Add(espacio);

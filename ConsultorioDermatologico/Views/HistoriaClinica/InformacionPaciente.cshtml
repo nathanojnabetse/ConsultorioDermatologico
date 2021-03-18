@@ -174,19 +174,9 @@
                                 @Html.ValidationMessage("contactoEmergencia.nombreContactoEmergencia", new { @class = "text-danger" })
                             </div>
                             <div>
-                                @Html.LabelFor(p => p.contactoEmergencia.apellidoContactoEmergencia)
-                                @Html.TextBoxFor(p => p.contactoEmergencia.apellidoContactoEmergencia, new { @class = "form-control col-md-12", @readOnly = true })
-                                @Html.ValidationMessage("contactoEmergencia.apellidoContactoEmergencia", new { @class = "text-danger" })
-                            </div>
-                            <div>
                                 @Html.LabelFor(p => p.contactoEmergencia.telefonoContactoEmergencia)
                                 @Html.TextBoxFor(p => p.contactoEmergencia.telefonoContactoEmergencia, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999", @readOnly = true })
                                 @Html.ValidationMessage("contactoEmergencia.telefonoContactoEmergencia", new { @class = "text-danger" })
-                            </div>
-                            <div>
-                                @Html.LabelFor(p => p.contactoEmergencia.correoContactoEmergencia)
-                                @Html.TextBoxFor(p => p.contactoEmergencia.correoContactoEmergencia, new { @class = "form-control col-md-12", @readOnly = true })
-                                @Html.ValidationMessage("contactoEmergencia.correoContactoEmergencia", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>

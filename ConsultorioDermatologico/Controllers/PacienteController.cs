@@ -120,9 +120,7 @@ namespace ConsultorioDermatologico.Controllers
                     //Creación de un contacto de emergencia para añadirse al paciente
                     tblContactoEmergencia tblContactoEmergencia = new tblContactoEmergencia();
                     tblContactoEmergencia.nombreContactoEmergencia = registroPacienteCLS.contactoEmergencia.nombreContactoEmergencia;
-                    tblContactoEmergencia.apellidoContactoEmergencia = registroPacienteCLS.contactoEmergencia.apellidoContactoEmergencia;
                     tblContactoEmergencia.telefonoContactoEmergencia = registroPacienteCLS.contactoEmergencia.telefonoContactoEmergencia;
-                    tblContactoEmergencia.correoContactoEmergencia = registroPacienteCLS.contactoEmergencia.correoContactoEmergencia;
 
                     bd.tblContactoEmergencia.Add(tblContactoEmergencia);//Guardado del Contacto de emergencia
                     int? idPaciente = null;//Obtencion del id del Contacto de Emergencia para paciente
@@ -276,9 +274,7 @@ namespace ConsultorioDermatologico.Controllers
                 tblContactoEmergencia tblContactoEmergencia = bd.tblContactoEmergencia.Where(p => p.idContactoEmergencia.Equals(pacienteCLS.idContactoEmergencia)).First();
                 
                 contactoEmergenciaCLS.nombreContactoEmergencia = tblContactoEmergencia.nombreContactoEmergencia;
-                contactoEmergenciaCLS.apellidoContactoEmergencia = tblContactoEmergencia.apellidoContactoEmergencia;
                 contactoEmergenciaCLS.telefonoContactoEmergencia = tblContactoEmergencia.telefonoContactoEmergencia;
-                contactoEmergenciaCLS.correoContactoEmergencia = tblContactoEmergencia.correoContactoEmergencia;
                 
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente==tblPaciente.idPaciente).First();
 
@@ -377,11 +373,8 @@ namespace ConsultorioDermatologico.Controllers
                     tblPaciente.idReligion = registroPacienteCLS.paciente.idReligion;                   
 
                     tblContactoEmergencia tblContactoEmergencia = bd.tblContactoEmergencia.Where(p => p.idContactoEmergencia.Equals((int)tblPaciente.idContactoEmergencia)).First();
-                    //tblContactoEmergencia tblContactoEmergencia = bd.tblContactoEmergencia.Where(p => p.idContactoEmergencia.Equals((int)idContactoEmergencia)).First();
                     tblContactoEmergencia.nombreContactoEmergencia = registroPacienteCLS.contactoEmergencia.nombreContactoEmergencia;
-                    tblContactoEmergencia.apellidoContactoEmergencia = registroPacienteCLS.contactoEmergencia.apellidoContactoEmergencia;
                     tblContactoEmergencia.telefonoContactoEmergencia = registroPacienteCLS.contactoEmergencia.telefonoContactoEmergencia;
-                    tblContactoEmergencia.correoContactoEmergencia = registroPacienteCLS.contactoEmergencia.correoContactoEmergencia;
 
                     //Creación y guardado de la historia clinica
                     tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente==tblPaciente.idPaciente).First();
