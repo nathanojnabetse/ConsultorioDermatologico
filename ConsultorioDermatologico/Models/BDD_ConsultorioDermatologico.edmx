@@ -37,6 +37,8 @@
           <Property Name="idCie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="codigo" Type="varchar" MaxLength="20" />
           <Property Name="enfermedad" Type="varchar" MaxLength="500" />
+          <Property Name="capitulo" Type="varchar" MaxLength="500" />
+          <Property Name="titulo" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tblContactoEmergencia">
           <Key>
@@ -580,6 +582,8 @@
           <Property Name="idCie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="enfermedad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="capitulo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblContactoEmergencia">
           <Key>
@@ -989,6 +993,8 @@
           <EntitySetMapping Name="tblCIE10">
             <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblCIE10">
               <MappingFragment StoreEntitySet="tblCIE10">
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="capitulo" ColumnName="capitulo" />
                 <ScalarProperty Name="enfermedad" ColumnName="enfermedad" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="idCie" ColumnName="idCie" />

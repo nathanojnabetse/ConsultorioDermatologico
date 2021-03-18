@@ -15,7 +15,11 @@
 }, new { @id = "frmFiltro" }))
 {
     @Html.Label("Búsqueda por nombre: ")
-    @Html.TextBox("busqueda", null, new { @class = "form-control" })
+    <div class="row espacio">
+        @Html.TextBox("busqueda", null, new { @class = "form-control" })
+        <button class="btn btn-primary rounded-pill " onclick="busqueda()">Buscar</button>
+    </div>
+
     <div id="divListaCIE">
         @Html.Partial("_TablaCIE", Model)
     </div>
@@ -26,7 +30,9 @@
 <script>
     //filtro de busqueda en base a lo escrito en el textbox
     var filtro = document.getElementById("busqueda");
-    filtro.onkeyup = function () {
+
+    function busqueda() {
         $("#frmFiltro").trigger("submit");
     }
+
 </script>

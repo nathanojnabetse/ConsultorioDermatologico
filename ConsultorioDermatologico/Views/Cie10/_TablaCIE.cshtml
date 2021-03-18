@@ -2,169 +2,385 @@
 @model List<Cie10CLS>
 
 
-
+@{ 
+    bool titulo1 = true;
+    bool titulo2 = true;
+    bool titulo3 = true;
+    bool titulo4 = true;
+    bool titulo5 = true;
+    bool titulo6 = true;
+    bool titulo7 = true;
+    bool titulo8 = true;
+    bool titulo9 = true;
+    bool titulo10 = true;
+    bool titulo11 = true;
+    bool titulo12 = true;
+    bool titulo13 = true;
+    bool titulo14 = true;
+    bool titulo15 = true;
+    bool titulo16 = true;
+    bool titulo17 = true;
+    bool titulo18 = true;
+    bool titulo19 = true;
+    bool titulo20 = true;
+    bool titulo21 = true;
+}
 
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
+        <tr class="tdCentrar font-weight-bold table-secondary">
             <td>@Html.LabelFor(p => Model[0].codigo)</td>
             <td>@Html.LabelFor(p => Model[0].enfermedad)</td>
         </tr>
     </thead>
     <tbody>
+
+
         @foreach (var item in Model)
         {
-            @*if (item.codigo == "A00")
+            if (item.capitulo == "CAPÍTULO I")
+            {
+                if (titulo1 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. I</td>
+                    <tr class="tdCentrar font-weight-bold cap1t ">
+                        <td>CAPÍTULO I</td>
                         <td>Ciertas enfermedades infecciosas y parasitarias</td>
                     </tr>
+                    titulo1 = false;
                 }
-                else if (item.codigo == "C00")
+
+                <tr class="cap1">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO II")
+            {
+                if (titulo2 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. II</td>
+                    <tr class="tdCentrar font-weight-bold cap2t">
+                        <td>CAPÍTULO II</td>
                         <td>Neoplasias</td>
                     </tr>
+                    titulo2 = false;
                 }
-                else if (item.codigo == "D50")
+
+                <tr class="cap2">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO III")
+            {
+                if (titulo3 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap.III</td>
+                    <tr class="tdCentrar font-weight-bold cap3t">
+                        <td>CAPÍTULO III</td>
                         <td>Enfermedades de la sangre y de los órganos hematopoyéticos y otros trastornos que afectan el mecanismo de la inmunidad</td>
                     </tr>
+                    titulo3 = false;
                 }
-                else if (item.codigo == "E00")
+
+                <tr class="cap3">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO IV")
+            {
+                if (titulo4 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. IV</td>
+                    <tr class="tdCentrar font-weight-bold cap4t">
+                        <td>CAPÍTULO IV</td>
                         <td>Enfermedades endocrinas, nutricionales y metabólicas</td>
                     </tr>
+                    titulo4 = false;
                 }
-                else if (item.codigo == "F00*")
+
+                <tr class="cap4">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO V")
+            {
+                if (titulo5 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. V</td>
+                    <tr class="tdCentrar font-weight-bold cap5t">
+                        <td>CAPÍTULO V</td>
                         <td>Trastornos mentales y del comportamiento</td>
                     </tr>
+                    titulo5 = false;
                 }
-                else if (item.codigo == "G00")
+
+                <tr class="cap5">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO VI")
+            {
+                if (titulo6 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. VI</td>
+                    <tr class="tdCentrar font-weight-bold cap6t">
+                        <td>CAPÍTULO VI</td>
                         <td>Enfermedades del sistema nervioso</td>
                     </tr>
+                    titulo6 = false;
                 }
-                else if (item.codigo == "H00")
+
+                <tr class="cap6">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO VII")
+            {
+                if (titulo7 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. VII</td>
+                    <tr class="tdCentrar font-weight-bold cap7t">
+                        <td>CAPÍTULO VII</td>
                         <td>Enfermedades del ojo y sus anexos</td>
                     </tr>
+                    titulo7 = false;
                 }
-                else if (item.codigo == "H60")
+
+                <tr class="cap7">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO VIII")
+            {
+                if (titulo8 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. VIII</td>
+                    <tr class="tdCentrar font-weight-bold cap8t">
+                        <td>CAPÍTULO VIII</td>
                         <td>Enfermedades del oído y de la apófisis mastoides</td>
                     </tr>
+                    titulo8 = false;
                 }
-                else if (item.codigo == "I00X")
+
+                <tr class="cap8">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO IX")
+            {
+                if (titulo9 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. IX</td>
+                    <tr class="tdCentrar font-weight-bold cap9t">
+                        <td>CAPÍTULO IX</td>
                         <td>Enfermedades del sistema circulatorio</td>
                     </tr>
+                    titulo9 = false;
                 }
-                else if (item.codigo == "J00X")
+
+                <tr class="cap9">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO X")
+            {
+                if (titulo10 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. X</td>
+                    <tr class="tdCentrar font-weight-bold cap10t">
+                        <td>CAPÍTULO X</td>
                         <td>Enfermedades del sistema respiratorio</td>
                     </tr>
+                    titulo10 = false;
                 }
-                else if (item.codigo == "K00")
+
+                <tr class="cap10">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XI")
+            {
+                if (titulo11 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XI</td>
+                    <tr class="tdCentrar font-weight-bold cap11t">
+                        <td>CAPÍTULO XI</td>
                         <td>Enfermedades del aparato digestivo</td>
                     </tr>
+                    titulo11 = false;
                 }
-                else if (item.codigo == "L00")
+
+                <tr class="cap11">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XII")
+            {
+                if (titulo12 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XII</td>
+                    <tr class="tdCentrar font-weight-bold cap12t">
+                        <td>CAPÍTULO XII</td>
                         <td>Enfermedades de la piel y el tejido subcutáneo</td>
                     </tr>
+                    titulo12 = false;
                 }
-                else if (item.codigo == "M00")
+
+                <tr class="cap12">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XIII")
+            {
+                if (titulo13 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XIII</td>
+                    <tr class="tdCentrar font-weight-bold cap13t">
+                        <td>CAPÍTULO XIII</td>
                         <td>Enfermedades del sistema osteomuscular y del tejido conectivo</td>
                     </tr>
+                    titulo13 = false;
                 }
-                else if (item.codigo == "N00")
+
+                <tr class="cap13">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XIV")
+            {
+                if (titulo14 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XIV</td>
+                    <tr class="tdCentrar font-weight-bold cap14t">
+                        <td>CAPÍTULO XIV</td>
                         <td>Enfermedades del aparato genitourinario</td>
                     </tr>
+                    titulo14 = false;
                 }
-                else if (item.codigo == "O00")
+
+                <tr class="cap14">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XV")
+            {
+                if (titulo15 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XV</td>
+                    <tr class="tdCentrar font-weight-bold cap15t">
+                        <td>CAPÍTULO XV</td>
                         <td>Embarazo, parto y puerperio</td>
                     </tr>
+                    titulo15 = false;
                 }
-                else if (item.codigo == "P00")
+
+                <tr class="cap15">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XVI")
+            {
+                if (titulo16 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XVI</td>
+                    <tr class="tdCentrar font-weight-bold cap16t">
+                        <td>CAPÍTULO XVI</td>
                         <td>Ciertas afecciones originadas en el periodo perinatal</td>
                     </tr>
+                    titulo16 = false;
                 }
-                else if (item.codigo == "Q00")
+
+                <tr class="cap16">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XVII")
+            {
+                if (titulo17 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XVII</td>
+                    <tr class="tdCentrar font-weight-bold cap17t">
+                        <td>CAPÍTULO XVII</td>
                         <td>Malformaciones congénitas, deformidades y anomalías cromosómicas</td>
                     </tr>
+                    titulo17 = false;
                 }
-                else if (item.codigo == "R00")
+
+                <tr class="cap17">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XVIII")
+            {
+                if (titulo18 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XVIII</td>
+                    <tr class="tdCentrar font-weight-bold cap18t">
+                        <td>CAPÍTULO XVIII</td>
                         <td>Síntomas, signos y hallazgos anormales clínicos y de laboratorio, no clasificados en otra parte</td>
                     </tr>
+                    titulo18 = false;
                 }
-                else if (item.codigo == "S00")
+
+                <tr class="cap18">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XIX")
+            {
+                if (titulo19 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XIX</td>
+                    <tr class="tdCentrar font-weight-bold cap19t">
+                        <td>CAPÍTULO XIX</td>
                         <td>Traumatismos, envenenamientos y algunas otras consecuencias de causa externa</td>
                     </tr>
+                    titulo19 = false;
                 }
-                else if (item.codigo == "V01")
+
+                <tr class="cap19">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XX")
+            {
+                if (titulo20 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap. XX</td>
+                    <tr class="tdCentrar font-weight-bold cap20t">
+                        <td>CAPÍTULO XX</td>
                         <td>Causas externas de morbilidad y de mortalidad</td>
                     </tr>
+                    titulo20 = false;
                 }
-                else if (item.codigo == "Z00")
+
+                <tr class="cap20">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else if (item.capitulo == "CAPÍTULO XXI")
+            {
+                if (titulo21 == true)
                 {
-                    <tr class="table-secondary">
-                        <td>Cap.XXI</td>
+                    <tr class="tdCentrar font-weight-bold cap21t">
+                        <td>CAPÍTULO XXI</td>
                         <td>Factores que influyen en el estado de salud y contacto con los servicios de salud</td>
                     </tr>
-                }*@
-            <tr>
-                <td>@item.codigo</td>
-                <td>@item.enfermedad</td>
-            </tr>
+                    titulo21 = false;
+                }
+
+                <tr class="cap21">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
+            else
+            {
+                <tr class="cap">
+                    <td>@item.codigo</td>
+                    <td>@item.enfermedad</td>
+                </tr>
+            }
         }
 
     </tbody>

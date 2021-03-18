@@ -28,7 +28,7 @@ namespace ConsultorioDermatologico.Filters
 
             //Controladores y acciones permitidas para el médico
             if (((string)rol == "MEDICO")
-                &&((nombreControlador == "Paciente" && accion == "Index")
+                && ((nombreControlador == "Paciente" && accion == "Index")
                 || (nombreControlador == "Paciente" && accion == "Filtro")
                 || (nombreControlador == "Paciente" && accion == "Agregar")
                 || (nombreControlador == "Paciente" && accion == "Editar")
@@ -80,7 +80,7 @@ namespace ConsultorioDermatologico.Filters
             var usuario = HttpContext.Current.Session["Usuario"];
 
             //Si no se ha iniciado sesion o se quiere realizar una acción no correspondiente al rol se redirige al login
-            if(usuario == null || acceso == false)
+            if (usuario == null || acceso == false)
             {
                 filterContext.Result = new RedirectResult("~/Login/Index");
             }

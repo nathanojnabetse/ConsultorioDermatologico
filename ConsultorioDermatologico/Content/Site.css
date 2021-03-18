@@ -89,3 +89,188 @@ element.style {
 body {
     background-image: url("/Resources/gplay.png") !important;
 }
+
+.navbar-nav {
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    float: none;
+    display: inline-block;
+}
+
+.navbar-nav > li.navbar-right {
+    float: right !important;
+}
+
+.cap1 {
+    background-color: #FBFCFC;
+}
+
+.cap2 {
+    background-color: #F2D7D5;
+}
+
+.cap3 {
+    background-color: #FADBD8;
+}
+
+.cap4 {
+    background-color: #EBDEF0;
+}
+
+.cap5 {
+    background-color: #E8DAEF;
+}
+
+.cap6 {
+    background-color: #D4E6F1;
+}
+
+.cap7 {
+    background-color: #D6EAF8;
+}
+
+.cap8 {
+    background-color: #D1F2EB;
+}
+
+.cap9 {
+    background-color: #D0ECE7;
+}
+
+.cap10 {
+    background-color: #D4EFDF;
+}
+
+.cap11 {
+    background-color: #D5F5E3;
+}
+
+.cap12 {
+    background-color: #FCF3CF;
+}
+
+.cap13 {
+    background-color: #FDEBD0;
+}
+
+.cap14 {
+    background-color: #FAE5D3;
+}
+
+.cap15 {
+    background-color: #F6DDCC;
+}
+
+.cap16 {
+    background-color: #F2F3F4;
+}
+
+.cap17 {
+    background-color: #EAEDED;
+}
+
+.cap18 {
+    background-color: #E5E8E8;
+}
+
+.cap19 {
+    background-color: #D6DBDF;
+}
+
+.cap20 {
+    background-color: #D5D8DC;
+}
+
+.cap21 {
+    background-color: #FBFCFC;
+}
+
+
+.cap1t {
+    background-color: #F7F9F9;
+}
+
+.cap2t {
+    background-color: #E6B0AA;
+}
+
+.cap3t {
+    background-color: #F5B7B1;
+}
+
+.cap4t {
+    background-color: #D7BDE2;
+}
+
+.cap5t {
+    background-color: #D2B4DE;
+}
+
+.cap6t {
+    background-color: #A9CCE3;
+}
+
+.cap7t {
+    background-color: #AED6F1;
+}
+
+.cap8t {
+    background-color: #A3E4D7;
+}
+
+.cap9t {
+    background-color: #A2D9CE;
+}
+
+.cap10t {
+    background-color: #A9DFBF;
+}
+
+.cap11t {
+    background-color: #ABEBC6;
+}
+
+.cap12t {
+    background-color: #F9E79F;
+}
+
+.cap13t {
+    background-color: #FAD7A0;
+}
+
+.cap14t {
+    background-color: #F5CBA7;
+}
+
+.cap15t {
+    background-color: #EDBB99;
+}
+
+.cap16t {
+    background-color: #E5E7E9;
+}
+
+.cap17t {
+    background-color: #D5DBDB;
+}
+
+.cap18t {
+    background-color: #CCD1D1;
+}
+
+.cap19t {
+    background-color: #AEB6BF;
+}
+
+.cap20t {
+    background-color: #ABB2B9;
+}
+
+.cap21t {
+    background-color: #F7F9F9;
+}
+
+

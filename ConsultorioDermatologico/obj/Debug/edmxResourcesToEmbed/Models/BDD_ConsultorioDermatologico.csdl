@@ -114,6 +114,8 @@
     <Property Name="idCie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="enfermedad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="capitulo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tblContactoEmergencia">
     <Key>

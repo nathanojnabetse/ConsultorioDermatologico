@@ -17,5 +17,7 @@ namespace ConsultorioDermatologico.Models
         public int idCie { get; set; }
         public string codigo { get; set; }
         public string enfermedad { get; set; }
+        public string capitulo { get; set; }
+        public string titulo { get; set; }
     }
 }

@@ -17,15 +17,12 @@ namespace ConsultorioDermatologico.Controllers
         {
             List<Cie10CLS> listaEnfermedades = new List<Cie10CLS>();
 
-            using (var bd = new BDD_ConsultorioDermatologicoEntities())
+            listaEnfermedades.Add(new Cie10CLS
             {
-                listaEnfermedades =( from cie10 in bd.tblCIE10
-                                    select new Cie10CLS
-                                    {
-                                        codigo = cie10.codigo,
-                                        enfermedad =cie10.enfermedad
-                                    }).ToList();
-            }
+                codigo = "",
+                enfermedad = "Ingrese código o término exacto"
+            });
+
             return View(listaEnfermedades);
         }
 
@@ -40,26 +37,30 @@ namespace ConsultorioDermatologico.Controllers
 
             using (var bd = new BDD_ConsultorioDermatologicoEntities())
             {
-                if (busqueda == null)
+                if (busqueda == null || busqueda == "")
                 {
-                    listaEnfermedades = (from cie10 in bd.tblCIE10
-                                         select new Cie10CLS
-                                         {
-                                             codigo = cie10.codigo,
-                                             enfermedad = cie10.enfermedad
-                                         }).ToList();
+                    listaEnfermedades.Add(new Cie10CLS
+                    {
+                        codigo = "",
+                        enfermedad = "Ingrese código o término exacto"
+                    });
+
                 }
                 else
                 {
                     listaEnfermedades = (from cie10 in bd.tblCIE10
                                          where cie10.enfermedad.Contains(busqueda)
-                                         select new Cie10CLS                                        
+                                         || cie10.codigo.Contains(busqueda)
+                                         select new Cie10CLS
                                          {
                                              codigo = cie10.codigo,
-                                             enfermedad = cie10.enfermedad
+                                             enfermedad = cie10.enfermedad,
+                                             titulo = cie10.titulo,
+                                             capitulo = cie10.capitulo
+
                                          }).ToList();
                 }
-                                
+
                 return PartialView("_TablaCIE", listaEnfermedades);
             }
         }

@@ -31,6 +31,8 @@
     <EntitySetMapping Name="tblCIE10">
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblCIE10">
         <MappingFragment StoreEntitySet="tblCIE10">
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="capitulo" ColumnName="capitulo" />
           <ScalarProperty Name="enfermedad" ColumnName="enfermedad" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
           <ScalarProperty Name="idCie" ColumnName="idCie" />
