@@ -41,9 +41,9 @@
                     <p class="card-text" style="text-align:justify">Indique las fechas y horas de descanso del paciente</p>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalReposo" style = "width: 100%">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalReposo" style="width: 100%">
                         Generar documento
-                    </button>                    
+                    </button>
                 </div>
             </div>
         </div>
@@ -57,7 +57,9 @@
                     <p class="card-text" style="text-align:justify">Genera un certificado de asitencia al consultorio con la fecha actual</p>
                 </div>
                 <div>
-                    @Html.ActionLink("Generar documento", "asistenciaPDF", "Documentos", new { idEvolucion = ViewBag.idEvolucion, idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-outline-primary", @style = "width: 100%", @target = "_blank" })
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalAsistencia" style="width: 100%">
+                        Generar documento
+                    </button>                    
                 </div>
             </div>
         </div>
@@ -83,7 +85,7 @@
                     OnSuccess = "reposo",
                     UpdateTargetId = "error"
                 }))
-                {                   
+                {
                     <div>
                         @Html.Label("Desde")
                         <input type="date" id="fechaDesde" name="fechaDesde" class="form-control limpieza" onclose="reposo()" required>
@@ -93,11 +95,36 @@
                         <input type="date" id="fechaHasta" name="fechaHasta" class="form-control limpieza" required>
                     </div>
                     <div class="modal-footer">
-                        <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar cambios</button>                       
+                        <button id="btnClose1" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Generar documento</button>
                     </div>
                 }
                 <div id="error" class="text-danger"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Añadir notas extra en la asistencia -->
+<div class="modal fade" id="modalAsistencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Días de descanso</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                    <div>
+                        @Html.Label("Notas:")
+                        <textarea id="notas" class="form-control llenar-espacio" rows="5"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnClose2" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                        
+                        <button class="btn btn-primary" onclick="Asistencia()">Generar documento</button>
+                    </div>
             </div>
         </div>
     </div>
@@ -109,7 +136,7 @@
         if (rpta == "") {
             var fechaDesde = document.getElementById("fechaDesde").value;
             var fechaHasta = document.getElementById("fechaHasta").value;
-            document.getElementById("btnClose").click();
+            document.getElementById("btnClose1").click();
             let a = document.createElement('a');
             a.target = '_blank';
             //envío de datos al controlador para la creación del pdf
@@ -120,5 +147,17 @@
         else {
             alert("Error en la eleccion de las fechas")
         }
+    }
+
+    function Asistencia() {
+        document.getElementById("btnClose2").click();
+        var notas = document.getElementById("notas").value;
+        let a = document.createElement('a');
+            a.target = '_blank';
+            //envío de datos al controlador para la creación del pdf
+        var url = '@Url.Action("asistenciaPDF", "Documentos")?idEvolucion=' + @ViewBag.idEvolucion + '&idPaciente=' + @ViewBag.idPaciente + '&notas=' + notas;
+            a.href = url;
+            a.click();
+
     }
 </script>

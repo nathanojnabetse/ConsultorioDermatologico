@@ -317,7 +317,7 @@ namespace ConsultorioDermatologico.Controllers
         /// <param name="idEvolucion">id de Evolución actual</param>
         /// <param name="idPaciente">id del paciente en la visita</param>
         /// <returns>Archivo PDF con el certificado de asistencia</returns>
-        public FileResult asistenciaPDF(int idEvolucion, int idPaciente)
+        public FileResult asistenciaPDF(int idEvolucion, int idPaciente, string notas)
         {
             Document doc = new Document();
             byte[] buffer;
@@ -376,6 +376,12 @@ namespace ConsultorioDermatologico.Controllers
 
                     Paragraph certifico = new Paragraph("CERTIFICO QUE EL PACIENTE ACUDIÓ EN ESTA FECHA A CONSULTA MEDICA DERMATOLÓGICA ");
                     doc.Add(certifico);
+                    doc.Add(espacio);
+                    if(notas != "")
+                    {
+                        Paragraph nota = new Paragraph("Notas adicionales: " + notas);
+                        doc.Add(nota);
+                    }                   
 
                     doc.Add(espacio);
                     doc.Add(espacio);
