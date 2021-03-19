@@ -13,13 +13,6 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Menarquia")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string menarquia { get; set; }
-        [Display(Name = "Ciclo")]
-        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
-        public string ciclo { get; set; }
-        [Display(Name = "Última menstruación")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? fechaUltimaMenstruacion { get; set; }
         [Display(Name = "Gestas")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
         public string gestas { get; set; }
@@ -37,12 +30,6 @@ namespace ConsultorioDermatologico.Models
         public string hijosVivos { get; set; }
         [Display(Name = "Hijos Muertos")]
         [StringLength(100, ErrorMessage = "Longitud máxima 100")]
-        public string hijosMuertos { get; set; }
-        [Display(Name = "Vida sexual activa")]
-        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
-        public string vidaSexualActiva { get; set; }
-        [Display(Name = "Planificación familiar")]
-        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
-        public string metodoPlanificacionFamiliar { get; set; }
-}
+        public string hijosMuertos { get; set; }       
+    }
 }

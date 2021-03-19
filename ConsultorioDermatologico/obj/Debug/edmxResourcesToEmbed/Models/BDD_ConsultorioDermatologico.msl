@@ -4,16 +4,12 @@
     <EntitySetMapping Name="tblAntecedenteGinecoObstetrico">
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblAntecedenteGinecoObstetrico">
         <MappingFragment StoreEntitySet="tblAntecedenteGinecoObstetrico">
-          <ScalarProperty Name="metodoPlanificacionFamiliar" ColumnName="metodoPlanificacionFamiliar" />
-          <ScalarProperty Name="vidaSexualActiva" ColumnName="vidaSexualActiva" />
           <ScalarProperty Name="hijosMuertos" ColumnName="hijosMuertos" />
           <ScalarProperty Name="hijosVivos" ColumnName="hijosVivos" />
           <ScalarProperty Name="abortos" ColumnName="abortos" />
           <ScalarProperty Name="cesarea" ColumnName="cesarea" />
           <ScalarProperty Name="partos" ColumnName="partos" />
           <ScalarProperty Name="gestas" ColumnName="gestas" />
-          <ScalarProperty Name="fechaUltimaMenstruacion" ColumnName="fechaUltimaMenstruacion" />
-          <ScalarProperty Name="ciclo" ColumnName="ciclo" />
           <ScalarProperty Name="menarquia" ColumnName="menarquia" />
           <ScalarProperty Name="idAntecedenteGinecoObstetrico" ColumnName="idAntecedenteGinecoObstetrico" />
         </MappingFragment>
@@ -60,6 +56,10 @@
       <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblEvolucion">
         <MappingFragment StoreEntitySet="tblEvolucion">
           <ScalarProperty Name="habilitado" ColumnName="habilitado" />
+          <ScalarProperty Name="metodoPlanificacionFamiliar" ColumnName="metodoPlanificacionFamiliar" />
+          <ScalarProperty Name="vidaSexualActiva" ColumnName="vidaSexualActiva" />
+          <ScalarProperty Name="fechaUltimaMenstruacion" ColumnName="fechaUltimaMenstruacion" />
+          <ScalarProperty Name="ciclo" ColumnName="ciclo" />
           <ScalarProperty Name="fechaVisita" ColumnName="fechaVisita" />
           <ScalarProperty Name="recomendaciones" ColumnName="recomendaciones" />
           <ScalarProperty Name="prescripcion" ColumnName="prescripcion" />

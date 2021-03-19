@@ -30,6 +30,10 @@ namespace ConsultorioDermatologico.Models
         public string prescripcion { get; set; }
         public string recomendaciones { get; set; }
         public Nullable<System.DateTime> fechaVisita { get; set; }
+        public string ciclo { get; set; }
+        public Nullable<System.DateTime> fechaUltimaMenstruacion { get; set; }
+        public string vidaSexualActiva { get; set; }
+        public string metodoPlanificacionFamiliar { get; set; }
         public Nullable<int> habilitado { get; set; }
     
         public virtual tblHistoriaClinica tblHistoriaClinica { get; set; }

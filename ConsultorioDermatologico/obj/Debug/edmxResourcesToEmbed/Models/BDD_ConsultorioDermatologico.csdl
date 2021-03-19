@@ -86,16 +86,12 @@
     </Key>
     <Property Name="idAntecedenteGinecoObstetrico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="menarquia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ciclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="fechaUltimaMenstruacion" Type="DateTime" Precision="3" />
     <Property Name="gestas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="partos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="cesarea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="abortos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="hijosVivos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="hijosMuertos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="vidaSexualActiva" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="metodoPlanificacionFamiliar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B" FromRole="tblAntecedenteGinecoObstetrico" ToRole="tblHistoriaClinica" />
   </EntityType>
   <EntityType Name="tblAntecedenteReprodMasculino">
@@ -148,6 +144,10 @@
     <Property Name="prescripcion" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
     <Property Name="recomendaciones" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
     <Property Name="fechaVisita" Type="DateTime" Precision="3" />
+    <Property Name="ciclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fechaUltimaMenstruacion" Type="DateTime" Precision="3" />
+    <Property Name="vidaSexualActiva" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="metodoPlanificacionFamiliar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="habilitado" Type="Int32" />
     <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__60A75C0F" FromRole="tblEvolucion" ToRole="tblHistoriaClinica" />
     <NavigationProperty Name="tblFotos" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__6383C8BA" FromRole="tblEvolucion" ToRole="tblFotos" />

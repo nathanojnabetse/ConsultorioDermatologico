@@ -169,30 +169,22 @@ namespace ConsultorioDermatologico.Controllers
                     }
 
                     if (!(registroPacienteCLS.antecedenteGinecoObstetrico.menarquia == null
-                        && registroPacienteCLS.antecedenteGinecoObstetrico.ciclo == null
-                        && registroPacienteCLS.antecedenteGinecoObstetrico.fechaUltimaMenstruacion == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.gestas == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.partos == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.cesarea == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.abortos == null
                         && registroPacienteCLS.antecedenteGinecoObstetrico.hijosVivos == null
-                        && registroPacienteCLS.antecedenteGinecoObstetrico.hijosMuertos == null
-                        && registroPacienteCLS.antecedenteGinecoObstetrico.vidaSexualActiva == null
-                        && registroPacienteCLS.antecedenteGinecoObstetrico.metodoPlanificacionFamiliar == null))
+                        && registroPacienteCLS.antecedenteGinecoObstetrico.hijosMuertos == null))
                     {
                         //Creación de antecedentes gineco obstetricos de ser necesario
                         tblAntecedenteGinecoObstetrico tblAntecedenteGinecoObstetrico = new tblAntecedenteGinecoObstetrico();
                         tblAntecedenteGinecoObstetrico.menarquia = registroPacienteCLS.antecedenteGinecoObstetrico.menarquia;
-                        tblAntecedenteGinecoObstetrico.ciclo = registroPacienteCLS.antecedenteGinecoObstetrico.ciclo;
-                        tblAntecedenteGinecoObstetrico.fechaUltimaMenstruacion = registroPacienteCLS.antecedenteGinecoObstetrico.fechaUltimaMenstruacion;
                         tblAntecedenteGinecoObstetrico.gestas = registroPacienteCLS.antecedenteGinecoObstetrico.gestas;
                         tblAntecedenteGinecoObstetrico.partos = registroPacienteCLS.antecedenteGinecoObstetrico.partos;
                         tblAntecedenteGinecoObstetrico.cesarea = registroPacienteCLS.antecedenteGinecoObstetrico.cesarea;
                         tblAntecedenteGinecoObstetrico.abortos = registroPacienteCLS.antecedenteGinecoObstetrico.abortos;
                         tblAntecedenteGinecoObstetrico.hijosMuertos = registroPacienteCLS.antecedenteGinecoObstetrico.hijosMuertos;
                         tblAntecedenteGinecoObstetrico.hijosVivos = registroPacienteCLS.antecedenteGinecoObstetrico.hijosVivos;
-                        tblAntecedenteGinecoObstetrico.vidaSexualActiva = registroPacienteCLS.antecedenteGinecoObstetrico.vidaSexualActiva;
-                        tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar = registroPacienteCLS.antecedenteGinecoObstetrico.metodoPlanificacionFamiliar;
 
                         bd.tblAntecedenteGinecoObstetrico.Add(tblAntecedenteGinecoObstetrico);//Guardado del antecedente en la bdd
                         idAntecedenteGinecoObstetrico = tblAntecedenteGinecoObstetrico.idAntecedenteGinecoObstetrico; //id para la historia clinica
@@ -299,16 +291,12 @@ namespace ConsultorioDermatologico.Controllers
                     tblAntecedenteGinecoObstetrico tblAntecedenteGinecoObstetrico = bd.tblAntecedenteGinecoObstetrico.Where(p => p.idAntecedenteGinecoObstetrico.Equals((int)historiaClinicaCLS.idAntecedenteGinecoObstetrico)).First();
                     //Existencia de antecente gineco obsterico
                     antecedenteGinecoObstetricoCLS.menarquia = tblAntecedenteGinecoObstetrico.menarquia;
-                    antecedenteGinecoObstetricoCLS.ciclo = tblAntecedenteGinecoObstetrico.ciclo;
-                    antecedenteGinecoObstetricoCLS.fechaUltimaMenstruacion = tblAntecedenteGinecoObstetrico.fechaUltimaMenstruacion;
                     antecedenteGinecoObstetricoCLS.gestas = tblAntecedenteGinecoObstetrico.gestas;
                     antecedenteGinecoObstetricoCLS.partos = tblAntecedenteGinecoObstetrico.partos;
                     antecedenteGinecoObstetricoCLS.cesarea = tblAntecedenteGinecoObstetrico.cesarea;
                     antecedenteGinecoObstetricoCLS.abortos = tblAntecedenteGinecoObstetrico.abortos;
                     antecedenteGinecoObstetricoCLS.hijosMuertos = tblAntecedenteGinecoObstetrico.hijosMuertos;
                     antecedenteGinecoObstetricoCLS.hijosVivos = tblAntecedenteGinecoObstetrico.hijosVivos;
-                    antecedenteGinecoObstetricoCLS.vidaSexualActiva = tblAntecedenteGinecoObstetrico.vidaSexualActiva;
-                    antecedenteGinecoObstetricoCLS.metodoPlanificacionFamiliar = tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar;
                 }
                 
                 if (historiaClinicaCLS.idAntecedenteReprodMasculino != null)
@@ -392,16 +380,12 @@ namespace ConsultorioDermatologico.Controllers
                         //Creación de antecedentes gineco obstetricos de ser necesario
                         tblAntecedenteGinecoObstetrico tblAntecedenteGinecoObstetrico = bd.tblAntecedenteGinecoObstetrico.Where(p => p.idAntecedenteGinecoObstetrico.Equals((int)tblHistoriaClinica.idAntecedenteGinecoObstetrico)).First();
                         tblAntecedenteGinecoObstetrico.menarquia = registroPacienteCLS.antecedenteGinecoObstetrico.menarquia;
-                        tblAntecedenteGinecoObstetrico.ciclo = registroPacienteCLS.antecedenteGinecoObstetrico.ciclo;
-                        tblAntecedenteGinecoObstetrico.fechaUltimaMenstruacion = registroPacienteCLS.antecedenteGinecoObstetrico.fechaUltimaMenstruacion;
                         tblAntecedenteGinecoObstetrico.gestas = registroPacienteCLS.antecedenteGinecoObstetrico.gestas;
                         tblAntecedenteGinecoObstetrico.partos = registroPacienteCLS.antecedenteGinecoObstetrico.partos;
                         tblAntecedenteGinecoObstetrico.cesarea = registroPacienteCLS.antecedenteGinecoObstetrico.cesarea;
                         tblAntecedenteGinecoObstetrico.abortos = registroPacienteCLS.antecedenteGinecoObstetrico.abortos;
                         tblAntecedenteGinecoObstetrico.hijosMuertos = registroPacienteCLS.antecedenteGinecoObstetrico.hijosMuertos;
-                        tblAntecedenteGinecoObstetrico.hijosVivos = registroPacienteCLS.antecedenteGinecoObstetrico.hijosVivos;
-                        tblAntecedenteGinecoObstetrico.vidaSexualActiva = registroPacienteCLS.antecedenteGinecoObstetrico.vidaSexualActiva;
-                        tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar = registroPacienteCLS.antecedenteGinecoObstetrico.metodoPlanificacionFamiliar;                        
+                        tblAntecedenteGinecoObstetrico.hijosVivos = registroPacienteCLS.antecedenteGinecoObstetrico.hijosVivos;                     
                     }                   
                     if (tblHistoriaClinica.idAntecedenteReprodMasculino != null)
                     {

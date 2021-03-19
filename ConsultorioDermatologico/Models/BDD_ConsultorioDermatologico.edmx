@@ -11,16 +11,12 @@
           </Key>
           <Property Name="idAntecedenteGinecoObstetrico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="menarquia" Type="varchar" MaxLength="100" />
-          <Property Name="ciclo" Type="varchar" MaxLength="100" />
-          <Property Name="fechaUltimaMenstruacion" Type="datetime" />
           <Property Name="gestas" Type="varchar" MaxLength="100" />
           <Property Name="partos" Type="varchar" MaxLength="100" />
           <Property Name="cesarea" Type="varchar" MaxLength="100" />
           <Property Name="abortos" Type="varchar" MaxLength="100" />
           <Property Name="hijosVivos" Type="varchar" MaxLength="100" />
           <Property Name="hijosMuertos" Type="varchar" MaxLength="100" />
-          <Property Name="vidaSexualActiva" Type="varchar" MaxLength="100" />
-          <Property Name="metodoPlanificacionFamiliar" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="tblAntecedenteReprodMasculino">
           <Key>
@@ -69,6 +65,10 @@
           <Property Name="prescripcion" Type="varchar" MaxLength="5000" />
           <Property Name="recomendaciones" Type="varchar" MaxLength="5000" />
           <Property Name="fechaVisita" Type="datetime" />
+          <Property Name="ciclo" Type="varchar" MaxLength="100" />
+          <Property Name="fechaUltimaMenstruacion" Type="datetime" />
+          <Property Name="vidaSexualActiva" Type="varchar" MaxLength="100" />
+          <Property Name="metodoPlanificacionFamiliar" Type="varchar" MaxLength="1000" />
           <Property Name="habilitado" Type="int" />
         </EntityType>
         <EntityType Name="tblFotos">
@@ -552,16 +552,12 @@
           </Key>
           <Property Name="idAntecedenteGinecoObstetrico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="menarquia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ciclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="fechaUltimaMenstruacion" Type="DateTime" Precision="3" />
           <Property Name="gestas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="partos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cesarea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="abortos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="hijosVivos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="hijosMuertos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="vidaSexualActiva" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="metodoPlanificacionFamiliar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblHistor__idAnt__5CD6CB2B" FromRole="tblAntecedenteGinecoObstetrico" ToRole="tblHistoriaClinica" />
         </EntityType>
         <EntityType Name="tblAntecedenteReprodMasculino">
@@ -614,6 +610,10 @@
           <Property Name="prescripcion" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="recomendaciones" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="fechaVisita" Type="DateTime" Precision="3" />
+          <Property Name="ciclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fechaUltimaMenstruacion" Type="DateTime" Precision="3" />
+          <Property Name="vidaSexualActiva" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="metodoPlanificacionFamiliar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="habilitado" Type="Int32" />
           <NavigationProperty Name="tblHistoriaClinica" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblEvoluc__idHis__60A75C0F" FromRole="tblEvolucion" ToRole="tblHistoriaClinica" />
           <NavigationProperty Name="tblFotos" Relationship="BDD_ConsultorioDermatologicoModel.FK__tblFotos__idEvol__6383C8BA" FromRole="tblEvolucion" ToRole="tblFotos" />
@@ -962,16 +962,12 @@
           <EntitySetMapping Name="tblAntecedenteGinecoObstetrico">
             <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblAntecedenteGinecoObstetrico">
               <MappingFragment StoreEntitySet="tblAntecedenteGinecoObstetrico">
-                <ScalarProperty Name="metodoPlanificacionFamiliar" ColumnName="metodoPlanificacionFamiliar" />
-                <ScalarProperty Name="vidaSexualActiva" ColumnName="vidaSexualActiva" />
                 <ScalarProperty Name="hijosMuertos" ColumnName="hijosMuertos" />
                 <ScalarProperty Name="hijosVivos" ColumnName="hijosVivos" />
                 <ScalarProperty Name="abortos" ColumnName="abortos" />
                 <ScalarProperty Name="cesarea" ColumnName="cesarea" />
                 <ScalarProperty Name="partos" ColumnName="partos" />
                 <ScalarProperty Name="gestas" ColumnName="gestas" />
-                <ScalarProperty Name="fechaUltimaMenstruacion" ColumnName="fechaUltimaMenstruacion" />
-                <ScalarProperty Name="ciclo" ColumnName="ciclo" />
                 <ScalarProperty Name="menarquia" ColumnName="menarquia" />
                 <ScalarProperty Name="idAntecedenteGinecoObstetrico" ColumnName="idAntecedenteGinecoObstetrico" />
               </MappingFragment>
@@ -1018,6 +1014,10 @@
             <EntityTypeMapping TypeName="BDD_ConsultorioDermatologicoModel.tblEvolucion">
               <MappingFragment StoreEntitySet="tblEvolucion">
                 <ScalarProperty Name="habilitado" ColumnName="habilitado" />
+                <ScalarProperty Name="metodoPlanificacionFamiliar" ColumnName="metodoPlanificacionFamiliar" />
+                <ScalarProperty Name="vidaSexualActiva" ColumnName="vidaSexualActiva" />
+                <ScalarProperty Name="fechaUltimaMenstruacion" ColumnName="fechaUltimaMenstruacion" />
+                <ScalarProperty Name="ciclo" ColumnName="ciclo" />
                 <ScalarProperty Name="fechaVisita" ColumnName="fechaVisita" />
                 <ScalarProperty Name="recomendaciones" ColumnName="recomendaciones" />
                 <ScalarProperty Name="prescripcion" ColumnName="prescripcion" />

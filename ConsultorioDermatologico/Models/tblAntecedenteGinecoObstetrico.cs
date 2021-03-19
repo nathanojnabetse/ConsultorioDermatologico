@@ -22,16 +22,12 @@ namespace ConsultorioDermatologico.Models
     
         public int idAntecedenteGinecoObstetrico { get; set; }
         public string menarquia { get; set; }
-        public string ciclo { get; set; }
-        public Nullable<System.DateTime> fechaUltimaMenstruacion { get; set; }
         public string gestas { get; set; }
         public string partos { get; set; }
         public string cesarea { get; set; }
         public string abortos { get; set; }
         public string hijosVivos { get; set; }
         public string hijosMuertos { get; set; }
-        public string vidaSexualActiva { get; set; }
-        public string metodoPlanificacionFamiliar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblHistoriaClinica> tblHistoriaClinica { get; set; }

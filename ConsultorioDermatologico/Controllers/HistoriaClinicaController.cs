@@ -85,17 +85,13 @@ namespace ConsultorioDermatologico.Controllers
                 {
                     tblAntecedenteGinecoObstetrico tblAntecedenteGinecoObstetrico = bd.tblAntecedenteGinecoObstetrico.Where(p => p.idAntecedenteGinecoObstetrico.Equals((int)historiaClinicaCLS.idAntecedenteGinecoObstetrico)).First();
                     //Existencia de antecente gineco obsterico
-                    antecedenteGinecoObstetricoCLS.menarquia = tblAntecedenteGinecoObstetrico.menarquia;
-                    antecedenteGinecoObstetricoCLS.ciclo = tblAntecedenteGinecoObstetrico.ciclo;
-                    antecedenteGinecoObstetricoCLS.fechaUltimaMenstruacion = tblAntecedenteGinecoObstetrico.fechaUltimaMenstruacion;
+                    antecedenteGinecoObstetricoCLS.menarquia = tblAntecedenteGinecoObstetrico.menarquia;                   
                     antecedenteGinecoObstetricoCLS.gestas = tblAntecedenteGinecoObstetrico.gestas;
                     antecedenteGinecoObstetricoCLS.partos = tblAntecedenteGinecoObstetrico.partos;
                     antecedenteGinecoObstetricoCLS.cesarea = tblAntecedenteGinecoObstetrico.cesarea;
                     antecedenteGinecoObstetricoCLS.abortos = tblAntecedenteGinecoObstetrico.abortos;
                     antecedenteGinecoObstetricoCLS.hijosMuertos = tblAntecedenteGinecoObstetrico.hijosMuertos;
-                    antecedenteGinecoObstetricoCLS.hijosVivos = tblAntecedenteGinecoObstetrico.hijosVivos;
-                    antecedenteGinecoObstetricoCLS.vidaSexualActiva = tblAntecedenteGinecoObstetrico.vidaSexualActiva;
-                    antecedenteGinecoObstetricoCLS.metodoPlanificacionFamiliar = tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar;
+                    antecedenteGinecoObstetricoCLS.hijosVivos = tblAntecedenteGinecoObstetrico.hijosVivos;                   
                 }
                 if (historiaClinicaCLS.idAntecedenteReprodMasculino != null)
                 {
@@ -131,6 +127,7 @@ namespace ConsultorioDermatologico.Controllers
                 //viewbags
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica == tblEvolucion.idHistoriaClinica).First();
                 ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
+                ViewBag.idAntecedenteGinecoObstetrico = tblHistoriaClinica.idAntecedenteGinecoObstetrico;
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == tblHistoriaClinica.idPaciente).First();
                 ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
                 ViewBag.idPaciente = tblPaciente.idPaciente;
@@ -146,6 +143,14 @@ namespace ConsultorioDermatologico.Controllers
                 evolucionCLS.prescripcion = tblEvolucion.prescripcion;
                 evolucionCLS.recomendaciones = tblEvolucion.recomendaciones;
                 evolucionCLS.fechaVisita = (DateTime)tblEvolucion.fechaVisita;
+                if(tblHistoriaClinica.idAntecedenteGinecoObstetrico!= null)
+                {
+                    evolucionCLS.ciclo = tblEvolucion.ciclo;
+                    evolucionCLS.fechaUltimaMenstruacion = (DateTime)tblEvolucion.fechaUltimaMenstruacion;
+                    evolucionCLS.metodoPlanificacionFamiliar = tblEvolucion.metodoPlanificacionFamiliar;
+                    evolucionCLS.vidaSexualActiva = tblEvolucion.vidaSexualActiva;
+                }
+                
 
                 List<tblFotos> listaFotosBD = bd.tblFotos.Where(p => p.idEvolucion == idEvolucion).ToList();
                 List<FotoCLS> listaFotos = new List<FotoCLS>();

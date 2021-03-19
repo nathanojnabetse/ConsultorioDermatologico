@@ -45,6 +45,22 @@ namespace ConsultorioDermatologico.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fechaVisita { get; set; }
+
+        //Propiedades disponibles para registros gineco obstetricos
+        [Display(Name = "Ciclo")]
+        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
+        public string ciclo { get; set; }
+        [Display(Name = "Última menstruación")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? fechaUltimaMenstruacion { get; set; }
+        [Display(Name = "Vida sexual activa")]
+        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
+        public string vidaSexualActiva { get; set; }
+        [Display(Name = "Planificación familiar")]
+        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
+        public string metodoPlanificacionFamiliar { get; set; }
+
         public int habilitado { get; set; }
         
         //Propiedades adicionales, usadas para que el admin pueda visualizar las evoluciones desactivadas por un médico

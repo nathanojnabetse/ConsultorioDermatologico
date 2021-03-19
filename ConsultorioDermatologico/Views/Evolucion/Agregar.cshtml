@@ -11,8 +11,7 @@
 @using (Ajax.BeginForm("Guardar", "Evolucion", null, new AjaxOptions
 {
     HttpMethod = "POST",
-    OnSuccess = "Guardar"//,
-    //UpdateTargetId = "error"
+    OnSuccess = "Guardar"
 }, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -63,6 +62,50 @@
             </div>
         </div>
     </div>
+    @Html.Hidden("reproductivo")
+    @if (ViewBag.idAntecedenteGinecoObstetrico != null)
+    {
+        <div class="espacio border">
+            <div class="row ">
+                <div class="col-sm-3 espacio">
+
+                    <div>
+                        @Html.LabelFor(p => p.evolucion.ciclo)
+                        @Html.TextBoxFor(p => p.evolucion.ciclo, new { @class = "form-control col-md-12", @id = "ago1" })
+                        @Html.ValidationMessage("evolucion.ciclo", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-sm-3 espacio">
+
+                    <div>
+                        @Html.LabelFor(p => p.evolucion.fechaUltimaMenstruacion)
+                        @Html.EditorFor(p => p.evolucion.fechaUltimaMenstruacion, new { htmlAttributes = new { @class = "form-control col-md-12", @id = "ago2" } })
+                        @Html.ValidationMessage("evolucion.fechaUltimaMenstruacion", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-sm-3 espacio">
+
+                    <div>
+                        @Html.LabelFor(p => p.evolucion.vidaSexualActiva)
+                        @Html.TextBoxFor(p => p.evolucion.vidaSexualActiva, new { @class = "form-control col-md-12", @id = "ago3" })
+                        @Html.ValidationMessage("evolucion.vidaSexualActiva", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-sm-3 espacio">
+
+                    <div>
+                        @Html.LabelFor(p => p.evolucion.metodoPlanificacionFamiliar)
+                        @Html.TextBoxFor(p => p.evolucion.metodoPlanificacionFamiliar, new { @class = "form-control col-md-12", @id = "ago4" })
+                        @Html.ValidationMessage("evolucion.metodoPlanificacionFamiliar", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
 
     <div class="row">
         <div class="col-sm-4 espacio">
@@ -118,7 +161,7 @@
 
     <div class="row espacio">
         <div class="col-sm-8">
-            
+
         </div>
         <div class="col-sm-2">
             <div class="row justify-content-center">
@@ -127,7 +170,7 @@
         </div>
         <div class="col-sm-2">
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-primary rounded-pill llenar-espacio" onclick="UploadPic()">Guardar</button>
+                <button type="submit" class="btn btn-primary rounded-pill llenar-espacio" onclick="UploadPic(); RevisionGineco();">Guardar</button>
             </div>
         </div>
     </div>
@@ -309,7 +352,18 @@
         // Generar los datos de la imagen
         var Pic = document.getElementById("pizarra").toDataURL("image/png"); //se obtiene un url con una cadena correspondiene a la imagen en base64
         Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")//eliminación de datos innecesarios en la cadena de la imagen generada en el canvas
-        document.getElementById("mapaCorporal").value = Pic;//asignación a un elemento para ser pasado al controlador
+        document.getElementById("mapaCorporal").value = Pic;//asignación a un elemento para ser pasado al controlador       
+    }
+
+    //Revisar si el paciente tiene o Campos reproductivos para cargar un advertecia en caso de campos incompletos
+    function RevisionGineco() {       
+        
+        if (document.getElementById("ago1") != null) {
+            document.getElementById("reproductivo").value = true;
+        }
+        else {
+            document.getElementById("reproductivo").value = false;
+        }
     }
 
 </script>

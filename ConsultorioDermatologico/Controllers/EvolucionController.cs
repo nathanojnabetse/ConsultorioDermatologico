@@ -48,7 +48,7 @@ namespace ConsultorioDermatologico.Controllers
 
 
         /// <summary>
-        /// Accion para retornar la vista con información del paciente
+        /// Accion para retornar la vista con información del paciente necesaria para crear una evolucion
         /// </summary>
         /// <param name="idHistoriaClinica">id de la historia clínica</param>
         /// <returns>Vista agregar con los datos del paciente e historia no visibles</returns>
@@ -58,12 +58,15 @@ namespace ConsultorioDermatologico.Controllers
             {
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idPaciente == idHistoriaClinica).First();
                 ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
+                ViewBag.idAntecedenteGinecoObstetrico = tblHistoriaClinica.idAntecedenteGinecoObstetrico;
 
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente== tblHistoriaClinica.idPaciente).First();
                 ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
                 ViewBag.idPaciente = tblPaciente.idPaciente;
 
                 ViewBag.fechaActual = System.DateTime.Now.ToString("yyyy-MM-dd");
+
+
 
                 tblEvolucion tblEvolucion = bd.tblEvolucion.ToList().Last();
             }
@@ -89,7 +92,7 @@ namespace ConsultorioDermatologico.Controllers
         /// <param name="foto5NombreFoto">nombre del archivo seleccionado</param>
         /// <param name="foto6NombreFoto">nombre del archivo seleccionado</param>
         /// <returns>Retorna el id de evolución recien creada y un mensaje de error o el numero de registros guardados</returns>
-        public (string,int) Guardar(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica,string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto)
+        public (string,int) Guardar(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica,string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto,bool reproductivo)
         {
             string mensaje = "";
             int idEvolucion = 0;
@@ -102,6 +105,49 @@ namespace ConsultorioDermatologico.Controllers
                 ModelState.Remove("foto4");
                 ModelState.Remove("foto5");
                 ModelState.Remove("foto6");
+                //Validaciones sobre los campos de reproduccion femeninos si es que existen
+                if (reproductivo)
+                {
+                    if (registroEvolucionCLS.evolucion.ciclo == null)
+                    {
+                        ModelState.AddModelError("evolucion.ciclo", "El campo ciclo menstrual es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.ciclo");
+                    }
+                    if (registroEvolucionCLS.evolucion.fechaUltimaMenstruacion == null)
+                    {
+                        ModelState.AddModelError("evolucion.fechaUltimaMenstruacion", "El campo fecha de la última menstruacion es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.fechaUltimaMenstruacion");
+                    }
+                    if (registroEvolucionCLS.evolucion.vidaSexualActiva == null)
+                    {
+                        ModelState.AddModelError("evolucion.vidaSexualActiva", "El campo vida sexual activa es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.vidaSexualActiva");
+                    }
+                    if (registroEvolucionCLS.evolucion.metodoPlanificacionFamiliar == null)
+                    {
+                        ModelState.AddModelError("evolucion.metodoPlanificacionFamiliar", "El campo método de planificación familiar es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.metodoPlanificacionFamiliar");
+                    }
+                }
+                else
+                {
+                    ModelState.Remove("evolucion.ciclo");
+                    ModelState.Remove("evolucion.fechaUltimaMenstruacion");
+                    ModelState.Remove("evolucion.vidaSexualActiva");
+                    ModelState.Remove("evolucion.metodoPlanificacionFamiliar");
+                }
 
                 if (!ModelState.IsValid)
                 {                    
@@ -143,6 +189,10 @@ namespace ConsultorioDermatologico.Controllers
                         tblEvolucion.prescripcion = registroEvolucionCLS.evolucion.prescripcion;
                         tblEvolucion.recomendaciones = registroEvolucionCLS.evolucion.recomendaciones;
                         tblEvolucion.fechaVisita = System.DateTime.Now;
+                        tblEvolucion.ciclo = registroEvolucionCLS.evolucion.ciclo;
+                        tblEvolucion.fechaUltimaMenstruacion = registroEvolucionCLS.evolucion.fechaUltimaMenstruacion;
+                        tblEvolucion.vidaSexualActiva = registroEvolucionCLS.evolucion.vidaSexualActiva;
+                        tblEvolucion.metodoPlanificacionFamiliar = registroEvolucionCLS.evolucion.metodoPlanificacionFamiliar;
                         tblEvolucion.habilitado = 1;
                         bd.tblEvolucion.Add(tblEvolucion);
                         
@@ -243,10 +293,11 @@ namespace ConsultorioDermatologico.Controllers
                 EvolucionCLS evolucionCLS = new EvolucionCLS();
                 
                 tblEvolucion tblEvolucion = bd.tblEvolucion.Where(p => p.idEvolucion == idEvolucion && p.habilitado == 1).First();
-                ViewBag.idEvolucion = tblEvolucion.idEvolucion;
+                ViewBag.idEvolucion = tblEvolucion.idEvolucion;                
                 //viewbags
                 tblHistoriaClinica tblHistoriaClinica = bd.tblHistoriaClinica.Where(p => p.idHistoriaClinica == tblEvolucion.idHistoriaClinica).First();
                 ViewBag.idHistoriaClinica = tblHistoriaClinica.idHistoriaClinica;
+                ViewBag.idAntecedenteGinecoObstetrico = tblHistoriaClinica.idAntecedenteGinecoObstetrico;
                 tblPaciente tblPaciente = bd.tblPaciente.Where(p => p.idPaciente == tblHistoriaClinica.idPaciente).First();
                 ViewBag.nombrePaciente = tblPaciente.nombres + " " + tblPaciente.apellidos;
                 ViewBag.idPaciente = tblPaciente.idPaciente;
@@ -262,6 +313,14 @@ namespace ConsultorioDermatologico.Controllers
                 evolucionCLS.prescripcion = tblEvolucion.prescripcion;
                 evolucionCLS.recomendaciones = tblEvolucion.recomendaciones;
                 evolucionCLS.fechaVisita = (DateTime)tblEvolucion.fechaVisita;
+                if(tblHistoriaClinica.idAntecedenteGinecoObstetrico != null)
+                {
+                    evolucionCLS.ciclo = tblEvolucion.ciclo;
+                    evolucionCLS.fechaUltimaMenstruacion = (DateTime)tblEvolucion.fechaUltimaMenstruacion;
+                    evolucionCLS.metodoPlanificacionFamiliar = tblEvolucion.metodoPlanificacionFamiliar;
+                    evolucionCLS.vidaSexualActiva = tblEvolucion.vidaSexualActiva;
+                }
+                
 
                 List<tblFotos> listaFotosBD = bd.tblFotos.Where(p => p.idEvolucion == idEvolucion).ToList();
                 List<FotoCLS> listaFotos = new List<FotoCLS>();
@@ -323,7 +382,7 @@ namespace ConsultorioDermatologico.Controllers
         /// <param name="idFoto5">id de la foto si es que se cambia</param>
         /// <param name="idFoto6">id de la foto si es que se cambia</param>
         /// <returns>mensaje de error por campos incompletos o numero de registros afectados</returns>
-        public string GuardarEdicion(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica, int idEvolucion, string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto, int? idFoto1, int? idFoto2, int? idFoto3, int? idFoto4, int? idFoto5, int? idFoto6)
+        public string GuardarEdicion(RegistroEvolucionCLS registroEvolucionCLS, HttpPostedFileBase foto1, HttpPostedFileBase foto2, HttpPostedFileBase foto3, HttpPostedFileBase foto4, HttpPostedFileBase foto5, HttpPostedFileBase foto6, int idHistoriaClinica, int idEvolucion, string mapaCorporal, string foto1NombreFoto, string foto2NombreFoto, string foto3NombreFoto, string foto4NombreFoto, string foto5NombreFoto, string foto6NombreFoto, int? idFoto1, int? idFoto2, int? idFoto3, int? idFoto4, int? idFoto5, int? idFoto6, bool reproductivo)
         {
             string mensaje = "";
             try
@@ -334,6 +393,50 @@ namespace ConsultorioDermatologico.Controllers
                 ModelState.Remove("foto4");
                 ModelState.Remove("foto5");
                 ModelState.Remove("foto6");
+
+                //Validaciones sobre los campos de reproduccion femeninos si es que existen
+                if (reproductivo)
+                {
+                    if (registroEvolucionCLS.evolucion.ciclo == null)
+                    {
+                        ModelState.AddModelError("evolucion.ciclo", "El campo ciclo menstrual es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.ciclo");
+                    }
+                    if (registroEvolucionCLS.evolucion.fechaUltimaMenstruacion == null)
+                    {
+                        ModelState.AddModelError("evolucion.fechaUltimaMenstruacion", "El campo fecha de la última menstruacion es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.fechaUltimaMenstruacion");
+                    }
+                    if (registroEvolucionCLS.evolucion.vidaSexualActiva == null)
+                    {
+                        ModelState.AddModelError("evolucion.vidaSexualActiva", "El campo vida sexual activa es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.vidaSexualActiva");
+                    }
+                    if (registroEvolucionCLS.evolucion.metodoPlanificacionFamiliar == null)
+                    {
+                        ModelState.AddModelError("evolucion.metodoPlanificacionFamiliar", "El campo método de planificación familiar es obligatorio.");
+                    }
+                    else
+                    {
+                        ModelState.Remove("evolucion.metodoPlanificacionFamiliar");
+                    }
+                }
+                else
+                {
+                    ModelState.Remove("evolucion.ciclo");
+                    ModelState.Remove("evolucion.fechaUltimaMenstruacion");
+                    ModelState.Remove("evolucion.vidaSexualActiva");
+                    ModelState.Remove("evolucion.metodoPlanificacionFamiliar");
+                }
 
                 if (!ModelState.IsValid)
                 {
@@ -365,6 +468,10 @@ namespace ConsultorioDermatologico.Controllers
                         tblEvolucion.examenFisico = registroEvolucionCLS.evolucion.examenFisico;
                         tblEvolucion.prescripcion = registroEvolucionCLS.evolucion.prescripcion;
                         tblEvolucion.recomendaciones = registroEvolucionCLS.evolucion.recomendaciones;
+                        tblEvolucion.ciclo = registroEvolucionCLS.evolucion.ciclo;
+                        tblEvolucion.fechaUltimaMenstruacion = registroEvolucionCLS.evolucion.fechaUltimaMenstruacion;
+                        tblEvolucion.vidaSexualActiva = registroEvolucionCLS.evolucion.vidaSexualActiva;
+                        tblEvolucion.metodoPlanificacionFamiliar = registroEvolucionCLS.evolucion.metodoPlanificacionFamiliar;
 
                         byte[] fotoBD1 = null;
                         if (foto1 != null)

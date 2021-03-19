@@ -149,10 +149,6 @@ namespace ConsultorioDermatologico.Controllers
                     {                        
                         Paragraph p33 = new Paragraph("Menarquia: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.menarquia);
                         doc.Add(p33);
-                        Paragraph p34 = new Paragraph("Ciclo: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.ciclo);
-                        doc.Add(p34);
-                        Paragraph p35 = new Paragraph("Fecha última menstruación: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.fechaUltimaMenstruacion.Value.ToString("yyyy-MM-dd"));
-                        doc.Add(p35);
                         Paragraph p36 = new Paragraph("Gestas: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.gestas);
                         doc.Add(p36);
                         Paragraph p37 = new Paragraph("Partos: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.partos);
@@ -165,10 +161,6 @@ namespace ConsultorioDermatologico.Controllers
                         doc.Add(p40);
                         Paragraph p41 = new Paragraph("Hijos muertos: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.hijosMuertos);
                         doc.Add(p41);
-                        Paragraph p42 = new Paragraph("Vida sexual activa: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.vidaSexualActiva);
-                        doc.Add(p42);
-                        Paragraph p43 = new Paragraph("Método de planificación familiar: " + tblHistoriaClinica.tblAntecedenteGinecoObstetrico.metodoPlanificacionFamiliar);
-                        doc.Add(p43);
                     }
                     if (tblHistoriaClinica.idAntecedenteReprodMasculino != null)
                     {

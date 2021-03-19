@@ -205,54 +205,34 @@
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.menarquia", new { @class = "text-danger" })
                         </div>
                         <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.ciclo)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.ciclo, new { @class = "form-control col-md-12", @id = "ago2" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.ciclo", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.fechaUltimaMenstruacion)
-                            @Html.EditorFor(p => p.antecedenteGinecoObstetrico.fechaUltimaMenstruacion, new { htmlAttributes = new { @class = "form-control col-md-12", @id = "ago3" } })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.fechaUltimaMenstruacion", new { @class = "text-danger" })
-                        </div>
-                        <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.gestas)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.gestas, new { @class = "form-control col-md-12", @id = "ago4" })
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.gestas, new { @class = "form-control col-md-12", @id = "ago2" })
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.gestas", new { @class = "text-danger" })
                         </div>
                         <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.partos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.partos, new { @class = "form-control col-md-12", @id = "ago5" })
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.partos, new { @class = "form-control col-md-12", @id = "ago3" })
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.partos", new { @class = "text-danger" })
                         </div>
                         <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.cesarea)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.cesarea, new { @class = "form-control col-md-12", @id = "ago6" })
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.cesarea, new { @class = "form-control col-md-12", @id = "ago4" })
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.cesarea", new { @class = "text-danger" })
                         </div>
                         <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.abortos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.abortos, new { @class = "form-control col-md-12", @id = "ago7" })
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.abortos, new { @class = "form-control col-md-12", @id = "ago5" })
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.abortos", new { @class = "text-danger" })
                         </div>
                         <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosVivos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosVivos, new { @class = "form-control col-md-12", @id = "ago8" })
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosVivos, new { @class = "form-control col-md-12", @id = "ago6" })
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosVivos", new { @class = "text-danger" })
                         </div>
                         <div>
                             @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosMuertos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosMuertos, new { @class = "form-control col-md-12", @id = "ago9" })
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosMuertos, new { @class = "form-control col-md-12", @id = "ago7" })
                             @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosMuertos", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.vidaSexualActiva)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.vidaSexualActiva, new { @class = "form-control col-md-12", @id = "ago10" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.vidaSexualActiva", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.metodoPlanificacionFamiliar)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.metodoPlanificacionFamiliar, new { @class = "form-control col-md-12", @id = "ago11" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.metodoPlanificacionFamiliar", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -346,10 +326,6 @@
             $('#ago5').prop("required", true);
             $('#ago6').prop("required", true);
             $('#ago7').prop("required", true);
-            $('#ago8').prop("required", true);
-            $('#ago9').prop("required", true);
-            $('#ago10').prop("required", true);
-            $('#ago11').prop("required", true);
         }
         else {
             //Desactivo el checkbox
@@ -360,10 +336,6 @@
             $('#ago5').removeAttr('required')
             $('#ago6').removeAttr('required')
             $('#ago7').removeAttr('required')
-            $('#ago8').removeAttr('required')
-            $('#ago9').removeAttr('required')
-            $('#ago10').removeAttr('required')
-            $('#ago11').removeAttr('required')
         }
     }
 
@@ -376,7 +348,6 @@
         }
         else {
             ///Desactivo el checkbox
-            $('#aaa').removeAttr('required')
             $('#arm1').removeAttr('required')
             $('#arm2').removeAttr('required')
         }

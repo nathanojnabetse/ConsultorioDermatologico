@@ -6,16 +6,12 @@
     </Key>
     <Property Name="idAntecedenteGinecoObstetrico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="menarquia" Type="varchar" MaxLength="100" />
-    <Property Name="ciclo" Type="varchar" MaxLength="100" />
-    <Property Name="fechaUltimaMenstruacion" Type="datetime" />
     <Property Name="gestas" Type="varchar" MaxLength="100" />
     <Property Name="partos" Type="varchar" MaxLength="100" />
     <Property Name="cesarea" Type="varchar" MaxLength="100" />
     <Property Name="abortos" Type="varchar" MaxLength="100" />
     <Property Name="hijosVivos" Type="varchar" MaxLength="100" />
     <Property Name="hijosMuertos" Type="varchar" MaxLength="100" />
-    <Property Name="vidaSexualActiva" Type="varchar" MaxLength="100" />
-    <Property Name="metodoPlanificacionFamiliar" Type="varchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="tblAntecedenteReprodMasculino">
     <Key>
@@ -64,6 +60,10 @@
     <Property Name="prescripcion" Type="varchar" MaxLength="5000" />
     <Property Name="recomendaciones" Type="varchar" MaxLength="5000" />
     <Property Name="fechaVisita" Type="datetime" />
+    <Property Name="ciclo" Type="varchar" MaxLength="100" />
+    <Property Name="fechaUltimaMenstruacion" Type="datetime" />
+    <Property Name="vidaSexualActiva" Type="varchar" MaxLength="100" />
+    <Property Name="metodoPlanificacionFamiliar" Type="varchar" MaxLength="1000" />
     <Property Name="habilitado" Type="int" />
   </EntityType>
   <EntityType Name="tblFotos">
