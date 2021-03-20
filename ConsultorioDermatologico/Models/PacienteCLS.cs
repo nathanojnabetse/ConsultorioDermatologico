@@ -32,40 +32,40 @@ namespace ConsultorioDermatologico.Models
         [Required]
         [Display(Name = "Identidad género")]
         public int idIdentidadGenero { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Orientacion sexual")]
-        public int idOrientacionSexual { get; set; }
-        [Required]
+        public int? idOrientacionSexual { get; set; }
+        //[Required]
         [Display(Name = "Ciudad nacimiento")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string ciudadNacimiento { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Ciudad residencia")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string ciudadResidencia { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Ocupación")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string ocupacion { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Profesión")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string profesion { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Tipo discapacidad")]
-        public int idTipoDiscapacidad { get; set; }
-        [Required]
+        public int? idTipoDiscapacidad { get; set; }
+        //[Required]
         [Display(Name = "% Discapacidad")]
         public int porcentajeDiscapacidad { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Estado civil")]
-        public int idEstadoCivil { get; set; }
-        [Required]
+        public int? idEstadoCivil { get; set; }
+        //[Required]
         [Display(Name = "Lateralidad")]
-        public int idLateralidad { get; set; }
-        [Required]
+        public int? idLateralidad { get; set; }
+        //[Required]
         [Display(Name = "Nivel educación")]
-        public int idNivelEducacion { get; set; }
+        public int? idNivelEducacion { get; set; }
         [Required]
         [Display(Name = "Dirección")]
         [StringLength(500, ErrorMessage = "Longitud máxima 500")]
@@ -74,7 +74,7 @@ namespace ConsultorioDermatologico.Models
         [Display(Name = "Teléfono celular")]
         [StringLength(10, ErrorMessage = "Longitud máxima 10")]
         public string telefonoPersonal { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Teléfono residencial")]
         [StringLength(10, ErrorMessage = "Longitud máxima 10")]
         public string telefonoResidencial { get; set; }

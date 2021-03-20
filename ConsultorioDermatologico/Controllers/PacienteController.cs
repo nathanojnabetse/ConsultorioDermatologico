@@ -245,17 +245,17 @@ namespace ConsultorioDermatologico.Controllers
                 pacienteCLS.apellidos = tblPaciente.apellidos;
                 pacienteCLS.cedula = tblPaciente.cedula;
                 pacienteCLS.fechaNacimiento = (DateTime)tblPaciente.fechaNacimiento;
-                pacienteCLS.idOrientacionSexual = (int)tblPaciente.idOrientacionSexual;
+                pacienteCLS.idOrientacionSexual = tblPaciente.idOrientacionSexual;
                 pacienteCLS.idIdentidadGenero = (int)tblPaciente.idIdentidadGenero;
                 pacienteCLS.ciudadNacimiento = tblPaciente.ciudadNacimiento;
                 pacienteCLS.ciudadResidencia = tblPaciente.ciudadResidencia;
                 pacienteCLS.ocupacion = tblPaciente.ocupacion;
                 pacienteCLS.profesion = tblPaciente.profesion;
-                pacienteCLS.idTipoDiscapacidad = (int)tblPaciente.idTipoDiscapacidad;
+                pacienteCLS.idTipoDiscapacidad = tblPaciente.idTipoDiscapacidad;
                 pacienteCLS.porcentajeDiscapacidad = (int)tblPaciente.porcentajeDiscapacidad;
-                pacienteCLS.idEstadoCivil = (int)tblPaciente.idEstadoCivil;
-                pacienteCLS.idLateralidad = (int)tblPaciente.idLateralidad;
-                pacienteCLS.idNivelEducacion = (int)tblPaciente.idNivelEducacion;
+                pacienteCLS.idEstadoCivil = tblPaciente.idEstadoCivil;
+                pacienteCLS.idLateralidad = tblPaciente.idLateralidad;
+                pacienteCLS.idNivelEducacion = tblPaciente.idNivelEducacion;
                 pacienteCLS.direccion = tblPaciente.direccion;
                 pacienteCLS.telefonoPersonal = tblPaciente.telefonoPersonal;
                 pacienteCLS.telefonoResidencial = tblPaciente.telefonoResidencial;
@@ -313,7 +313,9 @@ namespace ConsultorioDermatologico.Controllers
                 registroPacienteCLS.historiaClinica = historiaClinicaCLS;
                 registroPacienteCLS.antecedenteReprodMasculino = antecedenteReprodMasculinoCLS;
                 registroPacienteCLS.antecedenteGinecoObstetrico = antecedenteGinecoObstetricoCLS;
+               
             }
+
             return View(registroPacienteCLS);//Objeto con la info del paciente
         }
 
@@ -401,9 +403,10 @@ namespace ConsultorioDermatologico.Controllers
                     tblHistoriaClinica.habilitado = 1;
                                        
                     bd.SaveChanges();//Guardar los cambios realizados en la bdd 
+                    return RedirectToAction("InformacionPaciente", "HistoriaClinica", new { idPaciente = tblHistoriaClinica.idPaciente });
                 }
-                return RedirectToAction("Index");
             }
+               
         }
 
         /// <summary>

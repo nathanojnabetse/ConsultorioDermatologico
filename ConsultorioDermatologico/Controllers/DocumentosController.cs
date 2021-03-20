@@ -376,9 +376,9 @@ namespace ConsultorioDermatologico.Controllers
 
                     Paragraph certifico = new Paragraph("CERTIFICO QUE EL PACIENTE ACUDIÓ EN ESTA FECHA A CONSULTA MEDICA DERMATOLÓGICA ");
                     doc.Add(certifico);
-                    doc.Add(espacio);
                     if(notas != "")
                     {
+                        doc.Add(espacio);
                         Paragraph nota = new Paragraph("Notas adicionales: " + notas);
                         doc.Add(nota);
                     }                   

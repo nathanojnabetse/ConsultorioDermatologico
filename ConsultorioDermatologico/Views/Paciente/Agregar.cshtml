@@ -18,296 +18,439 @@
 <h2 style="padding-top:1em">Agregar nuevo paciente</h2>
 @using (Html.BeginForm("Agregar", "Paciente", FormMethod.Post))
 {
-<div class="container">
-    <div class="row">
-        @*Formulario para los datos personales del paciente*@
-        <div class="col-sm-6 espacio">
-            <h4>Datos personales</h4>
-            <div>
-                @if (Model != null && Model.mensajeError != null)
-                {
-                    @Html.Label(Model.mensajeError, new { @class = "text-danger" })
-                }
-            </div>
-            <div class="border espacio">
-                <div>
-                    @Html.LabelFor(p => p.paciente.nombres)
-                    @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.nombres", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.apellidos)
-                    @Html.TextBoxFor(p => p.paciente.apellidos, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.apellidos", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.cedula)
-                    @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
-                    @Html.ValidationMessage("paciente.cedula", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.fechaNacimiento)
-                    @Html.EditorFor(p => p.paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    @Html.ValidationMessage("paciente.fechaNacimiento", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.idIdentidadGenero)
-                    @Html.DropDownList("paciente.idIdentidadGenero", listaIdentidadGenero, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.idIdentidadGenero", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.idOrientacionSexual)
-                    @Html.DropDownList("paciente.idOrientacionSexual", listaOrientacionSexual, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.idOrientacionSexual", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.ciudadNacimiento)
-                    @Html.TextBoxFor(p => p.paciente.ciudadNacimiento, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.ciudadNacimiento", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.ciudadResidencia)
-                    @Html.TextBoxFor(p => p.paciente.ciudadResidencia, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.ciudadResidencia", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.ocupacion)
-                    @Html.TextBoxFor(p => p.paciente.ocupacion, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.ocupacion", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.profesion)
-                    @Html.TextBoxFor(p => p.paciente.profesion, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.profesion", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
-                    @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.idTipoDiscapacidad", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
-                    @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @Value = "0" } })
-                    @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.idEstadoCivil)
-                    @Html.DropDownList("paciente.idEstadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.idEstadoCivil", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.idLateralidad)
-                    @Html.DropDownList("paciente.idLateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.idLateralidad", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.idNivelEducacion)
-                    @Html.DropDownList("paciente.idNivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.idNivelEducacion", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.direccion)
-                    @Html.TextBoxFor(p => p.paciente.direccion, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.direccion", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.telefonoPersonal)
-                    @Html.TextBoxFor(p => p.paciente.telefonoPersonal, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
-                    @Html.ValidationMessage("paciente.telefonoPersonal", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.telefonoResidencial)
-                    @Html.TextBoxFor(p => p.paciente.telefonoResidencial, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
-                    @Html.ValidationMessage("paciente.telefonoResidencial", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.correoElectronico)
-                    @Html.TextBoxFor(p => p.paciente.correoElectronico, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.correoElectronico", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.paciente.idReligion)
-                    @Html.DropDownList("paciente.idReligion", listaReligion, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("paciente.idReligion", new { @class = "text-danger" })
-                </div>
-                <div style="padding-top:1em">
-                    <div class="border  espacio">
-                        <h6 class="text-muted">Datos contacto de Emergencia</h6>
-                        <div>
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link text-dark active" data-toggle="tab" href="#tab1" role="tab" aria-controls="home" aria-expanded="true" id="link1">
+                    Datos personales
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" data-toggle="tab" href="#tab2" role="tab" aria-controls="profile" id="link2">
+                    Información del paciente
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" data-toggle="tab" href="#tab3" role="tab" aria-controls="profile" id="link3">
+                    Antecedentes clínicos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" data-toggle="tab" href="#tab4" role="tab" aria-controls="profile" id="link4">
+                    Antecedentes reproductivos
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
 
-                            @Html.LabelFor(p => p.contactoEmergencia.nombreContactoEmergencia)
-                            @Html.TextBoxFor(p => p.contactoEmergencia.nombreContactoEmergencia, new { @class = "form-control col-md-12" })
-                            @Html.ValidationMessage("contactoEmergencia.nombreContactoEmergencia", new { @class = "text-danger" })
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="1-tab">
+                <div class="tab-pane-header">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="row justify-content-lg-start">
+                                @Html.ActionLink("Cancelar", "Medico", "Home", null, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
+                            </div>
                         </div>
-                        <div>
-                            @Html.LabelFor(p => p.contactoEmergencia.telefonoContactoEmergencia)
-                            @Html.TextBoxFor(p => p.contactoEmergencia.telefonoContactoEmergencia, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
-                            @Html.ValidationMessage("contactoEmergencia.telefonoContactoEmergencia", new { @class = "text-danger" })
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="row justify-content-end">
+                                <a href="#" class="btn btn-primary rounded-pill llenar-espacio" onclick="VerTab('link2')">Información del paciente <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <h4 class="espacio">Datos personales</h4>
+                    <div class="border espacio">
+
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.nombres)
+                                @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.nombres", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.apellidos)
+                                @Html.TextBoxFor(p => p.paciente.apellidos, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.apellidos", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.fechaNacimiento)
+                                @Html.EditorFor(p => p.paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.ValidationMessage("paciente.fechaNacimiento", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.cedula)
+                                @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
+                                @Html.ValidationMessage("paciente.cedula", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.idIdentidadGenero)
+                                @Html.DropDownList("paciente.idIdentidadGenero", listaIdentidadGenero, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.idIdentidadGenero", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.direccion)
+                                @Html.TextBoxFor(p => p.paciente.direccion, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.direccion", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.telefonoPersonal)
+                                @Html.TextBoxFor(p => p.paciente.telefonoPersonal, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
+                                @Html.ValidationMessage("paciente.telefonoPersonal", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.correoElectronico)
+                                @Html.TextBoxFor(p => p.paciente.correoElectronico, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.correoElectronico", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.idTipoSangre)
+                                @Html.DropDownList("historiaClinica.idTipoSangre", listaSangre, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("historiaClinica.idTipoSangre", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.idReligion)
+                                @Html.DropDownList("paciente.idReligion", listaReligion, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.idReligion", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.idSeguroMedico)
+                                @Html.DropDownList("historiaClinica.idSeguroMedico", listaSeguros, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("historiaClinica.idSeguroMedico", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div style="padding-top:1em">
+                            <div class="border  espacio">
+                                <h6 class="text-muted">Datos contacto de Emergencia</h6>
+                                <div class="row">
+                                    <div class="col-sm-6 espacio-superior">
+
+                                        @Html.LabelFor(p => p.contactoEmergencia.nombreContactoEmergencia)
+                                        @Html.TextBoxFor(p => p.contactoEmergencia.nombreContactoEmergencia, new { @class = "form-control col-md-12" })
+                                        @Html.ValidationMessage("contactoEmergencia.nombreContactoEmergencia", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6 espacio-superior">
+                                        @Html.LabelFor(p => p.contactoEmergencia.telefonoContactoEmergencia)
+                                        @Html.TextBoxFor(p => p.contactoEmergencia.telefonoContactoEmergencia, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
+                                        @Html.ValidationMessage("contactoEmergencia.telefonoContactoEmergencia", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="2-tab">
+                <div class="tab-pane-header">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="row justify-content-lg-start">
+                                <a href="#" class="btn btn-outline-secondary rounded-pill llenar-espacio" onclick="VerTab('link1')"><i class="fa fa-chevron-left" aria-hidden="true"></i> Datos personales </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="row justify-content-end">
+                                <a href="#" class="btn btn-primary rounded-pill llenar-espacio" onclick="VerTab('link3')"> Antecedentes clínicos <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="espacio">Información del paciente</h4>
+                    <div class="border espacio">
+                        <div class="row">
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.telefonoResidencial)
+                                @Html.TextBoxFor(p => p.paciente.telefonoResidencial, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
+                                @Html.ValidationMessage("paciente.telefonoResidencial", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.idOrientacionSexual)
+                                @Html.DropDownList("paciente.idOrientacionSexual", listaOrientacionSexual, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.idOrientacionSexual", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.idEstadoCivil)
+                                @Html.DropDownList("paciente.idEstadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.idEstadoCivil", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.ciudadNacimiento)
+                                @Html.TextBoxFor(p => p.paciente.ciudadNacimiento, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.ciudadNacimiento", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.ciudadResidencia)
+                                @Html.TextBoxFor(p => p.paciente.ciudadResidencia, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.ciudadResidencia", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.ocupacion)
+                                @Html.TextBoxFor(p => p.paciente.ocupacion, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.ocupacion", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.profesion)
+                                @Html.TextBoxFor(p => p.paciente.profesion, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.profesion", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.idLateralidad)
+                                @Html.DropDownList("paciente.idLateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.idLateralidad", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.idNivelEducacion)
+                                @Html.DropDownList("paciente.idNivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("paciente.idNivelEducacion", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div style="padding-top:1em">
+                            <input type='checkbox' data-toggle='collapse' data-target='#collapsediv3' id="chkDiscapacidad" onchange="discapacidad()" />
+                            <label>Discapacidad</label>
+                        </div>
+                        <div id='collapsediv3' class='collapse border'>
+                            <div class="espacio">
+                                <div class="row">
+                                    <div class="col-sm-6 espacio-superior">
+                                        @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
+                                        @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12", @id = "disc1" })
+                                        @Html.ValidationMessage("paciente.idTipoDiscapacidad", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6 espacio-superior">
+                                        @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
+                                        @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @Value = "0", @id = "disc2" } })
+                                        @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="3-tab">
+                <div class="tab-pane-header">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="row justify-content-lg-start">
+                                <a href="#" class="btn btn-outline-secondary rounded-pill llenar-espacio" onclick="VerTab('link2')"><i class="fa fa-chevron-left" aria-hidden="true"></i> Información del paciente </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="row justify-content-end">
+                                <a href="#" class="btn btn-primary rounded-pill llenar-espacio" onclick="VerTab('link4')">Antecedentes reproductivos <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="espacio">Antecedentes clínicos</h4>
+                    <div class="border espacio">
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarClinico)
+                                @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarClinico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.ValidationMessage("historiaClinica.antecedenteFamiliarClinico", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico)
+                                @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.ValidationMessage("historiaClinica.antecedenteFamiliarQuirurgico", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalClinico)
+                                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalClinico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.ValidationMessage("historiaClinica.antecedentePersonalClinico", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalQuirurgico)
+                                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.ValidationMessage("historiaClinica.antecedentePersonalQuirurgico", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalAlergico)
+                                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalAlergico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.ValidationMessage("historiaClinica.antecedentePersonalAlergico", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalVacunas)
+                                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.ValidationMessage("historiaClinica.antecedentePersonalVacunas", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.tabaco)
+                                @Html.TextBoxFor(p => p.historiaClinica.tabaco, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("historiaClinica.tabaco", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.alcohol)
+                                @Html.TextBoxFor(p => p.historiaClinica.alcohol, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("historiaClinica.alcohol", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-4 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.otrasDrogas)
+                                @Html.TextBoxFor(p => p.historiaClinica.otrasDrogas, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("historiaClinica.otrasDrogas", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.actividadFisica)
+                                @Html.TextBoxFor(p => p.historiaClinica.actividadFisica, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("historiaClinica.actividadFisica", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.historiaClinica.medicacionHabitual)
+                                @Html.TextBoxFor(p => p.historiaClinica.medicacionHabitual, new { @class = "form-control col-md-12" })
+                                @Html.ValidationMessage("historiaClinica.medicacionHabitual", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="4-tab">
+                <div class="tab-pane-header">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="row justify-content-lg-start">
+                                <a href="#" class="btn btn-outline-secondary rounded-pill llenar-espacio" onclick="VerTab('link3')"><i class="fa fa-chevron-left" aria-hidden="true"></i> Antecedentes clínicos </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="row justify-content-end">
+                                <input type="submit" class="btn btn-primary rounded-pill llenar-espacio" value="Guardar" />
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="espacio">Antecedentes reproductivos</h4>
+                    <div class="border espacio">
+                        <div style="padding-top:1em">
+                            <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()" />
+                            <label>Antecedentes gineco-obstetricos</label>
+                        </div>
+                        <div id='collapsediv1' class='collapse border'>
+                            <div class="espacio">
+                                <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
+                                <div class="row">
+                                    <div class="col-sm-3 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.menarquia)
+                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.menarquia, new { @class = "form-control col-md-12", @id = "ago1" })
+                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.menarquia", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-3 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.gestas)
+                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.gestas, new { @class = "form-control col-md-12", @id = "ago2" })
+                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.gestas", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-3 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.partos)
+                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.partos, new { @class = "form-control col-md-12", @id = "ago3" })
+                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.partos", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-3 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.cesarea)
+                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.cesarea, new { @class = "form-control col-md-12", @id = "ago4" })
+                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.cesarea", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.abortos)
+                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.abortos, new { @class = "form-control col-md-12", @id = "ago5" })
+                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.abortos", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-4 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosVivos)
+                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosVivos, new { @class = "form-control col-md-12", @id = "ago6" })
+                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosVivos", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-4 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosMuertos)
+                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosMuertos, new { @class = "form-control col-md-12", @id = "ago7" })
+                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosMuertos", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:1em">
+                            <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2' id="chkAntecedentesRM" onchange="antecedentesRM()" />
+                            <label>Antecedentes reproductivos masculinos</label>
+                        </div>
+                        <div id='collapsediv2' class='collapse border'>
+                            <div class="espacio">
+                                <h6 class="text-muted">Antecedentes reproductivos masculinos</h6>
+                                <div class="row">
+                                    <div class="col-sm-6 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteReprodMasculino.ets)
+                                        @Html.TextBoxFor(p => p.antecedenteReprodMasculino.ets, new { @class = "form-control col-md-12", @id = "arm1" })
+                                        @Html.ValidationMessage("antecedenteReprodMasculino.ets", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6 espacio-superior">
+                                        @Html.LabelFor(p => p.antecedenteReprodMasculino.parejaSexual)
+                                        @Html.TextBoxFor(p => p.antecedenteReprodMasculino.parejaSexual, new { @class = "form-control col-md-12", @id = "arm2" })
+                                        @Html.ValidationMessage("antecedenteReprodMasculino.parejaSexual", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- /.container -->
+    <div>
+        @if (Model != null && Model.mensajeError != null)
+        {
+            @Html.Label(Model.mensajeError, new { @class = "text-danger" })
+        }
+    </div>
+    <br />
 
-        <div class="col-sm-6  espacio">
-            <h4>Antecedentes Clínicos</h4>
-            <div class="border  espacio">
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.idSeguroMedico)
-                    @Html.DropDownList("historiaClinica.idSeguroMedico", listaSeguros, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.idSeguroMedico", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.idTipoSangre)
-                    @Html.DropDownList("historiaClinica.idTipoSangre", listaSangre, null, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.idTipoSangre", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarClinico)
-                    @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarClinico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    @Html.ValidationMessage("historiaClinica.antecedenteFamiliarClinico", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico)
-                    @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    @Html.ValidationMessage("historiaClinica.antecedenteFamiliarQuirurgico", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.antecedentePersonalClinico)
-                    @Html.EditorFor(p => p.historiaClinica.antecedentePersonalClinico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    @Html.ValidationMessage("historiaClinica.antecedentePersonalClinico", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.antecedentePersonalQuirurgico)
-                    @Html.EditorFor(p => p.historiaClinica.antecedentePersonalQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    @Html.ValidationMessage("historiaClinica.antecedentePersonalQuirurgico", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.antecedentePersonalAlergico)
-                    @Html.EditorFor(p => p.historiaClinica.antecedentePersonalAlergico, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    @Html.ValidationMessage("historiaClinica.antecedentePersonalAlergico", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.antecedentePersonalVacunas)
-                    @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    @Html.ValidationMessage("historiaClinica.antecedentePersonalVacunas", new { @class = "text-danger" })
-                </div>
-                <div style="padding-top:1em">
-                    <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()" />
-                    <label>Antecedentes gineco-obstetricos</label>
-                </div>
-                <div id='collapsediv1' class='collapse border'>
-                    <div class="espacio">
-                        <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.menarquia)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.menarquia, new { @class = "form-control col-md-12", @id = "ago1" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.menarquia", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.gestas)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.gestas, new { @class = "form-control col-md-12", @id = "ago2" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.gestas", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.partos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.partos, new { @class = "form-control col-md-12", @id = "ago3" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.partos", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.cesarea)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.cesarea, new { @class = "form-control col-md-12", @id = "ago4" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.cesarea", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.abortos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.abortos, new { @class = "form-control col-md-12", @id = "ago5" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.abortos", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosVivos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosVivos, new { @class = "form-control col-md-12", @id = "ago6" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosVivos", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosMuertos)
-                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosMuertos, new { @class = "form-control col-md-12", @id = "ago7" })
-                            @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosMuertos", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div style="padding-top:1em">
-                    <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2' id="chkAntecedentesRM" onchange="antecedentesRM()" />
-                    <label>Antecedentes reproductivos masculinos</label>
-                </div>
-                <div id='collapsediv2' class='collapse border'>
-                    <div class="espacio">
-                        <h6 class="text-muted">Antecedentes reproductivos masculinos</h6>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteReprodMasculino.ets)
-                            @Html.TextBoxFor(p => p.antecedenteReprodMasculino.ets, new { @class = "form-control col-md-12", @id = "arm1" })
-                            @Html.ValidationMessage("antecedenteReprodMasculino.ets", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.antecedenteReprodMasculino.parejaSexual)
-                            @Html.TextBoxFor(p => p.antecedenteReprodMasculino.parejaSexual, new { @class = "form-control col-md-12", @id = "arm2" })
-                            @Html.ValidationMessage("antecedenteReprodMasculino.parejaSexual", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.tabaco)
-                    @Html.TextBoxFor(p => p.historiaClinica.tabaco, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.tabaco", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.alcohol)
-                    @Html.TextBoxFor(p => p.historiaClinica.alcohol, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.alcohol", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.otrasDrogas)
-                    @Html.TextBoxFor(p => p.historiaClinica.otrasDrogas, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.otrasDrogas", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.actividadFisica)
-                    @Html.TextBoxFor(p => p.historiaClinica.actividadFisica, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.actividadFisica", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @Html.LabelFor(p => p.historiaClinica.medicacionHabitual)
-                    @Html.TextBoxFor(p => p.historiaClinica.medicacionHabitual, new { @class = "form-control col-md-12" })
-                    @Html.ValidationMessage("historiaClinica.medicacionHabitual", new { @class = "text-danger" })
-                </div>
-            </div>
+    <br />
 
-            <div class="row espacio">
-                <div class="col-sm-6">
-                    <div class="row justify-content-center">
-                        @Html.ActionLink("Cancelar", "Medico", "Home", null, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="row justify-content-center">
-                        <input type="submit" class="btn btn-primary rounded-pill llenar-espacio" value="Guardar" />
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </div>    
-</div>
 }
-    <footer>
-        <button id="scrollToTopBtn" class="btn btn-secondary" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
-    </footer>
+<footer>
+    <button id="scrollToTopBtn" class="btn btn-secondary" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
+</footer>
 
 <script>
     var scrollToTopBtn = document.getElementById("scrollToTopBtn")
     var rootElement = document.documentElement
     // Botón back to the top
-    function scrollToTop() {      
+    function scrollToTop() {
         rootElement.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -352,4 +495,36 @@
             $('#arm2').removeAttr('required')
         }
     }
+
+    function discapacidad() {
+        if ($('#chkAntecedentesRM').is(':checked')) {
+            //Activo el checkbox
+            $('#disc1').prop("required", true);
+            $('#disc2').prop("required", true);
+        }
+        else {
+            ///Desactivo el checkbox
+            $('#disc1').removeAttr('required')
+            $('#disc2').removeAttr('required')
+        }
+    }
+
+    function VerTab(link) {
+        document.getElementById(link).click();
+    }
+
+    //$(document).ready(function () {
+    //    // executes when HTML-Document is loaded and DOM is ready
+
+
+    //    if (location.hash !== '') $('a[href="' + location.hash + '"]').tab('show');
+    //    return $('a[data-toggle="tab"]').on('shown', function (e) {
+    //        return location.hash = $(e.target).attr('href').substr(1);
+    //    });
+
+
+    //    // document ready
+    //});
+
+
 </script>
