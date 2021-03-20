@@ -287,3 +287,7 @@ body {
 .espacio-superior {
     padding-top:1em;
 }
+
+.fondo-form {
+    background: rgba(213, 216, 220, 0.3) !important;
+}

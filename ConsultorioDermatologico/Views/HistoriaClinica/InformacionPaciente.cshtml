@@ -52,274 +52,276 @@
 </div>
 
 
-    <div class="container">
+<div class="container">
+    <h4 class="espacio">Datos personales</h4>
+    <div class="border espacio fondo-form">
+
         <div class="row">
-            @*Formulario para los datos personales del paciente*@
-            <div class="col-sm-6  espacio">
-                <h4>Datos personales</h4>
-                <div>
-                    @if (Model != null && Model.mensajeError != null)
-                    {
-                        @Html.Label(Model.mensajeError, new { @class = "text-danger" })
-                    }
-                </div>
-                <div class="border espacio">
-                    <div>
-                        @Html.LabelFor(p => p.paciente.nombres)
-                        @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.nombres", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.apellidos)
-                        @Html.TextBoxFor(p => p.paciente.apellidos, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.apellidos", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.cedula)
-                        @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999", @readOnly = true })
-                        @Html.ValidationMessage("paciente.cedula", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.fechaNacimiento)
-                        @Html.EditorFor(p => p.paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
-                        @Html.ValidationMessage("paciente.fechaNacimiento", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.idIdentidadGenero)
-                        @Html.DropDownList("paciente.idIdentidadGenero", listaIdentidadGenero, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("paciente.idIdentidadGenero", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.idOrientacionSexual)
-                        @Html.DropDownList("paciente.idOrientacionSexual", listaOrientacionSexual, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("paciente.idOrientacionSexual", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.ciudadNacimiento)
-                        @Html.TextBoxFor(p => p.paciente.ciudadNacimiento, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.ciudadNacimiento", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.ciudadResidencia)
-                        @Html.TextBoxFor(p => p.paciente.ciudadResidencia, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.ciudadResidencia", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.ocupacion)
-                        @Html.TextBoxFor(p => p.paciente.ocupacion, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.ocupacion", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.profesion)
-                        @Html.TextBoxFor(p => p.paciente.profesion, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.profesion", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
-                        @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("paciente.idTipoDiscapacidad", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
-                        @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @Value = "0", @readOnly = true } })
-                        @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.idEstadoCivil)
-                        @Html.DropDownList("paciente.idEstadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("paciente.idEstadoCivil", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.idLateralidad)
-                        @Html.DropDownList("paciente.idLateralidad", listaLateralidad, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("paciente.idLateralidad", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.idNivelEducacion)
-                        @Html.DropDownList("paciente.idNivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("paciente.idNivelEducacion", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.direccion)
-                        @Html.TextBoxFor(p => p.paciente.direccion, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.direccion", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.telefonoPersonal)
-                        @Html.TextBoxFor(p => p.paciente.telefonoPersonal, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999", @readOnly = true })
-                        @Html.ValidationMessage("paciente.telefonoPersonal", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.telefonoResidencial)
-                        @Html.TextBoxFor(p => p.paciente.telefonoResidencial, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999", @readOnly = true })
-                        @Html.ValidationMessage("paciente.telefonoResidencial", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.correoElectronico)
-                        @Html.TextBoxFor(p => p.paciente.correoElectronico, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("paciente.correoElectronico", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.paciente.idReligion)
-                        @Html.DropDownList("paciente.idReligion", listaReligion, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("paciente.idReligion", new { @class = "text-danger" })
-                    </div>
-                    <div style="padding-top:1em">
-                        <div class="border espacio">
-                            <h6 class="text-muted">Datos contacto de Emergencia</h6>
-                            <div>
-
-                                @Html.LabelFor(p => p.contactoEmergencia.nombreContactoEmergencia)
-                                @Html.TextBoxFor(p => p.contactoEmergencia.nombreContactoEmergencia, new { @class = "form-control col-md-12", @readOnly = true })
-                                @Html.ValidationMessage("contactoEmergencia.nombreContactoEmergencia", new { @class = "text-danger" })
-                            </div>
-                            <div>
-                                @Html.LabelFor(p => p.contactoEmergencia.telefonoContactoEmergencia)
-                                @Html.TextBoxFor(p => p.contactoEmergencia.telefonoContactoEmergencia, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999", @readOnly = true })
-                                @Html.ValidationMessage("contactoEmergencia.telefonoContactoEmergencia", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.nombres)
+                @Html.TextBoxFor(p => p.paciente.nombres, new { @class = "form-control col-md-12" ,@readOnly = true}) 
             </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.apellidos)
+                @Html.TextBoxFor(p => p.paciente.apellidos, new { @class = "form-control col-md-12" ,@readOnly = true})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.fechaNacimiento)
+                @Html.EditorFor(p => p.paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly = true} })
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.cedula)
+                @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.idIdentidadGenero)
+                @Html.DropDownList("paciente.idIdentidadGenero", listaIdentidadGenero, null, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.direccion)
+                @Html.TextBoxFor(p => p.paciente.direccion, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.telefonoPersonal)
+                @Html.TextBoxFor(p => p.paciente.telefonoPersonal, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.correoElectronico)
+                @Html.TextBoxFor(p => p.paciente.correoElectronico, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.idTipoSangre)
+                @Html.DropDownList("historiaClinica.idTipoSangre", listaSangre, null, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.idReligion)
+                @Html.DropDownList("paciente.idReligion", listaReligion, null, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.idSeguroMedico)
+                @Html.DropDownList("historiaClinica.idSeguroMedico", listaSeguros, null, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+        </div>
+        <div style="padding-top:1em">
+            <div class="border  espacio">
+                <h6 class="text-muted">Datos contacto de Emergencia</h6>
+                <div class="row">
+                    <div class="col-sm-6 espacio-superior">
 
-            <div class="col-sm-6  espacio">
-                <h4>Antecedentes Clínicos</h4>
-                <div class="border espacio">
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.idSeguroMedico)
-                        @Html.DropDownList("historiaClinica.idSeguroMedico", listaSeguros, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("historiaClinica.idSeguroMedico", new { @class = "text-danger" })
+                        @Html.LabelFor(p => p.contactoEmergencia.nombreContactoEmergencia)
+                        @Html.TextBoxFor(p => p.contactoEmergencia.nombreContactoEmergencia, new { @class = "form-control col-md-12" ,@readOnly = true})                        
                     </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.idTipoSangre)
-                        @Html.DropDownList("historiaClinica.idTipoSangre", listaSangre, null, new { @class = "form-control col-md-12", @readOnly = true, @disabled = "disabled" })
-                        @Html.ValidationMessage("historiaClinica.idTipoSangre", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarClinico)
-                        @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarClinico, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
-                        @Html.ValidationMessage("historiaClinica.antecedenteFamiliarClinico", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico)
-                        @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
-                        @Html.ValidationMessage("historiaClinica.antecedenteFamiliarQuirurgico", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.antecedentePersonalClinico)
-                        @Html.EditorFor(p => p.historiaClinica.antecedentePersonalClinico, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
-                        @Html.ValidationMessage("historiaClinica.antecedentePersonalClinico", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.antecedentePersonalQuirurgico)
-                        @Html.EditorFor(p => p.historiaClinica.antecedentePersonalQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
-                        @Html.ValidationMessage("historiaClinica.antecedentePersonalQuirurgico", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.antecedentePersonalAlergico)
-                        @Html.EditorFor(p => p.historiaClinica.antecedentePersonalAlergico, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
-                        @Html.ValidationMessage("historiaClinica.antecedentePersonalAlergico", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.antecedentePersonalVacunas)
-                        @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12", @readOnly = true } })
-                        @Html.ValidationMessage("historiaClinica.antecedentePersonalVacunas", new { @class = "text-danger" })
-                    </div>
-                    @if (Model.historiaClinica.idAntecedenteGinecoObstetrico != null)
-                    {
-                        <div style="padding-top:1em; padding-bottom:1em;">
-                            <div id='collapsediv1' class='border'>
-                                <div class="espacio">
-                                    <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.menarquia)
-                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.menarquia, new { @class = "form-control col-md-12", @id = "ago1", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.menarquia", new { @class = "text-danger" })
-                                    </div>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.gestas)
-                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.gestas, new { @class = "form-control col-md-12", @id = "ago4", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.gestas", new { @class = "text-danger" })
-                                    </div>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.partos)
-                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.partos, new { @class = "form-control col-md-12", @id = "ago5", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.partos", new { @class = "text-danger" })
-                                    </div>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.cesarea)
-                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.cesarea, new { @class = "form-control col-md-12", @id = "ago6", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.cesarea", new { @class = "text-danger" })
-                                    </div>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.abortos)
-                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.abortos, new { @class = "form-control col-md-12", @id = "ago7", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.abortos", new { @class = "text-danger" })
-                                    </div>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosVivos)
-                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosVivos, new { @class = "form-control col-md-12", @id = "ago8", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosVivos", new { @class = "text-danger" })
-                                    </div>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosMuertos)
-                                        @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosMuertos, new { @class = "form-control col-md-12", @id = "ago9", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteGinecoObstetrico.hijosMuertos", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    @if (Model.historiaClinica.idAntecedenteReprodMasculino != null)
-                    {
-                        <div style="padding-top:1em; padding-bottom:1em;">
-                            <div id='collapsediv2' class='border'>
-                                <div class="espacio">
-                                    <h6 class="text-muted">Antecedentes reproductivos masculinos</h6>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteReprodMasculino.ets)
-                                        @Html.TextBoxFor(p => p.antecedenteReprodMasculino.ets, new { @class = "form-control col-md-12", @id = "arm1", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteReprodMasculino.ets", new { @class = "text-danger" })
-                                    </div>
-                                    <div>
-                                        @Html.LabelFor(p => p.antecedenteReprodMasculino.parejaSexual)
-                                        @Html.TextBoxFor(p => p.antecedenteReprodMasculino.parejaSexual, new { @class = "form-control col-md-12", @id = "arm2", @readOnly = true })
-                                        @Html.ValidationMessage("antecedenteReprodMasculino.parejaSexual", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.tabaco)
-                        @Html.TextBoxFor(p => p.historiaClinica.tabaco, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("historiaClinica.tabaco", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.alcohol)
-                        @Html.TextBoxFor(p => p.historiaClinica.alcohol, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("historiaClinica.alcohol", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.otrasDrogas)
-                        @Html.TextBoxFor(p => p.historiaClinica.otrasDrogas, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("historiaClinica.otrasDrogas", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.actividadFisica)
-                        @Html.TextBoxFor(p => p.historiaClinica.actividadFisica, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("historiaClinica.actividadFisica", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        @Html.LabelFor(p => p.historiaClinica.medicacionHabitual)
-                        @Html.TextBoxFor(p => p.historiaClinica.medicacionHabitual, new { @class = "form-control col-md-12", @readOnly = true })
-                        @Html.ValidationMessage("historiaClinica.medicacionHabitual", new { @class = "text-danger" })
+                    <div class="col-sm-6 espacio-superior">
+                        @Html.LabelFor(p => p.contactoEmergencia.telefonoContactoEmergencia)
+                        @Html.TextBoxFor(p => p.contactoEmergencia.telefonoContactoEmergencia, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" ,@readOnly = true})                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <h4 class="espacio">Información del paciente</h4>
+    <div class="border espacio fondo-form">
+        <div class="row">
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.telefonoResidencial)
+                @Html.TextBoxFor(p => p.paciente.telefonoResidencial, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.idOrientacionSexual)
+                @Html.DropDownList("paciente.idOrientacionSexual", listaOrientacionSexual, null, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.paciente.idEstadoCivil)
+                @Html.DropDownList("paciente.idEstadoCivil", listaEstadoCivil, null, new { @class = "form-control col-md-12",@readOnly = true })                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.ciudadNacimiento)
+                @Html.TextBoxFor(p => p.paciente.ciudadNacimiento, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.ciudadResidencia)
+                @Html.TextBoxFor(p => p.paciente.ciudadResidencia, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.ocupacion)
+                @Html.TextBoxFor(p => p.paciente.ocupacion, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.profesion)
+                @Html.TextBoxFor(p => p.paciente.profesion, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.idLateralidad)
+                @Html.DropDownList("paciente.idLateralidad", listaLateralidad, null, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.paciente.idNivelEducacion)
+                @Html.DropDownList("paciente.idNivelEducacion", listaNivelEducacion, null, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+        </div>
+
+
+        @if (Model.paciente.idTipoDiscapacidad != null)
+        {
+            <div style="padding-top:1em; padding-bottom:1em;">
+                <div id='collapsediv3' class='border'>
+                    <div class="espacio">
+                        <div class="row">
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
+                                @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12", @id = "disc1" ,@readOnly = true})                                
+                            </div>
+                            <div class="col-sm-6 espacio-superior">
+                                @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
+                                @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @Value = "0", @id = "disc2" ,@readOnly = true} })                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+
+    <h4 class="espacio">Antecedentes clínicos</h4>
+    <div class="border espacio fondo-form">
+        <div class="row">
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarClinico)
+                @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarClinico, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly = true} })                
+            </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico)
+                @Html.EditorFor(p => p.historiaClinica.antecedenteFamiliarQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly = true} })                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalClinico)
+                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalClinico, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly = true} })                
+            </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalQuirurgico)
+                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalQuirurgico, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly = true} })                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalAlergico)
+                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalAlergico, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly = true} })                
+            </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.antecedentePersonalVacunas)
+                @Html.EditorFor(p => p.historiaClinica.antecedentePersonalVacunas, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly = true} })                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.tabaco)
+                @Html.TextBoxFor(p => p.historiaClinica.tabaco, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.alcohol)
+                @Html.TextBoxFor(p => p.historiaClinica.alcohol, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+            <div class="col-sm-4 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.otrasDrogas)
+                @Html.TextBoxFor(p => p.historiaClinica.otrasDrogas, new { @class = "form-control col-md-12",@readOnly = true })                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.actividadFisica)
+                @Html.TextBoxFor(p => p.historiaClinica.actividadFisica, new { @class = "form-control col-md-12",@readOnly = true })                
+            </div>
+            <div class="col-sm-6 espacio-superior">
+                @Html.LabelFor(p => p.historiaClinica.medicacionHabitual)
+                @Html.TextBoxFor(p => p.historiaClinica.medicacionHabitual, new { @class = "form-control col-md-12" ,@readOnly = true})                
+            </div>
+        </div>
+    </div>
+
+    @if (Model.historiaClinica.idAntecedenteGinecoObstetrico != null)
+    {
+        <h4 class="espacio">Antecedentes reproductivos</h4>
+        <div style="padding-top:1em; padding-bottom:1em;">
+            <div id='collapsediv1' class='border fondo-form'>
+                <div class="espacio">
+                    <h6 class="text-muted">Antecedentes gineco obstetricos</h6>
+                    <div class="row">
+                        <div class="col-sm-3 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.menarquia)
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.menarquia, new { @class = "form-control col-md-12", @id = "ago1" ,@readOnly = true})                            
+                        </div>
+                        <div class="col-sm-3 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.gestas)
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.gestas, new { @class = "form-control col-md-12", @id = "ago2" ,@readOnly = true})                            
+                        </div>
+                        <div class="col-sm-3 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.partos)
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.partos, new { @class = "form-control col-md-12", @id = "ago3" ,@readOnly = true})                            
+                        </div>
+                        <div class="col-sm-3 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.cesarea)
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.cesarea, new { @class = "form-control col-md-12", @id = "ago4" ,@readOnly = true})                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.abortos)
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.abortos, new { @class = "form-control col-md-12", @id = "ago5" ,@readOnly = true})                            
+                        </div>
+                        <div class="col-sm-4 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosVivos)
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosVivos, new { @class = "form-control col-md-12", @id = "ago6" ,@readOnly = true})                            
+                        </div>
+                        <div class="col-sm-4 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteGinecoObstetrico.hijosMuertos)
+                            @Html.TextBoxFor(p => p.antecedenteGinecoObstetrico.hijosMuertos, new { @class = "form-control col-md-12", @id = "ago7" ,@readOnly = true})                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model.historiaClinica.idAntecedenteReprodMasculino != null)
+    {
+        <h4 class="espacio">Antecedentes reproductivos</h4>
+        <div style="padding-top:1em; padding-bottom:1em;">
+            <div id='collapsediv2' class='border fondo-form'>
+                <div class="espacio">
+                    <h6 class="text-muted">Antecedentes reproductivos masculinos</h6>
+                    <div class="row">
+                        <div class="col-sm-6 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteReprodMasculino.ets)
+                            @Html.TextBoxFor(p => p.antecedenteReprodMasculino.ets, new { @class = "form-control col-md-12", @id = "arm1" ,@readOnly = true})                            
+                        </div>
+                        <div class="col-sm-6 espacio-superior">
+                            @Html.LabelFor(p => p.antecedenteReprodMasculino.parejaSexual)
+                            @Html.TextBoxFor(p => p.antecedenteReprodMasculino.parejaSexual, new { @class = "form-control col-md-12", @id = "arm2" ,@readOnly = true})                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 <footer>
     <button id="scrollToTopBtn" class="btn btn-secondary" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
