@@ -16,172 +16,191 @@
 {
     @Html.AntiForgeryToken()
     @Html.Hidden("idHistoriaClinica", new { @Value = ViewBag.idHistoriaClinica })
-<div class="container">
-    <div class="row">
 
-        <div class="col-sm-4 col-12 espacio">
-            <div class="border espacio">
-                MAPA CUERPO HUMANO
-                <canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>
-                @Html.Hidden("mapaCorporal")
-            </div>
-        </div>
-
-        <div class="col-sm-8">
-            <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @ViewBag.fechaActual</h6>
-            <div class="row">
-                <div class="espacio col-md-6">
-                    <div class="border espacio">
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.motivoConsulta)
-                            @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                            @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.diagnostico)
-                            @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                            @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-                <div class="espacio col-md-6">
-                    <div class="border espacio">
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.prescripcion)
-                            @Html.EditorFor(p => p.evolucion.prescripcion, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                            @Html.ValidationMessage("evolucion.prescripcion", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            @Html.LabelFor(p => p.evolucion.recomendaciones)
-                            @Html.EditorFor(p => p.evolucion.recomendaciones, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                            @Html.ValidationMessage("evolucion.recomendaciones", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @Html.Hidden("reproductivo")
-    @if (ViewBag.idAntecedenteGinecoObstetrico != null)
-    {
-        <div class="espacio border">
-            <div class="row ">
-                <div class="col-sm-3 espacio">
-
-                    <div>
-                        @Html.LabelFor(p => p.evolucion.ciclo)
-                        @Html.TextBoxFor(p => p.evolucion.ciclo, new { @class = "form-control col-md-12", @id = "ago1" })
-                        @Html.ValidationMessage("evolucion.ciclo", new { @class = "text-danger" })
-                    </div>
-
-                </div>
-                <div class="col-sm-3 espacio">
-
-                    <div>
-                        @Html.LabelFor(p => p.evolucion.fechaUltimaMenstruacion)
-                        @Html.EditorFor(p => p.evolucion.fechaUltimaMenstruacion, new { htmlAttributes = new { @class = "form-control col-md-12", @id = "ago2" } })
-                        @Html.ValidationMessage("evolucion.fechaUltimaMenstruacion", new { @class = "text-danger" })
-                    </div>
-
-                </div>
-                <div class="col-sm-3 espacio">
-
-                    <div>
-                        @Html.LabelFor(p => p.evolucion.vidaSexualActiva)
-                        @Html.TextBoxFor(p => p.evolucion.vidaSexualActiva, new { @class = "form-control col-md-12", @id = "ago3" })
-                        @Html.ValidationMessage("evolucion.vidaSexualActiva", new { @class = "text-danger" })
-                    </div>
-
-                </div>
-                <div class="col-sm-3 espacio">
-
-                    <div>
-                        @Html.LabelFor(p => p.evolucion.metodoPlanificacionFamiliar)
-                        @Html.TextBoxFor(p => p.evolucion.metodoPlanificacionFamiliar, new { @class = "form-control col-md-12", @id = "ago4" })
-                        @Html.ValidationMessage("evolucion.metodoPlanificacionFamiliar", new { @class = "text-danger" })
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    }
-
-    <div class="row">
-        <div class="col-sm-4 espacio">
-            <div class="border espacio">
-                <div>
-                    @Html.LabelFor(p => p.evolucion.examenFisico)
-                    @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
-                    @Html.ValidationMessage("evolucion.examenFisico", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-8 espacio">
-            <div class="border espacio">
-                <div class="espacio">
-                    <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
-                    <span>1.-</span>
-                    @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
-                    @Html.Hidden("foto1NombreFoto")
-                </div>
-                <div class="espacio">
-                    <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
-                    <span>2.-</span>
-                    @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
-                    @Html.Hidden("foto2NombreFoto")
-                </div>
-                <div class="espacio">
-                    <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
-                    <span>3.-</span>
-                    @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
-                    @Html.Hidden("foto3NombreFoto")
-                </div>
-                <div class="espacio">
-                    <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
-                    <span>4.-</span>
-                    @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
-                    @Html.Hidden("foto4NombreFoto")
-                </div>
-                <div class="espacio">
-                    <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
-                    <span>5.-</span>
-                    @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
-                    @Html.Hidden("foto5NombreFoto")
-                </div>
-                <div class="espacio">
-                    <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" />
-                    <span>6.-</span>
-                    @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
-                    @Html.Hidden("foto6NombreFoto")
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="row espacio">
-        <div class="col-sm-8">
-
-        </div>
         <div class="col-sm-2">
             <div class="row justify-content-center">
                 @Html.ActionLink("Cancelar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn-outline-secondary btn rounded-pill llenar-espacio" })
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-6">
+
+        </div>
+        <div class="col-sm-4">
             <div class="row justify-content-center">
                 <button type="submit" class="btn btn-primary rounded-pill llenar-espacio" onclick="UploadPic(); RevisionGineco();">Guardar</button>
             </div>
         </div>
+
     </div>
-</div>
+    <h5 class="text-muted" style="padding-left:1em;"> @ViewBag.nombrePaciente - Fecha de visita: @ViewBag.fechaActual</h5>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-4 col-12 espacio">
+                <div class="border espacio">
+                    Diagrama topográfico
+                    <canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>
+                    @Html.Hidden("mapaCorporal")
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="espacio col-md-6">
+                        <div class="border espacio">
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.motivoConsulta)
+                                @Html.EditorFor(p => p.evolucion.motivoConsulta, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.motivoConsulta", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.diagnostico)
+                                @Html.EditorFor(p => p.evolucion.diagnostico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.diagnostico", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="espacio col-md-6">
+                        <div class="border espacio">
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.prescripcion)
+                                @Html.EditorFor(p => p.evolucion.prescripcion, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.prescripcion", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(p => p.evolucion.recomendaciones)
+                                @Html.EditorFor(p => p.evolucion.recomendaciones, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                                @Html.ValidationMessage("evolucion.recomendaciones", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Hidden("reproductivo")
+        @if (ViewBag.idAntecedenteGinecoObstetrico != null)
+        {
+            <div class="espacio border">
+                <div class="row ">
+                    <div class="col-sm-3 espacio">
+
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.ciclo)
+                            @Html.TextBoxFor(p => p.evolucion.ciclo, new { @class = "form-control col-md-12", @id = "ago1" })
+                            @Html.ValidationMessage("evolucion.ciclo", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3 espacio">
+
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.fechaUltimaMenstruacion)
+                            @Html.EditorFor(p => p.evolucion.fechaUltimaMenstruacion, new { htmlAttributes = new { @class = "form-control col-md-12", @id = "ago2" } })
+                            @Html.ValidationMessage("evolucion.fechaUltimaMenstruacion", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3 espacio">
+
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.vidaSexualActiva)
+                            @Html.TextBoxFor(p => p.evolucion.vidaSexualActiva, new { @class = "form-control col-md-12", @id = "ago3" })
+                            @Html.ValidationMessage("evolucion.vidaSexualActiva", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3 espacio">
+
+                        <div>
+                            @Html.LabelFor(p => p.evolucion.metodoPlanificacionFamiliar)
+                            @Html.TextBoxFor(p => p.evolucion.metodoPlanificacionFamiliar, new { @class = "form-control col-md-12", @id = "ago4" })
+                            @Html.ValidationMessage("evolucion.metodoPlanificacionFamiliar", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-sm-4 espacio">
+                <div class="border espacio">
+                    <div>
+                        @Html.LabelFor(p => p.evolucion.examenFisico)
+                        @Html.EditorFor(p => p.evolucion.examenFisico, new { htmlAttributes = new { @class = "form-control col-md-12", @style = "height: 8em;" } })
+                        @Html.ValidationMessage("evolucion.examenFisico", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 espacio">
+                <div class="border espacio">
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto1" style="display:block" />
+                        <span>1.-</span>
+                        @Html.TextBox("foto1", "", new { type = "file", id = "fupFoto1" })
+                        @Html.Hidden("foto1NombreFoto")
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto2" style="display:block" />
+                        <span>2.-</span>
+                        @Html.TextBox("foto2", "", new { type = "file", id = "fupFoto2" })
+                        @Html.Hidden("foto2NombreFoto")
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto3" style="display:block" />
+                        <span>3.-</span>
+                        @Html.TextBox("foto3", "", new { type = "file", id = "fupFoto3" })
+                        @Html.Hidden("foto3NombreFoto")
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto4" style="display:block" />
+                        <span>4.-</span>
+                        @Html.TextBox("foto4", "", new { type = "file", id = "fupFoto4" })
+                        @Html.Hidden("foto4NombreFoto")
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto5" style="display:block" />
+                        <span>5.-</span>
+                        @Html.TextBox("foto5", "", new { type = "file", id = "fupFoto5" })
+                        @Html.Hidden("foto5NombreFoto")
+                    </div>
+                    <div class="espacio">
+                        <img class="img-responsive col-sm-12" id="imgFoto6" style="display:block" />
+                        <span>6.-</span>
+                        @Html.TextBox("foto6", "", new { type = "file", id = "fupFoto6" })
+                        @Html.Hidden("foto6NombreFoto")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 }
 
-
+<footer>
+    <button id="scrollToTopBtn" class="btn btn-secondary espacio btn-top" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
+    <div class="espacio"> </div>
+</footer>
 
 <script>
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn")
+    var rootElement = document.documentElement
+    //Botón back to top
+    function scrollToTop() {
+        rootElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+    scrollToTopBtn.addEventListener("click", scrollToTop)
+
     ///DIBUJO EN EL CANVAS ***************************
-    // Variables  
+    // Variables
     let miCanvas = document.querySelector('#pizarra');
     let lineas = [];
     let correccionX = 0;
@@ -214,7 +233,7 @@
         });
     }
 
-    //Funcion dibuja la linea   
+    //Funcion dibuja la linea
     function dibujarLinea(event) {
         event.preventDefault();
         if (pintarLinea) {
@@ -340,7 +359,7 @@
             alert("Se ejecuto correctame")
             var url = '@Url.Action("EvolucionPaciente", "HistoriaClinica")?idEvolucion=' +rpta[1];
             location.href = url; //redirección hacia la vista de información de la Evolución
-            
+
         } else {
             $('#error').html(rpta[0]);
             alert("Ocurrió un error")  //se recibió una respuesta vacía
@@ -352,12 +371,12 @@
         // Generar los datos de la imagen
         var Pic = document.getElementById("pizarra").toDataURL("image/png"); //se obtiene un url con una cadena correspondiene a la imagen en base64
         Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "")//eliminación de datos innecesarios en la cadena de la imagen generada en el canvas
-        document.getElementById("mapaCorporal").value = Pic;//asignación a un elemento para ser pasado al controlador       
+        document.getElementById("mapaCorporal").value = Pic;//asignación a un elemento para ser pasado al controlador
     }
 
     //Revisar si el paciente tiene o Campos reproductivos para cargar un advertecia en caso de campos incompletos
-    function RevisionGineco() {       
-        
+    function RevisionGineco() {
+
         if (document.getElementById("ago1") != null) {
             document.getElementById("reproductivo").value = true;
         }

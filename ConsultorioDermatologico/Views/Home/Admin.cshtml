@@ -27,7 +27,11 @@
 </head>
 <body>
 
-
+    <header>
+        <div class="espacio" style="float: right;">
+            @Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login", null, new { @class = "btn-outline-danger btn rounded-pill btn-cerrars" })
+        </div>
+    </header>
 
     <div class="container body-content">
 
@@ -68,12 +72,6 @@
 
     </div>
 
-    <footer>
-        <div class="espacio" style="float: right;">
-            @Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login", null, new { @class = "btn-outline-danger btn rounded-pill" })
-        </div>
-
-    </footer>
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

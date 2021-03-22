@@ -86,32 +86,62 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(p3);
                     Paragraph p4 = new Paragraph("Identidad de Género: "+tblPaciente.tblIdentidadGenero.nombreIdentidadGenero);                    
                     doc.Add(p4);
-                    Paragraph p5 = new Paragraph("Orientación Sexual: "+tblPaciente.tblOrientacionSexual.nombreOrientacionSexual);                    
-                    doc.Add(p5);
-                    Paragraph p6 = new Paragraph("Ciudad de nacimiento: "+tblPaciente.ciudadNacimiento);
-                    doc.Add(p6);
-                    Paragraph p7 = new Paragraph("Ciudad de residencia: "+tblPaciente.ciudadResidencia);
-                    doc.Add(p7);
-                    Paragraph p8 = new Paragraph("Ocupación: " +tblPaciente.ocupacion);
-                    doc.Add(p8);
-                    Paragraph p9 = new Paragraph("Profesión: " +tblPaciente.profesion);
-                    doc.Add(p9);
-                    Paragraph p10 = new Paragraph("Tipo discapacidad: " +tblPaciente.idTipoDiscapacidad);
-                    doc.Add(p10);
-                    Paragraph p11 = new Paragraph("Porcentaje de discapacidad: "+tblPaciente.porcentajeDiscapacidad.ToString());                    
-                    doc.Add(p11);
-                    Paragraph p12 = new Paragraph("Estado civil: "+ tblPaciente.tblEstadoCivil.nombreEstadoCivil);
-                    doc.Add(p12);
-                    Paragraph p13 = new Paragraph("Lateralidad: "+ tblPaciente.tblLateralidad.nombreLateralidad);
-                    doc.Add(p13);
-                    Paragraph p14 = new Paragraph("Nivel de educación: " +tblPaciente.tblNivelEducacion.nombreNivelEducacion);
-                    doc.Add(p14);
+                    if (tblPaciente.tblOrientacionSexual != null)
+                    {
+                        Paragraph p5 = new Paragraph("Orientación Sexual: " + tblPaciente.tblOrientacionSexual.nombreOrientacionSexual);
+                        doc.Add(p5);
+                    }
+                    if (tblPaciente.ciudadNacimiento != null)
+                    {
+                        Paragraph p6 = new Paragraph("Ciudad de nacimiento: " + tblPaciente.ciudadNacimiento);
+                        doc.Add(p6);
+                    }
+                    if (tblPaciente.ciudadResidencia != null)
+                    {
+                        Paragraph p7 = new Paragraph("Ciudad de residencia: " + tblPaciente.ciudadResidencia);
+                        doc.Add(p7);
+                    }
+                    if (tblPaciente.ocupacion != null)
+                    {
+                        Paragraph p8 = new Paragraph("Ocupación: " + tblPaciente.ocupacion);
+                        doc.Add(p8);
+                    }
+                    if (tblPaciente.profesion != null)
+                    {
+                        Paragraph p9 = new Paragraph("Profesión: " + tblPaciente.profesion);
+                        doc.Add(p9);
+                    }
+                    if (tblPaciente.idTipoDiscapacidad != null && tblPaciente.porcentajeDiscapacidad !=0)
+                    {
+                        Paragraph p10 = new Paragraph("Tipo discapacidad: " + tblPaciente.tblTipoDiscapacidad.tipo);
+                        doc.Add(p10);
+                        Paragraph p11 = new Paragraph("Porcentaje de discapacidad: " + tblPaciente.porcentajeDiscapacidad.ToString());
+                        doc.Add(p11);
+                    }
+                    if (tblPaciente.tblEstadoCivil != null)
+                    {
+                        Paragraph p12 = new Paragraph("Estado civil: " + tblPaciente.tblEstadoCivil.nombreEstadoCivil);
+                        doc.Add(p12);
+                    }
+                    if (tblPaciente.tblLateralidad != null)
+                    {
+                        Paragraph p13 = new Paragraph("Lateralidad: " + tblPaciente.tblLateralidad.nombreLateralidad);
+                        doc.Add(p13);
+                    }
+                    if (tblPaciente.tblNivelEducacion != null)
+                    {
+                        Paragraph p14 = new Paragraph("Nivel de educación: " + tblPaciente.tblNivelEducacion.nombreNivelEducacion);
+                        doc.Add(p14);
+                    }
                     Paragraph p15 = new Paragraph("Dirección: " +tblPaciente.direccion);
                     doc.Add(p15);
                     Paragraph p16 = new Paragraph("Teléfono personal: " +tblPaciente.telefonoPersonal);
                     doc.Add(p16);
-                    Paragraph p17 = new Paragraph("Teléfono residencial: "+tblPaciente.telefonoResidencial);
-                    doc.Add(p17);
+                    if (tblPaciente.telefonoResidencial != null)
+                    {
+                        Paragraph p17 = new Paragraph("Teléfono residencial: " + tblPaciente.telefonoResidencial);
+                        doc.Add(p17);
+                    }
                     Paragraph p18 = new Paragraph("Correo electrónico: "+tblPaciente.correoElectronico);
                     doc.Add(p18);
                     Paragraph p19 = new Paragraph("Religión: "+tblPaciente.tblReligion.nombreReligion);

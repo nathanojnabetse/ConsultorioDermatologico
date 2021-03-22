@@ -17,17 +17,8 @@
             @Html.ActionLink("Regresar", "Index", "Evolucion", new { idPaciente = ViewBag.idPaciente }, new { @class = "btn btn-outline-secondary llenar-espacio rounded-pill" })
         </div>
     </div>
-    <div class="col-sm-2">
-        <div class="row justify-content-center">
-            @Html.ActionLink(" Editar", "Editar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-outline-dark llenar-espacio rounded-pill" })
-        </div>
-    </div>
-    <div class="col-sm-2">
-        <div class="row justify-content-center">
-            @Html.ActionLink("Borrar", "Desactivar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-outline-danger llenar-espacio rounded-pill", @onclick = "desactivar();" })
-        </div>
-    </div>
-    <div class="col-sm-2">
+    
+    <div class="col-sm-6">
         
     </div>
     <div class="col-sm-4">
@@ -38,11 +29,24 @@
 
 </div>
 
-
+<h5 class="text-muted" style="padding-left:1em;"> @ViewBag.nombrePaciente - Fecha de visita: @Model.evolucion.fechaVisita.ToString("yyyy-MM-dd")</h5>
+<div class="row" style="padding-left:1em;">
+    <div class="col-sm-1">
+        <div class="row justify-content-center">
+            @Html.ActionLink(" Editar", "Editar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-outline-dark llenar-espacio rounded-pill btn-sm" })
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <div class="row justify-content-center">
+            @Html.ActionLink("Borrar", "Desactivar", "Evolucion", new { idEvolucion = ViewBag.idEvolucion }, new { @class = "btn btn-outline-danger llenar-espacio rounded-pill btn-sm", @onclick = "desactivar();" })
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-sm-4 col-12 espacio">
             <div class="border espacio">
+                Diagrama topográfico
                 <div id="divImgMapa">
                     <img class="col-sm-12 imagenFondo" id="imgFotomp" src="data:image/jpg;base64, @Model.evolucion.mapaCorporal" />
                 </div>
@@ -50,7 +54,7 @@
         </div>
 
         <div class="col-sm-8">
-            <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @Model.evolucion.fechaVisita.ToString("yyyy-MM-dd")</h6>
+            
             <div class="row">
                 <div class="espacio col-md-6">
                     <div class="border espacio">
@@ -140,7 +144,7 @@
             </div>
         </div>
         <div class="col-sm-8 espacio">
-            <div class="border espacio" style="height:auto; overflow-y: scroll; min-height: 10em;">
+            <div class="border espacio" style="height:auto;  min-height: 10em;">
                 <div class="centrar">
                     <a href="#carouselControls" role="button" data-slide="prev">
                         <span class="fa fa-chevron-circle-left" aria-hidden="true"></span>
@@ -196,7 +200,23 @@
     </div>
 </div>
 
+<footer>
+    <button id="scrollToTopBtn" class="btn btn-secondary espacio btn-top" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
+    <div class="espacio"> </div>
+</footer>
+
 <script>
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn")
+    var rootElement = document.documentElement
+    //Botón back to top
+    function scrollToTop() {
+        rootElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+    scrollToTopBtn.addEventListener("click", scrollToTop)
+
     //Pregunta si se desea borrar (desactivar) la historia actual
     function desactivar() {
         if (confirm("¿Está seguro de querer borrar este registro de visita y toda su información relacionada  [Datos de evolución]?") == 1) {

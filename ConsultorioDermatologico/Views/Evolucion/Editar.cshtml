@@ -18,26 +18,32 @@
     <input type="hidden" id="idHistoriaClinica" name="idHistoriaClinica" value=@ViewBag.idHistoriaClinica>
     <input type="hidden" id="idEvolucion" name="idEvolucion" value=@ViewBag.idEvolucion>
 
+
     <div class="row espacio">
         <div class="col-sm-2">
             <div class="row justify-content-center">
                 @Html.ActionLink("Regresar", "EvolucionPaciente", "HistoriaClinica", new { idEvolucion = ViewBag.idEvolucion }, new { @class = " btn btn-outline-secondary rounded-pill llenar-espacio" })
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-6">
+
+        </div>
+        <div class="col-sm-4">
             <div class="row justify-content-center">
                 <button type="submit" class="btn btn-primary rounded-pill llenar-espacio" onclick="UploadPic();RevisionGineco();">Guardar</button>
             </div>
         </div>
+
     </div>
 
+    <h5 class="text-muted" style="padding-left:1em;"> @ViewBag.nombrePaciente - Fecha de visita: @Model.evolucion.fechaVisita.ToString("yyyy-MM-dd")</h5>
     <div class="container">
         <div class="row">
 
             <div class="col-sm-4 col-12 espacio">
 
                 <div class="border espacio">
-
+                    Diagrama topográfico
                     <div id="divCanvas" style=" display: none">
                         <canvas class="img-responsive" id="pizarra" style="background: url(../../Resources/mapaCorporal.png);"></canvas>
                     </div>
@@ -55,7 +61,7 @@
             </div>
 
             <div class="col-sm-8">
-                <h6 class="text-muted"> @ViewBag.nombrePaciente - Fecha de visita: @Model.evolucion.fechaVisita.ToString("yyyy-MM-dd")</h6>
+
                 <div class="row">
                     <div class="espacio col-md-6">
                         <div class="border espacio">
@@ -147,7 +153,7 @@
                 </div>
             </div>
             <div class="col-sm-8 espacio">
-                <div class="border espacio" style="height:auto; overflow-y: scroll; min-height: 10em;">
+                <div class="border espacio" style="height:auto; min-height: 10em;">
 
                     <div class="centrar">
                         <a href="#carouselControls" role="button" data-slide="prev">
@@ -281,11 +287,25 @@
 }
 
 @Html.Hidden("RedirectTo", Url.Action("EvolucionPaciente", "HistoriaClinica", new { idEvolucion = @ViewBag.idEvolucion }))
-
+<footer>
+    <button id="scrollToTopBtn" class="btn btn-secondary espacio btn-top" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
+    <div class="espacio"> </div>
+</footer>
 <script>
 
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn")
+    var rootElement = document.documentElement
+    //Botón back to top
+    function scrollToTop() {
+        rootElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+    scrollToTopBtn.addEventListener("click", scrollToTop)
+
     ///DIBUJO EN EL CANVAS ***************************
-    // Variables  
+    // Variables
     let miCanvas = document.querySelector('#pizarra');
     let lineas = [];
     let correccionX = 0;
@@ -438,9 +458,9 @@
         rpta = rpta.replace(/[{()}]/g, '');//Se eliminan caracteres innecesarios en la rpta
         rpta = rpta.split(", ");
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6" || rpta == "7" || rpta == "8") {
-           
+
             alert("Se ejecuto correctame")
-            var url = $("#RedirectTo").val(); 
+            var url = $("#RedirectTo").val();
             location.href = url; //redirección hacia la vista de información de la Evolución
         } else {
             $('#error').html(rpta);

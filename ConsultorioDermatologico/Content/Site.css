@@ -291,3 +291,16 @@ body {
 .fondo-form {
     background: rgba(213, 216, 220, 0.3) !important;
 }
+
+.btn-cerrars {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1em;
+}
+
+.btn-top {
+    position: absolute;  
+    right: 0;
+    margin: 1em;
+}

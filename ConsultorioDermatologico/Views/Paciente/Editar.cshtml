@@ -79,12 +79,12 @@
                         <div class="row">
                             <div class="col-sm-4 espacio-superior">
                                 @Html.LabelFor(p => p.paciente.fechaNacimiento)
-                                @Html.EditorFor(p => p.paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                @Html.EditorFor(p => p.paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control col-md-12" ,@readOnly =true} })
                                 @Html.ValidationMessage("paciente.fechaNacimiento", new { @class = "text-danger" })
                             </div>
                             <div class="col-sm-4 espacio-superior">
                                 @Html.LabelFor(p => p.paciente.cedula)
-                                @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999" })
+                                @Html.TextBoxFor(p => p.paciente.cedula, new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "9999999999",@readOnly = true })
                                 @Html.ValidationMessage("paciente.cedula", new { @class = "text-danger" })
                             </div>
                             <div class="col-sm-4 espacio-superior">
@@ -221,28 +221,53 @@
                                 @Html.ValidationMessage("paciente.idNivelEducacion", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div style="padding-top:1em">
-                            <input type='checkbox' data-toggle='collapse' data-target='#collapsediv3' id="chkDiscapacidad" onchange="discapacidad()" />
-                            <label>Discapacidad</label>
-                        </div>
-                        <div id='collapsediv3' class='collapse border'>
-                            <div class="espacio">
-                                <div class="row">
-                                    <div class="col-sm-6 espacio-superior">
-                                        @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
-                                        @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12", @id = "disc1" })
-                                        @Html.ValidationMessage("paciente.idTipoDiscapacidad", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-sm-6 espacio-superior">
-                                        @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
-                                        @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @Value = "0", @id = "disc2" } })
-                                        @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
+
+
+                        @if (Model.paciente.idTipoDiscapacidad != null || Model.paciente.porcentajeDiscapacidad != 0)
+                        {
+                            <div style="padding-top:1em; padding-bottom:1em;">
+                                <div id='collapsediv3' class='border'>
+                                    <div class="espacio">
+                                        <div class="row">
+                                            <div class="col-sm-6 espacio-superior">
+                                                @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
+                                                @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12", @id = "disc1" })
+                                            </div>
+                                            <div class="col-sm-6 espacio-superior">
+                                                @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
+                                                @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @id = "disc2" } })
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
 
+                        }
+                        else
+                        {
+                            <div style="padding-top:1em">
+                                <input type='checkbox' data-toggle='collapse' data-target='#collapsediv3' id="chkDiscapacidad" onchange="discapacidad()" />
+                                <label>Discapacidad</label>
+                            </div>
+                            <div id='collapsediv3' class='collapse border'>
+                                <div class="espacio">
+                                    <div class="row">
+                                        <div class="col-sm-6 espacio-superior">
+                                            @Html.LabelFor(p => p.paciente.idTipoDiscapacidad)
+                                            @Html.DropDownList("paciente.idTipoDiscapacidad", listaTipoDiscapacidad, null, new { @class = "form-control col-md-12", @id = "disc1" })
+                                            @Html.ValidationMessage("paciente.idTipoDiscapacidad", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-sm-6 espacio-superior">
+                                            @Html.LabelFor(p => p.paciente.porcentajeDiscapacidad)
+                                            @Html.Editor("paciente.porcentajeDiscapacidad", null, new { htmlAttributes = new { @class = "form-control col-md-12", @type = "number", @min = "0", @max = "100", @id = "disc2" } })
+                                            @Html.ValidationMessage("paciente.porcentajeDiscapacidad", new { @class = "text-danger", @Value = "0" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -434,7 +459,7 @@
                         @if (Model.historiaClinica.idAntecedenteReprodMasculino == null && Model.historiaClinica.idAntecedenteGinecoObstetrico == null)
                         {
                             <div style="padding-top:1em">
-                                <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()" />
+                                <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1' id="chkAntecedentesGO" onchange="antecedentesGO()"/>
                                 <label>Antecedentes gineco-obstetricos</label>
                             </div>
                             <div id='collapsediv1' class='collapse border'>
@@ -520,7 +545,8 @@
    
 }
 <footer>
-    <button id="scrollToTopBtn" class="btn btn-secondary" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
+    <button id="scrollToTopBtn" class="btn btn-secondary espacio btn-top" style="float: right;"> <i class="fa fa-chevron-up" aria-hidden="true"></i> </button>
+    <div class="espacio"> </div>
 </footer>
 
 <script>
