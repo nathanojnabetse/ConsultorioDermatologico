@@ -148,7 +148,7 @@
         if (resultado == "1") {
             $("#frmFiltro").trigger("submit");
             document.getElementById("btnClose").click();
-            alert("Se guardo correctamente");
+            alert("Se guardó correctamente");
         }
         else {
             if (resultado == "-1") {
@@ -160,11 +160,11 @@
                 document.getElementById("error").innerHTML = "";
             }
             else if (resultado == "-3") {
-                alert("El númeto de cédula de usuario ya existe en la base de datos");
+                alert("El número de cédula de usuario ya existe en la base de datos");
                 document.getElementById("error").innerHTML = "";
             }
             else {
-                alert("Ocurrio un error");
+                alert("Ocurrió un error al guardar el usuario");
             }
         }
     }
@@ -174,16 +174,16 @@
         document.getElementById("titulo").value = idUsuario;
     }
 
-    //Envío de datos al controlados por medio de Jquery y recepción del resultado para mostrar mensajes de exito o de error
+    //Envío de datos al controlador por medio de Jquery y recepción del resultado para mostrar mensajes de exito o de error
     function EliminarRegistro() {
         var idUsuario = document.getElementById("titulo").value;        
         $.get('@Url.Action("Eliminar","Usuario")?idUsuario=' + idUsuario, function (data) {
             if (data == 1) {
-                alert("Se ejecuto correctamente")
+                alert("Se eliminó el usuario correctamente")
                 document.getElementById("btnCerrarConfirmacion").click();
                 $("#frmFiltro").trigger("submit");
             } else {
-                alert("Ocurrio un error");
+                alert("Ocurrió un error al querer eliminar el usuario");
             }
         })
     }

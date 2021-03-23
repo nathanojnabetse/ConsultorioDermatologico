@@ -30,7 +30,7 @@
     @*documentos mandar id*@
     <div class="col-sm-2">
         <div class="row justify-content-center">
-            @Html.ActionLink("Reporte", "InfoPacientePDF", "Documentos", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-outline-info btn rounded-pill llenar-espacio", @onclick = "alertaReporte()", @target = "_blank" })
+            @Html.ActionLink("Historia clínica PDF", "InfoPacientePDF", "Documentos", new { idPaciente = Model.paciente.idPaciente }, new { @class = "btn-outline-info btn rounded-pill llenar-espacio", @onclick = "alertaReporte()", @target = "_blank" })
         </div>
     </div>
     <div class="col-sm-2">
@@ -352,7 +352,7 @@
     function desactivar() {
         if (confirm("¿Está seguro de querer borrar este paciente y toda su información relacionada  [Datos,Historia clínica y Evolución]?") == 1) {
             //pone si
-            alert("Se elimino correctamente")
+            alert("Se eliminó el paciente correctamente")
         }
         else {
             //pone no

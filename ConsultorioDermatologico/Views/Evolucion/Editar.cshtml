@@ -459,12 +459,12 @@
         rpta = rpta.split(", ");
         if (rpta == "1" || rpta == "2" || rpta == "3" || rpta == "4" || rpta == "5" || rpta == "6" || rpta == "7" || rpta == "8") {
 
-            alert("Se ejecuto correctame")
+            alert("Se editaron los datos correctamente")
             var url = $("#RedirectTo").val();
             location.href = url; //redirección hacia la vista de información de la Evolución
         } else {
             $('#error').html(rpta);
-            alert("Ocurrió un error") //se recibió una respuesta vacía
+            alert("Ocurrió un error en la edición") //se recibió una respuesta vacía
         }
     }
 

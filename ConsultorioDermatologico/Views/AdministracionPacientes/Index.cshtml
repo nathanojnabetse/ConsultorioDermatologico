@@ -43,10 +43,10 @@
         if (confirm("¿Está seguro de querer borrar DEFINITIVAMENTE este paciente y toda su información relacionada [Datos,Historia clínica y Evolución]?") == 1) {
             $.get('@Url.Action("EliminarPaciente", "AdministracionPacientes")?idPaciente=' + idPaciente, function (data) { //envio de datos al controlador y recepcion de la respuesta mandada por el controlador
             if (data >= 1) {
-                alert("Se elimino correctamente")
+                alert("Se eliminó correctamente")
                 $("#frmFiltro").trigger("submit");
             } else {
-                alert("Ocurrio un error");
+                alert("Ocurrió un error");
             }
             })
         }
@@ -64,7 +64,7 @@
                 alert("Se restableció el paciente correctamente")
                 $("#frmFiltro").trigger("submit");
             } else {
-                alert("Ocurrio un error");
+                alert("Ocurrió un error");
             }
             })
         }
@@ -79,10 +79,10 @@
         if (confirm("¿Está seguro de querer borrar DEFINITIVAMENTE este registro de visita y toda su información relacionada  [Datos de evolución]?") == 1) {
             $.get('@Url.Action("EliminarVisita", "AdministracionPacientes")?idEvolucion=' + idEvolucion, function (data) { //envio de datos al controlador y recepcion de la respuesta mandada por el controlador
             if (data >= 1) {
-                alert("Se elimino correctamente")
+                alert("Se eliminó correctamente")
                 $("#frmFiltro").trigger("submit");
             } else {
-                alert("Ocurrio un error");
+                alert("Ocurrió un error");
             }
             })
         }
@@ -99,7 +99,7 @@
                 alert("Se restableció la visita correctamente")
                 $("#frmFiltro").trigger("submit");
             } else {
-                alert("Ocurrio un error");
+                alert("Ocurrió un error");
             }
             })
         }
