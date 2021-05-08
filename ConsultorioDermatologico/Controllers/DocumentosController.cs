@@ -8,6 +8,7 @@ using iTextSharp.text.pdf;
 using ConsultorioDermatologico.Models;
 using System.IO;
 using ConsultorioDermatologico.Filters;
+using ConsultorioDermatologico.ClasesAuxiliares;
 
 namespace ConsultorioDermatologico.Controllers
 {
@@ -495,7 +496,7 @@ namespace ConsultorioDermatologico.Controllers
                     doc.Add(edad);
                     doc.Add(espacio);
                     Paragraph fechaconsulta = new Paragraph("Fecha de atención: " + tblEvolucion.fechaVisita.ToString());
-                    doc.Add(fechaconsulta);
+                    doc.Add(fechaconsulta);                    
                     Paragraph diagnostico = new Paragraph("Diagnóstico:     " + tblEvolucion.diagnostico);
                     doc.Add(diagnostico);
                     doc.Add(espacio);
@@ -505,10 +506,24 @@ namespace ConsultorioDermatologico.Controllers
                     Paragraph r1 = new Paragraph("Reposo por: "+(fechaHasta-fechaDesde).TotalDays.ToString()+" día/días");                    
                     doc.Add(r1);
                     doc.Add(espacio);
-                    Paragraph r2 = new Paragraph("Desde: " + fechaDesde.ToString("yyyy-MM-dd"));
-                    Paragraph r3 = new Paragraph("Hasta: " + fechaHasta.ToString("yyyy-MM-dd"));
+                    
+                    Paragraph r2 = new Paragraph("Desde: " + fechaDesde.ToString("dd-MM-yyyy"));
                     doc.Add(r2);
+                    r2 = new Paragraph("       " + Convert.ToDecimal(fechaDesde.Day.ToString()).NumeroALetras()
+                                                + " DE " + fechaDesde.ToString("MMMM").ToUpper()
+                                                + " DE " + Convert.ToDecimal(fechaDesde.Year.ToString()).NumeroALetras()) ;
+                    doc.Add(r2);
+
+                    Paragraph r3 = new Paragraph("Hasta: " + fechaHasta.ToString("dd-MM-yyyy"));
                     doc.Add(r3);
+                    r3 = new Paragraph("       " + Convert.ToDecimal(fechaHasta.Day.ToString()).NumeroALetras()
+                                                + " DE " + fechaHasta.ToString("MMMM").ToUpper()
+                                                + " DE " + Convert.ToDecimal(fechaHasta.Year.ToString()).NumeroALetras());
+                    doc.Add(r3);
+
+                    Convert.ToDecimal(fechaDesde.Day.ToString()).NumeroALetras();
+                    
+
                     doc.Add(espacio);
                     Paragraph att = new Paragraph("atentamente;");
                     doc.Add(att);                    
