@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+  <Class Name="ConsultorioDermatologico.Controllers.AdministracionPacientesController" Collapsed="true">
+    <Position X="6.25" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAARAAAAIAAAAIEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AdministracionPacientesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.Cie10Controller" Collapsed="true">
+    <Position X="3.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\Cie10Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.DocumentosController">
+    <Position X="7.25" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAYAACAAAAAAAAAEAAAAQAgEACAAAAAA=</HashCode>
+      <FileName>Controllers\DocumentosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.ErrorController">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ErrorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.EvolucionController" Collapsed="true">
+    <Position X="2.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAEAAAAAAAAAEAAAEABAAQAAA=</HashCode>
+      <FileName>Controllers\EvolucionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.HistoriaClinicaController" Collapsed="true">
+    <Position X="6.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAgIAAAEIAAAJAAAQAAAABAAAAAAAABQACAAAA=</HashCode>
+      <FileName>Controllers\HistoriaClinicaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.HomeController" Collapsed="true">
+    <Position X="4.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.LoginController" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEQCAAAAAA=</HashCode>
+      <FileName>Controllers\LoginController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.PacienteController" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAwIAAAEAAAAJAAEQAAAABAIAAAAAEAQACQAAA=</HashCode>
+      <FileName>Controllers\PacienteController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Controllers.UsuarioController" Collapsed="true">
+    <Position X="4.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAEABAAAAAA=</HashCode>
+      <FileName>Controllers\UsuarioController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.BDD_ConsultorioDermatologicoEntities" Collapsed="true">
+    <Position X="1.5" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QBAAAGgAAAACAAQAAEEAgCABEAABAAAAAAAIAIAAIBA=</HashCode>
+      <FileName>Models\BDD_ConsultorioDermatologico.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.App_Start.FontAwesomeBundleConfig">
+    <Position X="10" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FontAwesomeBundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.RouteConfig">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.MvcApplication">
+    <Position X="10" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

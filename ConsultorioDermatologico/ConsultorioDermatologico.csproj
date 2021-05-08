@@ -167,7 +167,10 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="ClassDiagram1.cd" />
+    <Content Include="Diagrama de clases %28modelos%29.cd" />
+    <Content Include="Diagrama entity .cd" />
+    <Content Include="Diagramas controladores.cd" />
+    <Content Include="Diagrama de clases %28modelos%29 - Copia.cd" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

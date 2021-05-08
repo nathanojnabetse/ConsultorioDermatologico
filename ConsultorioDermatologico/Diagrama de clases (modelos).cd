@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ConsultorioDermatologico.Filters.Acceder">
+    <Position X="0.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filters\Acceder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.AntecedenteGinecoObstetricoCLS">
+    <Position X="14" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAIAAAAAAAAAAAABAAAAAAAAhAAAAAEAAAAAEAAAE=</HashCode>
+      <FileName>Models\AntecedenteGinecoObstetricoCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.AntecedenteReprodMasculinoCLS">
+    <Position X="10.25" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAABAAgAAAAAAAA=</HashCode>
+      <FileName>Models\AntecedenteReprodMasculinoCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.Cie10CLS">
+    <Position X="0.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAIAAAAAAAAAAAAAAAAAACAAAAAAEAQAAAA=</HashCode>
+      <FileName>Models\Cie10CLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.ContactoEmergenciaCLS">
+    <Position X="13.25" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Models\ContactoEmergenciaCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.EstadoCivilCLS">
+    <Position X="6.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EstadoCivilCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.EvolucionCLS">
+    <Position X="10.5" Y="9.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAgCAYABAAAAgIBEAEAAAAgAAAIEAAABQACE=</HashCode>
+      <FileName>Models\EvolucionCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.FotoCLS">
+    <Position X="16.75" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIEAAAAQAEA=</HashCode>
+      <FileName>Models\FotoCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.HistoriaClinicaCLS">
+    <Position X="10" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACQACABAkAIAAABAAAAAIAAIEABAAkAAACAAAACAAAI=</HashCode>
+      <FileName>Models\HistoriaClinicaCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.IdentidadGeneroCLS">
+    <Position X="4" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentidadGeneroCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.LateralidadCLS">
+    <Position X="4.25" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LateralidadCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.NivelEducacionCLS">
+    <Position X="6.75" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\NivelEducacionCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.OrientacionSexualCLS">
+    <Position X="4" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OrientacionSexualCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.PacienteCLS">
+    <Position X="16.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAjAAAAgwAIBAIAEAAIABAMAEAEgBEAEAAABAAgEE=</HashCode>
+      <FileName>Models\PacienteCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.RegistroEvolucionCLS">
+    <Position X="13.75" Y="10" Width="1.75" />
+    <AssociationLine Name="foto1" Type="ConsultorioDermatologico.Models.FotoCLS" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.625" Y="10" />
+        <Point X="14.625" Y="9.812" />
+        <Point X="16.75" Y="9.812" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="foto2" Type="ConsultorioDermatologico.Models.FotoCLS" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="10.625" />
+        <Point X="16.75" Y="10.625" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="foto3" Type="ConsultorioDermatologico.Models.FotoCLS" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="10.159" />
+        <Point X="15.875" Y="10.159" />
+        <Point X="15.875" Y="10.063" />
+        <Point X="16.75" Y="10.063" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="foto4" Type="ConsultorioDermatologico.Models.FotoCLS" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="10.739" />
+        <Point X="15.875" Y="10.739" />
+        <Point X="15.875" Y="10.875" />
+        <Point X="16.75" Y="10.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="foto5" Type="ConsultorioDermatologico.Models.FotoCLS" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="10.312" />
+        <Point X="16.75" Y="10.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="foto6" Type="ConsultorioDermatologico.Models.FotoCLS" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.625" Y="10.868" />
+        <Point X="14.625" Y="11.188" />
+        <Point X="16.75" Y="11.188" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAgAAAAAAAEAAAAAAACAAAAAQABAAAAgAAAAA=</HashCode>
+      <FileName>Models\RegistroEvolucionCLS.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="evolucion" />
+      <Property Name="foto1" />
+      <Property Name="foto2" />
+      <Property Name="foto3" />
+      <Property Name="foto4" />
+      <Property Name="foto5" />
+      <Property Name="foto6" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.RegistroPacienteCLS">
+    <Position X="13.75" Y="3.25" Width="1.75" />
+    <AssociationLine Name="paciente" Type="ConsultorioDermatologico.Models.PacienteCLS" FixedFromPoint="true">
+      <Path>
+        <Point X="15.5" Y="4" />
+        <Point X="16.75" Y="4" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="historiaClinica" Type="ConsultorioDermatologico.Models.HistoriaClinicaCLS" FixedToPoint="true">
+      <Path>
+        <Point X="13.75" Y="3.625" />
+        <Point X="12.75" Y="3.625" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="contactoEmergencia" Type="ConsultorioDermatologico.Models.ContactoEmergenciaCLS" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.5" Y="3.25" />
+        <Point X="14.5" Y="2.875" />
+        <Point X="14.562" Y="2.875" />
+        <Point X="14.562" Y="2.488" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="antecedenteReprodMasculino" Type="ConsultorioDermatologico.Models.AntecedenteReprodMasculinoCLS" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.125" Y="4.353" />
+        <Point X="14.125" Y="5.956" />
+        <Point X="12.188" Y="5.956" />
+        <Point X="12.188" Y="7" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAQAAAAAACABAAAgAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\RegistroPacienteCLS.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="paciente" />
+      <Property Name="historiaClinica" />
+      <Property Name="contactoEmergencia" />
+      <Property Name="antecedenteGinecoObstetrico" />
+      <Property Name="antecedenteReprodMasculino" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.ReligionCLS">
+    <Position X="4.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\ReligionCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.SeguroMedicoCLS">
+    <Position X="6.75" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAJAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SeguroMedicoCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.TipoDiscapacidadCLS">
+    <Position X="4.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Models\TipoDiscapacidadCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.TipoSangreCLS">
+    <Position X="6.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TipoSangreCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.Models.UsuarioCLS">
+    <Position X="0.75" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAEAEAAAAQAAAIAAAIAEAAIAAAAAAAACAAAA=</HashCode>
+      <FileName>Models\UsuarioCLS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultorioDermatologico.ClasesAuxiliares.Correo">
+    <Position X="0.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>ClasesAuxiliares\Correo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
