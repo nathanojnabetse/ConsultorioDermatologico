@@ -14,7 +14,7 @@ namespace ConsultorioDermatologico.Models
         public int idUsuario { get; set; }
         
         [Required]
-        [Display(Name ="Nombre Usuario")]
+        [Display(Name ="Nombre del usuario")]
         [StringLength(50, ErrorMessage = "Longitud máxima 50")]
         public string nombreUsuario{get; set;}
 
