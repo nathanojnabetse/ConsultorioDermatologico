@@ -396,7 +396,6 @@
     <Content Include="Views\Cie10\Index.cshtml" />
     <Content Include="Views\Cie10\_TablaCIE.cshtml" />
     <Content Include="Views\Error\_ErrorPage.cshtml" />
-    <Content Include="Views\HistoriaClinica\TEST.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
